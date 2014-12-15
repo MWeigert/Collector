@@ -1,0 +1,215 @@
+%----------------------------------------------------------------------------------------
+
+% Formatvorlage für Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
+% von Micha Schöneberger)
+
+%--------------------------------------VERSION-------------------------------------------
+
+% Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
+%				  Etwas aufgeräumt, muss mal bei Zeit detailiert überarbeitet werden
+
+%---------------------------------- INFORMATIONEN ---------------------------------------
+
+% 	Definition von globalen Parametern, die im gesamten Dokument verwendet
+% 	werden können (z.B auf dem Deckblatt etc.).
+%----------------------------------------------------------------------------------------
+
+\usepackage{cite}					% Verbesserte Zitierungsmöglichkeiten
+\usepackage{tocbasic}
+
+%----------------------- FORMATIERUNG KOPF- UND FUSSZEILE -------------------------------
+
+\usepackage
+[automark,							% Automatische Kopfzeile
+%headtopline,						% Linie über dem Seitenkopf
+%plainheadtopline,					% Plain, Linie über dem Seitenkopf
+headsepline,						% Linie zwischen Kopf und Textkörper
+ilines,								% Trennlinie linksbündig ausrichten
+%plainheadsepline,					% Plain, Linie zwischen Kopf und Textkörper
+footsepline,						% Linie zwischen Textkörper und Fuss
+plainfootsepline,   				% Plain, Linie zwischen Textkörper und Fuss
+%footbotline,						% Linie unter dem Fuss
+%plainfootbotline   				% Plain, Linie unter dem Fuss
+]{scrpage2}
+
+%----------------------------------------------------------------------------------------
+
+
+%-------------------------- ANPASSUNG LANDESSPRACHE--------------------------------------
+
+\usepackage{ngerman}
+
+%----------------------------------------------------------------------------------------
+
+
+%--------------------------------- UMLAUTE-----------------------------------------------
+
+\usepackage[T1]{fontenc}			% Dadurch ist auch sichergestellt, dass in einem PDF
+									% Umlaute gefunden werden.
+\usepackage[utf8]{inputenc}			% Unterstützung erweiterter Zeichensätze mit
+									%  unterschiedlichen Kodierungen
+									% (z. B. ä, ö, ü usw.)
+\usepackage{textcomp} 				% Text Companion Schriften (grosse Symbolbibliothek)
+									
+%----------------------------------------------------------------------------------------
+
+\usepackage{pifont}					% PostScript standard Symbol and Dingbats fonts
+
+%--------------------------------EIGENE REFERENZIERUNG-----------------------------------
+
+\newcommand{\refTC}[1]{ \ref{#1} \nameref{#1}  }		
+% gibt aus z.B.: 1.1.3 Erwartetes Resultat (<Kapitelnummer> <Kapitelname>)
+
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------- GRAFIKEN--------------------------------------------
+
+\usepackage[dvips,final]{graphicx}		% Einbinden von EPS-Grafiken [draft oder final]
+\graphicspath{{pic/}} 					% Hier liegen die Bilder des Dokuments
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amsfonts}			% Befehle aus AMSTeX für mathematische Symbole
+										% z.B. \boldsymbol \mathbb
+\usepackage{multirow}					% Packages für Tabellen
+	
+%-------------------------------- OWN COLORS---------------------------------------------
+
+\usepackage{conf/rgbcolor}				% Eigene Farbdefinitionen nach RGB Chart 
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{makeidx}					% Für Index-Ausgabe; \printindex
+
+%------------------------------ QUELLCODE AUSGABE----------------------------------------
+
+\input{conf/code}						% Eigene Ausgabeformatierungen für Quellcode
+
+%----------------------------------------------------------------------------------------
+
+
+%-------------------------- ZEILENABSTÄNDE UND SEITENRÄNDER------------------------------
+
+\usepackage{setspace}					% hat zur Benützung 3 Optionen: [singlespacing,
+										% onehalfspacing, doublespacing]
+\usepackage{geometry}	
+\usepackage{lineno}						% ermöglicht das Numerieren der Zeilen
+
+
+%-----------------------------------Symbolverzeichnis -----------------------------------
+
+% Symbolverzeichnisse bequem erstellen, beruht auf MakeIndex. 
+%  makeindex.exe %Name%.nlo -s nomencl.ist -o %Name%.nls erzeugt dann das Verzeichnis.
+
+% Dieser Befehl kann z.B. im TeXnicCenter als Postprozessor eingetragen werden, damit er
+% nicht ständig manuell ausgeführt werden muss.
+
+% Die Definitionen sind ausgegliedert in die Datei Abkuerzungen.tex.
+
+%----------------------------------------------------------------------------------------
+
+\usepackage[intoc]{nomencl}
+  \let\abbrev\nomenclature
+  \renewcommand{\nomname}{Abkürzungsverzeichnis}
+  \setlength{\nomlabelwidth}{.25\hsize}
+  \renewcommand{\nomlabel}[1]{#1 \dotfill}
+  \setlength{\nomitemsep}{-\parsep}
+  
+%inserted november 2012 / Micha
+\usepackage[normalem]{ulem}
+\newcommand{\markup}[1]{\uline{#1}}
+
+
+\usepackage{floatflt}					% Zum Umfließen von Bildern
+
+
+% HABE EIGENE DEFINITION TESTWEISE DIESE HIER AUSKOMMENTIERT
+
+% Zum Einbinden von Programmcode --------------------------------------------
+%\usepackage{listings}
+%\usepackage{xcolor} 
+%\definecolor{hellgelb}{rgb}{1,1,0.9}
+%\definecolor{colKeys}{rgb}{0,0,1}
+%\definecolor{colIdentifier}{rgb}{0,0,0}
+%\definecolor{colComments}{rgb}{1,0,0}
+%\definecolor{colString}{rgb}{0,0.5,0}
+%\lstset{%
+%    float=hbp,%
+%    basicstyle=\texttt\small, %
+%    identifierstyle=\color{colIdentifier}, %
+%    keywordstyle=\color{colKeys}, %
+%    stringstyle=\color{colString}, %
+%    commentstyle=\color{colComments}, %
+%    columns=flexible, %
+%    tabsize=2, %
+%    frame=single, %
+%    extendedchars=true, %
+%    showspaces=false, %
+%    showstringspaces=false, %
+%    numbers=left, %
+%    numberstyle=\tiny, %
+%    breaklines=true, %
+%    backgroundcolor=\color{hellgelb}, %
+%    breakautoindent=true, %
+%    captionpos=b%
+}
+
+
+\usepackage[hyphens]{url}		% bricht lange URL's um, ohne dass der Link defekt ist
+\usepackage{url}
+
+
+
+
+
+
+%----------------------------------PDF OPTIONEN------------------------------------------
+								
+\usepackage[
+bookmarks,
+bookmarksopen=true,
+pdftitle={\titel},
+pdfauthor={\autorFirst},
+pdfcreator={\autorFirst},
+pdfsubject={\titel},
+pdfkeywords={\titel},
+colorlinks=true,
+linkcolor=red, 						% einfache interne Verknüpfungen
+anchorcolor=black,					% Ankertext
+citecolor=blue, 					% Verweise auf Literaturverzeichniseinträge im Text
+filecolor=magenta, 					% Verknüpfungen, die lokale Dateien öffnen
+menucolor=red, 						% Acrobat-Menüpunkte
+urlcolor=cyan,
+backref,
+%pagebackref,
+plainpages=false,					% zur korrekten Erstellung der Bookmarks
+pdfpagelabels,						% zur korrekten Erstellung der Bookmarks
+hypertexnames=false,				% zur korrekten Erstellung der Bookmarks
+linktocpage 				% Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+]{hyperref}
+
+\usepackage[final]{pdfpages}			%Ermöglicht andere PDF ins Dokument einzufügen.
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{chngcntr}				% Zum fortlaufenden Durchnummerieren der Fußnoten
+
+
+% Aliase für Zitate
+% \defcitealias{WPProzess}{Wikipedia:~Prozess}
+
+%\usepackage{minitoc}
+
+% für lange Tabellen
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{lscape}
+
+%Spaltendefinition rechtsbündig mit definierter Breite
+\newcolumntype{w}[1]{>{\raggedleft\hspace{0pt}}p{#1}}
+
+% Formatierung von Listen ändern
+\usepackage{paralist}
+% \setdefaultleftmargin{2.5em}{2.2em}{1.87em}{1.7em}{1em}{1em}

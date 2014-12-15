@@ -1,0 +1,73 @@
+%----------------------------------------------------------------------------------------
+
+% Formatvorlage für Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
+% von Micha Schöneberger)
+
+%--------------------------------------VERSION-------------------------------------------
+
+% Version V0.3  - Erstellt von Mathias Weigert am 27.08.2013
+%				  In erster Linie etwas aufgeräumt und übersichtlicher
+% Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
+%				  Etwas aufgeräumt, muss mal bei Zeit detailiert überarbeitet werden
+
+%--------------------------------ZEILENABSTAND--------------------------------------------
+
+%\singlespacing		% Normaler Zeilenabstand
+\onehalfspacing		% 1.5 facher Zeilenabstand [Standard]
+%\doublespacing		% Doppelter Zeilenabstand
+
+%-----------------------------------------------------------------------------------------
+			
+%----------------------------------SEITENRÄNDER-------------------------------------------
+
+\geometry{
+paper=a4paper,		% Papierformat			[a4paper]
+left=20mm,			% Linker Seitenrand		[35mm]
+right=20mm,			% Rechter Seitenrand	[25mm]
+top=20mm,	 		% Oberer Seitenrand		[10mm]
+bottom=48mm			% Unterer Seitenrand	[48mm]
+}
+
+%-----------------------------------------------------------------------------------------
+
+% ----------------------------KOPF- UND FUSSZEILE-----------------------------------------
+
+\pagestyle{scrheadings}
+% Kopf- und Fußzeile auch auf Kapitelanfangsseiten
+\renewcommand*{\chapterpagestyle}{scrheadings}
+% definiert die Schriftart für die Kopfzeile (z.B: auch möglich: \sffamily)
+\renewcommand{\headfont}{\normalfont}
+
+% --------------------------------KOPFZEILEN DESIGN---------------------------------------
+
+% \ohead[Auf Kapitelstartseiten oben außen]{Auf allen anderen Seiten oben außen}
+% \chead[Auf Kapitelstartseiten oben mitte]{Auf allen anderen Seiten oben mitte}
+% \ihead[Auf Kapitelstartseiten oben innen]{Auf allen anderen Seiten oben innen}
+
+\ihead{\textit{\headmark}}		% Kapitelname in der Kopfzeile darstellen
+\chead{}
+\ohead{\includegraphics[scale=0.08]{ZHAW_logo.png}} % Bild in Kopfzeile
+\setlength{\headheight}{30mm} 	% Höhe der Kopfzeile
+\setheadsepline[text]{0.4pt} 	% Trennlinie unter Kopfzeile
+
+% --------------------------------FUSSZEILEN DESIGN---------------------------------------
+
+% \ofoot[Auf Kapitelstartseiten oben außen]{Auf allen anderen Seiten oben außen}
+% \cfoot[Auf Kapitelstartseiten oben mitte]{Auf allen anderen Seiten oben mitte}
+% \ifoot[Auf Kapitelstartseiten oben innen]{Auf allen anderen Seiten oben innen}
+
+\ifoot{\autorFirst}				% Autor in Fusszeile
+\cfoot{}
+\ofoot{\pagemark}				% Seitenzahl in Fusszeile
+\setfootsepline[text]{0.4pt} 	% Trennlinie über Fusszeile
+
+% --------------------------SCHUSTERJUNGEN UND HURENKINDER--------------------------------
+
+\clubpenalty = 10000		% Disable single lines at the start of a paragraph
+\widowpenalty = 10000 		% Disable single lines at the end of a paragraph
+\displaywidowpenalty = 10000	% Disable single lines at the end of a paragraph
+
+% ------------------------------------ALLGEMEINES-----------------------------------------
+
+\frenchspacing							% erzeugt ein wenig mehr Platz hinter einem Punkt
+\counterwithout{footnote}{chapter}		% Fußnoten fortlaufend durchnummerieren

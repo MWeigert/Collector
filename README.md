@@ -1,4 +1,9 @@
 Collector
 =========
 
-Android App to handle media collections
+Studienarbeit von Mathias Weigert
+
+##Aufgabe
+
+##Version
+15. Dez. 2014 - V0.1 Aufgabe muss nochmals genauer definiert werden.

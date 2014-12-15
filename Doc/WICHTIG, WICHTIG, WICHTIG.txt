@@ -1,0 +1,11 @@
+﻿Wichtig!!!!
+
+
+Um das Abkürzungsverzeichnis zu aktualisieren, ist der Aufruf
+
+
+makeindex MAIN_SITE.nlo -s nomencl.ist -o MAIN_SITE.nls
+
+
+
+in der Konsole im Hauptordner notwendig!!!!
