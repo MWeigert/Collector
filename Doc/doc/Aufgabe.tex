@@ -1,0 +1,57 @@
+\chapter{Aufgabe}
+
+\begin{longtable}{rp{12cm}}
+	\textbf{Projektname} & Collector \\
+	\textbf{Projektstatus} & Die Arbeit ist freigegeben (Eine Semester- oder Bachelorarbeit kann nur durch die Studiengangsleitung freigegeben werden). \\
+	\textbf{Projekttyp} & Semesterarbeit \\
+	\textbf{Letzter Abgabetermin} & 5. Mai 2016 \\
+	\textbf{Zusammenfassung} & Management von Sammlungen im Bereich: Bücher, Filme (DVD \& Blue Ray) und Computer-/Konsolenspielen durch eine Android App. \\
+	\textbf{Student} & Mathias Weigert \\
+	\textbf{Betreuungsperson} & Michael Reiser \\
+	\textbf{Ausgangslage} & Ich besitze (sehr) viele Bücher, Filme und Spiele (Computer \& Konsolen). Seit einiger Zeit passiert es immer häufiger, dass ich auf Flohmärkten und in Brockenhäusern Fehlkäufe tätige und ich beim Einsortieren meiner neuen Schätze feststelle, dass ich dieses spezielle Buch, Film oder Spiel bereits besitze. Vor ein paar Jahren hatte ich eine Software mit Barcodescanner für meinen PC (\href{http://intelliscanner.com/products/media/index.html}{http://intelliscanner.com/products/media/index.html}), welche meine Sammlung auch online zur Verfügung stellte. Als ich versuchte die Datenbank von Windows XP auf Windows 7 zu migrieren, traten einige Probleme auf. Ich machte mich auf die Suche nach Alternativen im Bereich Apps für mein Smartphone, da ich in anderen Bereichen bereits gute Software für die Verwaltung meiner Sammlungen (z.B. Magic the Gathering) gefunden hatte. Bisher konnte ich noch keine App finden, welche all meine Ansprüche vereint. \\
+	\textbf{Ziel der Arbeit} & Eine funktionierende App, welche mittels der eingebauten Kamera (als Barcodescanner) das Buch, den Film oder das Spiel identifiziert und einer Sammlung hinzufügt. Die Items der Sammlung sollen vom Benutzer verwaltet werden können. Eine weitere Funktion soll das Verleihen einzelner Items ermöglichen, so dass der User die maximale Kontrolle über seine Sammlung hat. \\
+	\textbf{Aufgabenstellung} & \begin{enumerate}
+	\item Recherche \newline
+		Herausfinden, was es momentan auf dem Markt (Google Play / Amazon App Market) im Bereich der Apps gibt, welche helfen Sammlungen im Bereich Bücher, DVD und
+		Konsolen-Spiele zu verwalten. Überblick erstellen über die einzelnen Apps und Ihre Fähigkeiten.
+	  \item Ist-Analyse \newline
+		Momentan existiert noch keine vergleichbare App. Alle existierenden Apps können nur Teile der geplanten gesamten Funktionalität der Collector App abdecken.
+	  \item Anforderungsanalyse \newline
+		Collector soll eine App sein, welche für folgende Medientypen: Bücher, DVD und Computer- oder Konsolenspiele den Besitzer beim Verwalten seiner Sammlung unterstützt. Egal welchem Medientyp ein Item angehört, können mit der App folgende Aktionen durchgeführt werden können.
+	  \begin{itemize}
+		\item Anlegen eines neuen Items
+		\item Ausgabe aller Items (inklusive Filterfunktion)
+		\item Bearbeiten eines Items
+		\item Löschen eines Items
+		\item Exportieren aller Items (inklusive Filterfunktion)
+		\item Verwalten verliehener Items
+		\item Speichern der Items (in einer Datenbank)
+	  \end{itemize}
+	  \item Konzept \newline
+		Um das Anlegen einzelner Items zu erleichtern, soll die App mittels der Kamera den Barcode des Items scannen und einen Abgleich mit verfügbaren Internetdatenbanken in den Bereichen der einzelnen Medientypen durchführen. Fehlende oder fehlerhafte Daten bei einzelnen Items soll der Benutzer manuell eingeben bzw. anpassen können. Die Ausgabe der Items einer Sammlung soll entweder visuell (auf dem Bildschirm) oder per Datenexport (CSV oder XML) erfolgen. Ein Filter, welchen die App zur Verfügung stellt, kann genutzt werden um die Ausgabe der Items einzuschränken. Eine Verleihverwaltung rundet die App ab und hilft dem User nicht den Überlick über verliehene Items seiner Sammlung zu verlieren.
+	\end{enumerate} \\
+	& \begin{enumerate}
+		\setcounter {enumi}{4}
+	  \item Prototyp \newline
+		  Der Prototyp der App soll alle Funktionen, welche in Punkt 4. definiert wurden, fehlerfrei ausführen können. Die App soll auf möglichst vielen Android Geräten funktionieren.
+	  \item Testing \newline
+		  Das Testing wird durch das anlegen, möglichst vieler Unterschiedlicher Items aller Medientypen, erfolgen. Die einzelnen Items werden dokumentiert und auftretende Schwierigkeiten beim Anlegen der Items werden ebenfalls dokumentiert. Sobald ein gewisser Grundstock an Items in der Datenbank hinterlegt sind, werden die restlichen Funktionen getestet.
+	\end{enumerate} \\
+	\textbf{Erwartete Resultate} & \begin{enumerate}
+		\item Recherche \newline
+			Gründlicher Marktüberblick, welcher die Apps übersichtlich Darstellt, welche ähnliche oder sogar identische Funktionen wie die App Collector besitzen. Nach der kurzen Vorstellung der einzelnen Apps, wird ein Überblick alle recherchierten Apps im Vergleich zu Collector zeigen.
+		\item Ist-Analyse \newline
+			Es wird anhand der Funktionen von Collector dargestellt, das es keine der existierenden Apps den selben Funktionsumfang haben wie Collector.
+		\item Anforderungsanalyse \newline
+			Alle beschriebenen Funktionalitäten sollen fehlerfrei in der App umgesetzt werden.
+		\item Konzept \newline
+			Die eingesetzten Werkzeuge und Konzepte sollen dokumentiert werden. Einzelne für die Funktion der App wichtige Klassen und Funktionen sollen detailliert dargestellt werden. Design-Entscheidungen sollen erklärt werden. 
+		\item Prototyp \newline
+			Der Prototyp soll mindestens auf dem Test-Smartphone (Samsung Galaxy XCover) fehlerfrei funktionieren.
+	\end{enumerate}\\
+	& \begin{enumerate}
+		\setcounter{enumi}{5}
+		\item Testing \newline
+			Sowohl die automatisierten als auch die manuellen Tests sollen ausführlich, klar und komplett dokumentiert werden.
+	\end{enumerate}
+\end{longtable}
