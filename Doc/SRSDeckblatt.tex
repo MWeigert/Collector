@@ -7,6 +7,7 @@
 
 % Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
 %				  Der besseren Übersicht wegen Informationen aus zwei Seiten verteilt
+% Version V0.80 - Deckblatt für Software Requirements Specification
 
 %------------------------------------SEITENLAYOUT-----------------------------------------
 
@@ -28,40 +29,25 @@
 
 \begin{titlepage}
 
-\begin{center} 									% setze die Formatierung auf Center
-\includegraphics[scale=0.25]{pic/ZHAW_Titel} 	% binde die Grafik ein
-\\[12ex]
-\huge{\textbf{\textsc{\titel}}}					% setze Schriftgrösse für Titel
-\\[3ex]
-\LARGE{\textbf{\untertitel}}					% setze Schriftgrösse für Untertitel
+\begin{flushright} 									% setze die Formatierung auf Center
+\huge{\textbf{\textsc{Software Requirements}}}	% Titel
+\\
+\huge{\textbf{\textsc{Specification}}}
+\\[6ex]
+\LARGE{\textbf{für}}							% setze Schriftgrösse für Untertitel
 \\[6ex]					
-\LARGE{\textbf{\art}}							% setze Schriftgrösse für Art der Arbeit
-\\[4ex]
-\Large{im Fachgebiet \fachgebiet}				% setze Schriftgrösse für Fachgebiet
-\\[4ex]
+\huge{\textbf{\project}}						% setze Schriftgrösse für Art der Arbeit
+\\[6ex]
 \normalsize								% setze Schriftgrösse zurück auf Normalschrift	
-
-\newpage										% zweite Seite mit allg. Informationen
-
-\begin{tabular}{w{3cm}p{6cm}}
-\\[12ex]Studienbereich: & \quad \studienbereich	% Angabe des Studienbereichs
-\\[4ex]
-Student: & \quad \autorFirst					% Angabe des Studenten
-%\\[1.2ex]
-% & \quad \autorSecond							% Angabe eines zweiten Studenten
-\\[4ex]
-Matrikelnummer: & \quad \matrikelnrFirst 		% Angabe der Matrikelnummer
-%\\[1.2ex]
-%Matrikelnummer: & \quad \matrikelnrSecond 		% Angabe der Matrikelnummer
-\\[4ex]
-Dozent: & \quad \erstgutachter					% Angabe des Dozenten
-%\\[1.2ex]
-%Zweitgutachter: & \quad \zweitgutachter			% Angabe des Zweitgutachters
-\\[3ex]
-\end{tabular}
-\\[48ex]
-\copyright\ \jahr\\
-\end{center}
+\version										% setze Schriftgrösse für Fachgebiet
+\\[5ex]
+\autorFirst
+\\[5ex]
+\organisation
+\\[5ex]
+Datum: 15.Okt. 2014
+\\[40ex]
+\end{flushright}
 
 \singlespacing						% einfacher Zeilenabstand
 \small								% setze kleine Schrift
