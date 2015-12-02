@@ -1,33 +1,36 @@
 %----------------------------------------------------------------------------------------
 
-% Formatvorlage f�r Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
-% von Micha Sch�neberger)
+% Formatvorlage fuer Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
+% von Micha Schoeneberger)
 
 %--------------------------------------VERSION-------------------------------------------
 
 % Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
-%				  Etwas aufgeräumt, muss mal bei Zeit detailiert �berarbeitet werden
+%				          Etwas aufgeraeumt, muss mal bei Zeit detailiert Ueberarbeitet werden.
+%         V0.80 - Erstellt von Mathias Weigert am 24.08.2015
+%                 Kleinere Anpassungen und nochmalieges "aufräumen" der einzelnen
+%                 Packages.
 
 %---------------------------------- INFORMATIONEN ---------------------------------------
 
 % 	Definition von globalen Parametern, die im gesamten Dokument verwendet
-% 	werden k�nnen (z.B auf dem Deckblatt etc.).
+% 	werden koennen (z.B auf dem Deckblatt etc.).
 %----------------------------------------------------------------------------------------
 
-\usepackage{cite}					% Verbesserte Zitierungsm�glichkeiten
+\usepackage{cite}					% Verbesserte Zitierungsmoeglichkeiten
 \usepackage{tocbasic}
 
 %----------------------- FORMATIERUNG KOPF- UND FUSSZEILE -------------------------------
 
 \usepackage
 [automark,							% Automatische Kopfzeile
-%headtopline,						% Linie über dem Seitenkopf
-%plainheadtopline,					% Plain, Linie über dem Seitenkopf
-headsepline,						% Linie zwischen Kopf und Textkörper
-ilines,								% Trennlinie linksbündig ausrichten
-%plainheadsepline,					% Plain, Linie zwischen Kopf und Textkörper
-footsepline,						% Linie zwischen Textkörper und Fuss
-plainfootsepline,   				% Plain, Linie zwischen Textkörper und Fuss
+%headtopline,						% Linie ueber dem Seitenkopf
+%plainheadtopline,					% Plain, Linie ueber dem Seitenkopf
+headsepline,						% Linie zwischen Kopf und Textkoerper
+ilines,								% Trennlinie linksbuendig ausrichten
+%plainheadsepline,					% Plain, Linie zwischen Kopf und Textkoerper
+footsepline,						% Linie zwischen Textkoerper und Fuss
+plainfootsepline,   				% Plain, Linie zwischen Textkoerper und Fuss
 %footbotline,						% Linie unter dem Fuss
 %plainfootbotline   				% Plain, Linie unter dem Fuss
 ]{scrpage2}
@@ -44,20 +47,21 @@ plainfootsepline,   				% Plain, Linie zwischen Textkörper und Fuss
 
 %--------------------------------- UMLAUTE-----------------------------------------------
 
-%\usepackage[utf8]{inputenc}			% Unterst�tzung erweiterter Zeichens�tze mit
-									%  unterschiedlichen Kodierungen
-									% (z. B. ä, ö, ü usw.)
 \usepackage[T1]{fontenc}			% Dadurch ist auch sichergestellt, dass in einem PDF
 									% Umlaute gefunden werden.
+%\usepackage[utf8x]{luainputenc}
+\usepackage[utf8]{inputenc}			% UnterstÃ¼tzung erweiterter ZeichensÃ¤tze mit
+									%  unterschiedlichen Kodierungen
+									% (z. B. ae, oe,  usw.)
 \usepackage{textcomp} 				% Text Companion Schriften (grosse Symbolbibliothek)
-									
+
 %----------------------------------------------------------------------------------------
 
 \usepackage{pifont}					% PostScript standard Symbol and Dingbats fonts
 
 %--------------------------------EIGENE REFERENZIERUNG-----------------------------------
 
-\newcommand{\refTC}[1]{ \ref{#1} \nameref{#1}  }		
+\newcommand{\refTC}[1]{ \ref{#1} \nameref{#1}  }
 % gibt aus z.B.: 1.1.3 Erwartetes Resultat (<Kapitelnummer> <Kapitelname>)
 
 %----------------------------------------------------------------------------------------
@@ -70,40 +74,45 @@ plainfootsepline,   				% Plain, Linie zwischen Textkörper und Fuss
 
 %----------------------------------------------------------------------------------------
 
-\usepackage{amsmath,amsfonts}			% Befehle aus AMSTeX für mathematische Symbole
+\usepackage{amsmath,amsfonts}			% Befehle aus AMSTeX fuer mathematische Symbole
 										% z.B. \boldsymbol \mathbb
-\usepackage{multirow}					% Packages für Tabellen
-	
+\usepackage{multirow}					% Packages fuer Tabellen
+
 %-------------------------------- OWN COLORS---------------------------------------------
 
-\usepackage{conf/rgbcolor}				% Eigene Farbdefinitionen nach RGB Chart 
-\usepackage[table]{xcolor}				% Um Tabellen einzuf�rben
+\usepackage{conf/rgbcolor}				% Eigene Farbdefinitionen nach RGB Chart
+\usepackage[table]{xcolor}				% Um Tabellen einzuf�rben
 
 %----------------------------------------------------------------------------------------
 
-\usepackage{makeidx}					% Für Index-Ausgabe; \printindex
+\usepackage{makeidx}					% Fuer Index-Ausgabe; \printindex
 
 %------------------------------ QUELLCODE AUSGABE----------------------------------------
 
-\input{conf/code}						% Eigene Ausgabeformatierungen für Quellcode
+\input{conf/code}						% Eigene Ausgabeformatierungen fuer Quellcode
 
 %----------------------------------------------------------------------------------------
 
 
-%-------------------------- ZEILENABSTÄNDE UND SEITENRÄNDER------------------------------
+%-------------------------- ZEILENABSTAENDE UND SEITENRAENDER------------------------------
 
 \usepackage{setspace}					% hat zur Benützung 3 Optionen: [singlespacing,
 										% onehalfspacing, doublespacing]
-\usepackage{geometry}	
-\usepackage{lineno}						% ermöglicht das Numerieren der Zeilen
+\usepackage{geometry}
+\usepackage{lineno}						% ermoeglicht das Numerieren der Zeilen
+
+\usepackage{titlesec}
+\titleformat{\chapter}
+{\normalfont\huge\bfseries}{\thechapter.}{11pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-40pt}{15pt}
 
 
 % Symbolverzeichnis --------------------------------------------------------
 % Symbolverzeichnisse bequem erstellen, beruht auf MakeIndex.
 % makeindex.exe %Name%.nlo -s nomencl.ist -o %Name%.nls
 % erzeugt dann das Verzeichnis. Dieser Befehl kann z.B. im TeXnicCenter
-% als Postprozessor eingetragen werden, damit er nicht ständig manuell
-% ausgeführt werden muss.
+% als Postprozessor eingetragen werden, damit er nicht staendig manuell
+% ausgefuehrt werden muss.
 % Die Definitionen sind ausgegliedert in die Datei Abkuerzungen.tex.
 % --------------------------------------------------------------------------
 \usepackage[intoc]{nomencl}
@@ -112,50 +121,20 @@ plainfootsepline,   				% Plain, Linie zwischen Textkörper und Fuss
   \setlength{\nomlabelwidth}{.25\hsize}
   \renewcommand{\nomlabel}[1]{#1 \dotfill}
   \setlength{\nomitemsep}{-\parsep}
-  
+
 
 %inserted november 2012 / Micha
 \usepackage[normalem]{ulem}
 \newcommand{\markup}[1]{\uline{#1}}
 
 
-\usepackage{floatflt}							% Zum Umfließen von Bildern
-
-
-% Zum Einbinden von Programmcode --------------------------------------------
-%\usepackage{listings}
-%\usepackage{xcolor} 
-%\definecolor{hellgelb}{rgb}{1,1,0.9}
-%\definecolor{colKeys}{rgb}{0,0,1}
-%\definecolor{colIdentifier}{rgb}{0,0,0}
-%\definecolor{colComments}{rgb}{1,0,0}
-%\definecolor{colString}{rgb}{0,0.5,0}
-%\lstset{%
-%    float=hbp,%
-%    basicstyle=\texttt\small, %
-%    identifierstyle=\color{colIdentifier}, %
-%    keywordstyle=\color{colKeys}, %
-%    stringstyle=\color{colString}, %
-%    commentstyle=\color{colComments}, %
-%    columns=flexible, %
-%    tabsize=2, %
-%    frame=single, %
-%    extendedchars=true, %
-%    showspaces=false, %
-%    showstringspaces=false, %
-%    numbers=left, %
-%    numberstyle=\tiny, %
-%    breaklines=true, %
-%    backgroundcolor=\color{hellgelb}, %
-%    breakautoindent=true, %
-%%    captionpos=b%
-%}
+\usepackage{floatflt}							% Zum Umfliessen von Bildern
 
 \usepackage[hyphens]{url}			% bricht lange URL's um, ohne dass der Link defekt ist
-\usepackage{url}
+%\usepackage{url}
 
 %-------------------------------PDF OPTIONEN----------------------------------------------
-								
+
 \usepackage[
 bookmarks,
 bookmarksopen=true,
@@ -165,46 +144,42 @@ pdfcreator={\autorFirst},
 pdfsubject={\titel},
 pdfkeywords={\titel},
 colorlinks=true,
-linkcolor=red, 							% einfache interne Verknüpfungen
+linkcolor=red, 							% einfache interne Verknuepfungen
 anchorcolor=black,						% Ankertext
-citecolor=blue, 			% Verweise auf Literaturverzeichniseinträge im Text
-filecolor=magenta, 						% Verknüpfungen, die lokale Dateien öffnen
-menucolor=red, 							% Acrobat-Menüpunkte
+citecolor=blue, 						% Verweise auf Literaturverzeichniseintraege im Text
+filecolor=magenta, 						% Verknuepfungen, die lokale Dateien oeffnen
+menucolor=red, 							% Acrobat-Menuepunkte
 urlcolor=cyan,
 %linkcolor=black, 						% einffdrtext
-%citecolor=black, 			% Verweise auf Literaturverzeichniseinträge im Text
-%filecolor=black, 						% Verknüpfungen, die lokale Dateien öffnen
-%menucolor=black,						% Acrobat-Menüpunkte
+%citecolor=black, 						% Verweise auf Literaturverzeichniseintraege im Text
+%filecolor=black, 						% Verknuepfungen, die lokale Dateien Ã¶ffnen
+%menucolor=black,						% Acrobat-Menuepunkte
 %urlcolor=black,
 backref,
 %pagebackref,
 plainpages=false,						% zur korrekten Erstellung der Bookmarks
 pdfpagelabels,							% zur korrekten Erstellung der Bookmarks
 hypertexnames=false,					% zur korrekten Erstellung der Bookmarks
-linktocpage 				% Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+linktocpage 							% Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
 ]{hyperref}
 
-\usepackage[final]{pdfpages}			%Ermöglicht andere PDF ins Dokument einzufügen.
+\usepackage[final]{pdfpages}			%Ermoeglicht andere PDF ins Dokument einzufuegen.
 
 %-----------------------------------------------------------------------------------------
 
-\usepackage{chngcntr}					% Zum fortlaufenden Durchnummerieren der Fußnoten
+\usepackage{chngcntr}					% Zum fortlaufenden Durchnummerieren der Fussnoten
 
-
-% Aliase für Zitate
-% \defcitealias{WPProzess}{Wikipedia:~Prozess}
-
-%\usepackage{minitoc}
-
-% für lange Tabellen
+% fuer lange Tabellen
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage{lscape}
 
-%Spaltendefinition rechtsbündig mit definierter Breite
+%Spaltendefinition rechtsbaendig mit definierter Breite
 \newcolumntype{w}[1]{>{\raggedleft\hspace{0pt}}p{#1}}
 
-% Formatierung von Listen ändern
+% Formatierung von Listen aendern
 \usepackage{paralist}
 % \setdefaultleftmargin{2.5em}{2.2em}{1.87em}{1.7em}{1em}{1em}
+
+\usepackage{lastpage}				% Dient zum ermitteln der Seiten eines Dokuments

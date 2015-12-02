@@ -5,10 +5,13 @@
 
 %--------------------------------------VERSION-------------------------------------------
 
-% Version V0.3  - Erstellt von Mathias Weigert am 27.08.2013
-%				  In erster Linie etwas aufgeräumt und übersichtlicher
+% Version V0.30 - Erstellt von Mathias Weigert am 27.08.2013
+%				  				In erster Linie etwas aufgeräumt und übersichtlicher
 % Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
-%				  Etwas aufgeräumt, muss mal bei Zeit detailiert überarbeitet werden
+%				  				Etwas aufgeräumt, muss mal bei Zeit detailiert überarbeitet werden
+% Version V0.80 - Erstellt von Mathias Weigert am 24.08.2015
+%									In der Kopfzeile wird nun nur noch das Kapitel angezeigt. Fusszeile
+%									zeigt Version, Pfad und Seitenzahl an.
 
 %--------------------------------ZEILENABSTAND--------------------------------------------
 
@@ -17,7 +20,7 @@
 %\doublespacing		% Doppelter Zeilenabstand
 
 %-----------------------------------------------------------------------------------------
-			
+
 %----------------------------------SEITENRÄNDER-------------------------------------------
 
 \geometry{
@@ -38,17 +41,29 @@ bottom=48mm			% Unterer Seitenrand	[48mm]
 % definiert die Schriftart für die Kopfzeile (z.B: auch möglich: \sffamily)
 \renewcommand{\headfont}{\normalfont}
 
-% --------------------------------KOPFZEILEN DESIGN---------------------------------------
+% ================================KOPFZEILEN DESIGN======================================-
 
 % \ohead[Auf Kapitelstartseiten oben außen]{Auf allen anderen Seiten oben außen}
 % \chead[Auf Kapitelstartseiten oben mitte]{Auf allen anderen Seiten oben mitte}
 % \ihead[Auf Kapitelstartseiten oben innen]{Auf allen anderen Seiten oben innen}
 
-\ihead{\textit{\headmark}}		% Kapitelname in der Kopfzeile darstellen
+% --------------------------------KOPFZEILEN INNEN----------------------------------------
+
+%\ihead{\huge{{\color{MediumBlue}\file}}}
+\ihead{\huge{{\color{MediumBlue}\headmark}}}
+
+% --------------------------------KOPFZEILEN MITTE----------------------------------------
+
 \chead{}
-\ohead{\includegraphics[scale=0.08]{ZHAW_logo.png}} % Bild in Kopfzeile
-\setlength{\headheight}{30mm} 	% Höhe der Kopfzeile
-\setheadsepline[text]{0.4pt} 	% Trennlinie unter Kopfzeile
+
+% --------------------------------KOPFZEILEN AUSSEN---------------------------------------
+
+\ohead{}												% Rechte Kopfzeile
+
+\setlength{\headheight}{25mm} 	% Höhe der Kopfzeile
+\setheadsepline[text]{1pt} 			% Trennlinie unter Kopfzeile
+
+% ========================================================================================
 
 % --------------------------------FUSSZEILEN DESIGN---------------------------------------
 
@@ -56,15 +71,29 @@ bottom=48mm			% Unterer Seitenrand	[48mm]
 % \cfoot[Auf Kapitelstartseiten oben mitte]{Auf allen anderen Seiten oben mitte}
 % \ifoot[Auf Kapitelstartseiten oben innen]{Auf allen anderen Seiten oben innen}
 
-\ifoot{\autorFirst}				% Autor in Fusszeile
+% --------------------------------FUSSZEILEN INNEN----------------------------------------
+
+\ifoot{\\
+	Version: \version \\
+	\tiny{\path \file}
+}
+
+% --------------------------------FUSSZEILEN MITTE----------------------------------------
+
 \cfoot{}
-\ofoot{\pagemark}				% Seitenzahl in Fusszeile
-\setfootsepline[text]{0.4pt} 	% Trennlinie über Fusszeile
+
+% --------------------------------FUSSZEILEN AUSSEN---------------------------------------
+
+\ofoot{Seite \pagemark \ von \pageref{LastPage}}
+
+\setfootsepline[text]{1pt} 		% Trennlinie über Fusszeile
+
+%-----------------------------------------------------------------------------------------
 
 % --------------------------SCHUSTERJUNGEN UND HURENKINDER--------------------------------
 
-\clubpenalty = 10000		% Disable single lines at the start of a paragraph
-\widowpenalty = 10000 		% Disable single lines at the end of a paragraph
+\clubpenalty = 10000			% Disable single lines at the start of a paragraph
+\widowpenalty = 10000 			% Disable single lines at the end of a paragraph
 \displaywidowpenalty = 10000	% Disable single lines at the end of a paragraph
 
 % ------------------------------------ALLGEMEINES-----------------------------------------

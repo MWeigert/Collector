@@ -1,0 +1,98 @@
+%----------------------------------------------------------------------------------------
+
+% Formatvorlage für Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
+% von Micha Schöneberger)
+
+%--------------------------------------VERSION-------------------------------------------
+
+% Version V0.10 - Erstellt von Mathias Weigert am 08.01.2014
+%									Basis war die LaTex Dokumente der ZHAW
+% Version V0.80 - Erstellt von Mathias Weigert am 24.08.2015
+%									Versionsprung, damit Hauptdokument und Configurationsfiles nun selbe
+%									Version besitzen. Alle benötigten Files sind nun in Unterverzeichnisse
+%									ausgelagert.
+
+% ---------------------------------LADEN DER META DATEN-----------------------------------
+
+% Informationen über das Dokument, wie z.B. Titel, Autor, Jahr etc. werden in der
+% Datei _Meta.tex definiert und können danach global verwendet werden.
+
+\input{conf/Meta}
+
+% ----------------------------------------------------------------------------------------
+
+% ----------------------------------DOKUMENTENKOPF----------------------------------------
+
+% Diese Vorlage basiert auf "scrreprt" aus dem koma-script.
+% Die Option "draft" sollte beim fertigen Dokument ausgeschaltet werden.
+
+\documentclass[
+	11pt,						% Schriftgröße
+	ngerman,				% für Umlaute, Silbentrennung etc.
+	a4paper,       	% Papierformat
+	oneside,				% einseitiges Dokument
+	titlepage,			% es wird eine Titelseite verwendet
+	final						% Status des Dokuments (final/draft)
+]{scrbook}				% KOMA Script-Klassen: scrbook, scrreprt, scrartcl, scrlttr2.
+									% Die Angabe einer Dokumentenklasse ist obligatorisch.
+
+% ----------------------------------------------------------------------------------------
+
+% -----------------------------PACKAGES EINLESEN------------------------------------------
+% Weitere Packages, die benötigt werden, sind in die Datei Packages.tex "ausgelagert", um
+% die Vorlage möglichst Übersichtlich zu halten.
+
+\input{conf/Packages}	% lade ausgelagerte Packages
+
+% ----------------------------------------------------------------------------------------
+
+% -----------------------KOPF- UND FUSSZEILE, SEITENRÄNDER...-----------------------------
+% Diese Einstellungen sind im Dokument Seitenstil ausgelagert.
+
+\input{conf/Seitenstil}	% lade spezifische Kopf- und Fusszeilen
+
+% ----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\setlength{\parindent}{0pt}		% sorgt dafür das es keinen Einzug am Absatzanfang gibt
+\setcounter{secnumdepth}{3}		% legt die Tiefe bei Nummerierung von Überschriften fest
+\setcounter{tocdepth}{3}			% legt Schachtelungstiefe bei Inhaltsverzeichnis fest
+
+% ----------------------------------------------------------------------------------------
+
+% ---------------------DECKBLATT, INHALT & VERSIONSVERWALTUNG-----------------------------
+
+\include{conf/Deckblatt}		% Deckblatt
+
+\tableofcontents				% Inhaltsverzeichnis
+
+\input{doc/Versionsverwaltung}	% Versionsverwaltung
+
+% ----------------------------------------------------------------------------------------
+
+% -----------------------------INHALT DES DOKUMENTS---------------------------------------
+
+% Hier können jetzt die einzelnen Kapitel implementiert werden. Sie müssen in den
+% entsprechenden .TEX-Dateien vorliegen. Die Dateinamen können natürlich angepasst werden.
+
+% ----------------------------------------------------------------------------------------
+
+\input{doc/Aufgabe.tex}
+\input{doc/Recherche.tex}
+
+% --------------------------------------ANHANG--------------------------------------------
+
+% Die Inhalte des Anhangs werden analog zu den Kapiteln implementiert; über die Datei
+% Anhang.tex
+
+%\begin{appendix}
+%	\clearpage
+%	\pagenumbering{Roman}
+%	\renewcommand{\thesection}{\arabic{section}}
+%	\input{doc/Anhang}
+%\end{appendix}
+
+% ----------------------------------------------------------------------------------------
+
+\end{document}
