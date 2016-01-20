@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Ausgangssituation}{3}{0}{1}
+\beamer@sectionintoc {2}{Ziele}{4}{0}{2}
+\beamer@sectionintoc {3}{Datenbank}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Alle Medien}{6}{0}{3}
+\beamer@subsectionintoc {3}{2}{Individuell}{7}{0}{3}
+\beamer@sectionintoc {4}{GUI}{8}{0}{4}
+\beamer@subsectionintoc {4}{1}{Main \& Filter}{8}{0}{4}
+\beamer@subsectionintoc {4}{2}{Ergebnis \& Details}{9}{0}{4}
+\beamer@sectionintoc {5}{Meilensteine}{10}{0}{5}
