@@ -39,11 +39,62 @@ Herausfinden, was es momentan auf dem Markt (Google Play / Amazon App Market)
 im Bereich der Apps gibt, welche helfen Sammlungen im Bereich Bücher, DVD und 
 Konsolen-Spiele zu verwalten. Überblick erstellen über die einzelnen Apps und 
 Ihre Fähigkeiten.
-2. Ist-Analyse
-3. Anforderungsanalyse
-4. Konzept
-5. Prototyp
-6. Testing
+2. Ist-Analyse  
+Momentan existiert noch keine vergleichbare App. Alle existierenden Apps können 
+nur Teile der geplanten gesamten Funktionalität der Collector App abdecken.
+3. Anforderungsanalyse  
+Collector soll eine App sein, welche für folgende Medientypen: Bücher, DVD und 
+Computer- oder Konsolenspiele den Besitzer beim Verwalten seiner Sammlung 
+unterstützt. Egal welchem Medientyp ein Item angehört, können mit der App folgende 
+Aktionen durchgeführt werden können.  
+* Anlegen eines neuen Items  
+* Ausgabe aller Items (inklusive Filterfunktion)  
+* Bearbeiten eines Items  
+* Löschen eines Items  
+* Exportieren aller Items (inklusive Filterfunktion)  
+* Verwalten verliehener Items  
+* Speichern der Items (in einer Datenbank)  
+4. Konzept  
+Um das Anlegen einzelner Items zu erleichtern, soll die App mittels der Kamera den 
+Barcode des Items scannen und einen Abgleich mit verfügbaren Internetdatenbanken 
+in den Bereichen der einzelnen Medientypen durchführen. Fehlende oder fehlerhafte 
+Daten bei einzelnen Items soll der Benutzer manuell eingeben bzw. anpassen können.  
+Die Ausgabe der Items einer Sammlung soll entweder visuell (auf dem Bildschirm) oder 
+per Datenexport (CSV oder XML) erfolgen. Ein Filter, welchen die App zur Verfügung 
+stellt, kann genutzt werden um die Ausgabe der Items einzuschränken.
+Eine Verleihverwaltung rundet die App ab und hilft dem User nicht den Überlick über verliehene Items seiner Sammlung zu verlieren.
+5. Prototyp  
+Der Prototyp der App soll alle Funktionen, welche in Punkt 4. definiert wurden, 
+fehlerfrei ausführen können. Die App soll auf möglichst vielen Android Geräten 
+funktionieren.
+6. Testing  
+Das Testing wird durch das anlegen, möglichst vieler Unterschiedlicher Items aller 
+Medientypen, erfolgen. Die einzelnen Items werden dokumentiert und auftretende 
+Schwierigkeiten beim Anlegen der Items werden ebenfalls dokumentiert. Sobald ein 
+gewisser Grundstock an Items in der Datenbank hinterlegt sind, werden die restlichen 
+Funktionen getestet.
+
+### Erwartete Resultate
+1. Recherche  
+Gründlicher Marktüberblick, welcher die Apps übersichtlicht Darstellt, welche ähnliche 
+oder sogar identische Funktionen wie die App Collector besitzen. Nach der kurzen 
+Vorstellung der einzelnen Apps, wird ein Überblick alle recherchierten Apps im Vergleich 
+zu Collector zeigen.
+2. Ist-Analyse  
+Es wird anhand der Funktionen von Collector dargestellt, das es keine der existierenden 
+Apps den selben Funktionsumfang haben wie Collector.
+3. Anforderungsanalyse  
+Alle beschriebenen Funktionalitäten sollen fehlerfrei in der App umgesetzt werden.
+4. Konzept  
+Die eingesetzten Werkzeuge und Konzepte sollen dokumentiert werden. Einzelne für die 
+Funktion der App wichtige Klassen und Funktionen sollen detailiert dargestellt werden. 
+Design-Entscheidungen sollen erklärt werden.
+5. Prototyp  
+Der Prototyp soll mindestens auf dem Test-Smartphone (Samsung Galaxy XCover) fehlerfrei 
+funktionieren.
+6. Testing  
+Sowohl die automatisierten als auch die manuellen Tests sollen ausführlich, klar und 
+komplett dokumentiert werden.
 
 ##Version
  15. Dez. 2014 - V0.1 Aufgabe muss nochmals genauer definiert werden.
