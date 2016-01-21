@@ -34,7 +34,7 @@ Funktion soll das Verleihen einzelner Items ermöglichen, so dass der User die
 maximale Kontrolle über seine Sammlung hat.
 
 ###Aufgabenstellung
-1. Recherche
+1. Recherche  
 Herausfinden, was es momentan auf dem Markt (Google Play / Amazon App Market) 
 im Bereich der Apps gibt, welche helfen Sammlungen im Bereich Bücher, DVD und 
 Konsolen-Spiele zu verwalten. Überblick erstellen über die einzelnen Apps und 
