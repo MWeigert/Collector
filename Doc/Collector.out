@@ -10,6 +10,9 @@
 \BOOKMARK [1][]{section.25}{\334berblick}{chapter.17}% 10
 \BOOKMARK [0][]{chapter.26}{Ist-Analyse}{}% 11
 \BOOKMARK [0][]{chapter.27}{Anforderungsanalyse}{}% 12
-\BOOKMARK [0][]{chapter.28}{Konzept}{}% 13
-\BOOKMARK [0][]{chapter.29}{Umsetzung}{}% 14
-\BOOKMARK [0][]{chapter.30}{Testing}{}% 15
+\BOOKMARK [1][]{section.28}{Funktionen}{chapter.27}% 13
+\BOOKMARK [1][]{section.29}{Datenbank}{chapter.27}% 14
+\BOOKMARK [1][]{section.30}{GUI}{chapter.27}% 15
+\BOOKMARK [0][]{chapter.31}{Konzept}{}% 16
+\BOOKMARK [0][]{chapter.32}{Umsetzung}{}% 17
+\BOOKMARK [0][]{chapter.33}{Testing}{}% 18
