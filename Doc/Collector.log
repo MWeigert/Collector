@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  24 JAN 2016 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  3 FEB 2016 20:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1273,21 +1273,22 @@ Package xcolor Warning: Incompatible color definition on input line 10.
 
 Package xcolor Warning: Incompatible color definition on input line 10.
 
-)
-Overfull \hbox (7.574pt too wide) in paragraph at lines 5--71
-[][]
+
+Overfull \hbox (7.574pt too wide) in paragraph at lines 5--13
+[][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--71
+Package xcolor Warning: Incompatible color definition on input line 14.
 
- []
+[3
 
-(./doc/Aufgabe.tex
+
+]) (./doc/Aufgabe.tex
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[3
+[4
 
 
 ]
@@ -1345,22 +1346,22 @@ Overfull \hbox (3.5735pt too wide) in alignment at lines 3--57
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[4
+[5
 
 
 ]
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[5]
+[6]
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[6]) (./doc/Recherche.tex
+[7]) (./doc/Recherche.tex
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[7]
+[8]
 chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
@@ -1375,7 +1376,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
 Package xcolor Warning: Incompatible color definition on input line 35.
 
-[8
+[9
 
 
 ]
@@ -1386,7 +1387,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--48
 
 Package xcolor Warning: Incompatible color definition on input line 55.
 
-[9]
+[10]
 Overfull \hbox (27.06635pt too wide) in paragraph at lines 67--68
 \T1/cmr/m/n/10.95 ir-gend-wel-che An-re-gun-gen ha-ben, kon-tak-tie-ren Sie bit
 -te das Entwickler-Team über co-dex.android@gmail.com.
@@ -1405,15 +1406,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--75
 
 Package xcolor Warning: Incompatible color definition on input line 75.
 
-[10]
+[11]
 
 Package xcolor Warning: Incompatible color definition on input line 97.
 
-[11]
+[12]
 
 Package xcolor Warning: Incompatible color definition on input line 123.
 
-[12]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
@@ -1451,7 +1452,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
 Package xcolor Warning: Incompatible color definition on input line 153.
 
-[13]
+[14]
 
 Package xcolor Warning: Incompatible color definition on input line 161.
 
@@ -1536,7 +1537,7 @@ Package xcolor Warning: Incompatible color definition on input line 165.
 
 Package xcolor Warning: Incompatible color definition on input line 168.
 
-[14
+[15
 
 ]) (./doc/Ist.tex
 chapter 3.
@@ -1544,7 +1545,7 @@ chapter 3.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[15
+[16
 
 
 
@@ -1554,7 +1555,7 @@ chapter 4.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[16
+[17
 
 
 ]
@@ -1563,7 +1564,7 @@ chapter 5.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[17
+[18
 
 
 ]
@@ -1572,7 +1573,7 @@ chapter 6.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[18
+[19
 
 
 ]
@@ -1585,7 +1586,7 @@ chapter 7.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[19
+[20
 
 
 ]
@@ -1623,7 +1624,7 @@ AED: lastpage setting LastPage
 
 Package xcolor Warning: Incompatible color definition on input line 105.
 
-[20
+[21
 
 
 ]
@@ -1633,14 +1634,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
 Package rerunfilecheck Info: File `Collector.out' has not changed.
-(rerunfilecheck)             Checksum: 2132C990213A484E6018377C7F6F6EC9;959.
+(rerunfilecheck)             Checksum: B9B8424C67B27A121EAA5618A24F5776;959.
 Package rerunfilecheck Info: File `Collector.brf' has not changed.
-(rerunfilecheck)             Checksum: D9A588A3CCC52F2AE3E8098784A1EB77;285.
+(rerunfilecheck)             Checksum: 79D7DA65650E13DE8CB3C5FEC70F8159;285.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 105.
  ) 
 Here is how much of TeX's memory you used:
- 13831 strings out of 493054
- 205090 string characters out of 6138326
+ 13833 strings out of 493054
+ 205108 string characters out of 6138326
  397014 words of memory out of 5000000
  16973 multiletter control sequences out of 15000+600000
  20075 words of font info for 50 fonts, out of 8000000 for 9000
@@ -1659,10 +1660,10 @@ exmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2015/texmf-dist/
 fonts/type1/public/cm-super/sfsx1440.pfb><c:/texlive/2015/texmf-dist/fonts/type
 1/public/cm-super/sfti1095.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/c
 m-super/sfxc2074.pfb>
-Output written on Collector.pdf (20 pages, 322032 bytes).
+Output written on Collector.pdf (21 pages, 323463 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 280 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  150 words of extra memory for PDF output out of 10000 (max. 10000000)
 
