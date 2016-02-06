@@ -11,8 +11,24 @@
 \BOOKMARK [0][]{chapter.27}{Ist-Analyse}{}% 11
 \BOOKMARK [0][]{chapter.28}{Anforderungsanalyse}{}% 12
 \BOOKMARK [1][]{section.29}{Funktionen}{chapter.28}% 13
-\BOOKMARK [1][]{section.30}{Datenbank}{chapter.28}% 14
-\BOOKMARK [1][]{section.31}{GUI}{chapter.28}% 15
-\BOOKMARK [0][]{chapter.32}{Konzept}{}% 16
-\BOOKMARK [0][]{chapter.33}{Umsetzung}{}% 17
-\BOOKMARK [0][]{chapter.34}{Testing}{}% 18
+\BOOKMARK [2][]{subsection.30}{Anlegen eines Items}{section.29}% 14
+\BOOKMARK [3][]{subsubsection.33}{Manuelles Anlegen eines Items}{subsection.30}% 15
+\BOOKMARK [3][]{subsubsection.34}{Automatisches Anlegen eines Items}{subsection.30}% 16
+\BOOKMARK [2][]{subsection.35}{Ausgabe aller Items}{section.29}% 17
+\BOOKMARK [2][]{subsection.36}{Bearbeiten eines Items}{section.29}% 18
+\BOOKMARK [2][]{subsection.37}{L\366schen eines Items}{section.29}% 19
+\BOOKMARK [2][]{subsection.38}{Exportieren aller Items}{section.29}% 20
+\BOOKMARK [2][]{subsection.39}{Verwalten verliehener Items}{section.29}% 21
+\BOOKMARK [2][]{subsection.40}{Speichern der Items}{section.29}% 22
+\BOOKMARK [1][]{section.41}{Datenbank}{chapter.28}% 23
+\BOOKMARK [2][]{subsection.42}{Felder der Items}{section.41}% 24
+\BOOKMARK [1][]{section.43}{GUI}{chapter.28}% 25
+\BOOKMARK [1][]{section.44}{Allgemeines}{chapter.28}% 26
+\BOOKMARK [0][]{chapter.45}{Konzept}{}% 27
+\BOOKMARK [0][]{chapter.46}{Umsetzung}{}% 28
+\BOOKMARK [0][]{chapter.47}{Testing}{}% 29
+\BOOKMARK [0][]{appendix.48}{Anhang}{}% 30
+\BOOKMARK [1][]{section.49}{Konventionen}{appendix.48}% 31
+\BOOKMARK [1][]{section.50}{Verwendete Tools \046 Software}{appendix.48}% 32
+\BOOKMARK [2][]{subsection.51}{Dokumentation \046 Pr\344sentation}{section.50}% 33
+\BOOKMARK [2][]{subsection.52}{GUI}{section.50}% 34
