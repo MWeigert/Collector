@@ -13,22 +13,24 @@
 \contentsline {section}{\numberline {4.1}Funktionen}{18}{section.29}
 \contentsline {subsection}{\numberline {4.1.1}Anlegen eines Items}{18}{subsection.30}
 \contentsline {subsubsection}{\numberline {4.1.1.1}Manuelles Anlegen eines Items}{18}{subsubsection.33}
-\contentsline {subsubsection}{\numberline {4.1.1.2}Automatisches Anlegen eines Items}{19}{subsubsection.34}
-\contentsline {subsection}{\numberline {4.1.2}Ausgabe aller Items}{19}{subsection.35}
-\contentsline {subsection}{\numberline {4.1.3}Bearbeiten eines Items}{19}{subsection.36}
-\contentsline {subsection}{\numberline {4.1.4}L\IeC {\"o}schen eines Items}{19}{subsection.37}
-\contentsline {subsection}{\numberline {4.1.5}Exportieren aller Items}{19}{subsection.38}
-\contentsline {subsection}{\numberline {4.1.6}Verwalten verliehener Items}{19}{subsection.39}
-\contentsline {subsection}{\numberline {4.1.7}Speichern der Items}{19}{subsection.40}
-\contentsline {section}{\numberline {4.2}Datenbank}{19}{section.41}
-\contentsline {subsection}{\numberline {4.2.1}Felder der Items}{19}{subsection.42}
-\contentsline {section}{\numberline {4.3}GUI}{20}{section.43}
-\contentsline {section}{\numberline {4.4}Allgemeines}{20}{section.44}
-\contentsline {chapter}{\numberline {5}Konzept}{21}{chapter.45}
-\contentsline {chapter}{\numberline {6}Umsetzung}{22}{chapter.46}
-\contentsline {chapter}{\numberline {7}Testing}{23}{chapter.47}
-\contentsline {chapter}{\numberline {A}Anhang}{24}{appendix.48}
-\contentsline {section}{\numberline {A.1}Konventionen}{24}{section.49}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{24}{section.50}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{24}{subsection.51}
-\contentsline {subsection}{\numberline {A.2.2}GUI}{24}{subsection.52}
+\contentsline {subsubsection}{\numberline {4.1.1.2}Automatisches Anlegen eines Items}{18}{subsubsection.34}
+\contentsline {subsection}{\numberline {4.1.2}Ausgabe aller Items}{18}{subsection.35}
+\contentsline {subsubsection}{\numberline {4.1.2.1}Filterfunktion}{19}{subsubsection.36}
+\contentsline {subsection}{\numberline {4.1.3}Bearbeiten eines Items}{19}{subsection.40}
+\contentsline {subsection}{\numberline {4.1.4}L\IeC {\"o}schen eines Items}{19}{subsection.41}
+\contentsline {subsection}{\numberline {4.1.5}Exportieren aller Items}{19}{subsection.42}
+\contentsline {subsection}{\numberline {4.1.6}Verwalten verliehener Items}{19}{subsection.43}
+\contentsline {subsection}{\numberline {4.1.7}Speichern der Items}{19}{subsection.44}
+\contentsline {section}{\numberline {4.2}Datenbank}{19}{section.45}
+\contentsline {subsection}{\numberline {4.2.1}Felder der Items}{19}{subsection.46}
+\contentsline {section}{\numberline {4.3}GUI}{20}{section.47}
+\contentsline {section}{\numberline {4.4}Allgemeines}{20}{section.48}
+\contentsline {chapter}{\numberline {5}Konzept}{21}{chapter.49}
+\contentsline {chapter}{\numberline {6}Umsetzung}{22}{chapter.50}
+\contentsline {chapter}{\numberline {7}Testing}{23}{chapter.51}
+\contentsline {chapter}{\numberline {A}Anhang}{24}{appendix.52}
+\contentsline {section}{\numberline {A.1}Konventionen}{24}{section.53}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{24}{section.54}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{24}{subsection.55}
+\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{24}{subsection.56}
+\contentsline {subsection}{\numberline {A.2.3}GUI}{24}{subsection.57}

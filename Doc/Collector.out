@@ -15,20 +15,22 @@
 \BOOKMARK [3][]{subsubsection.33}{Manuelles Anlegen eines Items}{subsection.30}% 15
 \BOOKMARK [3][]{subsubsection.34}{Automatisches Anlegen eines Items}{subsection.30}% 16
 \BOOKMARK [2][]{subsection.35}{Ausgabe aller Items}{section.29}% 17
-\BOOKMARK [2][]{subsection.36}{Bearbeiten eines Items}{section.29}% 18
-\BOOKMARK [2][]{subsection.37}{L\366schen eines Items}{section.29}% 19
-\BOOKMARK [2][]{subsection.38}{Exportieren aller Items}{section.29}% 20
-\BOOKMARK [2][]{subsection.39}{Verwalten verliehener Items}{section.29}% 21
-\BOOKMARK [2][]{subsection.40}{Speichern der Items}{section.29}% 22
-\BOOKMARK [1][]{section.41}{Datenbank}{chapter.28}% 23
-\BOOKMARK [2][]{subsection.42}{Felder der Items}{section.41}% 24
-\BOOKMARK [1][]{section.43}{GUI}{chapter.28}% 25
-\BOOKMARK [1][]{section.44}{Allgemeines}{chapter.28}% 26
-\BOOKMARK [0][]{chapter.45}{Konzept}{}% 27
-\BOOKMARK [0][]{chapter.46}{Umsetzung}{}% 28
-\BOOKMARK [0][]{chapter.47}{Testing}{}% 29
-\BOOKMARK [0][]{appendix.48}{Anhang}{}% 30
-\BOOKMARK [1][]{section.49}{Konventionen}{appendix.48}% 31
-\BOOKMARK [1][]{section.50}{Verwendete Tools \046 Software}{appendix.48}% 32
-\BOOKMARK [2][]{subsection.51}{Dokumentation \046 Pr\344sentation}{section.50}% 33
-\BOOKMARK [2][]{subsection.52}{GUI}{section.50}% 34
+\BOOKMARK [3][]{subsubsection.36}{Filterfunktion}{subsection.35}% 18
+\BOOKMARK [2][]{subsection.40}{Bearbeiten eines Items}{section.29}% 19
+\BOOKMARK [2][]{subsection.41}{L\366schen eines Items}{section.29}% 20
+\BOOKMARK [2][]{subsection.42}{Exportieren aller Items}{section.29}% 21
+\BOOKMARK [2][]{subsection.43}{Verwalten verliehener Items}{section.29}% 22
+\BOOKMARK [2][]{subsection.44}{Speichern der Items}{section.29}% 23
+\BOOKMARK [1][]{section.45}{Datenbank}{chapter.28}% 24
+\BOOKMARK [2][]{subsection.46}{Felder der Items}{section.45}% 25
+\BOOKMARK [1][]{section.47}{GUI}{chapter.28}% 26
+\BOOKMARK [1][]{section.48}{Allgemeines}{chapter.28}% 27
+\BOOKMARK [0][]{chapter.49}{Konzept}{}% 28
+\BOOKMARK [0][]{chapter.50}{Umsetzung}{}% 29
+\BOOKMARK [0][]{chapter.51}{Testing}{}% 30
+\BOOKMARK [0][]{appendix.52}{Anhang}{}% 31
+\BOOKMARK [1][]{section.53}{Konventionen}{appendix.52}% 32
+\BOOKMARK [1][]{section.54}{Verwendete Tools \046 Software}{appendix.52}% 33
+\BOOKMARK [2][]{subsection.55}{Dokumentation \046 Pr\344sentation}{section.54}% 34
+\BOOKMARK [2][]{subsection.56}{Code und Versionsverwaltung}{section.54}% 35
+\BOOKMARK [2][]{subsection.57}{GUI}{section.54}% 36
