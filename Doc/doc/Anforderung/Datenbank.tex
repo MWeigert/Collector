@@ -3,43 +3,23 @@
 \subsection{Felder der Items}
 \label{sec:Felder}
 
-Folgende Felder werden bei allen Medien genutzt. Weiter unten folgen noch die Felder, welche nur für einen bestimmten Medientyp genutzt werden und bei den anderen Medientypen nicht abgefüllt werden.
+In der Tabelle unten sind die Datenbankfelder für jedes Medium, Bücher, Filme und Spiele aufgeführt.
 
-\begin{itemize}
-	\item Barcode
-	\item Titel
-	\item Medientyp
-	\item Genre
-	\item Sprache
-	\item Erscheinungsjahr
-	\item Bewertung
-	\item Lagerplatz
-	\item Verleihstatus
-	\item Bemerkung
-\end{itemize}
-
-Für Bücher gibt es noch folgende zusätzlichen Felder.
-
-\begin{itemize}
-	\item Verlag
-	\item Auflage
-	\item Autor
-\end{itemize}
-
-Filme besitzen noch diese zusätzlichen Felder.
-
-\begin{itemize}
-	\item Studio
-	\item Speichermedium
-	\item Regisseur
-	\item FSK
-	\item Länge
-\end{itemize}
-
-Spiele besitzen noch diese zusätzlichen Felder.
-
-\begin{itemize}
-	\item Entwickler
-	\item System
-	\item FSK
-\end{itemize}
+\begin{table} [h]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|}
+			\rowcolor{black} {\color{white}\textbf{Allgemein}} & {\color{white}\textbf{Bücher}} & {\color{white}\textbf{Filme}} & {\color{white}\textbf{Spiele}} \\
+			Barcode & Verlag & Studio & Entwickler\\ \hline
+			\rowcolor{DarkSeaGreen} Titel & Auflage & Speichermedium & System \\ \hline			Medientyp & Autor& Regisseur & FSK \\ \hline
+			\rowcolor{DarkSeaGreen} Genre & & FSK & \\ \hline
+			Sprache & & Länge & \\ \hline
+			\rowcolor{DarkSeaGreen} Erscheinungsjahr & & & \\ \hline
+			Bewertung & & & \\ \hline
+			\rowcolor{DarkSeaGreen} Lagerplatz & & & \\ \hline
+			Verleihstatus & & & \\ \hline
+			\rowcolor{DarkSeaGreen} Bemerkung & & & \\ \hline		
+		\end{tabular}
+	\caption{Datenbankfelder}
+	\label{tab:Datenbankfelder}
+	\end{center}
+\end{table}

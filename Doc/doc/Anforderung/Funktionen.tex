@@ -29,32 +29,49 @@ Wählt der User {\color{IndianRed}\texttt{Sammlung}} aus wird der Filterscreen a
 
 \subsubsection{Filterfunktion}
 
-Der Screen für den Filter ist in drei verschiedene Reiter unterteilt.
+Der Screen für den Filter ist in drei verschiedene Reiter unterteilt. Sobald der User den Button Anzeige drückt, werden die Informationen aus allen drei Reitern als Vorlage für den Filter genutzt.
 
-\begin{enumerate}
-	\item Allgemein
-	\item Buch \& Spiel
-	\item Film
-\end{enumerate}
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{ccc}
+			Allgemein & Buch \& Spiel & Film
+		\end{tabular}
+	\end{center}
+\end{table}
 
 Der Reiter {\color{IndianRed}\texttt{Allgemein}} lässt folgende Dateneingabe zu.
 
 \begin{itemize}
-	\item Barcode \\
+	\item Barcode (Textbox) \\
 		Hier kann nach einem Barcode gesucht werden.
-	\item Titel \\
+	\item Titel (Textbox) \\
 		Eingabe eines Strings, welcher in allen Titeln der Sammlung gesucht wird.
-	\item Medientyp \\
+	\item Medientyp (RadioButton)\\
 		Definition nach einem oder mehreren Medientypen gesucht werden soll.
-	\item Genre \\
+	\item Genre (Dropdown)\\
 		Auswahl eines oder mehreren Genre welche gesucht werden sollen.
-	\item Sprache \\
+	\item Sprache (Dropddown)\\
 		Auswahl einer oder mehreren Sprachen welche gesucht werden sollen.
-	\item Jahr \\
+	\item Jahr (Dropdown) \\
 		Auswahl eines Erscheinungsjahr.
-	\item Verliehen \\
+	\item Verliehen (Checkbox) \\
 		Auswahl ob nach Verliehenen Items gesucht werden soll.
 \end{itemize} 
+
+Der Reiter {\color{IndianRed}\texttt{Buch \& Spiel}} lässt folgende Dateneingabe zu.
+
+\begin{itemize}
+	\item Verlag oder Entwickler (Textbox) \\
+	Eingabe eines Strings, welcher unter Verlag oder Entwickler gesucht wird.
+	\item Autor (Dropdown) \\
+	Auswahl oder Eingabe des Autors, welcher gefiltert werden soll.
+	\item Auflage (Dropdown) \\
+	Auswahl oder Eingabe der Auflage, welche gefiltert werden soll.
+	\item System (Dropdown) \\
+	Auswahl oder Eingabe des System, welches gefiltert werden soll.
+	\item FSK (Checkbox) \\
+	Auswahl welche FSK Angaben gefiltert werden sollen.
+\end{itemize}
 
 \subsection{Bearbeiten eines Items}
 
