@@ -22,16 +22,21 @@
 \contentsline {subsection}{\numberline {4.1.6}Verwalten verliehener Items}{20}{subsection.40}
 \contentsline {subsection}{\numberline {4.1.7}Speichern der Items}{20}{subsection.41}
 \contentsline {section}{\numberline {4.2}Datenbank}{20}{section.42}
-\contentsline {subsection}{\numberline {4.2.1}Felder der Items}{20}{subsection.43}
+\contentsline {subsection}{\numberline {4.2.1}\IeC {\"U}bersicht Datenbankfelder der Items}{20}{subsection.43}
 \contentsline {section}{\numberline {4.3}GUI}{20}{section.45}
-\contentsline {subsection}{\numberline {4.3.1}Startseite}{20}{subsection.46}
-\contentsline {section}{\numberline {4.4}Allgemeines}{21}{section.52}
-\contentsline {chapter}{\numberline {5}Konzept}{22}{chapter.53}
-\contentsline {chapter}{\numberline {6}Umsetzung}{23}{chapter.54}
-\contentsline {chapter}{\numberline {7}Testing}{24}{chapter.55}
-\contentsline {chapter}{\numberline {A}Anhang}{25}{appendix.56}
-\contentsline {section}{\numberline {A.1}Konventionen}{25}{section.57}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{25}{section.58}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{25}{subsection.59}
-\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{25}{subsection.60}
-\contentsline {subsection}{\numberline {A.2.3}GUI}{25}{subsection.61}
+\contentsline {subsection}{\numberline {4.3.1}Startseite}{21}{subsection.46}
+\contentsline {subsection}{\numberline {4.3.2}Barcode Scannen}{21}{subsection.48}
+\contentsline {subsection}{\numberline {4.3.3}Manuell Anlegen / Item Bearbeiten}{22}{subsection.50}
+\contentsline {subsection}{\numberline {4.3.4}Detail Ansicht}{23}{subsection.52}
+\contentsline {subsection}{\numberline {4.3.5}Sicherheitsfrage Item L\IeC {\"o}schen}{23}{subsection.54}
+\contentsline {subsection}{\numberline {4.3.6}Item verleihen}{24}{subsection.56}
+\contentsline {section}{\numberline {4.4}Allgemeines}{24}{section.58}
+\contentsline {chapter}{\numberline {5}Konzept}{25}{chapter.59}
+\contentsline {chapter}{\numberline {6}Umsetzung}{26}{chapter.60}
+\contentsline {chapter}{\numberline {7}Testing}{27}{chapter.61}
+\contentsline {chapter}{\numberline {A}Anhang}{28}{appendix.62}
+\contentsline {section}{\numberline {A.1}Konventionen}{28}{section.63}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{28}{section.64}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{28}{subsection.65}
+\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{28}{subsection.66}
+\contentsline {subsection}{\numberline {A.2.3}GUI}{28}{subsection.67}

@@ -22,16 +22,21 @@
 \BOOKMARK [2][]{subsection.40}{Verwalten verliehener Items}{section.29}% 22
 \BOOKMARK [2][]{subsection.41}{Speichern der Items}{section.29}% 23
 \BOOKMARK [1][]{section.42}{Datenbank}{chapter.28}% 24
-\BOOKMARK [2][]{subsection.43}{Felder der Items}{section.42}% 25
+\BOOKMARK [2][]{subsection.43}{\334bersicht Datenbankfelder der Items}{section.42}% 25
 \BOOKMARK [1][]{section.45}{GUI}{chapter.28}% 26
 \BOOKMARK [2][]{subsection.46}{Startseite}{section.45}% 27
-\BOOKMARK [1][]{section.52}{Allgemeines}{chapter.28}% 28
-\BOOKMARK [0][]{chapter.53}{Konzept}{}% 29
-\BOOKMARK [0][]{chapter.54}{Umsetzung}{}% 30
-\BOOKMARK [0][]{chapter.55}{Testing}{}% 31
-\BOOKMARK [0][]{appendix.56}{Anhang}{}% 32
-\BOOKMARK [1][]{section.57}{Konventionen}{appendix.56}% 33
-\BOOKMARK [1][]{section.58}{Verwendete Tools \046 Software}{appendix.56}% 34
-\BOOKMARK [2][]{subsection.59}{Dokumentation \046 Pr\344sentation}{section.58}% 35
-\BOOKMARK [2][]{subsection.60}{Code und Versionsverwaltung}{section.58}% 36
-\BOOKMARK [2][]{subsection.61}{GUI}{section.58}% 37
+\BOOKMARK [2][]{subsection.48}{Barcode Scannen}{section.45}% 28
+\BOOKMARK [2][]{subsection.50}{Manuell Anlegen / Item Bearbeiten}{section.45}% 29
+\BOOKMARK [2][]{subsection.52}{Detail Ansicht}{section.45}% 30
+\BOOKMARK [2][]{subsection.54}{Sicherheitsfrage Item L\366schen}{section.45}% 31
+\BOOKMARK [2][]{subsection.56}{Item verleihen}{section.45}% 32
+\BOOKMARK [1][]{section.58}{Allgemeines}{chapter.28}% 33
+\BOOKMARK [0][]{chapter.59}{Konzept}{}% 34
+\BOOKMARK [0][]{chapter.60}{Umsetzung}{}% 35
+\BOOKMARK [0][]{chapter.61}{Testing}{}% 36
+\BOOKMARK [0][]{appendix.62}{Anhang}{}% 37
+\BOOKMARK [1][]{section.63}{Konventionen}{appendix.62}% 38
+\BOOKMARK [1][]{section.64}{Verwendete Tools \046 Software}{appendix.62}% 39
+\BOOKMARK [2][]{subsection.65}{Dokumentation \046 Pr\344sentation}{section.64}% 40
+\BOOKMARK [2][]{subsection.66}{Code und Versionsverwaltung}{section.64}% 41
+\BOOKMARK [2][]{subsection.67}{GUI}{section.64}% 42
