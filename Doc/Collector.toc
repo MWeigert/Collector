@@ -30,13 +30,17 @@
 \contentsline {subsection}{\numberline {4.3.4}Detail Ansicht}{23}{subsection.52}
 \contentsline {subsection}{\numberline {4.3.5}Sicherheitsfrage Item L\IeC {\"o}schen}{23}{subsection.54}
 \contentsline {subsection}{\numberline {4.3.6}Item verleihen}{24}{subsection.56}
-\contentsline {section}{\numberline {4.4}Allgemeines}{24}{section.58}
-\contentsline {chapter}{\numberline {5}Konzept}{25}{chapter.59}
-\contentsline {chapter}{\numberline {6}Umsetzung}{26}{chapter.60}
-\contentsline {chapter}{\numberline {7}Testing}{27}{chapter.61}
-\contentsline {chapter}{\numberline {A}Anhang}{28}{appendix.62}
-\contentsline {section}{\numberline {A.1}Konventionen}{28}{section.63}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{28}{section.64}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{28}{subsection.65}
-\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{28}{subsection.66}
-\contentsline {subsection}{\numberline {A.2.3}GUI}{28}{subsection.67}
+\contentsline {subsection}{\numberline {4.3.7}Filter}{24}{subsection.58}
+\contentsline {subsubsection}{\numberline {4.3.7.1}Allgemein}{24}{subsubsection.59}
+\contentsline {subsubsection}{\numberline {4.3.7.2}Buch \& Spiel}{24}{subsubsection.61}
+\contentsline {subsubsection}{\numberline {4.3.7.3}Film}{24}{subsubsection.63}
+\contentsline {section}{\numberline {4.4}Allgemeines}{26}{section.65}
+\contentsline {chapter}{\numberline {5}Konzept}{27}{chapter.66}
+\contentsline {chapter}{\numberline {6}Umsetzung}{28}{chapter.67}
+\contentsline {chapter}{\numberline {7}Testing}{29}{chapter.68}
+\contentsline {chapter}{\numberline {A}Anhang}{30}{appendix.69}
+\contentsline {section}{\numberline {A.1}Konventionen}{30}{section.70}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{30}{section.71}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{30}{subsection.72}
+\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{30}{subsection.73}
+\contentsline {subsection}{\numberline {A.2.3}GUI}{30}{subsection.74}
