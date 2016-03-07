@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Collector</string>
+    <!--- activity_main -->
+    <string name="btn_newItem">Neues Item</string>
+    <string name="btn_collection">Sammlung</string>
+    <string name="btn_rental">Leihwesen</string>
+    <string name="btn_info">Info</string>
+    <!--- activity_filter -->
+    <string name="tab_general">Allg.</string>
+    <string name="tab_bg">Buch / Spiel</string>
+    <string name="tab_movie">Film</string>
+    <string name="tf_ean">Barcode</string>
+</resources>
