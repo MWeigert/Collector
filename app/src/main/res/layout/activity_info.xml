@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ch.riverworld.collector.MainActivity">
+    tools:context="ch.riverworld.collector.InfoActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,36 +16,46 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_newItem"
-            android:id="@+id/btn_newItem"
-            android:onClick="buttonOnClick"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_infoTitel"
+            android:id="@+id/txt_infoTitel"
+            android:layout_gravity="center_horizontal"
+            android:capitalize="words"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_versionTitel"
+            android:id="@+id/txt_versionTitel"
             android:layout_gravity="center_horizontal" />
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_collection"
-            android:id="@+id/btn_collection"
-            android:onClick="buttonOnClick"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/txt_version"
+            android:id="@+id/txt_version"
             android:layout_gravity="center_horizontal" />
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_rental"
-            android:id="@+id/btn_rental"
-            android:onClick="buttonOnClick"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_programmerTitel"
+            android:id="@+id/txt_programmerTitel"
             android:layout_gravity="center_horizontal" />
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_info"
-            android:id="@+id/btn_info"
-            android:onClick="buttonOnClick"
-            android:layout_gravity="bottom|center_horizontal" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/txt_programmer"
+            android:id="@+id/txt_programmer"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>
