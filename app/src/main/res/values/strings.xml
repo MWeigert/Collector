@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Collector</string>
+    <!--- GENERELL -->
+    <string name="btn_update">Aktualisieren</string>
     <!--- activity_filter -->
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
@@ -19,6 +21,9 @@
     <string name="rb_movie">Film</string>
     <string name="rb_game">Spiel</string>
     <string name="cb_lent">Verliehen</string>
+    <!--- activity_filter_movie -->
+    <string name="cb_dvd">DVD</string>
+    <string name="cb_blueray">BlueRay</string>
     <!--- activity_info -->
     <string name="txt_infoTitel">Information</string>
     <string name="txt_versionTitel">App Version:</string>

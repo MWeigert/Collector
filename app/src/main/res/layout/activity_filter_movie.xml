@@ -9,4 +9,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ch.riverworld.collector.FilterMovie">
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spn_studio"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spn_director"
+        android:layout_below="@+id/spn_studio"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cb_dvd"
+        android:id="@+id/cb_dvd"
+        android:layout_below="@+id/spn_director"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cb_blueray"
+        android:id="@+id/cb_blueray"
+        android:layout_alignBottom="@+id/cb_dvd"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_update"
+        android:id="@+id/btn_update"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        style="@android:style/TextAppearance.Material.Widget.Button" />
 </RelativeLayout>
