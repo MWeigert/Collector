@@ -2,6 +2,7 @@
     <string name="app_name">Collector</string>
     <!--- GENERELL -->
     <string name="btn_update">Aktualisieren</string>
+    <string name="btn_back">Zurück</string>
     <!--- activity_filter -->
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
