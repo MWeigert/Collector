@@ -4,6 +4,14 @@
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
     <string name="tab_movie">Film</string>
+    <!--- activity_filter_bg -->
+    <string name="tf_publisher">Verlag / Entwickler</string>
+    <string name="txt_rating">FSK</string>
+    <string name="cb_0">0</string>
+    <string name="cb_6">6</string>
+    <string name="cb_12">12</string>
+    <string name="cb_16">16</string>
+    <string name="cb_18">18</string>
     <!--- activity_filter_common -->
     <string name="tf_ean">Barcode</string>
     <string name="tf_title">Titel</string>
