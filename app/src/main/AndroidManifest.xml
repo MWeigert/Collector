@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".FilterActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".NewAutoItem" />
+        <activity android:name=".FilterCommon"></activity>
     </application>
 
 </manifest>

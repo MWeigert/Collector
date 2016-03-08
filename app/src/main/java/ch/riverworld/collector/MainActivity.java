@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_collection:
                 //button Sammlung gedrueckt
-                final Intent filterIntent=new Intent(this,FilterActivity.class);
+                final Intent filterIntent=new Intent(this,FilterCommon.class);
                 startActivity(filterIntent);
                 break;
             case R.id.btn_rental:

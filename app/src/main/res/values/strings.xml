@@ -4,7 +4,13 @@
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
     <string name="tab_movie">Film</string>
+    <!--- activity_filter_common -->
     <string name="tf_ean">Barcode</string>
+    <string name="tf_title">Titel</string>
+    <string name="rb_book">Buch</string>
+    <string name="rb_movie">Film</string>
+    <string name="rb_game">Spiel</string>
+    <string name="cb_lent">Verliehen</string>
     <!--- activity_info -->
     <string name="txt_infoTitel">Information</string>
     <string name="txt_versionTitel">App Version:</string>
