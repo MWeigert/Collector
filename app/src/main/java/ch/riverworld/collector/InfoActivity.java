@@ -20,7 +20,6 @@ public class InfoActivity extends AppCompatActivity {
                 final Intent mainIntent=new Intent(this,MainActivity.class);
                 startActivity(mainIntent);
                 break;
-
         }
     }
 }
