@@ -19,7 +19,8 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".FilterResult" />
         <activity android:name=".DetailsActivity" />
-        <activity android:name=".DeleteActivity"></activity>
+        <activity android:name=".DeleteActivity" />
+        <activity android:name=".RentalActivity"></activity>
     </application>
 
 </manifest>
