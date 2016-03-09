@@ -3,11 +3,23 @@
     <!--- GENERELL -->
     <string name="btn_update">Aktualisieren</string>
     <string name="btn_back">Zurück</string>
+    <!--- activity_delete -->
+    <string name="txt_choosed">Ausgewähltes Item</string>
+    <string name="txt_item">NAME DER AUSWAHL</string>
+    <string name="txt_delete">entgültig löschen?</string>
+    <string name="btn_yes">Ja</string>
+    <string name="btn_no">Nein</string>
+    <!--- activity_details -->
+    <string name="btn_edit">Bearbeiten</string>
+    <string name="txt_year">Jahr</string>
+    <string name="txt_ean">Barcode</string>
+    <string name="txt_title">Titel</string>
+    <string name="txt_genre">Genre</string>
+    <string name="txt_place">Ort</string>
     <!--- activity_filter -->
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
     <string name="tab_movie">Film</string>
-    <!--- activity_filter_bg -->
     <string name="tf_publisher">Verlag / Entwickler</string>
     <string name="txt_rating">FSK</string>
     <string name="cb_0">0</string>
@@ -15,16 +27,16 @@
     <string name="cb_12">12</string>
     <string name="cb_16">16</string>
     <string name="cb_18">18</string>
-    <!--- activity_filter_common -->
     <string name="tf_ean">Barcode</string>
     <string name="tf_title">Titel</string>
     <string name="rb_book">Buch</string>
     <string name="rb_movie">Film</string>
     <string name="rb_game">Spiel</string>
     <string name="cb_lent">Verliehen</string>
-    <!--- activity_filter_movie -->
     <string name="cb_dvd">DVD</string>
     <string name="cb_blueray">BlueRay</string>
+    <!--- activity_filter_result -->
+    <string name="btn_details">Details</string>
     <!--- activity_info -->
     <string name="txt_infoTitel">Information</string>
     <string name="txt_versionTitel">App Version:</string>

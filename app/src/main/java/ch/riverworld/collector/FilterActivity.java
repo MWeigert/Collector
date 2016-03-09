@@ -44,14 +44,29 @@ public class FilterActivity extends AppCompatActivity {
                 startActivity(mainIntent);
                 break;
             case R.id.btn_back2:
-                //button Zurueck gedrueckt
+                //button Zurueck2 gedrueckt
                 final Intent mainIntent2=new Intent(this,MainActivity.class);
                 startActivity(mainIntent2);
                 break;
             case R.id.btn_back3:
-                //button Zurueck gedrueckt
+                //button Zurueck3 gedrueckt
                 final Intent mainIntent3=new Intent(this,MainActivity.class);
                 startActivity(mainIntent3);
+                break;
+            case R.id.btn_update:
+                //button Anzeigen gedrueckt
+                final Intent resultIntent = new Intent(this,FilterResult.class);
+                startActivity(resultIntent);
+                break;
+            case R.id.btn_update2:
+                //button Anzeigen gedrueckt
+                final Intent resultIntent2 = new Intent(this,FilterResult.class);
+                startActivity(resultIntent2);
+                break;
+            case R.id.btn_update3:
+                //button Anzeigen gedrueckt
+                final Intent resultIntent3 = new Intent(this,FilterResult.class);
+                startActivity(resultIntent3);
                 break;
         }
     }

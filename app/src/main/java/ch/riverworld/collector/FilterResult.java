@@ -1,0 +1,30 @@
+package ch.riverworld.collector;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+public class FilterResult extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_filter_result);
+    }
+
+    public void buttonOnClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_back:
+                //button Zurueck gedrueckt
+                final Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
+                break;
+            case R.id.btn_details:
+                //button Details gedrueckt
+                final Intent detailsIntent = new Intent(this, DetailsActivity.class);
+                startActivity(detailsIntent);
+                break;
+        }
+    }
+}
