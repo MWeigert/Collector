@@ -100,15 +100,26 @@
         android:text="@string/cb_lent"
         android:id="@+id/cb_lent"
         android:theme="@android:style/Theme.Material"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/btn_back"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
+        android:text="@string/btn_back"
+        android:id="@+id/btn_back"
+        android:onClick="buttonOnClick"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:theme="@android:style/Theme.Material" />
+        android:theme="@android:style/Theme.Material"
+        android:layout_toStartOf="@+id/btn_update" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_update"
+        android:id="@+id/btn_update"
+        android:layout_alignBottom="@+id/btn_back"
+        android:onClick="buttonOnClick"
+        android:theme="@android:style/Theme.Material"
+        android:layout_alignEnd="@+id/spn_year" />
 </RelativeLayout>
