@@ -1,3 +1,10 @@
+//*****************************************************************
+//*                                                               *
+//* Programmed by: Mathias Weigert                                *
+//*       Version: 0.01                                           *
+//*                                                               *
+//*****************************************************************
+
 package ch.riverworld.collector;
 
 import android.content.Intent;
@@ -13,21 +20,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // Button listener for the MainActivity
     public void buttonOnClick(View v) {
         switch (v.getId()) {
             case R.id.btn_newItem:
-                //button Neues Item gedrueckt
+                //Pressed button to add new item to the collection.
                 break;
             case R.id.btn_collection:
-                //button Sammlung gedrueckt
+                //Pressed button do show total or filtered collection.
                 final Intent filterIntent=new Intent(this,FilterActivity.class);
                 startActivity(filterIntent);
                 break;
             case R.id.btn_rental:
-                //button Leihwesen gedrueckt
+                //Pressed button to enter lend administration.
                 break;
             case R.id.btn_info:
-                //button Info gedrueckt
+                //Pressed button to display informations regarding this app.
                 final Intent infoIntent=new Intent(this,InfoActivity.class);
                 startActivity(infoIntent);
                 break;

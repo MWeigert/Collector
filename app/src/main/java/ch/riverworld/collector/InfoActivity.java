@@ -1,3 +1,10 @@
+//*****************************************************************
+//*                                                               *
+//* Programmed by: Mathias Weigert                                *
+//*       Version: 0.01                                           *
+//*                                                               *
+//*****************************************************************
+
 package ch.riverworld.collector;
 
 import android.content.Intent;
@@ -13,15 +20,13 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
     }
 
+    // Button listener for the InfoActivity
     public void buttonOnClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_back:
-                //button Zurueck gedrueckt
-                final Intent mainIntent=new Intent(this,MainActivity.class);
-                startActivity(mainIntent);
-                break;
             case R.id.btn_settings:
-                //button Settings gedrueckt
+                //Button pressed to enter configuration mode of the app.
+                final Intent settingIntent=new Intent(this,SettingActivity.class);
+                startActivity(settingIntent);
                 break;
         }
     }

@@ -134,28 +134,19 @@
                         android:text="@string/cb_lent"
                         android:id="@+id/cb_lent"
                         android:theme="@android:style/Theme.Material"
-                        android:layout_above="@+id/btn_back"
+                        android:layout_above="@+id/btn_filter_tab1"
                         android:layout_alignParentStart="true" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_back"
-                        android:id="@+id/btn_back"
-                        android:onClick="buttonOnClick"
-                        android:layout_alignParentBottom="true"
-                        android:theme="@android:style/Theme.Material"
-                        android:layout_toStartOf="@+id/btn_update" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_update"
-                        android:id="@+id/btn_update"
-                        android:layout_alignBottom="@+id/btn_back"
+                        android:id="@+id/btn_filter_tab1"
                         android:onClick="buttonOnClick"
                         android:theme="@android:style/Theme.Material"
-                        android:layout_alignEnd="@+id/spn_year" />
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -260,20 +251,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_update"
-                        android:id="@+id/btn_update2"
+                        android:id="@+id/btn_filter_tab2"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
-                        android:onClick="buttonOnClick"
-                        android:theme="@android:style/Theme.Material" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_back"
-                        android:id="@+id/btn_back2"
-                        android:layout_alignBottom="@+id/btn_update2"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@+id/btn_update2"
                         android:onClick="buttonOnClick"
                         android:theme="@android:style/Theme.Material" />
                 </RelativeLayout>
@@ -322,21 +302,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_update"
-                        android:id="@+id/btn_update3"
+                        android:id="@+id/btn_filter_tab3"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:theme="@android:style/Theme.Material" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_back"
-                        android:id="@+id/btn_back3"
-                        android:onClick="buttonOnClick"
-                        android:layout_alignTop="@+id/btn_update3"
-                        android:layout_alignParentStart="true"
-                        android:theme="@android:style/Theme.Material"
-                        android:layout_toStartOf="@+id/btn_update3" />
                 </RelativeLayout>
 
             </FrameLayout>

@@ -35,14 +35,14 @@
         android:id="@+id/txt_year"
         android:layout_marginBottom="66dp"
         android:layout_alignBottom="@+id/ratingBar"
-        android:layout_alignStart="@+id/sw_rent"
+        android:layout_alignStart="@+id/sw_lent"
         android:theme="@android:style/Theme.Material" />
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cb_lent"
-        android:id="@+id/sw_rent"
+        android:id="@+id/sw_lent"
         android:layout_above="@+id/txt_year"
         android:layout_alignParentEnd="true"
         android:theme="@android:style/Theme.Material" />
@@ -104,24 +104,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_back"
-        android:id="@+id/btn_back"
-        android:onClick="buttonOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:theme="@android:style/Theme.Material"
-        android:layout_alignTop="@+id/btn_edit"
-        android:layout_toStartOf="@+id/ratingBar" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/btn_edit"
         android:id="@+id/btn_edit"
         android:onClick="buttonOnClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:theme="@android:style/Theme.Material" />
+        android:theme="@android:style/Theme.Material"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -131,8 +120,8 @@
         android:id="@+id/editText"
         android:layout_below="@+id/txt_place"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btn_back"
         android:theme="@android:style/Theme.Material"
-        android:layout_alignEnd="@+id/btn_edit" />
+        android:layout_alignEnd="@+id/btn_edit"
+        android:layout_above="@+id/btn_edit" />
 
 </RelativeLayout>

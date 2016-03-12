@@ -44,3 +44,4 @@
 \contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{30}{subsection.72}
 \contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{30}{subsection.73}
 \contentsline {subsection}{\numberline {A.2.3}GUI}{30}{subsection.74}
+\contentsline {section}{\numberline {A.3}Design Entscheidungen}{30}{section.75}

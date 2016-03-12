@@ -20,7 +20,9 @@
         <activity android:name=".FilterResult" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".DeleteActivity" />
-        <activity android:name=".RentalActivity"></activity>
+        <activity android:name=".LentActivity" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".FriendsActivity"></activity>
     </application>
 
 </manifest>
