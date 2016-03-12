@@ -2,6 +2,8 @@
     <string name="app_name">Collector</string>
     <!--- GENERELL -->
     <string name="btn_update">Update</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_add">Add</string>
     <!--- activity_delete -->
     <string name="txt_choosed">Do you want remove</string>
     <string name="txt_item">NAME DER AUSWAHL</string>
@@ -37,7 +39,8 @@
     <!--- activity_filter_result -->
     <string name="btn_details">Details</string>
     <!--- activity_friends -->
-
+    <string name="tf_first_name">First name</string>
+    <string name="tf_last_name">Last name</string>
     <!--- activity_info -->
     <string name="txt_versionTitel">App Version:</string>
     <string name="txt_version">0.01</string>

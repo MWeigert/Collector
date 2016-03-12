@@ -14,8 +14,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
+        android:text="@string/btn_add"
+        android:id="@+id/btn_add"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -24,10 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nachname"
+        android:text="@string/tf_last_name"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_above="@+id/button"
+        android:id="@+id/tf_last_name"
+        android:layout_above="@+id/btn_add"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -35,19 +35,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Vorname"
+        android:text="@string/tf_first_name"
         android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_above="@+id/editText2"
+        android:id="@+id/tf_first_name"
+        android:layout_above="@+id/tf_last_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
-        android:layout_above="@+id/editText3"
+        android:text="@string/btn_remove"
+        android:id="@+id/btn_remove"
+        android:layout_above="@+id/tf_first_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -57,6 +57,6 @@
         android:id="@+id/listView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/btn_remove"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>
