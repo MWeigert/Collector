@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  9 MAR 2016 22:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  12 MAR 2016 11:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1372,6 +1372,21 @@ Package xcolor Warning: Incompatible color definition on input line 29.
 
 Package xcolor Warning: Incompatible color definition on input line 29.
 
+
+Package xcolor Warning: Incompatible color definition on input line 31.
+
+
+Package xcolor Warning: Incompatible color definition on input line 31.
+
+
+Package xcolor Warning: Incompatible color definition on input line 31.
+
+
+Package xcolor Warning: Incompatible color definition on input line 31.
+
+
+Package xcolor Warning: Incompatible color definition on input line 31.
+
 ) (./doc/Aufgabe.tex
 
 Package xcolor Warning: Incompatible color definition on input line 1.
@@ -2009,7 +2024,7 @@ fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2015/texmf-dist/fonts/type
 m-super/sfsx1440.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
 ti1095.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb
 ><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on Collector.pdf (31 pages, 637027 bytes).
+Output written on Collector.pdf (31 pages, 637130 bytes).
 PDF statistics:
  571 PDF objects out of 1000 (max. 8388607)
  506 compressed objects within 6 object streams

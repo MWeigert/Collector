@@ -43,6 +43,7 @@
     <string name="txt_version">0.01</string>
     <string name="txt_programmerTitel">Programmiert von:</string>
     <string name="txt_programmer">Mathias Weigert</string>
+    <string name="btn_settings">Settings</string>
     <!--- activity_main -->
     <string name="btn_newItem">Neues Item</string>
     <string name="btn_collection">Sammlung</string>

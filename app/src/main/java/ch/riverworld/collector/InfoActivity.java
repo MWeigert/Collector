@@ -20,6 +20,9 @@ public class InfoActivity extends AppCompatActivity {
                 final Intent mainIntent=new Intent(this,MainActivity.class);
                 startActivity(mainIntent);
                 break;
+            case R.id.btn_settings:
+                //button Settings gedrueckt
+                break;
         }
     }
 }
