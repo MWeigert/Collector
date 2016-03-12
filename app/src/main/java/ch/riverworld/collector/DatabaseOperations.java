@@ -45,9 +45,10 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     public Cursor getFriends(DatabaseOperations dop) {
 
+        Log.d("DATABASE", "Starting --> getFriends.");
         SQLiteDatabase db = dop.getReadableDatabase();
         String [] friends = {DatabaseInfo.COL_FRIEND_FIRSTNAME, DatabaseInfo.COL_FRIEND_LASTNAME};
-        Cursor cur = db.query(DatabaseInfo.DATABASE_NAME, friends, null, null, null, null, null);
+        Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, friends, null, null, null, null, null);
 
         return cur;
     }
