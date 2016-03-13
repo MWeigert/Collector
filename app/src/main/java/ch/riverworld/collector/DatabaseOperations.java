@@ -13,28 +13,35 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
+    private boolean debugMode = false;
     private static final String DATABASE_CREATE = "create table " + DatabaseInfo.TABLE_FRIENDS +
             " (" + DatabaseInfo.COL_FRIEND_ID + " integer primary key autoincrement, " + DatabaseInfo.COL_FRIEND_FIRSTNAME +
             " text, " + DatabaseInfo.COL_FRIEND_LASTNAME + " text not null);";
 
     // Main constructor
-    public DatabaseOperations(Context context) {
+    public DatabaseOperations(Context context, boolean debugMode) {
         super(context, DatabaseInfo.DATABASE_NAME, null, DatabaseInfo.DATABASE_VERSION);
-        Log.d("DATABASE", "ch.riverworld.collector.DatabaseOperations: CollectorDB created.");
+        this.debugMode = debugMode;
+        if (debugMode) {
+            Log.d("DATABASE", "ch.riverworld.collector.DatabaseOperations: CollectorDB created.");
+        }
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE);
-        Log.d("DATABASE", "CollectorDB --> table Friends created.");
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table Friends created.");
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Need to insert stuff here
     }
 
 
@@ -55,14 +62,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         values.put(DatabaseInfo.COL_FRIEND_FIRSTNAME, firstName);
         values.put(DatabaseInfo.COL_FRIEND_LASTNAME, lastName);
 
-        db.insert(DatabaseInfo.TABLE_FRIENDS, null, values);
-        Log.d("DATABASE", "Table friends --> added one line.");
+        if (debugMode) {
+            db.insert(DatabaseInfo.TABLE_FRIENDS, null, values);
+            Log.d("DATABASE", "Table friends --> added one line.");
+        }
     }
 
     // Method to return all entries in friends table
     public Cursor getFriends(DatabaseOperations dop) {
 
-        Log.d("DATABASE", "Starting --> getFriends.");
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getFriends.");
+        }
+
         SQLiteDatabase db = dop.getReadableDatabase();
         String [] friends = {DatabaseInfo.COL_FRIEND_FIRSTNAME, DatabaseInfo.COL_FRIEND_LASTNAME};
         Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, friends, null, null, null, null, null);
@@ -78,8 +90,11 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         String coloumns[] = {DatabaseInfo.COL_FRIEND_ID};
         String args[] = {friend};
 
-        Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, coloumns, selection, args, null, null, null);
-
-        return true;
+        db.delete(DatabaseInfo.TABLE_FRIENDS, selection, args);
+        if (debugMode) {
+            String msg = friend + " is deleted from table friends.";
+            Log.d("DATABASE", msg);
+            return true;
+        } else return false;
     }
 }

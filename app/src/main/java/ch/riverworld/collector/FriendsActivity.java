@@ -27,6 +27,7 @@ public class FriendsActivity extends AppCompatActivity {
     private EditText FIRST_NAME, LAST_NAME;
     private ListView FRIENDLIST;
     private DatabaseOperations db;
+    private Object selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class FriendsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Object selectedItem = FRIENDLIST.getItemAtPosition(position);
+                selectedItem = FRIENDLIST.getItemAtPosition(position);
                 if (debugMode) {
                     String msg = selectedItem.toString() + " ausgewählt.";
                     Log.d("USERACTION", msg);
@@ -62,7 +63,7 @@ public class FriendsActivity extends AppCompatActivity {
         final int indexLastName;
 
         Context ctx = this;
-        db = new DatabaseOperations(ctx);
+        db = new DatabaseOperations(ctx, debugMode);
         Cursor crs = db.getFriends(db);
 
         Integer anz = crs.getCount();
@@ -104,8 +105,18 @@ public class FriendsActivity extends AppCompatActivity {
                 }
                 finish();
                 break;
-            case R.id.btn_delete:
+            case R.id.btn_remove:
                 //Pressed button to delete friend from database.
+                String [] name = selectedItem.toString().split(" ");
+                boolean sucess = db.deleteFriend(db,name[1]);
+                if (sucess) {
+                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                } else {
+                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                };
+                finish();
                 break;
         }
     }
