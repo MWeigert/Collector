@@ -1,9 +1,13 @@
-//*****************************************************************
-//*                                                               *
-//* Programmed by: Mathias Weigert                                *
-//*       Version: 0.01                                           *
-//*                                                               *
-//*****************************************************************
+// ********************************************************************************************
+// *                                                                                          *
+// *                                        SEMESTERARBEIT                                    *
+// *                                             ZHAW                                         *
+// *                                                                                          *
+// * Programmed by: Mathias Weigert                                                           *
+// *       Version: 0.02                                                                      *
+// *          Year: 2016                                                                      *
+// *                                                                                          *
+// ********************************************************************************************/
 
 package ch.riverworld.collector;
 
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_collection:
                 //Pressed button do show total or filtered collection.
                 final Intent filterIntent=new Intent(this,FilterActivity.class);
+                filterIntent.putExtra("debugMode", debugMode);
                 startActivity(filterIntent);
                 break;
             case R.id.btn_rental:
@@ -46,9 +51,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(infoIntent);
                 break;
         }
-    }
-
-    public boolean getDebugMode(){
-        return debugMode;
     }
 }

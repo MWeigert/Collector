@@ -23,6 +23,7 @@
         <activity android:name=".LentActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".FriendsActivity" />
+        <activity android:name=".DatabaseActivity"></activity>
     </application>
 
 </manifest>

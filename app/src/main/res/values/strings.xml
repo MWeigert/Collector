@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">Collector</string>
+
     <!--- GENERELL -->
     <string name="btn_update">Update</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_add">Add</string>
+
     <!--- activity_delete -->
     <string name="txt_choosed">Do you want remove</string>
     <string name="txt_item">NAME DER AUSWAHL</string>
     <string name="txt_delete">from your collection?</string>
     <string name="btn_yes">Yes</string>
     <string name="btn_no">No</string>
+
     <!--- activity_details -->
     <string name="btn_edit">Edit</string>
     <string name="txt_year">Year</string>
@@ -17,6 +20,7 @@
     <string name="txt_title">Title</string>
     <string name="txt_genre">Genre</string>
     <string name="txt_place">Place</string>
+
     <!--- activity_filter -->
     <string name="tab_general">General</string>
     <string name="tab_bg">Book/Game</string>
@@ -36,26 +40,30 @@
     <string name="cb_lent">Lent</string>
     <string name="cb_dvd">DVD</string>
     <string name="cb_blueray">BlueRay</string>
+
     <!--- activity_filter_result -->
     <string name="btn_details">Details</string>
+
     <!--- activity_friends -->
     <string name="tf_first_name">First name</string>
     <string name="tf_last_name">Last name</string>
+
     <!--- activity_info -->
     <string name="txt_versionTitel">App Version:</string>
     <string name="txt_version">0.01</string>
     <string name="txt_programmerTitel">Programmed by:</string>
     <string name="txt_programmer">Mathias Weigert</string>
     <string name="btn_settings">Settings</string>
+
     <!--- activity_main -->
     <string name="btn_newItem">New Item</string>
     <string name="btn_collection">Collection</string>
     <string name="btn_rental">Lent Items</string>
     <string name="btn_info">Information</string>
+
     <!--- activity_setting -->
+    <string name="btn_database">Database</string>
     <string name="btn_friends">Friends</string>
-    <string name="title_activity_add_item_manual">AddItemManualActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
 

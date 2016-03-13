@@ -303,6 +303,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/btn_update"
                         android:id="@+id/btn_filter_tab3"
+                        android:onClick="buttonOnClick"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:theme="@android:style/Theme.Material" />

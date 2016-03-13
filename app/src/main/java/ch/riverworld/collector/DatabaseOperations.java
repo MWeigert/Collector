@@ -1,11 +1,15 @@
-package ch.riverworld.collector;
+// ********************************************************************************************
+// *                                                                                          *
+// *                                        SEMESTERARBEIT                                    *
+// *                                             ZHAW                                         *
+// *                                                                                          *
+// * Programmed by: Mathias Weigert                                                           *
+// *       Version: 0.02                                                                      *
+// *          Year: 2016                                                                      *
+// *                                                                                          *
+// ********************************************************************************************/
 
-//*****************************************************************
-//*                                                               *
-//* Programmed by: Mathias Weigert                                *
-//*       Version: 0.01                                           *
-//*                                                               *
-//*****************************************************************
+package ch.riverworld.collector;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,14 +17,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
     private boolean debugMode = false;
-    private static final String DATABASE_CREATE = "create table " + DatabaseInfo.TABLE_FRIENDS +
-            " (" + DatabaseInfo.COL_FRIEND_ID + " integer primary key autoincrement, " + DatabaseInfo.COL_FRIEND_FIRSTNAME +
-            " text, " + DatabaseInfo.COL_FRIEND_LASTNAME + " text not null);";
 
     // Main constructor
     public DatabaseOperations(Context context, boolean debugMode) {
@@ -33,7 +33,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE_CREATE);
+        db.execSQL(DatabaseInfo.CREATE_FRIENDS);
         if (debugMode) {
             Log.d("DATABASE", "CollectorDB --> table Friends created.");
         }
@@ -41,17 +41,17 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Need to insert stuff here
+        // Need to insert stuff here if i need a database upgrade
     }
 
 
-    /********************************************************************************************
-     *                                                                                          *
-     *                           ALL DATABASE OPERATIONS REGARDING                              *
-     *                                          THE                                             *
-     *                                     FRIENDS TABLE                                        *
-     *                                                                                          *
-     ********************************************************************************************/
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
+    // *                                     FRIENDS TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
 
     // Method to add a new entry in friends table
     public void addFriend(DatabaseOperations dop, String firstName, String lastName) {
@@ -68,7 +68,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    // Method to return all entries in friends table
+    // Method to return all entries in friends table. Returns a Cursor with all friends.
     public Cursor getFriends(DatabaseOperations dop) {
 
         if (debugMode) {
@@ -76,13 +76,13 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String [] friends = {DatabaseInfo.COL_FRIEND_FIRSTNAME, DatabaseInfo.COL_FRIEND_LASTNAME};
+        String[] friends = {DatabaseInfo.COL_FRIEND_FIRSTNAME, DatabaseInfo.COL_FRIEND_LASTNAME};
         Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, friends, null, null, null, null, null);
 
         return cur;
     }
 
-    //Method to delete one entry in friends tabe
+    //Method to delete one entry in friends table. Returns boolean with information regarding success of delete.
     public boolean deleteFriend(DatabaseOperations dop, String friend) {
 
         SQLiteDatabase db = dop.getWritableDatabase();
@@ -96,5 +96,12 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             Log.d("DATABASE", msg);
             return true;
         } else return false;
+    }
+
+    //Method to reset complete friends table.
+    public void resetFriends(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.TABLE_FRIENDS);
+        db.execSQL(DatabaseInfo.CREATE_FRIENDS);
     }
 }

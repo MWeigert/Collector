@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">Collector</string>
+
     <!--- GENERELL -->
     <string name="btn_update">Aktuallisieren</string>
+    <string name="btn_add">Hinzufügen</string>
+    <string name="btn_remove">Entfernen</string>
+
     <!--- activity_delete -->
     <string name="txt_choosed">Ausgewähltes Item</string>
     <string name="txt_item">NAME DER AUSWAHL</string>
     <string name="txt_delete">entgültig löschen?</string>
     <string name="btn_yes">Ja</string>
     <string name="btn_no">Nein</string>
+
     <!--- activity_details -->
     <string name="btn_edit">Bearbeiten</string>
     <string name="txt_year">Jahr</string>
@@ -15,6 +20,7 @@
     <string name="txt_title">Titel</string>
     <string name="txt_genre">Genre</string>
     <string name="txt_place">Ort</string>
+
     <!--- activity_filter -->
     <string name="tab_general">Allg.</string>
     <string name="tab_bg">Buch / Spiel</string>
@@ -34,9 +40,13 @@
     <string name="cb_lent">Verliehen</string>
     <string name="cb_dvd">DVD</string>
     <string name="cb_blueray">BlueRay</string>
+
     <!--- activity_filter_result -->
     <string name="btn_details">Details</string>
+
     <!--- activity_friends -->
+    <string name="tf_first_name">Vorname</string>
+    <string name="tf_last_name">Nachname</string>
 
     <!--- activity_info -->
     <string name="txt_versionTitel">App Version:</string>
@@ -44,12 +54,16 @@
     <string name="txt_programmerTitel">Programmiert von:</string>
     <string name="txt_programmer">Mathias Weigert</string>
     <string name="btn_settings">Settings</string>
+
     <!--- activity_main -->
     <string name="btn_newItem">Neues Item</string>
     <string name="btn_collection">Sammlung</string>
     <string name="btn_rental">Leihwesen</string>
     <string name="btn_info">Info</string>
+
     <!--- activity_setting -->
     <string name="btn_friends">Freunde verwalten</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="btn_database">Datenbank</string>
 </resources>
 

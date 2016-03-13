@@ -1,9 +1,13 @@
-//*****************************************************************
-//*                                                               *
-//* Programmed by: Mathias Weigert                                *
-//*       Version: 0.01                                           *
-//*                                                               *
-//*****************************************************************
+// ********************************************************************************************
+// *                                                                                          *
+// *                                        SEMESTERARBEIT                                    *
+// *                                             ZHAW                                         *
+// *                                                                                          *
+// * Programmed by: Mathias Weigert                                                           *
+// *       Version: 0.02                                                                      *
+// *          Year: 2016                                                                      *
+// *                                                                                          *
+// ********************************************************************************************/
 
 package ch.riverworld.collector;
 
@@ -41,9 +45,21 @@ public class SettingActivity extends AppCompatActivity {
                     Log.d("USERACTION", msg);
                 }
 
-                final Intent friendsIntent=new Intent(this,FriendsActivity.class);
+                final Intent friendsIntent = new Intent(this, FriendsActivity.class);
                 friendsIntent.putExtra("debugMode", debugMode);
                 startActivity(friendsIntent);
+                break;
+            case R.id.btn_database:
+                //Button for database administration pressed.
+                if (debugMode) {
+                    String msg = "Entering database administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+
+                final Intent databaseIntent = new Intent(this, DatabaseActivity.class);
+                databaseIntent.putExtra("debugMode", debugMode);
+                startActivity(databaseIntent);
                 break;
         }
     }
