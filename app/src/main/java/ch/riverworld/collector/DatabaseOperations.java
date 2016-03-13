@@ -1,6 +1,11 @@
-package ch.riverworld.collector; /**
- * Created by Harleaquin on 12.03.2016.
- */
+package ch.riverworld.collector;
+
+//*****************************************************************
+//*                                                               *
+//* Programmed by: Mathias Weigert                                *
+//*       Version: 0.01                                           *
+//*                                                               *
+//*****************************************************************
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,6 +20,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             " (" + DatabaseInfo.COL_FRIEND_ID + " integer primary key autoincrement, " + DatabaseInfo.COL_FRIEND_FIRSTNAME +
             " text, " + DatabaseInfo.COL_FRIEND_LASTNAME + " text not null);";
 
+    // Main constructor
     public DatabaseOperations(Context context) {
         super(context, DatabaseInfo.DATABASE_NAME, null, DatabaseInfo.DATABASE_VERSION);
         Log.d("DATABASE", "ch.riverworld.collector.DatabaseOperations: CollectorDB created.");
@@ -31,6 +37,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
+
+    /********************************************************************************************
+     *                                                                                          *
+     *                           ALL DATABASE OPERATIONS REGARDING                              *
+     *                                          THE                                             *
+     *                                     FRIENDS TABLE                                        *
+     *                                                                                          *
+     ********************************************************************************************/
+
+    // Method to add a new entry in friends table
     public void addFriend(DatabaseOperations dop, String firstName, String lastName) {
 
         SQLiteDatabase db = dop.getWritableDatabase();
@@ -43,6 +59,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Log.d("DATABASE", "Table friends --> added one line.");
     }
 
+    // Method to return all entries in friends table
     public Cursor getFriends(DatabaseOperations dop) {
 
         Log.d("DATABASE", "Starting --> getFriends.");
@@ -51,5 +68,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, friends, null, null, null, null, null);
 
         return cur;
+    }
+
+    //Method to delete one entry in friends tabe
+    public boolean deleteFriend(DatabaseOperations dop, String friend) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.COL_FRIEND_LASTNAME + " LIKE ?";
+        String coloumns[] = {DatabaseInfo.COL_FRIEND_ID};
+        String args[] = {friend};
+
+        Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, coloumns, selection, args, null, null, null);
+
+        return true;
     }
 }

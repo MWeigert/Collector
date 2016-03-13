@@ -14,10 +14,15 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    private boolean debugMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Set debug mode to true to activate debug output in logcat and debug toast
+        debugMode = true;
     }
 
     // Button listener for the MainActivity
@@ -37,8 +42,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_info:
                 //Pressed button to display informations regarding this app.
                 final Intent infoIntent=new Intent(this,InfoActivity.class);
+                infoIntent.putExtra("debugMode",debugMode);
                 startActivity(infoIntent);
                 break;
         }
+    }
+
+    public boolean getDebugMode(){
+        return debugMode;
     }
 }
