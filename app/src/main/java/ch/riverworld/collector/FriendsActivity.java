@@ -39,7 +39,8 @@ public class FriendsActivity extends AppCompatActivity {
 
         String friend;
         final ArrayList<String> friends = new ArrayList<String>();
-        final int index;
+        final int indexFirstName;
+        final int indexLastName;
 
         db = new DatabaseOperations(ctx);
         Cursor crs = db.getFriends(db);
@@ -49,9 +50,10 @@ public class FriendsActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
 
         crs.moveToFirst();
-        index = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_FIRSTNAME);
+        indexFirstName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_FIRSTNAME);
+        indexLastName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_LASTNAME);
         do {
-            friend = crs.getString(index);
+            friend = crs.getString(indexFirstName) + " " + crs.getString(indexLastName);
             friends.add(friend);
         } while (crs.moveToNext());
 
