@@ -61,6 +61,8 @@ public class FriendsActivity extends AppCompatActivity {
             }
         });
 
+
+        // Fill friends from database to list item
         String friend;
         final ArrayList<String> friends = new ArrayList<String>();
         final int indexFirstName;

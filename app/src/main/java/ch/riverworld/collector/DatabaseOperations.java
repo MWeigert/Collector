@@ -31,11 +31,15 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    @Override
+    // Create all tables of database
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DatabaseInfo.CREATE_FRIENDS);
         if (debugMode) {
-            Log.d("DATABASE", "CollectorDB --> table Friends created.");
+            Log.d("DATABASE", "CollectorDB --> table friends created.");
+        }
+        db.execSQL(DatabaseInfo.CREATE_LANGUAGE);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table language created.");
         }
     }
 

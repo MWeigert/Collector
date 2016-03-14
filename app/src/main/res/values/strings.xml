@@ -24,10 +24,21 @@
     <string name="txt_genre">Genre</string>
     <string name="txt_place">Place</string>
 
-    <!--- activity_filter -->
-    <string name="tab_general">General</string>
-    <string name="tab_bg">Book/Game</string>
-    <string name="tab_movie">Movie</string>
+    <!--- activity_filter_result -->
+    <string name="btn_details">Details</string>
+
+    <!--- activity_friends -->
+    <string name="tf_first_name">First name</string>
+    <string name="tf_last_name">Last name</string>
+
+    <!--- activity_info -->
+    <string name="txt_versionTitel">App Version:</string>
+    <string name="txt_version">0.01</string>
+    <string name="txt_programmerTitel">Programmed by:</string>
+    <string name="txt_programmer">Mathias Weigert</string>
+    <string name="btn_settings">Settings</string>
+
+    <!--- activity_item -->
     <string name="tf_publisher">Publisher</string>
     <string name="txt_rating">FSK</string>
     <string name="cb_0">0</string>
@@ -43,20 +54,10 @@
     <string name="cb_lent">Lent</string>
     <string name="cb_dvd">DVD</string>
     <string name="cb_blueray">BlueRay</string>
+    <string name="btn_search">Search</string>
 
-    <!--- activity_filter_result -->
-    <string name="btn_details">Details</string>
-
-    <!--- activity_friends -->
-    <string name="tf_first_name">First name</string>
-    <string name="tf_last_name">Last name</string>
-
-    <!--- activity_info -->
-    <string name="txt_versionTitel">App Version:</string>
-    <string name="txt_version">0.01</string>
-    <string name="txt_programmerTitel">Programmed by:</string>
-    <string name="txt_programmer">Mathias Weigert</string>
-    <string name="btn_settings">Settings</string>
+    <!--- activity_language_db -->
+    <string name="btn_load_std">Load base data</string>
 
     <!--- activity_main -->
     <string name="btn_newItem">New Item</string>

@@ -59,7 +59,24 @@ public class DatabaseInfo {
     // Table name and column informations from items table
     public static final String TABLE_ITEMS = "items";
 
-    //Unused constructor
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                    LANGUAGE TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    public static final String LANGUAGE_TABLE = "language";
+    public static final String LANGUAGE_ID_COL = "LANGUAGE_ID";
+    public static final String LANGUAGE_LANGUAGE_COL = "LANGUAGE";
+
+    //SQL commando to create table language in database
+    public static final String CREATE_LANGUAGE = "create table " + DatabaseInfo.LANGUAGE_TABLE +
+            " (" + DatabaseInfo.LANGUAGE_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.LANGUAGE_LANGUAGE_COL + " text not null);";
+
+    //Empty constructor
     public DatabaseInfo() {
     }
 }

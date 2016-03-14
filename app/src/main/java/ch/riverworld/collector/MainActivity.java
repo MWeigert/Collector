@@ -34,20 +34,20 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_newItem:
                 //Pressed button to add new item to the collection.
+                final Intent addIntent = new Intent(this, ItemActivity.class);
+                addIntent.putExtra("debugMode", debugMode);
+                startActivity(addIntent);
                 break;
             case R.id.btn_collection:
                 //Pressed button do show total or filtered collection.
-                final Intent filterIntent=new Intent(this,FilterActivity.class);
-                filterIntent.putExtra("debugMode", debugMode);
-                startActivity(filterIntent);
                 break;
             case R.id.btn_rental:
                 //Pressed button to enter lend administration.
                 break;
             case R.id.btn_info:
                 //Pressed button to display informations regarding this app.
-                final Intent infoIntent=new Intent(this,InfoActivity.class);
-                infoIntent.putExtra("debugMode",debugMode);
+                final Intent infoIntent = new Intent(this, InfoActivity.class);
+                infoIntent.putExtra("debugMode", debugMode);
                 startActivity(infoIntent);
                 break;
         }
