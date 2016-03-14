@@ -13,6 +13,7 @@ package ch.riverworld.collector;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,17 @@ public class DatabaseActivity extends AppCompatActivity {
     //Button listener for the database activity
     public void buttonOnClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_friends:
+                if (debugMode) {
+                    String msg = "Entering friends administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+
+                final Intent friendsIntent = new Intent(this, FriendsActivity.class);
+                friendsIntent.putExtra("debugMode", debugMode);
+                startActivity(friendsIntent);
+                break;
             case R.id.btn_reset_friends:
                 //Pressed button to add new friend to the database.
 
@@ -46,11 +58,10 @@ public class DatabaseActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     Log.d("USERACTION", msg);
                 }
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(DatabaseActivity.this);
 
                 builder.setMessage("Do you really want to reset the complete friends table?");
-                builder.setCancelable(true);
+                //builder.setCancelable(true);
 
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -61,7 +72,7 @@ public class DatabaseActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             Log.d("USERACTION", msg);
                         }
-                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this,debugMode);
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetFriends(db);
                     }
                 });
@@ -80,6 +91,43 @@ public class DatabaseActivity extends AppCompatActivity {
 
                 AlertDialog alert = builder.create();
                 alert.show();
+                break;
+            case R.id.btn_reset_language:
+                //Button reset language pressed by user.
+                AlertDialog.Builder langBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                langBuilder.setMessage("Do you really want to reset the complete language table?");
+                String msg;
+
+                langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "TRUE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                langBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog langAlert = langBuilder.create();
+                langAlert.show();
                 break;
         }
     }

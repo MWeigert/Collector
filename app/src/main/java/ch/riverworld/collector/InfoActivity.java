@@ -40,14 +40,14 @@ public class InfoActivity extends AppCompatActivity {
             case R.id.btn_settings:
                 //Button pressed to enter configuration mode of the app.
                 if (debugMode) {
-                    String msg = "Entering configuration mode.";
+                    String msg = "Entering database administration mode.";
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     Log.d("USERACTION", msg);
                 }
 
-                final Intent settingIntent=new Intent(this,SettingActivity.class);
-                settingIntent.putExtra("debugMode", debugMode);
-                startActivity(settingIntent);
+                final Intent databaseIntent=new Intent(this,DatabaseActivity.class);
+                databaseIntent.putExtra("debugMode", debugMode);
+                startActivity(databaseIntent);
                 break;
         }
     }
