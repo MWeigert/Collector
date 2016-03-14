@@ -6,6 +6,9 @@
     <string name="btn_add">Hinzufügen</string>
     <string name="btn_remove">Entfernen</string>
 
+    <!--- activity_database -->
+    <string name="btn_reset_friends">Reset Tabelle Friends</string>
+
     <!--- activity_delete -->
     <string name="txt_choosed">Ausgewähltes Item</string>
     <string name="txt_item">NAME DER AUSWAHL</string>

@@ -44,7 +44,7 @@ public class FriendsActivity extends AppCompatActivity {
             debugMode = extras.getBoolean("debugMode");
         }
 
-        FIRST_NAME = (EditText)findViewById(R.id.tf_first_name);
+        FIRST_NAME = (EditText) findViewById(R.id.tf_first_name);
         LAST_NAME = (EditText) findViewById(R.id.tf_last_name);
 
         FRIENDLIST = (ListView) findViewById(R.id.lst_friends);
@@ -71,13 +71,13 @@ public class FriendsActivity extends AppCompatActivity {
         Cursor crs = db.getFriends(db);
 
         Integer anz = crs.getCount();
-        if (debugMode){
+        if (debugMode) {
             String msg = "DATABASE: " + anz.toString() + " friends in table.";
             Log.d("DATABASE", msg);
             Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
         }
 
-        if(anz>0) {
+        if (anz > 0) {
             crs.moveToFirst();
             indexFirstName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_FIRSTNAME);
             indexLastName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_LASTNAME);
@@ -101,25 +101,31 @@ public class FriendsActivity extends AppCompatActivity {
                 //Pressed button to add new friend to the database.
                 String firstName = FIRST_NAME.getText().toString();
                 String lastName = LAST_NAME.getText().toString();
-                db.addFriend(db, firstName, lastName);
+                if (lastName.compareTo("Last name") == 0) {
+                    String msg = "Please enter an last name.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                } else {
+                    db.addFriend(db, firstName, lastName);
 
-                if (debugMode){
-                    String msg = "Added: " + firstName + " " + lastName;
-                    Toast.makeText(getBaseContext(), msg,Toast.LENGTH_LONG).show();
+                    if (debugMode) {
+                        String msg = "Added: " + firstName + " " + lastName;
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
                 }
                 finish();
                 break;
             case R.id.btn_remove:
                 //Pressed button to delete friend from database.
-                String [] name = selectedItem.toString().split(" ");
-                boolean sucess = db.deleteFriend(db,name[1]);
+                String[] name = selectedItem.toString().split(" ");
+                boolean sucess = db.deleteFriend(db, name[1]);
                 if (sucess) {
                     String msg = selectedItem.toString() + " is sucessfully deleted from database.";
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
                     String msg = "Could not delete: " + selectedItem.toString() + " from database.";
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                };
+                }
+                ;
                 finish();
                 break;
         }
