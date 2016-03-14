@@ -29,6 +29,9 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
+        Context ctx = this;
+        DatabaseBase spInfo = new DatabaseBase();
+
         //Getting information regarding debug mode
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -36,17 +39,15 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         //Filling genre spinner with information.
-        DatabaseBase spInfo = new DatabaseBase();
-
+        //HAVE TO CHANCE THIS TO SQLITE TABLE (S.H. LANGUAGE SPINNER)
         Spinner spGenre = (Spinner) findViewById(R.id.spn_genre);
         ArrayAdapter<String> adapterGenre = new ArrayAdapter<String>(this, android.R.layout
                 .simple_spinner_dropdown_item, spInfo.genreData);
         spGenre.setAdapter(adapterGenre);
 
+        //Filling language spinner with information
         Spinner spLanguage = (Spinner) findViewById(R.id.spn_language);
 
-        //Filling language spinner with information
-        Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
         Cursor crs = db.getLanguages(db);
         ArrayList<String> language = new ArrayList<String>();
@@ -60,7 +61,12 @@ public class ItemActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapterLanguage = new ArrayAdapter<String>(this, android.R.layout
                 .simple_spinner_dropdown_item, language);
-
         spLanguage.setAdapter(adapterLanguage);
+
+        //Filling year spinner with information
+        Spinner spYear = (Spinner) findViewById(R.id.spn_year);
+        ArrayAdapter<Integer>  adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
+                .simple_spinner_dropdown_item,spInfo.yearData);
+        spYear.setAdapter(adapterYear);
     }
 }
