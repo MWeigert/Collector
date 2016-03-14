@@ -48,15 +48,14 @@ public class ItemActivity extends AppCompatActivity {
         //Filling language spinner with information
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        Cursor crs = db.getFriends(db);
+        Cursor crs = db.getLanguages(db);
         ArrayList<String> language = new ArrayList<String>();
 
         crs.moveToFirst();
-        int indexFirstName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_FIRSTNAME);
-        int indexLastName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_LASTNAME);
+        int index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
 
         do {
-            language.add(crs.getString(indexLastName)+", "+crs.getString(indexFirstName));
+            language.add(crs.getString(index));
         } while (crs.moveToNext());
 
         ArrayAdapter<String> adapterLanguage = new ArrayAdapter<String>(this, android.R.layout

@@ -17,6 +17,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
@@ -107,5 +108,48 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         SQLiteDatabase db = dop.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.TABLE_FRIENDS);
         db.execSQL(DatabaseInfo.CREATE_FRIENDS);
+    }
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
+    // *                                    LANGUAGE TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to return all entries in friends table. Returns a Cursor with all friends.
+    public Cursor getLanguages(DatabaseOperations dop) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getFriends.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] languages = {DatabaseInfo.LANGUAGE_LANGUAGE_COL};
+        Cursor cur = db.query(DatabaseInfo.LANGUAGE_TABLE, languages, null, null, null, null, null);
+
+        return cur;
+    }
+
+    //Method to reset complete friends table.
+    public void resetLanguage(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.LANGUAGE_TABLE);
+        db.execSQL(DatabaseInfo.CREATE_LANGUAGE);
+
+        String[] languages = DatabaseBase.languageData;
+        ContentValues values = new ContentValues();
+
+        for (String language : languages) {
+            values.put(DatabaseInfo.LANGUAGE_LANGUAGE_COL, language);
+            db.insert(DatabaseInfo.LANGUAGE_TABLE, null, values);
+        }
+
+        if (debugMode) {
+            String msg = "Table languages sucessfull reseted.";
+            Log.d("DATABASE", msg);
+        }
     }
 }

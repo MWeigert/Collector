@@ -107,8 +107,8 @@ public class DatabaseActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             Log.d("USERACTION", msg);
                         }
-                        String msg = "TRUE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetLanguage(db);
                     }
                 });
 
