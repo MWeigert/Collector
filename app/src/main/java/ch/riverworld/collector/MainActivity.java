@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_collection:
                 //Pressed button do show total or filtered collection.
+                final Intent codeIntent = new Intent(this, BarcodeActivity.class);
+                codeIntent.putExtra("debugMode", debugMode);
+                startActivity(codeIntent);
                 break;
             case R.id.btn_rental:
                 //Pressed button to enter lend administration.

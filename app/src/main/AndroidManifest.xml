@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ch.riverworld.collector">
+<manifest package="ch.riverworld.collector"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -10,20 +10,22 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".InfoActivity" />
-        <activity android:name=".FilterResult" />
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".DeleteActivity" />
-        <activity android:name=".LentActivity" />
-        <activity android:name=".FriendsActivity" />
-        <activity android:name=".DatabaseActivity" />
-        <activity android:name=".ItemActivity" />
-        <activity android:name=".LanguageDbActivity"></activity>
+        <activity android:name=".InfoActivity"/>
+        <activity android:name=".FilterResult"/>
+        <activity android:name=".DetailsActivity"/>
+        <activity android:name=".DeleteActivity"/>
+        <activity android:name=".LentActivity"/>
+        <activity android:name=".FriendsActivity"/>
+        <activity android:name=".DatabaseActivity"/>
+        <activity android:name=".ItemActivity"/>
+        <activity android:name=".LanguageDbActivity"/>
+        <activity android:name=".BarcodeActivity">
+        </activity>
     </application>
 
 </manifest>
