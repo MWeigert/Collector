@@ -1,0 +1,71 @@
+%----------------------------------------------------------------------------------------
+
+% Formatvorlage für Arbeiten von Mathias Weigert (Grundlage der Datei und allg. Struktur
+% von Micha Schöneberger)
+
+%--------------------------------------VERSION-------------------------------------------
+
+% Version V0.75 - Erstellt von Mathias Weigert am 16.09.2013
+%				  				Der besseren Übersicht wegen Informationen aus zwei Seiten verteilt
+% 				V0.80 - Erstellt von Mathias Weigert am 24.08.2015
+%									Deckblatt auf einer Seite mit etwas weniger Information. Die Zukunft
+%									wird so aussehen, dass ich verschiedene Deckblätter erstelle welche
+%									nach Bedarf ins Dokument eingebunden werden.
+
+%------------------------------------SEITENLAYOUT-----------------------------------------
+
+% Informationen Über das Dokument, wie z.B. Titel, Autor, Matrikelnr. etc werden in der
+% Datei _Meta.tex definiert und können danach global verwendet werden.
+
+%\thispagestyle{empty} 		% Dokument ohne Kopfzeile und ohne Seitennummerierung.
+\thispagestyle{plain} 		% Mit Seitennummerierung (Standard)
+%\thispagestyle{headings} 	% Generiert eine automatische Kopfzeile mit Seitenzahl und
+							% Zwischenüberschriften
+%\thispagestyle{myheadings} % Erlaubt die Erstellung eigener Kopf- und Fußzeilen
+%\thispagestyle{fancy} 		% Erlaubt die Verwendung der in dem Paket "fancyhdr"
+							% definierten Befehle zur Erstellung eigener Kopf- und
+							% Fußzeilen
+
+%-----------------------------------------------------------------------------------------
+
+%----------------------------------SETZE TITELBLATT---------------------------------------
+
+\begin{titlepage}
+
+\begin{center}
+\includegraphics[scale=0.25]{pic/ZHAW_Titel}			% binde die Grafik ein
+\\[12ex]
+\huge{\textbf{\textsc{\titel}}}							% setze Schriftgrösse für Titel
+\\[1.5ex]
+\LARGE{\textbf{\untertitel}}							% setze Schriftgrösse für Untertitel
+\\[6ex]
+\normalsize												% setze Schriftgrösse zurück auf Normalschrift
+
+\begin{tabular}{w{3cm}p{6cm}}
+\\[12ex]Autor: & \quad \autorFirst						% Angabe des Studienbereichs
+\end{tabular}
+\\[24ex]
+\copyright\ \jahr\\
+\end{center}
+
+\singlespacing											% einfacher Zeilenabstand
+\small													% setze kleine Schrift
+\noindent												%	Sorgt am Anfang eines Absatzes dafür, daß die
+														% erste Zeile nicht eingerückt wird.
+
+
+%----------------------------GNU FREE DOCUMENTATION LICENSE---------------------------------
+Es wird die Erlaubnis gegeben dieses Dokument zu kopieren, verteilen und/oder zu verändern
+unter den Bedingungen der GNU Free Documentation License, Version 1.3 oder einer späteren, von
+der Free Software Foundation veröffentlichten Version; mit den Unveränderlichen Abschnitten
+DEREN TITEL	AUFGEZÄHLT sind, mit den Vorderseitentexten die AUFGEZÄHLT sind, und mit den
+Rückseitentexten die AUFGEZÄHLT sind. Eine Kopie dieser Lizenz ist in	dem Abschnitt enthalten,
+der mit \href{http://www.gnu.org/copyleft/fdl.html}{GNU Free Documentation License} betitelt ist.
+
+%--------------------------------------COPYRIGHT-------------------------------------------
+%Dieses Werk einschließlich seiner Teile ist \textbf{urheberrechtlich geschützt}. Jede
+%Verwertung außerhalb der engen Grenzen des Urheberrechtsgesetzes ist ohne Zustimmung des
+%Autors unzulässig und strafbar. Das gilt insbesondere für Vervielfältigungen, Übersetzungen,
+%Mikroverfilmungen sowie die Einspeicherung und Verarbeitung in elektronischen Systemen.
+
+\end{titlepage}
