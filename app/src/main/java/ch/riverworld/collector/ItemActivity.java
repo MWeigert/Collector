@@ -12,9 +12,11 @@
 package ch.riverworld.collector;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -68,5 +70,20 @@ public class ItemActivity extends AppCompatActivity {
         ArrayAdapter<Integer>  adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
                 .simple_spinner_dropdown_item,spInfo.yearData);
         spYear.setAdapter(adapterYear);
+    }
+
+    // Button listener for the ItemActivity
+    public void buttonOnClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add:
+                //Pressed button to add new item to the collection.
+                break;
+            case R.id.btn_search:
+                //Pressed button do show total or filtered collection.
+                final Intent searchIntent = new Intent(this, FilterResult.class);
+                searchIntent.putExtra("debugMode", debugMode);
+                startActivity(searchIntent);
+                break;
+        }
     }
 }

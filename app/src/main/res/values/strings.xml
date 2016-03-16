@@ -8,6 +8,7 @@
 
     <!--- activity_database -->
     <string name="btn_friends">Friends</string>
+    <string name="btn_language">Language</string>
     <string name="btn_reset_friends">Reset table friends</string>
     <string name="btn_reset_language">Reset table language</string>
     <string name="txt_manage_title">Manage Data</string>

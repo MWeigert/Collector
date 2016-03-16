@@ -63,4 +63,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:onClick="buttonOnClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_language"
+        android:id="@+id/btn_language"
+        android:onClick="buttonOnClick"
+        android:layout_below="@+id/btn_friends"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

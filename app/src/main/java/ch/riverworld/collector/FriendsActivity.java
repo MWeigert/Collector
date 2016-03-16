@@ -11,7 +11,9 @@
 
 package ch.riverworld.collector;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -118,17 +120,51 @@ public class FriendsActivity extends AppCompatActivity {
                 break;
             case R.id.btn_remove:
                 //Pressed button to delete friend from database.
-                String[] name = selectedItem.toString().split(" ");
-                boolean sucess = db.deleteFriend(db, name[1]);
-                if (sucess) {
-                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                } else {
-                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
-                ;
-                finish();
+
+                AlertDialog.Builder langBuilder = new AlertDialog.Builder(FriendsActivity.this);
+                String msg = "Do you really want to delete " + selectedItem.toString();
+                langBuilder.setMessage(msg);
+
+
+                langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String[] name = selectedItem.toString().split(" ");
+                        boolean sucess = db.deleteFriend(db, name[1]);
+                        if (sucess) {
+                            String msg = selectedItem.toString() + " is sucessfully deleted from database.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        } else {
+                            String msg = "Could not delete: " + selectedItem.toString() + " from database.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        }
+                        finish();
+                    }
+                });
+
+                langBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog langAlert = langBuilder.create();
+                langAlert.show();
+                
                 break;
         }
     }
