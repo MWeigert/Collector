@@ -10,38 +10,42 @@
 \contentsline {section}{\numberline {2.8}\IeC {\"U}berblick}{16}{section.26}
 \contentsline {chapter}{\numberline {3}Ist-Analyse}{17}{chapter.27}
 \contentsline {chapter}{\numberline {4}Anforderungsanalyse}{18}{chapter.28}
-\contentsline {section}{\numberline {4.1}Funktionen}{18}{section.29}
-\contentsline {subsection}{\numberline {4.1.1}Anlegen eines Items}{18}{subsection.30}
-\contentsline {subsubsection}{\numberline {4.1.1.1}Manuelles Anlegen eines Items}{18}{subsubsection.33}
-\contentsline {subsubsection}{\numberline {4.1.1.2}Automatisches Anlegen eines Items}{18}{subsubsection.34}
-\contentsline {subsection}{\numberline {4.1.2}Ausgabe aller Items}{18}{subsection.35}
-\contentsline {subsubsection}{\numberline {4.1.2.1}Filterfunktion}{19}{subsubsection.36}
-\contentsline {subsection}{\numberline {4.1.3}Bearbeiten eines Items}{20}{subsection.37}
-\contentsline {subsection}{\numberline {4.1.4}L\IeC {\"o}schen eines Items}{20}{subsection.38}
-\contentsline {subsection}{\numberline {4.1.5}Exportieren aller Items}{20}{subsection.39}
-\contentsline {subsection}{\numberline {4.1.6}Verwalten verliehener Items}{20}{subsection.40}
-\contentsline {subsection}{\numberline {4.1.7}Speichern der Items}{20}{subsection.41}
-\contentsline {section}{\numberline {4.2}Datenbank}{20}{section.42}
-\contentsline {subsection}{\numberline {4.2.1}\IeC {\"U}bersicht Datenbankfelder der Items}{20}{subsection.43}
-\contentsline {section}{\numberline {4.3}GUI}{20}{section.45}
-\contentsline {subsection}{\numberline {4.3.1}Startseite}{21}{subsection.46}
-\contentsline {subsection}{\numberline {4.3.2}Barcode Scannen}{21}{subsection.48}
-\contentsline {subsection}{\numberline {4.3.3}Manuell Anlegen / Item Bearbeiten}{22}{subsection.50}
-\contentsline {subsection}{\numberline {4.3.4}Detail Ansicht}{23}{subsection.52}
-\contentsline {subsection}{\numberline {4.3.5}Sicherheitsfrage Item L\IeC {\"o}schen}{23}{subsection.54}
-\contentsline {subsection}{\numberline {4.3.6}Item verleihen}{24}{subsection.56}
-\contentsline {subsection}{\numberline {4.3.7}Filter}{24}{subsection.58}
-\contentsline {subsubsection}{\numberline {4.3.7.1}Allgemein}{24}{subsubsection.59}
-\contentsline {subsubsection}{\numberline {4.3.7.2}Buch \& Spiel}{24}{subsubsection.61}
-\contentsline {subsubsection}{\numberline {4.3.7.3}Film}{24}{subsubsection.63}
-\contentsline {section}{\numberline {4.4}Allgemeines}{26}{section.65}
-\contentsline {chapter}{\numberline {5}Konzept}{27}{chapter.66}
-\contentsline {chapter}{\numberline {6}Umsetzung}{28}{chapter.67}
-\contentsline {chapter}{\numberline {7}Testing}{29}{chapter.68}
-\contentsline {chapter}{\numberline {A}Anhang}{30}{appendix.69}
-\contentsline {section}{\numberline {A.1}Konventionen}{30}{section.70}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{30}{section.71}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{30}{subsection.72}
-\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{30}{subsection.73}
-\contentsline {subsection}{\numberline {A.2.3}GUI}{30}{subsection.74}
-\contentsline {section}{\numberline {A.3}Design Entscheidungen}{30}{section.75}
+\contentsline {section}{\numberline {4.1}Allgemeines}{18}{section.33}
+\contentsline {subsection}{\numberline {4.1.1}Dokumentation der Anforderungen}{18}{subsection.34}
+\contentsline {subsubsection}{\numberline {4.1.1.1}Nat\IeC {\"u}rliche Sprache}{18}{subsubsection.35}
+\contentsline {subsubsection}{\numberline {4.1.1.2}Use Case }{19}{subsubsection.36}
+\contentsline {subsection}{\numberline {4.1.2}Systemanforderungen}{19}{subsection.37}
+\contentsline {section}{\numberline {4.2}Funktionen}{19}{section.38}
+\contentsline {subsection}{\numberline {4.2.1}Anlegen eines Items}{19}{subsection.39}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Manuelles Anlegen eines Items}{19}{subsubsection.42}
+\contentsline {subsubsection}{\numberline {4.2.1.2}Automatisches Anlegen eines Items}{20}{subsubsection.43}
+\contentsline {subsection}{\numberline {4.2.2}Ausgabe aller Items}{20}{subsection.44}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Filterfunktion}{20}{subsubsection.45}
+\contentsline {subsection}{\numberline {4.2.3}Bearbeiten eines Items}{21}{subsection.46}
+\contentsline {subsection}{\numberline {4.2.4}L\IeC {\"o}schen eines Items}{21}{subsection.47}
+\contentsline {subsection}{\numberline {4.2.5}Exportieren aller Items}{21}{subsection.48}
+\contentsline {subsection}{\numberline {4.2.6}Verwalten verliehener Items}{21}{subsection.49}
+\contentsline {subsection}{\numberline {4.2.7}Speichern der Items}{21}{subsection.50}
+\contentsline {section}{\numberline {4.3}Datenbank}{22}{section.51}
+\contentsline {subsection}{\numberline {4.3.1}\IeC {\"U}bersicht Datenbankfelder der Items}{22}{subsection.52}
+\contentsline {section}{\numberline {4.4}GUI}{22}{section.54}
+\contentsline {subsection}{\numberline {4.4.1}Startseite}{22}{subsection.55}
+\contentsline {subsection}{\numberline {4.4.2}Barcode Scannen}{22}{subsection.57}
+\contentsline {subsection}{\numberline {4.4.3}Manuell Anlegen / Item Bearbeiten}{24}{subsection.59}
+\contentsline {subsection}{\numberline {4.4.4}Detail Ansicht}{24}{subsection.61}
+\contentsline {subsection}{\numberline {4.4.5}Sicherheitsfrage Item L\IeC {\"o}schen}{24}{subsection.63}
+\contentsline {subsection}{\numberline {4.4.6}Item verleihen}{24}{subsection.65}
+\contentsline {subsection}{\numberline {4.4.7}Filter}{26}{subsection.67}
+\contentsline {subsubsection}{\numberline {4.4.7.1}Allgemein}{26}{subsubsection.68}
+\contentsline {subsubsection}{\numberline {4.4.7.2}Buch \& Spiel}{27}{subsubsection.70}
+\contentsline {subsubsection}{\numberline {4.4.7.3}Film}{27}{subsubsection.72}
+\contentsline {chapter}{\numberline {5}Konzept}{29}{chapter.74}
+\contentsline {chapter}{\numberline {6}Umsetzung}{30}{chapter.75}
+\contentsline {chapter}{\numberline {7}Testing}{31}{chapter.76}
+\contentsline {chapter}{\numberline {A}Anhang}{32}{appendix.77}
+\contentsline {section}{\numberline {A.1}Konventionen}{32}{section.78}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{32}{section.79}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{32}{subsection.80}
+\contentsline {subsection}{\numberline {A.2.2}Code und Versionsverwaltung}{32}{subsection.81}
+\contentsline {subsection}{\numberline {A.2.3}GUI}{32}{subsection.82}
+\contentsline {section}{\numberline {A.3}Design Entscheidungen}{32}{section.83}
