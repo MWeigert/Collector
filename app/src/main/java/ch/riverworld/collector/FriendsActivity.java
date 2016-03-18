@@ -164,7 +164,7 @@ public class FriendsActivity extends AppCompatActivity {
 
                 AlertDialog langAlert = langBuilder.create();
                 langAlert.show();
-                
+
                 break;
         }
     }
