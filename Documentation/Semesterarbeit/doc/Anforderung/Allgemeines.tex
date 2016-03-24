@@ -34,7 +34,32 @@ Um die Mehrdeutigkeit und den möglichen Interpretationsspielraum der natürlich
 
 \subsubsection{Use Case }
 
+\subsection{Systematik der Anforderungen}
 
+Jede Anforderung erhält eine eindeutige sechsstellige Anforderungsnummer. Diese leitet sich aus folgenden drei Bestandteilen ab.
 
+\begin{enumerate}
+	\item Art der Anforderung (Funktionelle, Datenbank, GUI, Sonstige)
+	\item Priorität (1 bis 4)
+	\item Laufende eindeutige Nummer
+\end{enumerate} 
+
+\subsubsection{Art der Anforderung}
+
+Zur Gliederung wird eine zweistellige Nummer verwendet.
+
+\begin{table} [htbp]
+	\begin{tabular}{r|l}
+		\textbf{Nr.} & \textbf{Art der Anforderung} \\ \hline
+		10 & Anforderung an die Funktion der App \\
+		\rowcolor{DarkSeaGreen} 20 & Anforderung an die Datenbank \\
+		30 & Anforderung an das GUI \\
+		\rowcolor{DarkSeaGreen} 40 & Sonstige Anforderungen
+	\end{tabular}
+\end{table}
+
+\subsubsection{Priorität der Anforderung}
+
+Die Priorität der Anforderung wird in Ziffern 1 (höchste Priorität) bis 4 (niedrigste Priorität) definiert.
 
 \subsection{Systemanforderungen}
