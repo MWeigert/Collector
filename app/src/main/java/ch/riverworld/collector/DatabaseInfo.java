@@ -41,6 +41,23 @@ public class DatabaseInfo {
     // *                                                                                          *
     // *                           ALL DATABASE INFORMATION REGARDING                             *
     // *                                          THE                                             *
+    // *                                      GENRE TABLE                                         *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    public static final String GENRES_TABLE = "genres";
+    public static final String GENRE_ID_COL = "GENRE_ID";
+    public static final String GENRES_GENRE_COL = "GENRE";
+
+    //SQL commando to create table genres in database
+    public static final String CREATE_GENRES = "create table " + DatabaseInfo.GENRES_TABLE +
+            " (" + DatabaseInfo.GENRE_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.GENRES_GENRE_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
     // *                                     HISTORY TABLE                                        *
     // *                                                                                          *
     // ********************************************************************************************/
@@ -75,6 +92,40 @@ public class DatabaseInfo {
     public static final String CREATE_LANGUAGE = "create table " + DatabaseInfo.LANGUAGE_TABLE +
             " (" + DatabaseInfo.LANGUAGE_ID_COL + " integer primary key autoincrement, " +
             DatabaseInfo.LANGUAGE_LANGUAGE_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                    PARENTAL TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    public static final String PARENTAL_TABLE = "parental";
+    public static final String PARENTAL_ID_COL = "PARENTAL_ID";
+    public static final String PARENTAL_PARENTAL_COL = "PARENTAL";
+
+    //SQL commando to create table genres in database
+    public static final String CREATE_PARENTAL = "create table " + DatabaseInfo.PARENTAL_TABLE +
+            " (" + DatabaseInfo.PARENTAL_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.PARENTAL_PARENTAL_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                     SYSTEMS TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    public static final String SYSTEMS_TABLE = "systems";
+    public static final String SYSTEM_ID_COL = "SYSTEM_ID";
+    public static final String SYSTEMS_SYSTEM_COL = "SYSTEM";
+
+    //SQL commando to create table genres in database
+    public static final String CREATE_SYSTEMS = "create table " + DatabaseInfo.SYSTEMS_TABLE +
+            " (" + DatabaseInfo.SYSTEM_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.SYSTEMS_SYSTEM_COL + " text not null);";
 
     //Empty constructor
     public DatabaseInfo() {
