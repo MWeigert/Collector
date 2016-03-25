@@ -1,3 +1,42 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{MyBooks}
+Sylvain Hébuterne.
+\newblock My books.
+\newblock
+  https://play.google.com/store/apps/details?id=com.shebuterne.maBibliotheque.
+
+\bibitem{MBP}
+Metosphere.
+\newblock Meine bücher pro.
+\newblock https://play.google.com/store/apps/details?id=com.metosphere.book.
+
+\bibitem{Codex}
+Emílio Simoes.
+\newblock Codex.
+\newblock https://play.google.com/store/apps/details?id=com.iris.codex.
+
+\bibitem{MC}
+olbuappdev.
+\newblock Movie collection.
+\newblock
+  https://play.google.com/store/apps/details?id=de.olbu.android.moviecollection.unlocker.
+
+\bibitem{Movielicious}
+Netwalk.
+\newblock Movielicious.
+\newblock https://play.google.com/store/apps/details?id=be.netwalk.movies.
+
+\bibitem{NC}
+Hentie Studios.
+\newblock Nintendo collection.
+\newblock
+  https://play.google.com/store/apps/details?id=com.hentie.neslistdonate.
+
+\bibitem{VGMC}
+Sort~It! Apps.
+\newblock Video games manager collector.
+\newblock
+  https://play.google.com/store/apps/details?id=com.hentie.neslistdonate.
 
 \end{thebibliography}
