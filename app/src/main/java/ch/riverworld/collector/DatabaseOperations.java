@@ -17,7 +17,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
@@ -38,9 +37,29 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DATABASE", "CollectorDB --> table friends created.");
         }
+        db.execSQL(DatabaseInfo.CREATE_GENRES);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table genres created.");
+        }
+        db.execSQL(DatabaseInfo.CREATE_HISTORY);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table history created.");
+        }
+        db.execSQL(DatabaseInfo.CREATE_ITEMS);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table items created.");
+        }
         db.execSQL(DatabaseInfo.CREATE_LANGUAGE);
         if (debugMode) {
             Log.d("DATABASE", "CollectorDB --> table language created.");
+        }
+        db.execSQL(DatabaseInfo.CREATE_PARENTAL);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table parental created.");
+        }
+        db.execSQL(DatabaseInfo.CREATE_SYSTEMS);
+        if (debugMode) {
+            Log.d("DATABASE", "CollectorDB --> table system created.");
         }
     }
 
@@ -64,11 +83,11 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         SQLiteDatabase db = dop.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(DatabaseInfo.COL_FRIEND_FIRSTNAME, firstName);
-        values.put(DatabaseInfo.COL_FRIEND_LASTNAME, lastName);
+        values.put(DatabaseInfo.FRIENDS_FIRSTNAME_COL, firstName);
+        values.put(DatabaseInfo.FRIENDS_LASTNAME_COL, lastName);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.TABLE_FRIENDS, null, values);
+            db.insert(DatabaseInfo.FRIENDS_TABLE, null, values);
             Log.d("DATABASE", "Table friends --> added one line.");
         }
     }
@@ -81,8 +100,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String[] friends = {DatabaseInfo.COL_FRIEND_FIRSTNAME, DatabaseInfo.COL_FRIEND_LASTNAME};
-        Cursor cur = db.query(DatabaseInfo.TABLE_FRIENDS, friends, null, null, null, null, null);
+        String[] friends = {DatabaseInfo.FRIENDS_FIRSTNAME_COL, DatabaseInfo.FRIENDS_LASTNAME_COL};
+        Cursor cur = db.query(DatabaseInfo.FRIENDS_TABLE, friends, null, null, null, null, null);
 
         return cur;
     }
@@ -91,11 +110,11 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     public boolean deleteFriend(DatabaseOperations dop, String friend) {
 
         SQLiteDatabase db = dop.getWritableDatabase();
-        String selection = DatabaseInfo.COL_FRIEND_LASTNAME + " LIKE ?";
-        String coloumns[] = {DatabaseInfo.COL_FRIEND_ID};
+        String selection = DatabaseInfo.FRIENDS_LASTNAME_COL + " LIKE ?";
+        String coloumns[] = {DatabaseInfo.FRIENDS_ID_COL};
         String args[] = {friend};
 
-        db.delete(DatabaseInfo.TABLE_FRIENDS, selection, args);
+        db.delete(DatabaseInfo.FRIENDS_TABLE, selection, args);
         if (debugMode) {
             String msg = friend + " is deleted from table friends.";
             Log.d("DATABASE", msg);
@@ -106,7 +125,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     //Method to reset complete friends table.
     public void resetFriends(DatabaseOperations dop) {
         SQLiteDatabase db = dop.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.TABLE_FRIENDS);
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.FRIENDS_TABLE);
         db.execSQL(DatabaseInfo.CREATE_FRIENDS);
     }
 

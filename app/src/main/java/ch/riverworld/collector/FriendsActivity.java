@@ -83,8 +83,8 @@ public class FriendsActivity extends AppCompatActivity {
 
         if (anz > 0) {
             crs.moveToFirst();
-            indexFirstName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_FIRSTNAME);
-            indexLastName = crs.getColumnIndex(DatabaseInfo.COL_FRIEND_LASTNAME);
+            indexFirstName = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
+            indexLastName = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
 
             do {
                 friend = crs.getString(indexFirstName) + " " + crs.getString(indexLastName);
