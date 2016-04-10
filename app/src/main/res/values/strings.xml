@@ -70,9 +70,14 @@
     <string name="btn_rental">Lent Items</string>
     <string name="btn_info">Information</string>
 
+    <!--- activity_table -->
+    <string name="btn_add_item">Add</string>
+    <string name="btn_remove_item">Remove</string>
+
     <!--- activity_setting -->
     <string name="btn_database">Database</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_table">TableActivity</string>
 </resources>
 

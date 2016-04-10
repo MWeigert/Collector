@@ -92,6 +92,18 @@ public class DatabaseActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
                 break;
+            case R.id.btn_language:
+                //Button language pressed by user.
+                if (debugMode) {
+                    String msg = "Entering language administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent languageIntent = new Intent(this, TableActivity.class);
+                languageIntent.putExtra("debugMode", debugMode);
+                languageIntent.putExtra("tableName", "LANGUAGE");
+                startActivity(languageIntent);
+                break;
             case R.id.btn_reset_language:
                 //Button reset language pressed by user.
                 AlertDialog.Builder langBuilder = new AlertDialog.Builder(DatabaseActivity.this);

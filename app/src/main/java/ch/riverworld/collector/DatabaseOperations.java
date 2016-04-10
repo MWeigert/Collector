@@ -137,11 +137,11 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    // Method to return all entries in friends table. Returns a Cursor with all friends.
+    // Method to return all entries in language table. Returns a Cursor with all languages.
     public Cursor getLanguages(DatabaseOperations dop) {
 
         if (debugMode) {
-            Log.d("DATABASE", "Starting --> getFriends.");
+            Log.d("DATABASE", "Starting --> getLanguages.");
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
@@ -151,7 +151,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return cur;
     }
 
-    //Method to reset complete friends table.
+    //Method to reset complete languages table.
     public void resetLanguage(DatabaseOperations dop) {
         SQLiteDatabase db = dop.getWritableDatabase();
 

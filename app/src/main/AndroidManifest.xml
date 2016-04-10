@@ -26,6 +26,8 @@
         <activity android:name=".LanguageDbActivity"/>
         <activity android:name=".BarcodeActivity">
         </activity>
+        <activity android:name=".TableActivity">
+        </activity>
     </application>
 
 </manifest>
