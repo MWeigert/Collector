@@ -7,12 +7,18 @@
     <string name="btn_add">Add</string>
 
     <!--- activity_database -->
+    <string name="txt_manage_title">Manage Data</string>
     <string name="btn_friends">Friends</string>
     <string name="btn_language">Language</string>
+    <string name="btn_mng_genre">Genre</string>
+    <string name="btn_mng_system">System</string>
+    <string name="btn_mng_parental">Parental</string>
+    <string name="txt_reset_title">Reset Tables</string>
     <string name="btn_reset_friends">Reset table friends</string>
     <string name="btn_reset_language">Reset table language</string>
-    <string name="txt_manage_title">Manage Data</string>
-    <string name="txt_reset_title">Reset Tables</string>
+    <string name="btn_reset_genre">Reset table Genre</string>
+    <string name="btn_reset_system">Reset table System</string>
+    <string name="btn_reset_parental">Reset table Parental</string>
 
     <!--- activity_delete -->
     <string name="txt_choosed">Do you want remove</string>
