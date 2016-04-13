@@ -30,6 +30,8 @@ public class TableActivity extends AppCompatActivity {
             table = extras.getString("tableName");
         }
 
+        LIST = (ListView) findViewById(R.id.lst_table);
+
         switch (table.toUpperCase()) {
             case "LANGUAGE":
                 if(debugMode) {
@@ -66,6 +68,10 @@ public class TableActivity extends AppCompatActivity {
                             Log.d("DATABASE", msg);
                         }
                         languages.add(language);
+                        if (debugMode) {
+                            String msg = "Size of languages = " + languages.size();
+                            Log.d("CODE", msg);
+                        }
                     } while (crs.moveToNext());
 
                     if (debugMode) {
