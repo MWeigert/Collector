@@ -137,6 +137,20 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // ********************************************************************************************/
 
+    // Method to add a new entry in language table
+    public void addLanguage(DatabaseOperations dop, String language) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.LANGUAGE_LANGUAGE_COL, language);
+
+        if (debugMode) {
+            db.insert(DatabaseInfo.LANGUAGE_TABLE, null, values);
+            Log.d("DATABASE", "Table language --> added one line.");
+        }
+    }
+
     // Method to return all entries in language table. Returns a Cursor with all languages.
     public Cursor getLanguages(DatabaseOperations dop) {
 
@@ -149,6 +163,21 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor cur = db.query(DatabaseInfo.LANGUAGE_TABLE, languages, null, null, null, null, null);
 
         return cur;
+    }
+
+    //Method to delete one entry in language table. Returns boolean with information regarding success of delete.
+    public boolean deleteLanguage(DatabaseOperations dop, String language) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.LANGUAGE_LANGUAGE_COL + " LIKE ?";
+        String args[] = {language};
+
+        db.delete(DatabaseInfo.LANGUAGE_TABLE, selection, args);
+        if (debugMode) {
+            String msg = language + " is deleted from table friends.";
+            Log.d("DATABASE", msg);
+            return true;
+        } else return false;
     }
 
     //Method to reset complete languages table.

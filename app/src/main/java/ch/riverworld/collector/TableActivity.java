@@ -1,6 +1,8 @@
 package ch.riverworld.collector;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ public class TableActivity extends AppCompatActivity {
     private boolean debugMode = false;
     private String table;
     private ListView LIST;
+    private EditText INPUT;
     private DatabaseOperations db;
     private Object selectedItem;
 
@@ -46,6 +50,8 @@ public class TableActivity extends AppCompatActivity {
                 }
             }
         });
+
+        INPUT = (EditText) findViewById(R.id.txt_item);
 
         // Fill list item
         switch (table.toUpperCase()) {
@@ -119,6 +125,22 @@ public class TableActivity extends AppCompatActivity {
                             Log.d("USER", msg);
                             Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
                         }
+
+                        //Pressed button to add new friend to the database.
+                        String item = INPUT.getText().toString();
+                        if (item.length()<=0) {
+                            String msg = "Please enter a language.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        } else {
+                            db.addLanguage(db, item);
+
+                            if (debugMode) {
+                                String msg = "Added: " + item;
+                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        finish();
+
                         break;
                 }
                 break;
@@ -130,6 +152,53 @@ public class TableActivity extends AppCompatActivity {
                             Log.d("USER", msg);
                             Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
                         }
+
+                        //Pressed button to delete language from database.
+
+                        AlertDialog.Builder langBuilder = new AlertDialog.Builder(TableActivity.this);
+                        String msg = "Do you really want to delete " + selectedItem.toString();
+                        langBuilder.setMessage(msg);
+
+
+                        langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //dialog.cancel();
+                                if (debugMode) {
+                                    String msg = "User choosed yes.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Log.d("USERACTION", msg);
+                                }
+                                String language = selectedItem.toString();
+                                boolean sucess = db.deleteLanguage(db, language);
+                                if (sucess) {
+                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                } else {
+                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                }
+                                finish();
+                            }
+                        });
+
+                        langBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //dialog.cancel();
+                                if (debugMode) {
+                                    String msg = "User choosed no.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Log.d("USERACTION", msg);
+                                }
+                                String msg = "FALSE";
+                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                        AlertDialog langAlert = langBuilder.create();
+                        langAlert.show();
+
                         break;
                 }
                 break;
