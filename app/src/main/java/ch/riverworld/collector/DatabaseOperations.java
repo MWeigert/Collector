@@ -133,6 +133,78 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
     // *                                          THE                                             *
+    // *                                      GENRE TABLE                                         *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to add a new entry in language table
+    public void addGenre(DatabaseOperations dop, String genre) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.GENRES_GENRE_COL, genre);
+
+        if (debugMode) {
+            db.insert(DatabaseInfo.GENRES_TABLE, null, values);
+            Log.d("DATABASE", "Table genre --> added one line.");
+        }
+    }
+
+    // Method to return all entries in language table. Returns a Cursor with all languages.
+    public Cursor getGenres(DatabaseOperations dop) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getGenres.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] genres = {DatabaseInfo.GENRES_GENRE_COL};
+        Cursor cur = db.query(DatabaseInfo.GENRES_TABLE, genres, null, null, null, null, null);
+
+        return cur;
+    }
+
+    //Method to delete one entry in language table. Returns boolean with information regarding success of delete.
+    public boolean deleteGenre(DatabaseOperations dop, String genre) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.GENRES_GENRE_COL + " LIKE ?";
+        String args[] = {genre};
+
+        db.delete(DatabaseInfo.GENRES_TABLE, selection, args);
+        if (debugMode) {
+            String msg = genre + " is deleted from table genres.";
+            Log.d("DATABASE", msg);
+            return true;
+        } else return false;
+    }
+
+    //Method to reset complete languages table.
+    public void resetGenres(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.GENRES_TABLE);
+        db.execSQL(DatabaseInfo.CREATE_GENRES);
+
+        String[] genres = DatabaseBase.genreData;
+        ContentValues values = new ContentValues();
+
+        for (String genre : genres) {
+            values.put(DatabaseInfo.GENRES_GENRE_COL, genre);
+            db.insert(DatabaseInfo.GENRES_TABLE, null, values);
+        }
+
+        if (debugMode) {
+            String msg = "Table genres sucessfull reseted.";
+            Log.d("DATABASE", msg);
+        }
+    }
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
     // *                                    LANGUAGE TABLE                                        *
     // *                                                                                          *
     // ********************************************************************************************/
@@ -174,7 +246,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         db.delete(DatabaseInfo.LANGUAGE_TABLE, selection, args);
         if (debugMode) {
-            String msg = language + " is deleted from table friends.";
+            String msg = language + " is deleted from table languages.";
             Log.d("DATABASE", msg);
             return true;
         } else return false;
@@ -197,6 +269,78 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         if (debugMode) {
             String msg = "Table languages sucessfull reseted.";
+            Log.d("DATABASE", msg);
+        }
+    }
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
+    // *                                      SYSTEM TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to add a new entry in language table
+    public void addSystem(DatabaseOperations dop, String system) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.SYSTEMS_SYSTEM_COL,system);
+
+        if (debugMode) {
+            db.insert(DatabaseInfo.SYSTEMS_TABLE, null, values);
+            Log.d("DATABASE", "Table systems --> added one line.");
+        }
+    }
+
+    // Method to return all entries in language table. Returns a Cursor with all languages.
+    public Cursor getSystems(DatabaseOperations dop) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getSystems.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] systems = {DatabaseInfo.SYSTEMS_SYSTEM_COL};
+        Cursor cur = db.query(DatabaseInfo.SYSTEMS_TABLE, systems, null, null, null, null, null);
+
+        return cur;
+    }
+
+    //Method to delete one entry in language table. Returns boolean with information regarding success of delete.
+    public boolean deleteSystem(DatabaseOperations dop, String system) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.SYSTEMS_SYSTEM_COL + " LIKE ?";
+        String args[] = {system};
+
+        db.delete(DatabaseInfo.SYSTEMS_TABLE, selection, args);
+        if (debugMode) {
+            String msg = system + " is deleted from table systems.";
+            Log.d("DATABASE", msg);
+            return true;
+        } else return false;
+    }
+
+    //Method to reset complete languages table.
+    public void resetSystems(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.SYSTEMS_TABLE);
+        db.execSQL(DatabaseInfo.CREATE_SYSTEMS);
+
+        String[] systems = DatabaseBase.SystemData;
+        ContentValues values = new ContentValues();
+
+        for (String system : systems) {
+            values.put(DatabaseInfo.SYSTEMS_SYSTEM_COL,system);
+            db.insert(DatabaseInfo.SYSTEMS_TABLE, null, values);
+        }
+
+        if (debugMode) {
+            String msg = "Table systems sucessfull reseted.";
             Log.d("DATABASE", msg);
         }
     }

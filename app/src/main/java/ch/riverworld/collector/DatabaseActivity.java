@@ -92,6 +92,55 @@ public class DatabaseActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
                 break;
+            case R.id.btn_mng_genre:
+                //Button genre pressed by user.
+                if (debugMode) {
+                    String msg = "Entering genre administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent genreIntent = new Intent(this, TableActivity.class);
+                genreIntent.putExtra("debugMode", debugMode);
+                genreIntent.putExtra("tableName", "GENRE");
+                startActivity(genreIntent);
+                break;
+            case R.id.btn_reset_genre:
+                //Button reset genre pressed by user.
+                AlertDialog.Builder genreBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                genreBuilder.setMessage("Do you really want to reset the complete genre table?");
+
+                genreBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetGenres(db);
+                    }
+                });
+
+                genreBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog genreAlert = genreBuilder.create();
+                genreAlert.show();
+
+                break;
             case R.id.btn_language:
                 //Button language pressed by user.
                 if (debugMode) {
@@ -108,7 +157,6 @@ public class DatabaseActivity extends AppCompatActivity {
                 //Button reset language pressed by user.
                 AlertDialog.Builder langBuilder = new AlertDialog.Builder(DatabaseActivity.this);
                 langBuilder.setMessage("Do you really want to reset the complete language table?");
-                String msg;
 
                 langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -140,6 +188,54 @@ public class DatabaseActivity extends AppCompatActivity {
 
                 AlertDialog langAlert = langBuilder.create();
                 langAlert.show();
+                break;
+            case R.id.btn_mng_system:
+                //Button system pressed by user.
+                if (debugMode) {
+                    String msg = "Entering system administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent sysIntent = new Intent(this, TableActivity.class);
+                sysIntent.putExtra("debugMode", debugMode);
+                sysIntent.putExtra("tableName", "SYSTEM");
+                startActivity(sysIntent);
+                break;
+            case R.id.btn_reset_system:
+                //Button reset system pressed by user.
+                AlertDialog.Builder sysBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                sysBuilder.setMessage("Do you really want to reset the complete systems table?");
+
+                sysBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetSystems(db);
+                    }
+                });
+
+                sysBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog sysAlert = sysBuilder.create();
+                sysAlert.show();
                 break;
         }
     }

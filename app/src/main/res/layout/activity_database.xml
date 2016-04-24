@@ -79,6 +79,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_mng_genre"
         android:id="@+id/btn_mng_genre"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_language"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
@@ -88,6 +89,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_mng_system"
         android:id="@+id/btn_mng_system"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_mng_genre"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
@@ -97,6 +99,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_mng_parental"
         android:id="@+id/btn_mng_parental"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_mng_system"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
@@ -106,6 +109,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_reset_genre"
         android:id="@+id/btn_reset_genre"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_reset_language"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
@@ -115,6 +119,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_reset_parental"
         android:id="@+id/btn_reset_parental"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_reset_genre"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"/>
@@ -124,6 +129,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_reset_system"
         android:id="@+id/btn_reset_system"
+        android:onClick="buttonOnClick"
         android:layout_below="@+id/btn_reset_parental"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
