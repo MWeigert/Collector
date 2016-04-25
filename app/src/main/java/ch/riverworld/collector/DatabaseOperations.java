@@ -277,6 +277,78 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
     // *                                          THE                                             *
+    // *                                    PARENTAL TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to add a new entry in parental table
+    public void addParental(DatabaseOperations dop, String parental) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.PARENTAL_PARENTAL_COL, parental);
+
+        if (debugMode) {
+            db.insert(DatabaseInfo.PARENTAL_TABLE, null, values);
+            Log.d("DATABASE", "Table parental --> added one line.");
+        }
+    }
+
+    // Method to return all entries in parental table. Returns a Cursor with all parental items.
+    public Cursor getParental(DatabaseOperations dop) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getParental.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] parental = {DatabaseInfo.PARENTAL_PARENTAL_COL};
+        Cursor cur = db.query(DatabaseInfo.PARENTAL_TABLE, parental, null, null, null, null, null);
+
+        return cur;
+    }
+
+    //Method to delete one entry in parental table. Returns boolean with information regarding success of delete.
+    public boolean deleteParental(DatabaseOperations dop, String parental) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.PARENTAL_PARENTAL_COL + " LIKE ?";
+        String args[] = {parental};
+
+        db.delete(DatabaseInfo.PARENTAL_TABLE, selection, args);
+        if (debugMode) {
+            String msg = parental + " is deleted from table parental.";
+            Log.d("DATABASE", msg);
+            return true;
+        } else return false;
+    }
+
+    //Method to reset complete parental table.
+    public void resetParental(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.PARENTAL_TABLE);
+        db.execSQL(DatabaseInfo.CREATE_PARENTAL);
+
+        String[] parentals = DatabaseBase.parentalData;
+        ContentValues values = new ContentValues();
+
+        for (String parental : parentals) {
+            values.put(DatabaseInfo.PARENTAL_PARENTAL_COL, parental);
+            db.insert(DatabaseInfo.PARENTAL_TABLE, null, values);
+        }
+
+        if (debugMode) {
+            String msg = "Table parental sucessfull reseted.";
+            Log.d("DATABASE", msg);
+        }
+    }
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
     // *                                      SYSTEM TABLE                                        *
     // *                                                                                          *
     // ********************************************************************************************/

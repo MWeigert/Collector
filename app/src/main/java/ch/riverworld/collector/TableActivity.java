@@ -108,6 +108,53 @@ public class TableActivity extends AppCompatActivity {
                     LIST.setAdapter(adapter);
                 }
                 break;
+            case "PARENTAL":
+                if (debugMode) {
+                    String msg = "Table: Parental";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                // Fill parental items from database to list item
+                String parental;
+                Integer indexParental;
+
+                final ArrayList<String> parentals = new ArrayList<String>();
+
+                Cursor parentalCrs = db.getParental(db);
+
+                anz = parentalCrs.getCount();
+                if (debugMode) {
+                    String msg = "DATABASE: "+ anz.toString()+" parental informations in table.";
+                    Log.d("DATABASE", msg);
+                    Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+                }
+                if (anz > 0) {
+                    parentalCrs.moveToFirst();
+                    indexParental = parentalCrs.getColumnIndex(DatabaseInfo.PARENTAL_PARENTAL_COL);
+
+                    do {
+                        parental = parentalCrs.getString(indexParental);
+                        if (debugMode) {
+                            String msg = "DATABASE: Get " + parental;
+                            Log.d("DATABASE", msg);
+                        }
+                        parentals.add(parental);
+                        if (debugMode) {
+                            String msg = "Size of parental = " + parentals.size();
+                            Log.d("CODE", msg);
+                        }
+                    } while (parentalCrs.moveToNext());
+
+                    if (debugMode) {
+                        String msg = "Putting data in Adapter";
+                        Log.d("ACTIVITY", msg);
+                    }
+                    final ArrayAdapter adapter = new ArrayAdapter(this,
+                            android.R.layout.simple_list_item_1, parentals);
+
+                    LIST.setAdapter(adapter);
+                }
+                break;
             case "GENRE":
                 if (debugMode) {
                     String msg = "Table: Genre";
@@ -267,6 +314,28 @@ public class TableActivity extends AppCompatActivity {
                         finish();
 
                         break;
+                    case "PARENTAL":
+                        if (debugMode) {
+                            msg = "User choosed add item to parental table.";
+                            Log.d("USER", msg);
+                            Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+                        }
+
+                        //Pressed button to add new parental information to the database.
+                        item = INPUT.getText().toString();
+                        if (item.length()<=0) {
+                            msg = "Please enter a parental information.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        } else {
+                            db.addParental(db, item);
+
+                            if (debugMode) {
+                                msg = "Added: " + item;
+                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        finish();
+                        break;
                     case "SYSTEM":
                         if (debugMode) {
                             msg = "User choosed add item to systems table.";
@@ -398,6 +467,58 @@ public class TableActivity extends AppCompatActivity {
                         AlertDialog langAlert = langBuilder.create();
                         langAlert.show();
 
+                        break;
+                    case "PARENTAL":
+                        if (debugMode) {
+                            msg = "User choosed remove item from parental table.";
+                            Log.d("USER", msg);
+                            Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+                        }
+
+                        //Pressed button to delete language from database.
+                        AlertDialog.Builder parentalBuilder = new AlertDialog.Builder(TableActivity.this);
+                        msg = "Do you really want to delete " + selectedItem.toString();
+                        parentalBuilder.setMessage(msg);
+
+
+                        parentalBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //dialog.cancel();
+                                if (debugMode) {
+                                    String msg = "User choosed yes.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Log.d("USERACTION", msg);
+                                }
+                                String parental = selectedItem.toString();
+                                boolean sucess = db.deleteParental(db, parental);
+                                if (sucess) {
+                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                } else {
+                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                }
+                                finish();
+                            }
+                        });
+
+                        parentalBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //dialog.cancel();
+                                if (debugMode) {
+                                    String msg = "User choosed no.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Log.d("USERACTION", msg);
+                                }
+                                String msg = "FALSE";
+                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                        AlertDialog parentalAlert = parentalBuilder.create();
+                        parentalAlert.show();
                         break;
                     case "SYSTEM":
                         if (debugMode) {

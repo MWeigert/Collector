@@ -189,6 +189,54 @@ public class DatabaseActivity extends AppCompatActivity {
                 AlertDialog langAlert = langBuilder.create();
                 langAlert.show();
                 break;
+            case R.id.btn_mng_parental:
+                //Button parental pressed by user.
+                if (debugMode) {
+                    String msg = "Entering parental administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent parentalIntent = new Intent(this, TableActivity.class);
+                parentalIntent.putExtra("debugMode", debugMode);
+                parentalIntent.putExtra("tableName", "PARENTAL");
+                startActivity(parentalIntent);
+                break;
+            case R.id.btn_reset_parental:
+                //Button reset parental pressed by user.
+                AlertDialog.Builder parentalBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                parentalBuilder.setMessage("Do you really want to reset the complete parental table?");
+
+                parentalBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetParental(db);
+                    }
+                });
+
+                parentalBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog parentalAlert = parentalBuilder.create();
+                parentalAlert.show();
+                break;
             case R.id.btn_mng_system:
                 //Button system pressed by user.
                 if (debugMode) {
