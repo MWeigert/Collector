@@ -33,6 +33,9 @@ public class ItemActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseBase spInfo = new DatabaseBase();
+        DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
+        Cursor crs;
+        int index;
 
         //Getting information regarding debug mode
         Bundle extras = getIntent().getExtras();
@@ -41,21 +44,28 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         //Filling genre spinner with information.
-        //HAVE TO CHANCE THIS TO SQLITE TABLE (S.H. LANGUAGE SPINNER)
         Spinner spGenre = (Spinner) findViewById(R.id.spn_genre);
+        crs = db.getGenres(db);
+        ArrayList<String> genres = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
+
+        do {
+            genres.add(crs.getString(index));
+        } while (crs.moveToNext());
+
         ArrayAdapter<String> adapterGenre = new ArrayAdapter<String>(this, android.R.layout
-                .simple_spinner_dropdown_item, spInfo.genreData);
+                .simple_spinner_dropdown_item, genres);
         spGenre.setAdapter(adapterGenre);
 
         //Filling language spinner with information
         Spinner spLanguage = (Spinner) findViewById(R.id.spn_language);
-
-        DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        Cursor crs = db.getLanguages(db);
+        crs = db.getLanguages(db);
         ArrayList<String> language = new ArrayList<String>();
 
         crs.moveToFirst();
-        int index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
+        index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
 
         do {
             language.add(crs.getString(index));
@@ -64,6 +74,22 @@ public class ItemActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterLanguage = new ArrayAdapter<String>(this, android.R.layout
                 .simple_spinner_dropdown_item, language);
         spLanguage.setAdapter(adapterLanguage);
+
+        //Filling system spinner with information
+        Spinner spSystem = (Spinner) findViewById(R.id.spn_system);
+        crs = db.getSystems(db);
+        ArrayList<String> systems = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
+
+        do {
+            systems.add(crs.getString(index));
+        } while (crs.moveToNext());
+
+        ArrayAdapter<String> adapterSystems = new ArrayAdapter<String>(this, android.R.layout
+                .simple_spinner_dropdown_item, systems);
+        spSystem.setAdapter(adapterSystems);
 
         //Filling year spinner with information
         Spinner spYear = (Spinner) findViewById(R.id.spn_year);
