@@ -43,6 +43,38 @@ public class ItemActivity extends AppCompatActivity {
             debugMode = extras.getBoolean("debugMode");
         }
 
+        // Filling author spinner with information
+        Spinner spAuthor = (Spinner) findViewById(R.id.spn_author);
+        crs = db.getAuthors(db);
+        ArrayList<String> authors = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
+
+        do {
+            authors.add(crs.getString(index));
+        } while (crs.moveToNext());
+
+        ArrayAdapter<String> adapterAuthor = new ArrayAdapter<String>(this, android.R.layout
+                .simple_spinner_dropdown_item, authors);
+        spAuthor.setAdapter(adapterAuthor);
+
+        // Filling director spinner with information
+        Spinner spDirector = (Spinner) findViewById(R.id.spn_director);
+        crs = db.getDirectors(db);
+        ArrayList<String> directors = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
+
+        do {
+            directors.add(crs.getString(index));
+        } while (crs.moveToNext());
+
+        ArrayAdapter<String> adapterDirector = new ArrayAdapter<String>(this, android.R.layout
+                .simple_spinner_dropdown_item, directors);
+        spDirector.setAdapter(adapterDirector);
+
         //Filling genre spinner with information.
         Spinner spGenre = (Spinner) findViewById(R.id.spn_genre);
         crs = db.getGenres(db);
@@ -74,6 +106,38 @@ public class ItemActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterLanguage = new ArrayAdapter<String>(this, android.R.layout
                 .simple_spinner_dropdown_item, language);
         spLanguage.setAdapter(adapterLanguage);
+
+        // Filling publisher spinner with information
+        Spinner spPublisher = (Spinner) findViewById(R.id.spn_publisher);
+        crs = db.getPublishers(db);
+        ArrayList<String> publishers = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
+
+        do {
+            publishers.add(crs.getString(index));
+        } while (crs.moveToNext());
+
+        ArrayAdapter<String> adapterPublisher = new ArrayAdapter<String>(this, android.R.layout
+                .simple_spinner_dropdown_item, publishers);
+        spPublisher.setAdapter(adapterPublisher);
+
+        //Filling studio spinner with information
+        Spinner spStudio = (Spinner) findViewById(R.id.spn_studio);
+        crs = db.getStudios(db);
+        ArrayList<String> studios = new ArrayList<String>();
+
+        crs.moveToFirst();
+        index = crs.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
+
+        do {
+            studios.add(crs.getString(index));
+        } while (crs.moveToNext());
+
+        ArrayAdapter<String> adapterStudios = new ArrayAdapter<String>(this, android.R.layout
+                .simple_spinner_dropdown_item, studios);
+        spStudio.setAdapter(adapterStudios);
 
         //Filling system spinner with information
         Spinner spSystem = (Spinner) findViewById(R.id.spn_system);

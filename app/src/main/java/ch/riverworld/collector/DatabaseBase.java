@@ -20,8 +20,8 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] authorData = new String[]{"Blyton, Enid", "Farmer, Philip José", "Lindgren, Astrid",
-            "Pratchett, Terry", "Wallace, Edgar"};
+    public static final String[] authorData = new String[]{"AUTHOR", "Blyton, Enid", "Farmer, Philip José",
+            "Lindgren, Astrid", "Pratchett, Terry", "Wallace, Edgar"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -30,7 +30,8 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] directorData = new String[]{"Emmerich, Roland", "Jackson, Peter", "Scott, Ridley"};
+    public static final String[] directorData = new String[]{"DIRECTOR", "Emmerich, Roland", "Jackson, Peter",
+            "Scott," + " Ridley"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -39,9 +40,9 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] genreData = new String[]{"Action", "Adventure", "Animated", "Arcade", "Comedies",
-            "Drama", "Documentary", "Fantasy", "Family", "Film Noir", "First Person Shooter", "Horror", "Romantic",
-            "Science Fiction", "Simulation", "Strategy", "Thriller", "Western"};
+    public static final String[] genreData = new String[]{"GENRE", "Action", "Adventure", "Animated", "Arcade",
+            "Comedies", "Drama", "Documentary", "Fantasy", "Family", "Film Noir", "First Person Shooter", "Horror",
+            "Romantic", "Science Fiction", "Simulation", "Strategy", "Thriller", "Western"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -50,8 +51,8 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] languageData = new String[]{"Arabic", "English", "French", "German", "Hindi",
-            "Italian", "Japanese", "Mandarin", "Portuguese", "Russian", "Spanish"};
+    public static final String[] languageData = new String[]{"LANGUAGE", "Arabic", "English", "French", "German",
+            "Hindi", "Italian", "Japanese", "Mandarin", "Portuguese", "Russian", "Spanish"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -69,7 +70,8 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] publisherData = new String[]{"Addison-Wesley", "Forth Estate", "Hanser", "O'Reilley"};
+    public static final String[] publisherData = new String[]{"PUBLISHER", "Addison-Wesley", "Forth Estate", "Hanser",
+            "O'Reilley"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -78,7 +80,7 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] studioData = new String[]{"EA Games", "Nintendo", "Origin", "Ubisoft",
+    public static final String[] studioData = new String[]{"STUDIO", "EA Games", "Nintendo", "Origin", "Ubisoft",
             "Rare", "Sierra", "Sony"};
 
     // ********************************************************************************************
@@ -88,8 +90,9 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] SystemData = new String[]{"Atari 2600", "Dreamcast", "Gameboy", "Gameboy Color",
-            "Gameboy Advance", "GameCube", "Mega Drive", "N64", "Neo Geo", "NES", "PS1", "PS2", "PS3", "PS4", "SNES",
+    public static final String[] SystemData = new String[]{"SYSTEM", "Atari 2600", "Dreamcast", "Gameboy", "Gameboy " +
+            "Color", "Gameboy Advance", "GameCube", "Mega Drive", "N64", "Neo Geo", "NES", "PS1", "PS2", "PS3",
+            "PS4", "SNES",
             "WII", "WII-U",};
 
     // ********************************************************************************************
