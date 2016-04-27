@@ -21,11 +21,48 @@ public class DatabaseInfo {
     // *                                                                                          *
     // *                           ALL DATABASE INFORMATION REGARDING                             *
     // *                                          THE                                             *
+    // *                                      AUTHOR TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Table name and column information for authors table
+    public static final String AUTHORS_TABLE = "authors";
+    public static final String AUTHORS_ID_COL = "AUTHOR_ID";            //Integer
+    public static final String AUTHORS_AUTHOR_COL = "AUTHOR";           //Text
+
+    // SQL commando to create table authors in database
+    public static final String CREATE_AUTHORS = "create table " + DatabaseInfo.AUTHORS_TABLE +
+            " (" + DatabaseInfo.AUTHORS_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.AUTHORS_AUTHOR_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                    DIRECTORS TABLE                                       *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Table name and column information for directors table
+    public static final String DIRECTORS_TABLE = "directors";
+    public static final String DIRECTORS_ID_COL = "DIRECTORS_ID_COL";    //Integer
+    public static final String DIRECTORS_DIRECTOR_COL = "DIRECTOR";      //Text
+
+    // SQL commando to create table directors in database
+    public static final String CREATE_DIRECTORS = "create table " + DatabaseInfo.DIRECTORS_TABLE + " (" + DatabaseInfo
+            .DIRECTORS_ID_COL + " integer primary key autoincrement, " + DatabaseInfo.DIRECTORS_DIRECTOR_COL + " text" +
+            " not " +
+            "null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
     // *                                     FRIENDS TABLE                                        *
     // *                                                                                          *
     // ********************************************************************************************/
 
-    // Table name and column informations for friends table
+    // Table name and column information for friends table
     public static final String FRIENDS_TABLE = "friends";
     public static final String FRIENDS_ID_COL = "FRIEND_ID";            //Integer
     public static final String FRIENDS_FIRSTNAME_COL = "FIRST_NAME";    //Text
@@ -155,6 +192,42 @@ public class DatabaseInfo {
     public static final String CREATE_PARENTAL = "create table " + DatabaseInfo.PARENTAL_TABLE +
             " (" + DatabaseInfo.PARENTAL_ID_COL + " integer primary key autoincrement, " +
             DatabaseInfo.PARENTAL_PARENTAL_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                    PUBLISHERS TABLE                                      *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Table name and column information for publishers table
+    public static final String PUBLISHERS_TABLE = "publishers";
+    public static final String PUBLISHERS_ID_COL = "PUBLISHER_ID";          // Integer
+    public static final String PUBLISHERS_PUBLISHER_COL = "PUBLISHER";      // Text
+
+    // SQL commando to create table friends in database
+    public static final String CREATE_PUBLISHERS = "create table " + DatabaseInfo.PUBLISHERS_TABLE +
+            " (" + DatabaseInfo.PUBLISHERS_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.PUBLISHERS_PUBLISHER_COL + " text not null);";
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE INFORMATION REGARDING                             *
+    // *                                          THE                                             *
+    // *                                     STUDIOS TABLE                                        *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Table name and column information for studios table
+    public static final String STUDIOS_TABLE = "studios";
+    public static final String STUDIOS_ID_COL = "STUDIO_ID";                  // Integer
+    public static final String STUDIOS_STUDIO_COL = "STUDIO";                 // Text
+
+    // SQL commando to create table studios in database
+    public static final String CREATE_STUDIOS = "create table " + DatabaseInfo.STUDIOS_TABLE +
+            " (" + DatabaseInfo.STUDIOS_ID_COL + " integer primary key autoincrement, " +
+            DatabaseInfo.STUDIOS_STUDIO_COL + " text not null);";
 
     // ********************************************************************************************
     // *                                                                                          *

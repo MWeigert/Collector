@@ -39,6 +39,102 @@ public class DatabaseActivity extends AppCompatActivity {
     //Button listener for the database activity
     public void buttonOnClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_mng_author:
+                //Button author pressed by user.
+                if (debugMode) {
+                    String msg = "Entering author administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent authorIntent = new Intent(this, TableActivity.class);
+                authorIntent.putExtra("debugMode", debugMode);
+                authorIntent.putExtra("tableName", "AUTHOR");
+                startActivity(authorIntent);
+                break;
+            case R.id.btn_reset_author:
+                //Button reset author pressed by user.
+                AlertDialog.Builder authorBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                authorBuilder.setMessage("Do you really want to reset the complete author table?");
+
+                authorBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetAuthors(db);
+                    }
+                });
+
+                authorBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog authorAlert = authorBuilder.create();
+                authorAlert.show();
+                break;
+            case R.id.btn_mng_director:
+                //Button director pressed by user.
+                if (debugMode) {
+                    String msg = "Entering director administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent directorIntent = new Intent(this, TableActivity.class);
+                directorIntent.putExtra("debugMode", debugMode);
+                directorIntent.putExtra("tableName", "DIRECTOR");
+                startActivity(directorIntent);
+                break;
+            case R.id.btn_reset_director:
+                //Button reset director pressed by user.
+                AlertDialog.Builder directorBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                directorBuilder.setMessage("Do you really want to reset the complete director table?");
+
+                directorBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetDirectors(db);
+                    }
+                });
+
+                directorBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog directorAlert = directorBuilder.create();
+                directorAlert.show();
+                break;
             case R.id.btn_friends:
                 if (debugMode) {
                     String msg = "Entering friends administration.";
@@ -236,6 +332,102 @@ public class DatabaseActivity extends AppCompatActivity {
 
                 AlertDialog parentalAlert = parentalBuilder.create();
                 parentalAlert.show();
+                break;
+            case R.id.btn_mng_publisher:
+                //Button publisher pressed by user.
+                if (debugMode) {
+                    String msg = "Entering publisher administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent publisherIntent = new Intent(this, TableActivity.class);
+                publisherIntent.putExtra("debugMode", debugMode);
+                publisherIntent.putExtra("tableName", "PUBLISHER");
+                startActivity(publisherIntent);
+                break;
+            case R.id.btn_reset_publisher:
+                //Button reset publisher pressed by user.
+                AlertDialog.Builder publisherBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                publisherBuilder.setMessage("Do you really want to reset the complete publishers table?");
+
+                publisherBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetPublishers(db);
+                    }
+                });
+
+                publisherBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog publisherAlert = publisherBuilder.create();
+                publisherAlert.show();
+                break;
+            case R.id.btn_mng_studio:
+                //Button studio pressed by user.
+                if (debugMode) {
+                    String msg = "Entering studio administration.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", msg);
+                }
+                final Intent studioIntent = new Intent(this, TableActivity.class);
+                studioIntent.putExtra("debugMode", debugMode);
+                studioIntent.putExtra("tableName", "STUDIO");
+                startActivity(studioIntent);
+                break;
+            case R.id.btn_reset_studio:
+                //Button reset studio pressed by user.
+                AlertDialog.Builder studioBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                studioBuilder.setMessage("Do you really want to reset the complete studios table?");
+
+                studioBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed yes.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetStudios(db);
+                    }
+                });
+
+                studioBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            String msg = "User choosed no.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        String msg = "FALSE";
+                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog studioAlert = studioBuilder.create();
+                studioAlert.show();
                 break;
             case R.id.btn_mng_system:
                 //Button system pressed by user.

@@ -8,17 +8,25 @@
 
     <!--- activity_database -->
     <string name="txt_manage_title">Manage Data</string>
+    <string name="btn_mng_author">Author</string>
+    <string name="btn_mng_director">Director</string>
     <string name="btn_friends">Friends</string>
     <string name="btn_language">Language</string>
     <string name="btn_mng_genre">Genre</string>
     <string name="btn_mng_system">System</string>
     <string name="btn_mng_parental">Parental</string>
+    <string name="btn_mng_publisher">Publisher</string>
+    <string name="btn_mng_studio">Studio</string>
     <string name="txt_reset_title">Reset Tables</string>
     <string name="btn_reset_friends">Reset table friends</string>
     <string name="btn_reset_language">Reset table language</string>
     <string name="btn_reset_genre">Reset table Genre</string>
     <string name="btn_reset_system">Reset table System</string>
     <string name="btn_reset_parental">Reset table Parental</string>
+    <string name="btn_reset_publisher">Reset table Publisher</string>
+    <string name="btn_reset_author">Reset table Author</string>
+    <string name="btn_reset_studio">Reset table Studio</string>
+    <string name="btn_reset_director">Reset table Director</string>
 
     <!--- activity_delete -->
     <string name="txt_choosed">Do you want remove</string>
