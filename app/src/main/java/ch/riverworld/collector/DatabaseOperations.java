@@ -364,6 +364,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
     // *                                          THE                                             *
+    // *                                      ITEM TABLE                                          *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to add a new entry in item table
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
     // *                                    LANGUAGE TABLE                                        *
     // *                                                                                          *
     // ********************************************************************************************/

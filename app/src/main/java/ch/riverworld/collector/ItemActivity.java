@@ -18,7 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -26,10 +30,54 @@ public class ItemActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
 
+    private TextView txtEAN;
+    private TextView txtTitle;
+    private RadioButton rbBook;
+    private RadioButton rbMovie;
+    private RadioButton rbGame;
+    private Spinner spGenre;
+    private Spinner spLanguage;
+    private Spinner spYear;
+    private CheckBox cbLent;
+    private Spinner spPublisher;
+    private Spinner spAuthor;
+    private Spinner spSystem;
+    private CheckBox cbDVD;
+    private CheckBox cbBlueRay;
+    private Spinner spStudio;
+    private Spinner spDirector;
+    private CheckBox cbFSK0;
+    private CheckBox cbFSK6;
+    private CheckBox cbFSK12;
+    private CheckBox cbFSK16;
+    private CheckBox cbFSK18;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
+
+        txtEAN = (TextView) findViewById(R.id.txt_ean);
+        txtTitle = (TextView) findViewById(R.id.txt_title);
+        rbBook = (RadioButton) findViewById(R.id.rb_book);
+        rbMovie = (RadioButton) findViewById(R.id.rb_movie);
+        rbGame = (RadioButton) findViewById(R.id.rb_game);
+        spGenre = (Spinner) findViewById(R.id.spn_genre);
+        spLanguage = (Spinner) findViewById(R.id.spn_language);
+        spYear = (Spinner) findViewById(R.id.spn_year);
+        cbLent = (CheckBox) findViewById(R.id.cb_lend);
+        spPublisher = (Spinner) findViewById(R.id.spn_publisher);
+        spAuthor = (Spinner) findViewById(R.id.spn_author);
+        spSystem = (Spinner) findViewById(R.id.spn_system);
+        cbDVD = (CheckBox) findViewById(R.id.cb_dvd);
+        cbBlueRay = (CheckBox) findViewById(R.id.cb_blueray);
+        spStudio = (Spinner) findViewById(R.id.spn_studio);
+        spDirector = (Spinner) findViewById(R.id.spn_director);
+        cbFSK0 = (CheckBox) findViewById(R.id.cb_fsk0);
+        cbFSK6 = (CheckBox) findViewById(R.id.cb_fsk6);
+        cbFSK12 = (CheckBox) findViewById(R.id.cb_fsk12);
+        cbFSK16 = (CheckBox) findViewById(R.id.cb_fsk16);
+        cbFSK18 = (CheckBox) findViewById(R.id.cb_fsk18);
 
         Context ctx = this;
         DatabaseBase spInfo = new DatabaseBase();
@@ -44,7 +92,6 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         // Filling author spinner with information
-        Spinner spAuthor = (Spinner) findViewById(R.id.spn_author);
         crs = db.getAuthors(db);
         ArrayList<String> authors = new ArrayList<String>();
 
@@ -60,7 +107,6 @@ public class ItemActivity extends AppCompatActivity {
         spAuthor.setAdapter(adapterAuthor);
 
         // Filling director spinner with information
-        Spinner spDirector = (Spinner) findViewById(R.id.spn_director);
         crs = db.getDirectors(db);
         ArrayList<String> directors = new ArrayList<String>();
 
@@ -76,7 +122,6 @@ public class ItemActivity extends AppCompatActivity {
         spDirector.setAdapter(adapterDirector);
 
         //Filling genre spinner with information.
-        Spinner spGenre = (Spinner) findViewById(R.id.spn_genre);
         crs = db.getGenres(db);
         ArrayList<String> genres = new ArrayList<String>();
 
@@ -92,7 +137,6 @@ public class ItemActivity extends AppCompatActivity {
         spGenre.setAdapter(adapterGenre);
 
         //Filling language spinner with information
-        Spinner spLanguage = (Spinner) findViewById(R.id.spn_language);
         crs = db.getLanguages(db);
         ArrayList<String> language = new ArrayList<String>();
 
@@ -108,7 +152,6 @@ public class ItemActivity extends AppCompatActivity {
         spLanguage.setAdapter(adapterLanguage);
 
         // Filling publisher spinner with information
-        Spinner spPublisher = (Spinner) findViewById(R.id.spn_publisher);
         crs = db.getPublishers(db);
         ArrayList<String> publishers = new ArrayList<String>();
 
@@ -124,7 +167,6 @@ public class ItemActivity extends AppCompatActivity {
         spPublisher.setAdapter(adapterPublisher);
 
         //Filling studio spinner with information
-        Spinner spStudio = (Spinner) findViewById(R.id.spn_studio);
         crs = db.getStudios(db);
         ArrayList<String> studios = new ArrayList<String>();
 
@@ -140,7 +182,6 @@ public class ItemActivity extends AppCompatActivity {
         spStudio.setAdapter(adapterStudios);
 
         //Filling system spinner with information
-        Spinner spSystem = (Spinner) findViewById(R.id.spn_system);
         crs = db.getSystems(db);
         ArrayList<String> systems = new ArrayList<String>();
 
@@ -156,9 +197,8 @@ public class ItemActivity extends AppCompatActivity {
         spSystem.setAdapter(adapterSystems);
 
         //Filling year spinner with information
-        Spinner spYear = (Spinner) findViewById(R.id.spn_year);
-        ArrayAdapter<Integer>  adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
-                .simple_spinner_dropdown_item,spInfo.yearData);
+        ArrayAdapter<Integer> adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
+                .simple_spinner_dropdown_item, spInfo.yearData);
         spYear.setAdapter(adapterYear);
     }
 
@@ -167,6 +207,24 @@ public class ItemActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_add:
                 //Pressed button to add new item to the collection.
+                Item item = new Item();
+
+                item.setEAN(Long.getLong(txtEAN.getText().toString()));
+                item.setTitle(txtTitle.getText().toString());
+                if (rbBook.isChecked()) {
+                    item.setBook(true);
+                } else {
+                    item.setBook(false);
+                }
+                if (rbMovie.isChecked()) {
+                    item.setMovie(true);
+                } else {
+                    item.setMovie(false);
+                }
+                if (rbGame.isChecked()){
+                    item.setGame(true);
+                } else {
+                    item.setGame(false);}
                 break;
             case R.id.btn_search:
                 //Pressed button do show total or filtered collection.
