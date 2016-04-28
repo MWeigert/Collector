@@ -146,7 +146,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         for (String author : authors) {
-            values.put(DatabaseInfo.AUTHORS_AUTHOR_COL,author);
+            values.put(DatabaseInfo.AUTHORS_AUTHOR_COL, author);
             db.insert(DatabaseInfo.AUTHORS_TABLE, null, values);
         }
 
@@ -218,7 +218,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         for (String director : directors) {
-            values.put(DatabaseInfo.DIRECTORS_DIRECTOR_COL,director);
+            values.put(DatabaseInfo.DIRECTORS_DIRECTOR_COL, director);
             db.insert(DatabaseInfo.DIRECTORS_TABLE, null, values);
         }
 
@@ -319,6 +319,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         SQLiteDatabase db = dop.getReadableDatabase();
         String[] genres = {DatabaseInfo.GENRES_GENRE_COL};
+        //String[] genres={DatabaseInfo.GENRES_ID_COL};
         Cursor cur = db.query(DatabaseInfo.GENRES_TABLE, genres, null, null, null, null, null);
 
         return cur;
@@ -358,6 +359,21 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             String msg = "Table genres sucessfull reseted.";
             Log.d("DATABASE", msg);
         }
+    }
+
+    // Method to return ID of given genre.
+    // SELECT CustomerID FROM Customers WHERE City LIKE 'Sevilla';
+    //c = db.rawQuery("select name from person where id=" + "\""+id+"\"", null);
+
+    public Cursor getGenreID(DatabaseOperations dop, String genre) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.GENRES_ID_COL, DatabaseInfo.GENRES_GENRE_COL};
+        String[] select = new String[]{DatabaseInfo.GENRES_GENRE_COL + " like ?"};
+
+        //Cursor crs = db.rawQuery(select, new String[] { genre });
+        Cursor crs = db.query(DatabaseInfo.GENRES_TABLE, columns, DatabaseInfo.GENRES_GENRE_COL +
+                " like ?", new String[]{genre + "%"}, null, null, null);
+        return crs;
     }
 
     // ********************************************************************************************
@@ -648,7 +664,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         for (String studio : studios) {
-            values.put(DatabaseInfo.STUDIOS_STUDIO_COL,studio);
+            values.put(DatabaseInfo.STUDIOS_STUDIO_COL, studio);
             db.insert(DatabaseInfo.STUDIOS_TABLE, null, values);
         }
 

@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,8 +32,8 @@ public class ItemActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
 
-    private TextView txtEAN;
-    private TextView txtTitle;
+    private EditText txtEAN;
+    private EditText txtTitle;
     private RadioButton rbBook;
     private RadioButton rbMovie;
     private RadioButton rbGame;
@@ -52,13 +54,21 @@ public class ItemActivity extends AppCompatActivity {
     private CheckBox cbFSK16;
     private CheckBox cbFSK18;
 
+    private DatabaseOperations db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
-        txtEAN = (TextView) findViewById(R.id.txt_ean);
-        txtTitle = (TextView) findViewById(R.id.txt_title);
+        //Getting information regarding debug mode
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            debugMode = extras.getBoolean("debugMode");
+        }
+
+        txtEAN = (EditText) findViewById(R.id.tf_ean);
+        txtTitle = (EditText) findViewById(R.id.tf_title);
         rbBook = (RadioButton) findViewById(R.id.rb_book);
         rbMovie = (RadioButton) findViewById(R.id.rb_movie);
         rbGame = (RadioButton) findViewById(R.id.rb_game);
@@ -81,15 +91,9 @@ public class ItemActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseBase spInfo = new DatabaseBase();
-        DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
+        db = new DatabaseOperations(ctx, debugMode);
         Cursor crs;
         int index;
-
-        //Getting information regarding debug mode
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            debugMode = extras.getBoolean("debugMode");
-        }
 
         // Filling author spinner with information
         crs = db.getAuthors(db);
@@ -207,24 +211,63 @@ public class ItemActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_add:
                 //Pressed button to add new item to the collection.
+                if (debugMode) {
+                    String msg = "User pressed add button and entered add item.";
+                    Log.d("USER", msg);
+                }
                 Item item = new Item();
 
-                item.setEAN(Long.getLong(txtEAN.getText().toString()));
-                item.setTitle(txtTitle.getText().toString());
-                if (rbBook.isChecked()) {
-                    item.setBook(true);
-                } else {
-                    item.setBook(false);
+                if (debugMode) {
+                    String msg = "EAN Code: " + txtEAN.getText().toString();
+                    Log.d("CODE", msg);
+                    msg = "Title: " + txtTitle.getText().toString();
+                    Log.d("CODE", msg);
                 }
-                if (rbMovie.isChecked()) {
-                    item.setMovie(true);
+
+                // Check if either title or EAN is not null.
+                String eanStr = txtEAN.getText().toString();
+                String title = txtTitle.getText().toString();
+
+                if (eanStr.isEmpty() && title.isEmpty()) {
+                    String msg = "Either title or EAN code should have an value.";
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
-                    item.setMovie(false);
+
+                    // Input check: Set EAN to 0 or value
+                    if (eanStr.isEmpty()) {
+                        item.setEAN(0);
+                    } else {
+                        item.setEAN(Long.parseLong(eanStr));
+                    }
+
+                    item.setTitle(txtTitle.getText().toString());
+                    if (rbBook.isChecked()) {
+                        item.setBook(true);
+                    } else {
+                        item.setBook(false);
+                    }
+                    if (rbMovie.isChecked()) {
+                        item.setMovie(true);
+                    } else {
+                        item.setMovie(false);
+                    }
+                    if (rbGame.isChecked()) {
+                        item.setGame(true);
+                    } else {
+                        item.setGame(false);
+                    }
+
+                    // Get ID of choosen genre
+                    String genre = spGenre.getSelectedItem().toString();
+                    Cursor crs = db.getGenreID(db,genre);
+                    crs.moveToFirst();
+                    Integer index = crs.getColumnIndex(DatabaseInfo.GENRES_ID_COL);
+                    String genreID = crs.getString(index);
+                    if (debugMode) {
+                        String msg = "Genre: " + genre + " ID: " + genreID;
+                        Log.d("DATABASE", msg);
+                    }
                 }
-                if (rbGame.isChecked()){
-                    item.setGame(true);
-                } else {
-                    item.setGame(false);}
                 break;
             case R.id.btn_search:
                 //Pressed button do show total or filtered collection.

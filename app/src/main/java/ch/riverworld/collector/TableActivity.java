@@ -181,6 +181,7 @@ public class TableActivity extends AppCompatActivity {
                 if (anz > 0) {
                     genreCrs.moveToFirst();
                     indexGenre = genreCrs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
+                    //indexGenre=genreCrs.getColumnIndex(DatabaseInfo.GENRES_ID_COL);
 
                     do {
                         genre = genreCrs.getString(indexGenre);
