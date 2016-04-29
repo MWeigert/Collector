@@ -434,6 +434,67 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return all entries in items table. Returns a Cursor with all items.
+    public Cursor getItemTitles(DatabaseOperations dop) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getItems.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] titles = {DatabaseInfo.ITEMS_TITLE_COL};
+        Cursor cur = db.query(DatabaseInfo.ITEMS_TABLE, titles, null, null, null, null, null);
+
+        return cur;
+    }
+
+    // Method to return all data to one single item. Returns one item.
+    public Item getItem(DatabaseOperations dop, String title) {
+        Item item = new Item();
+        Integer index;
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getItem.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo.ITEMS_TITLE_COL, DatabaseInfo
+                .ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo.ITEMS_LANGUAGE_ID_COL,
+                DatabaseInfo.ITEMS_LAUNCH_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo.ITEMS_PUBLISHER_COL,
+                DatabaseInfo.ITEMS_AUTHOR_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL, DatabaseInfo.ITEMS_DVD_COL,
+                DatabaseInfo.ITEMS_BLUERAY_COL, DatabaseInfo.ITEMS_STUDIO_COL, DatabaseInfo.ITEMS_DIRECTOR_COL,
+                DatabaseInfo.ITEMS_PARENTAL_ID_COL};
+
+        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_TITLE_COL +
+                " like ?", new String[]{title + "%"}, null, null, null);
+
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
+        item.setEAN(crs.getLong(index));
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
+        item.setTitle(crs.getString(index));
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
+        switch (crs.getString(index)){
+            case "Book":
+                item.setBook(true);
+                break;
+            case "Movie":
+                item.setMovie(true);
+                break;
+            case  "Game":
+                item.setGame(true);
+                break;
+        }
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
+        item.setGenre_id(crs.getInt(index));
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
+        item.setLanguage_id(crs.getInt(index));
+
+        if (debugMode) {
+            Log.d("DATABASE", "Finished --> getItem.");
+        }
+        return item;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *

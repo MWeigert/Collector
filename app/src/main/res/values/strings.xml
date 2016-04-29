@@ -6,6 +6,9 @@
     <string name="btn_remove">Remove</string>
     <string name="btn_add">Add</string>
 
+    <!--- activity_collection -->
+    <string name="btn_select">Select</string>
+
     <!--- activity_database -->
     <string name="txt_manage_title">Manage Data</string>
     <string name="btn_mng_author">Author</string>
