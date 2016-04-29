@@ -243,30 +243,177 @@ public class ItemActivity extends AppCompatActivity {
                     item.setTitle(txtTitle.getText().toString());
                     if (rbBook.isChecked()) {
                         item.setBook(true);
+                        item.setMediaType("Book");
                     } else {
                         item.setBook(false);
                     }
                     if (rbMovie.isChecked()) {
                         item.setMovie(true);
+                        item.setMediaType("Movie");
                     } else {
                         item.setMovie(false);
                     }
                     if (rbGame.isChecked()) {
                         item.setGame(true);
+                        item.setMediaType("Game");
                     } else {
                         item.setGame(false);
+                        item.setMediaType("NULL");
+                    }
+
+                    if (debugMode) {
+                        String msg = "MediaType: " + item.getMediaType();
+                        Log.d("DATABASE", msg);
                     }
 
                     // Get ID of choosen genre
                     String genre = spGenre.getSelectedItem().toString();
-                    Cursor crs = db.getGenreID(db,genre);
+                    Cursor crs = db.getGenreID(db, genre);
                     crs.moveToFirst();
                     Integer index = crs.getColumnIndex(DatabaseInfo.GENRES_ID_COL);
-                    String genreID = crs.getString(index);
+                    Integer genreID = Integer.parseInt(crs.getString(index));
+
                     if (debugMode) {
                         String msg = "Genre: " + genre + " ID: " + genreID;
                         Log.d("DATABASE", msg);
                     }
+
+                    item.setGenre_id(genreID);
+
+                    // Get ID of choosen language
+                    String language = spLanguage.getSelectedItem().toString();
+                    crs = db.getLanguageID(db, language);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_ID_COL);
+                    Integer languageId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "Language: " + language + "ID: " + languageId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setLanguage_id(languageId);
+
+                    // Get year from spinner
+                    Integer year = Integer.parseInt(spYear.getSelectedItem().toString());
+
+                    if (debugMode) {
+                        String msg = "Year: " + year;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setYear(year);
+
+                    // Get lent status
+                    if (cbLent.isChecked()) {
+                        item.setLent(true);
+                    } else {
+                        item.setLent(false);
+                    }
+
+                    // Get ID of choosen publisher
+                    String publisher = spPublisher.getSelectedItem().toString();
+                    crs = db.getPublisherID(db, publisher);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.PUBLISHERS_ID_COL);
+                    Integer publisherId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "Publisher: " + publisher + "ID: " + publisherId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setPublisher_id(publisherId);
+
+                    // Get ID of choosen author
+                    String author = spAuthor.getSelectedItem().toString();
+                    crs = db.getAuthorID(db, author);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.AUTHORS_ID_COL);
+                    Integer authorId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "Author: " + author + "ID: " + authorId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setAuthor_id(authorId);
+
+                    // Get ID of choosen system
+                    String system = spSystem.getSelectedItem().toString();
+                    crs = db.getSystemID(db, system);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.SYSTEMS_ID_COL);
+                    Integer systemId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "System: " + system + "ID: " + systemId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setLanguage_id(systemId);
+
+                    // Get status of DVD checkbox
+                    if (cbDVD.isChecked()) {
+                        item.setDvd(true);
+                    } else {
+                        item.setDvd(false);
+                    }
+
+                    // Get status of BlueRay checkbox
+                    if (cbBlueRay.isChecked()) {
+                        item.setBlueRay(true);
+                    } else {
+                        item.setBlueRay(false);
+                    }
+
+                    // Get ID of choosen studio
+                    String studio = spStudio.getSelectedItem().toString();
+                    crs = db.getStudioID(db, studio);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.STUDIOS_ID_COL);
+                    Integer studioId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "Studio: " + studio + "ID: " + studioId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setStudio_id(studioId);
+
+                    // Get ID of choosen director
+                    String director = spDirector.getSelectedItem().toString();
+                    crs = db.getDirectorID(db, director);
+                    crs.moveToFirst();
+                    index = crs.getColumnIndex(DatabaseInfo.DIRECTORS_ID_COL);
+                    Integer directorId = Integer.parseInt(crs.getString(index));
+
+                    if (debugMode) {
+                        String msg = "Director: " + director + "ID: " + directorId;
+                        Log.d("DATABASE", msg);
+                    }
+
+                    item.setDirector_id(directorId);
+
+                    // Get status of parental checkboxes and set maximum
+                    if (cbFSK0.isChecked()) {
+                        item.setFsk(0);
+                    }
+                    if (cbFSK6.isChecked()) {
+                        item.setFsk(6);
+                    }
+                    if (cbFSK12.isChecked()) {
+                        item.setFsk(12);
+                    }
+                    if (cbFSK16.isChecked()) {
+                        item.setFsk(16);
+                    }
+                    if (cbFSK18.isChecked()) {
+                        item.setFsk(18);
+                    }
+
+                    db.addItem(db, item);
+                    finish();
                 }
                 break;
             case R.id.btn_search:

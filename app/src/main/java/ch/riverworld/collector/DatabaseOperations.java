@@ -99,9 +99,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.AUTHORS_AUTHOR_COL, author);
+        db.insert(DatabaseInfo.AUTHORS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.AUTHORS_TABLE, null, values);
             Log.d("DATABASE", "Table authors --> added one line.");
         }
     }
@@ -156,6 +156,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return cursor with ID of given author.
+    public Cursor getAuthorID(DatabaseOperations dop, String author) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.AUTHORS_ID_COL, DatabaseInfo.AUTHORS_AUTHOR_COL};
+
+        Cursor crs = db.query(DatabaseInfo.AUTHORS_TABLE, columns, DatabaseInfo.AUTHORS_AUTHOR_COL +
+                " like ?", new String[]{author + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -171,9 +181,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.DIRECTORS_DIRECTOR_COL, director);
+        db.insert(DatabaseInfo.DIRECTORS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.DIRECTORS_TABLE, null, values);
             Log.d("DATABASE", "Table directors --> added one line.");
         }
     }
@@ -228,6 +238,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return cursor with ID of given director.
+    public Cursor getDirectorID(DatabaseOperations dop, String director) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.DIRECTORS_ID_COL, DatabaseInfo.DIRECTORS_DIRECTOR_COL};
+
+        Cursor crs = db.query(DatabaseInfo.DIRECTORS_TABLE, columns, DatabaseInfo.DIRECTORS_DIRECTOR_COL +
+                " like ?", new String[]{director + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -244,9 +264,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         values.put(DatabaseInfo.FRIENDS_FIRSTNAME_COL, firstName);
         values.put(DatabaseInfo.FRIENDS_LASTNAME_COL, lastName);
+        db.insert(DatabaseInfo.FRIENDS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.FRIENDS_TABLE, null, values);
             Log.d("DATABASE", "Table friends --> added one line.");
         }
     }
@@ -303,9 +323,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.GENRES_GENRE_COL, genre);
+        db.insert(DatabaseInfo.GENRES_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.GENRES_TABLE, null, values);
             Log.d("DATABASE", "Table genre --> added one line.");
         }
     }
@@ -361,16 +381,11 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    // Method to return ID of given genre.
-    // SELECT CustomerID FROM Customers WHERE City LIKE 'Sevilla';
-    //c = db.rawQuery("select name from person where id=" + "\""+id+"\"", null);
-
+    // Method to return Cursor with ID of given genre.
     public Cursor getGenreID(DatabaseOperations dop, String genre) {
         SQLiteDatabase db = dop.getReadableDatabase();
         String[] columns = new String[]{DatabaseInfo.GENRES_ID_COL, DatabaseInfo.GENRES_GENRE_COL};
-        String[] select = new String[]{DatabaseInfo.GENRES_GENRE_COL + " like ?"};
 
-        //Cursor crs = db.rawQuery(select, new String[] { genre });
         Cursor crs = db.query(DatabaseInfo.GENRES_TABLE, columns, DatabaseInfo.GENRES_GENRE_COL +
                 " like ?", new String[]{genre + "%"}, null, null, null);
         return crs;
@@ -385,6 +400,39 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // ********************************************************************************************/
 
     // Method to add a new entry in item table
+    public void addItem(DatabaseOperations dop, Item item) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
+        values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
+        values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
+        values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
+        values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
+        values.put(DatabaseInfo.ITEMS_LAUNCH_COL, item.getYear());
+        values.put(DatabaseInfo.ITEMS_RENTAL_COL, item.isLent());
+        values.put(DatabaseInfo.ITEMS_PUBLISHER_COL, item.getPublisher_id());
+        values.put(DatabaseInfo.ITEMS_AUTHOR_COL, item.getAuthor_id());
+        values.put(DatabaseInfo.ITEMS_SYSTEM_ID_COL, item.getSystem_id());
+        values.put(DatabaseInfo.ITEMS_DVD_COL, item.isDvd());
+        values.put(DatabaseInfo.ITEMS_BLUERAY_COL, item.isBlueRay());
+        values.put(DatabaseInfo.ITEMS_STUDIO_COL, item.getStudio_id());
+        values.put(DatabaseInfo.ITEMS_DIRECTOR_COL, item.getDirector_id());
+        values.put(DatabaseInfo.ITEMS_PARENTAL_ID_COL, item.getFsk());
+        db.insert(DatabaseInfo.ITEMS_TABLE, null, values);
+
+        if (debugMode) {
+            Log.d("DATABASE", "Table items --> added one line.");
+            String msg = "EAN: " + item.getEAN() + ", Title: " + item.getTitle() + ", MediaType: " + item
+                    .getMediaType() + ", " + "Genre: " + item.getGenre_id() + ", Language: " + item.getLanguage_id()
+                    + ", Year: " + item.getYear() + "," + " lent: " + item.isLent() + ", Publisher: " + item
+                    .getPublisher_id() + ", Author: " + item.getAuthor_id() + ", System: " + item.getSystem_id() + "," +
+                    " DVD: " + item.isDvd() + ", BlueRay: " + item.isBlueRay() + ", " + "Studio: " + item
+                    .getStudio_id() + ", Director: " + item.getDirector_id() + ", Parental: " + item.getFsk();
+            Log.d("DATABASE", msg);
+        }
+    }
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -401,9 +449,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.LANGUAGE_LANGUAGE_COL, language);
+        db.insert(DatabaseInfo.LANGUAGE_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.LANGUAGE_TABLE, null, values);
             Log.d("DATABASE", "Table language --> added one line.");
         }
     }
@@ -458,6 +506,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return cursor with ID of given language.
+    public Cursor getLanguageID(DatabaseOperations dop, String language) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.LANGUAGE_ID_COL, DatabaseInfo.LANGUAGE_LANGUAGE_COL};
+
+        Cursor crs = db.query(DatabaseInfo.LANGUAGE_TABLE, columns, DatabaseInfo.LANGUAGE_LANGUAGE_COL +
+                " like ?", new String[]{language + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -473,9 +531,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.PARENTAL_PARENTAL_COL, parental);
+        db.insert(DatabaseInfo.PARENTAL_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.PARENTAL_TABLE, null, values);
             Log.d("DATABASE", "Table parental --> added one line.");
         }
     }
@@ -545,9 +603,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.PUBLISHERS_PUBLISHER_COL, publisher);
+        db.insert(DatabaseInfo.PUBLISHERS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.PUBLISHERS_TABLE, null, values);
             Log.d("DATABASE", "Table publishers --> added one line.");
         }
     }
@@ -602,6 +660,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return cursor with ID of given publisher.
+    public Cursor getPublisherID(DatabaseOperations dop, String publisher) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.PUBLISHERS_ID_COL, DatabaseInfo.PUBLISHERS_PUBLISHER_COL};
+
+        Cursor crs = db.query(DatabaseInfo.PUBLISHERS_TABLE, columns, DatabaseInfo.PUBLISHERS_PUBLISHER_COL +
+                " like ?", new String[]{publisher + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -617,9 +685,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.STUDIOS_STUDIO_COL, studio);
+        db.insert(DatabaseInfo.STUDIOS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.STUDIOS_TABLE, null, values);
             Log.d("DATABASE", "Table studios --> added one line.");
         }
     }
@@ -674,6 +742,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method to return cursor with ID of given studio.
+    public Cursor getStudioID(DatabaseOperations dop, String studio) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.STUDIOS_ID_COL, DatabaseInfo.STUDIOS_STUDIO_COL};
+
+        Cursor crs = db.query(DatabaseInfo.STUDIOS_TABLE, columns, DatabaseInfo.STUDIOS_STUDIO_COL +
+                " like ?", new String[]{studio + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -689,9 +767,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseInfo.SYSTEMS_SYSTEM_COL, system);
+        db.insert(DatabaseInfo.SYSTEMS_TABLE, null, values);
 
         if (debugMode) {
-            db.insert(DatabaseInfo.SYSTEMS_TABLE, null, values);
             Log.d("DATABASE", "Table systems --> added one line.");
         }
     }
@@ -744,5 +822,15 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             String msg = "Table systems sucessfull reseted.";
             Log.d("DATABASE", msg);
         }
+    }
+
+    // Method to return cursor with ID of given system.
+    public Cursor getSystemID(DatabaseOperations dop, String system) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.SYSTEMS_ID_COL, DatabaseInfo.SYSTEMS_SYSTEM_COL};
+
+        Cursor crs = db.query(DatabaseInfo.SYSTEMS_TABLE, columns, DatabaseInfo.SYSTEMS_SYSTEM_COL +
+                " like ?", new String[]{system + "%"}, null, null, null);
+        return crs;
     }
 }

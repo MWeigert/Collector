@@ -19,6 +19,7 @@ public class Item {
     private boolean book;
     private boolean movie;
     private boolean game;
+    private String mediaType;
     private int genre_id;
     private int language_id;
     private int year;
@@ -56,6 +57,10 @@ public class Item {
 
     public boolean isGame() {
         return game;
+    }
+
+    public String getMediaType() {
+        return mediaType;
     }
 
     public int getGenre_id() {
@@ -126,6 +131,10 @@ public class Item {
 
     public void setGame(boolean game) {
         this.game = game;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
     public void setGenre_id(int genre_id) {
