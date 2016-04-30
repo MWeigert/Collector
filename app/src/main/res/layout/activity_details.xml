@@ -1,127 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ch.riverworld.collector.DetailsActivity"
-    android:background="#817272"
-    android:theme="@android:style/Theme.Material">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#817272"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:theme="@android:style/Theme.Material"
+                tools:context="ch.riverworld.collector.DetailsActivity">
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="162dp"
-        android:theme="@android:style/Theme.Material" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/scrollView"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txt_year"
-        android:id="@+id/txt_year"
-        android:layout_marginBottom="66dp"
-        android:layout_alignBottom="@+id/ratingBar"
-        android:layout_alignStart="@+id/sw_lent"
-        android:theme="@android:style/Theme.Material" />
+            <Switch
+                android:id="@+id/sw_lent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/cb_lent"
+                android:theme="@android:style/Theme.Material"
+                android:layout_gravity="right"/>
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cb_lent"
-        android:id="@+id/sw_lent"
-        android:layout_above="@+id/txt_year"
-        android:layout_alignParentEnd="true"
-        android:theme="@android:style/Theme.Material" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/zelda"
+                android:layout_below="@id/sw_lent"
+                android:layout_gravity="center_horizontal"
+                style="@android:style/Theme.Material"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="X"
-        android:id="@+id/btn_delete"
-        android:onClick="buttonOnClick"
-        android:background="@drawable/button_bg_round"
-        android:padding="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:textStyle="normal|bold"
-        android:textSize="@dimen/abc_text_size_medium_material" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/imageView"
+                android:numStars="5"
+                android:theme="@android:style/Theme.Material"
+                android:rating="2"
+                android:stepSize="1"
+                android:layout_gravity="center_horizontal"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txt_ean"
-        android:id="@+id/txt_ean"
-        android:theme="@android:style/Theme.Material"
-        android:layout_below="@+id/ratingBar"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/txt_ean"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ratingBar"
+                android:text="@string/txt_ean"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@android:style/Theme.Material"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txt_title"
-        android:id="@+id/txt_title"
-        android:layout_below="@+id/txt_ean"
-        android:layout_alignParentStart="true"
-        android:theme="@android:style/Theme.Material" />
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_ean"
+                android:text="@string/txt_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@android:style/Theme.Material"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txt_genre"
-        android:id="@+id/txt_genre"
-        android:layout_below="@+id/txt_title"
-        android:layout_alignParentStart="true"
-        android:theme="@android:style/Theme.Material" />
+            <TextView
+                android:id="@+id/txt_genre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_title"
+                android:text="@string/txt_genre"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@android:style/Theme.Material"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/txt_place"
-        android:id="@+id/txt_place"
-        android:theme="@android:style/Theme.Material"
-        android:layout_below="@+id/txt_genre"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/txt_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_genre"
+                android:text="@string/txt_place"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@android:style/Theme.Material"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_edit"
-        android:id="@+id/btn_edit"
-        android:onClick="buttonOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:theme="@android:style/Theme.Material"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/txt_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ratingBar"
+                android:layout_alignStart="@+id/sw_lent"
+                android:layout_marginBottom="66dp"
+                android:text="@string/txt_year"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@android:style/Theme.Material"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/txt_place"
-        android:layout_alignParentStart="true"
-        android:theme="@android:style/Theme.Material"
-        android:layout_alignEnd="@+id/btn_edit"
-        android:layout_above="@+id/btn_edit" />
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buttonOnClick"
+                android:text="@string/btn_edit"
+                android:theme="@android:style/Theme.Material"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buttonOnClick"
+                android:text="X"
+                android:theme="@android:style/Theme.Material"
+                android:layout_below="@+id/btn_edit"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
