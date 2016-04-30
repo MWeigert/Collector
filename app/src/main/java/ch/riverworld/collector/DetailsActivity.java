@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class DetailsActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
+    private String selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,10 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
+            selectedItem=extras.getString("itemTitle");
         }
 
+        // Set functionality and listener to lent switch
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         final Intent lentIntent = new Intent(this, LentActivity.class);
         lentIntent.putExtra("debugMode", debugMode);
@@ -53,6 +56,8 @@ public class DetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Getting data of choosed item from database and displaying these.
     }
 
     // Button listener for the DetailsActivity

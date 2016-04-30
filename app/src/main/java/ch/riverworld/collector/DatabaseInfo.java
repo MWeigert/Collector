@@ -122,7 +122,7 @@ public class DatabaseInfo {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    // Table name and column informations from items table
+    // Table name and column information for items table
     public static final String ITEMS_TABLE = "items";
     public static final String ITEMS_ID_COL = "ITEM_ID";                    //Integer
     public static final String ITEMS_EAN_COL = "EAN";                       //Integer
@@ -132,17 +132,17 @@ public class DatabaseInfo {
     public static final String ITEMS_LANGUAGE_ID_COL = "LANGUAGE_ID";       //Integer
     public static final String ITEMS_LAUNCH_COL = "LAUNCH";                 //Text
     public static final String ITEMS_RENTAL_COL = "RENTAL";                 //Integer
-    public static final String ITEMS_PUBLISHER_COL = "PUBLISHER";           //Text
-    public static final String ITEMS_AUTHOR_COL = "AUTHOR";                 //Text
-    public static final String ITEMS_EDITION_COL = "EDITION";               //Text
+    public static final String ITEMS_PUBLISHER_ID_COL = "PUBLISHER_ID";     //Integer
+    public static final String ITEMS_AUTHOR_ID_COL = "AUTHOR_ID";           //Text
+    public static final String ITEMS_EDITION_COL = "EDITION";               //Text UNUSED
     public static final String ITEMS_SYSTEM_ID_COL = "SYSTEM_ID";           //Integer
     public static final String ITEMS_DVD_COL = "DVD";                       //Integer
     public static final String ITEMS_BLUERAY_COL = "BLUERAY";               //Integer
-    public static final String ITEMS_STUDIO_COL = "STUDIO";                   //Text
-    public static final String ITEMS_DIRECTOR_COL = "DIRECTOR";               //Text
-    public static final String ITEMS_PARENTAL_ID_COL = "PARENTAL_ID";         //Integer
-    public static final String ITEMS_RATING_COL = "RATING";                   //Real
-    public static final String ITEMS_REMARKS_COL = "REMARKS";                 //Text
+    public static final String ITEMS_STUDIO_ID_COL = "STUDIO_ID";           //Integer
+    public static final String ITEMS_DIRECTOR_ID_COL = "DIRECTOR_ID";       //Text
+    public static final String ITEMS_PARENTAL_ID_COL = "PARENTAL_ID";       //Integer
+    public static final String ITEMS_RATING_COL = "RATING";                 //Real UNUSED
+    public static final String ITEMS_REMARKS_COL = "REMARKS";               //Text UNUSED
 
     //SQL commando to create table items in database
     public static final String CREATE_ITEMS = "create table " + DatabaseInfo.ITEMS_TABLE + " (" + DatabaseInfo
@@ -150,10 +150,10 @@ public class DatabaseInfo {
             DatabaseInfo.ITEMS_TITLE_COL + " text, " + DatabaseInfo.ITEMS_MEDIA_TYPE_COL + " text, " + DatabaseInfo
             .ITEMS_GENRE_ID_COL + " integer, " + DatabaseInfo.ITEMS_LANGUAGE_ID_COL + " integer, " + DatabaseInfo
             .ITEMS_LAUNCH_COL + " text, " + DatabaseInfo.ITEMS_RENTAL_COL + " integer, " + DatabaseInfo
-            .ITEMS_PUBLISHER_COL + " text, " + DatabaseInfo.ITEMS_AUTHOR_COL + " text, " + DatabaseInfo
+            .ITEMS_PUBLISHER_ID_COL + " integer, " + DatabaseInfo.ITEMS_AUTHOR_ID_COL + " integer, " + DatabaseInfo
             .ITEMS_EDITION_COL + " text, " + DatabaseInfo.ITEMS_SYSTEM_ID_COL + " integer, " + DatabaseInfo
             .ITEMS_DVD_COL + " integer, " + DatabaseInfo.ITEMS_BLUERAY_COL + " integer, " + DatabaseInfo
-            .ITEMS_STUDIO_COL + " text, " + DatabaseInfo.ITEMS_DIRECTOR_COL + " text, " + DatabaseInfo
+            .ITEMS_STUDIO_ID_COL + " integer, " + DatabaseInfo.ITEMS_DIRECTOR_ID_COL + " integer, " + DatabaseInfo
             .ITEMS_PARENTAL_ID_COL + " integer," + DatabaseInfo.ITEMS_RATING_COL + " real, " + DatabaseInfo
             .ITEMS_REMARKS_COL + " text);";
 

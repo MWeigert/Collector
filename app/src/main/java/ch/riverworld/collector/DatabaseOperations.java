@@ -412,13 +412,13 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
         values.put(DatabaseInfo.ITEMS_LAUNCH_COL, item.getYear());
         values.put(DatabaseInfo.ITEMS_RENTAL_COL, item.isLent());
-        values.put(DatabaseInfo.ITEMS_PUBLISHER_COL, item.getPublisher_id());
-        values.put(DatabaseInfo.ITEMS_AUTHOR_COL, item.getAuthor_id());
+        values.put(DatabaseInfo.ITEMS_PUBLISHER_ID_COL, item.getPublisher_id());
+        values.put(DatabaseInfo.ITEMS_AUTHOR_ID_COL, item.getAuthor_id());
         values.put(DatabaseInfo.ITEMS_SYSTEM_ID_COL, item.getSystem_id());
         values.put(DatabaseInfo.ITEMS_DVD_COL, item.isDvd());
         values.put(DatabaseInfo.ITEMS_BLUERAY_COL, item.isBlueRay());
-        values.put(DatabaseInfo.ITEMS_STUDIO_COL, item.getStudio_id());
-        values.put(DatabaseInfo.ITEMS_DIRECTOR_COL, item.getDirector_id());
+        values.put(DatabaseInfo.ITEMS_STUDIO_ID_COL, item.getStudio_id());
+        values.put(DatabaseInfo.ITEMS_DIRECTOR_ID_COL, item.getDirector_id());
         values.put(DatabaseInfo.ITEMS_PARENTAL_ID_COL, item.getFsk());
         db.insert(DatabaseInfo.ITEMS_TABLE, null, values);
 
@@ -460,9 +460,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         SQLiteDatabase db = dop.getReadableDatabase();
         String[] columns = new String[]{DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo.ITEMS_TITLE_COL, DatabaseInfo
                 .ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo.ITEMS_LANGUAGE_ID_COL,
-                DatabaseInfo.ITEMS_LAUNCH_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo.ITEMS_PUBLISHER_COL,
-                DatabaseInfo.ITEMS_AUTHOR_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL, DatabaseInfo.ITEMS_DVD_COL,
-                DatabaseInfo.ITEMS_BLUERAY_COL, DatabaseInfo.ITEMS_STUDIO_COL, DatabaseInfo.ITEMS_DIRECTOR_COL,
+                DatabaseInfo.ITEMS_LAUNCH_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo.ITEMS_PUBLISHER_ID_COL,
+                DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL, DatabaseInfo.ITEMS_DVD_COL,
+                DatabaseInfo.ITEMS_BLUERAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL, DatabaseInfo.ITEMS_DIRECTOR_ID_COL,
                 DatabaseInfo.ITEMS_PARENTAL_ID_COL};
 
         Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_TITLE_COL +

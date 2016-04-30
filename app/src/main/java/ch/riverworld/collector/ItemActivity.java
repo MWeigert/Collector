@@ -241,6 +241,7 @@ public class ItemActivity extends AppCompatActivity {
                     }
 
                     item.setTitle(txtTitle.getText().toString());
+                    item.setMediaType("NULL");
                     if (rbBook.isChecked()) {
                         item.setBook(true);
                         item.setMediaType("Book");
@@ -258,7 +259,6 @@ public class ItemActivity extends AppCompatActivity {
                         item.setMediaType("Game");
                     } else {
                         item.setGame(false);
-                        item.setMediaType("NULL");
                     }
 
                     if (debugMode) {

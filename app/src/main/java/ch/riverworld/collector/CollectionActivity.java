@@ -1,6 +1,7 @@
 package ch.riverworld.collector;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -95,6 +96,11 @@ public class CollectionActivity extends AppCompatActivity {
     public void buttonOnClick(View v) {
         switch (v.getId()) {
             case R.id.btn_select:
+                //Pressed button do confirm selected item.
+                final Intent detailsIntent = new Intent(this, DetailsActivity.class);
+                detailsIntent.putExtra("debugMode", debugMode);
+                detailsIntent.putExtra("itemTitle",selectedItem.toString());
+                startActivity(detailsIntent);
                 break;
         }
     }
