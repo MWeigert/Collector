@@ -468,26 +468,29 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_TITLE_COL +
                 " like ?", new String[]{title + "%"}, null, null, null);
 
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
         item.setEAN(crs.getLong(index));
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         item.setTitle(crs.getString(index));
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
-        switch (crs.getString(index)){
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
+        switch (crs.getString(index)) {
             case "Book":
                 item.setBook(true);
                 break;
             case "Movie":
                 item.setMovie(true);
                 break;
-            case  "Game":
+            case "Game":
                 item.setGame(true);
                 break;
         }
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
         item.setGenre_id(crs.getInt(index));
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
         item.setLanguage_id(crs.getInt(index));
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_COL);
+        item.setYear(crs.getInt(index));
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_RENTAL_COL);
 
         if (debugMode) {
             Log.d("DATABASE", "Finished --> getItem.");
