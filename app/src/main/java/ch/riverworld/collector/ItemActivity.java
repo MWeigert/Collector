@@ -55,6 +55,7 @@ public class ItemActivity extends AppCompatActivity {
     private CheckBox cbFSK18;
 
     private DatabaseOperations db;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,7 @@ public class ItemActivity extends AppCompatActivity {
         cbFSK16 = (CheckBox) findViewById(R.id.cb_fsk16);
         cbFSK18 = (CheckBox) findViewById(R.id.cb_fsk18);
 
-        Context ctx = this;
+        ctx = this;
         DatabaseBase spInfo = new DatabaseBase();
         db = new DatabaseOperations(ctx, debugMode);
         Cursor crs;
@@ -215,7 +216,7 @@ public class ItemActivity extends AppCompatActivity {
                     String msg = "User pressed add button and entered add item.";
                     Log.d("USER", msg);
                 }
-                Item item = new Item();
+                Item item = new Item(ctx);
 
                 if (debugMode) {
                     String msg = "EAN Code: " + txtEAN.getText().toString();

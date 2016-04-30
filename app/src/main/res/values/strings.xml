@@ -45,6 +45,13 @@
     <string name="txt_title">Title</string>
     <string name="txt_genre">Genre</string>
     <string name="txt_place">Place</string>
+    <string name="view_thumbnail">Thumbnail</string>
+    <string name="txt_language">Language</string>
+    <string name="txt_publisher">Publisher</string>
+    <string name="txt_author">Author</string>
+    <string name="txt_director">Director</string>
+    <string name="txt_studio">Studio</string>
+    <string name="txt_system">System</string>
 
     <!--- activity_filter_result -->
     <string name="btn_details">Details</string>

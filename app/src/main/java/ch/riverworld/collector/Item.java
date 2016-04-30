@@ -12,6 +12,7 @@
 package ch.riverworld.collector;
 
 
+import android.content.Context;
 import android.database.Cursor;
 
 
@@ -44,16 +45,23 @@ public class Item {
     private String director;
     private int fsk;
 
+    private Context ctx;
+
     // Empty Constructor
-    public Item() {
+    public Item(Context ctx) {
+        this.ctx=ctx;
     }
 
     // Put data from one single item in object.
     public void putItem(Cursor crs) {
+        DatabaseOperations db = new DatabaseOperations(ctx, false);
+
         int index;
 
         crs.moveToFirst();
 
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
+        id = crs.getInt(index);
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
         ean = crs.getLong(index);
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
@@ -80,6 +88,12 @@ public class Item {
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
         language_id = crs.getInt(index);
         // CHECK FOR LANGUAGE
+        crs = db.getLanguage(db, language_id);
+        if (crs != null) {
+            index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
+            //NULLPOINTER IN NEXT LINE
+            language=crs.getString(index);
+        }
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_COL);
         year = Integer.valueOf(crs.getString(index));
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_RENTAL_COL);

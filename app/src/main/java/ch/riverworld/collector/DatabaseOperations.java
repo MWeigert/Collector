@@ -585,6 +585,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return crs;
     }
 
+    // Method to return Cursor with name of given language id.
+    public Cursor getLanguage(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.LANGUAGE_ID_COL, DatabaseInfo.LANGUAGE_LANGUAGE_COL};
+
+        Cursor crs = db.query(DatabaseInfo.LANGUAGE_TABLE, columns, DatabaseInfo.LANGUAGE_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *

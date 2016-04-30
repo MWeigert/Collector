@@ -20,8 +20,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        selectedItem = new Item();
+        selectedItem = new Item(ctx);
 
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         ImageView iView = (ImageView) findViewById(R.id.imageView);
@@ -55,6 +57,22 @@ public class DetailsActivity extends AppCompatActivity {
         TextView titleTXT = (TextView) findViewById(R.id.txt_title);
         TextView genreTXT = (TextView) findViewById(R.id.txt_genre);
         TextView yearTXT = (TextView) findViewById(R.id.txt_year);
+        TextView languageTXT = (TextView) findViewById(R.id.txt_language);
+        RadioButton bookRB = (RadioButton) findViewById(R.id.rb_detail_book);
+        RadioButton movieRB = (RadioButton) findViewById(R.id.rb_detail_movie);
+        RadioButton gameRB = (RadioButton) findViewById(R.id.rb_detail_game);
+        TextView publisherTXT = (TextView) findViewById(R.id.txt_publisher);
+        TextView authorTXT = (TextView) findViewById(R.id.txt_author);
+        CheckBox dvdCB = (CheckBox) findViewById(R.id.cb_details_dvd);
+        CheckBox bluerayCB = (CheckBox) findViewById(R.id.cb_details_blueray);
+        TextView directorTXT=(TextView)findViewById(R.id.txt_director);
+        TextView studioTXT=(TextView)findViewById(R.id.txt_studio);
+        TextView systemTXT=(TextView)findViewById(R.id.txt_system);
+        CheckBox fsk0CB=(CheckBox)findViewById(R.id.cb_details_0);
+        CheckBox fsk6CB=(CheckBox)findViewById(R.id.cb_details_6);
+        CheckBox fsk12CB=(CheckBox)findViewById(R.id.cb_details_12);
+        CheckBox fsk16CB=(CheckBox)findViewById(R.id.cb_details_16);
+        CheckBox fsk18CB=(CheckBox)findViewById(R.id.cb_details_18);
 
         // Set functionality and listener to lent switch
         final Intent lentIntent = new Intent(this, LentActivity.class);
@@ -119,6 +137,21 @@ public class DetailsActivity extends AppCompatActivity {
         titleTXT.setText("Title: " + selectedItem.getTitle());
         genreTXT.setText("Genre: " + selectedItem.getGenre());
         yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));
+        languageTXT.setText("Language: "+selectedItem.getLanguage());
+        if (debugMode) {
+            String msg = "Book: " + selectedItem.isBook() + " Movie: " + selectedItem.isMovie() + " Game: " +
+                    selectedItem.isGame() + " MediaType: " + selectedItem.getMediaType();
+            Log.d("DATABASE", msg);
+        }
+        if (selectedItem.isBook()) {
+            bookRB.setChecked(true);
+        } else bookRB.setVisibility(View.INVISIBLE);
+        if (selectedItem.isMovie()) {
+            movieRB.setChecked(true);
+        } else movieRB.setVisibility(View.INVISIBLE);
+        if (selectedItem.isGame()) {
+            gameRB.setChecked(true);
+        } else gameRB.setVisibility(View.INVISIBLE);
     }
 
     // Button listener for the DetailsActivity
