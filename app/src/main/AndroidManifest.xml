@@ -18,7 +18,6 @@
         <activity android:name=".InfoActivity"/>
         <activity android:name=".FilterResult"/>
         <activity android:name=".DetailsActivity"/>
-        <activity android:name=".DeleteActivity"/>
         <activity android:name=".LentActivity"/>
         <activity android:name=".FriendsActivity"/>
         <activity android:name=".DatabaseActivity"/>

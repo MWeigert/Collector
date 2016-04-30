@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/zelda"
+                android:background="@drawable/pdefault"
                 android:layout_below="@id/sw_lent"
                 android:layout_gravity="center_horizontal"
                 style="@android:style/Theme.Material"/>
@@ -52,7 +52,7 @@
                 android:layout_below="@+id/imageView"
                 android:numStars="5"
                 android:theme="@android:style/Theme.Material"
-                android:rating="2"
+                android:rating="1"
                 android:stepSize="1"
                 android:layout_gravity="center_horizontal"/>
 
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="buttonOnClick"
-                android:text="X"
+                android:text="@string/btn_remove_item"
                 android:theme="@android:style/Theme.Material"
                 android:layout_below="@+id/btn_edit"/>
 

@@ -391,6 +391,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return crs;
     }
 
+    // Method to return Cursor with name of given genre id.
+    public Cursor getGenre(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.GENRES_ID_COL, DatabaseInfo.GENRES_GENRE_COL};
+
+        Cursor crs = db.query(DatabaseInfo.GENRES_TABLE, columns, DatabaseInfo.GENRES_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        return crs;
+    }
+
     // ********************************************************************************************
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
@@ -448,54 +458,49 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return cur;
     }
 
-    // Method to return all data to one single item. Returns one item.
-    public Item getItem(DatabaseOperations dop, String title) {
-        Item item = new Item();
-        Integer index;
+    // Method to return all data to one single item. Returns cursor.
+    public Cursor getItem(DatabaseOperations dop, String title) {
 
         if (debugMode) {
             Log.d("DATABASE", "Starting --> getItem.");
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String[] columns = new String[]{DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo.ITEMS_TITLE_COL, DatabaseInfo
-                .ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo.ITEMS_LANGUAGE_ID_COL,
-                DatabaseInfo.ITEMS_LAUNCH_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo.ITEMS_PUBLISHER_ID_COL,
-                DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL, DatabaseInfo.ITEMS_DVD_COL,
-                DatabaseInfo.ITEMS_BLUERAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL, DatabaseInfo.ITEMS_DIRECTOR_ID_COL,
-                DatabaseInfo.ITEMS_PARENTAL_ID_COL};
+        String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL, DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo
+                .ITEMS_TITLE_COL, DatabaseInfo.ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo
+                .ITEMS_LANGUAGE_ID_COL, DatabaseInfo.ITEMS_LAUNCH_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo
+                .ITEMS_PUBLISHER_ID_COL, DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL,
+                DatabaseInfo.ITEMS_DVD_COL, DatabaseInfo.ITEMS_BLUERAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL,
+                DatabaseInfo.ITEMS_DIRECTOR_ID_COL, DatabaseInfo.ITEMS_PARENTAL_ID_COL};
 
         Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_TITLE_COL +
                 " like ?", new String[]{title + "%"}, null, null, null);
 
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
-        item.setEAN(crs.getLong(index));
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
-        item.setTitle(crs.getString(index));
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
-        switch (crs.getString(index)) {
-            case "Book":
-                item.setBook(true);
-                break;
-            case "Movie":
-                item.setMovie(true);
-                break;
-            case "Game":
-                item.setGame(true);
-                break;
+        if (debugMode) {
+            crs.moveToFirst();
+            int index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
+            String msg = "Finished --> getItem. With ID: " + String.valueOf(crs.getInt(index));
+            Log.d("DATABASE", msg);
         }
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
-        item.setGenre_id(crs.getInt(index));
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
-        item.setLanguage_id(crs.getInt(index));
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_COL);
-        item.setYear(crs.getInt(index));
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_RENTAL_COL);
+        return crs;
+    }
+
+    public int getItemID(DatabaseOperations dop, String title) {
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL};
+        String selection = DatabaseInfo.ITEMS_TITLE_COL + " LIKE ?";
+        String args[] = {title};
+        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, selection, args, null, null, null);
+        int index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
+        crs.moveToFirst();
 
         if (debugMode) {
-            Log.d("DATABASE", "Finished --> getItem.");
+            String msg = "Title: " + title + " ID: " + crs.getInt(index);
+            Log.d("DATABASE", msg);
         }
-        return item;
+
+        return crs.getInt(index);
     }
 
     // ********************************************************************************************
