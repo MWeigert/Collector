@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 0.1                                                                       *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -42,9 +42,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_author:
                 //Button author pressed by user.
                 if (debugMode) {
-                    String msg = "Entering author administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering author administration.");
                 }
                 final Intent authorIntent = new Intent(this, TableActivity.class);
                 authorIntent.putExtra("debugMode", debugMode);
@@ -61,12 +59,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen yes.");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetAuthors(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table authors.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -75,12 +73,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen no.");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -90,9 +84,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_director:
                 //Button director pressed by user.
                 if (debugMode) {
-                    String msg = "Entering director administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering director administration.");
                 }
                 final Intent directorIntent = new Intent(this, TableActivity.class);
                 directorIntent.putExtra("debugMode", debugMode);
@@ -109,12 +101,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetDirectors(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table directors.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -123,12 +115,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: No");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -137,9 +125,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 break;
             case R.id.btn_friends:
                 if (debugMode) {
-                    String msg = "Entering friends administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering friends administration.");
                 }
 
                 final Intent friendsIntent = new Intent(this, FriendsActivity.class);
@@ -150,9 +136,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 //Pressed button to add new friend to the database.
 
                 if (debugMode) {
-                    String msg = "Table friends reseted.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Performed a reset of table friends.");
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(DatabaseActivity.this);
 
@@ -164,12 +148,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetFriends(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table friends.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -178,9 +162,7 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: No");
                         }
                     }
                 });
@@ -191,9 +173,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_genre:
                 //Button genre pressed by user.
                 if (debugMode) {
-                    String msg = "Entering genre administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering genre administration.");
                 }
                 final Intent genreIntent = new Intent(this, TableActivity.class);
                 genreIntent.putExtra("debugMode", debugMode);
@@ -210,12 +190,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetGenres(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table genres.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -224,12 +204,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: no");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -240,9 +216,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_language:
                 //Button language pressed by user.
                 if (debugMode) {
-                    String msg = "Entering language administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering language administration.");
                 }
                 final Intent languageIntent = new Intent(this, TableActivity.class);
                 languageIntent.putExtra("debugMode", debugMode);
@@ -259,12 +233,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetLanguage(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table languages.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -273,12 +247,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: no");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -289,9 +259,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_publisher:
                 //Button publisher pressed by user.
                 if (debugMode) {
-                    String msg = "Entering publisher administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering publisher administration.");
                 }
                 final Intent publisherIntent = new Intent(this, TableActivity.class);
                 publisherIntent.putExtra("debugMode", debugMode);
@@ -308,12 +276,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetPublishers(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table publishers.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -322,12 +290,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: no");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -337,9 +301,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_studio:
                 //Button studio pressed by user.
                 if (debugMode) {
-                    String msg = "Entering studio administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering studio administration.");
                 }
                 final Intent studioIntent = new Intent(this, TableActivity.class);
                 studioIntent.putExtra("debugMode", debugMode);
@@ -356,12 +318,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetStudios(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table studios.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -370,12 +332,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: no");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -385,9 +343,7 @@ public class DatabaseActivity extends AppCompatActivity {
             case R.id.btn_mng_system:
                 //Button system pressed by user.
                 if (debugMode) {
-                    String msg = "Entering system administration.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Entering system administration.");
                 }
                 final Intent sysIntent = new Intent(this, TableActivity.class);
                 sysIntent.putExtra("debugMode", debugMode);
@@ -404,12 +360,12 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: yes");
                         }
                         DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
                         db.resetSystems(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table systems.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
 
@@ -418,12 +374,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User has chosen: no");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
 

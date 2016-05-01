@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 0.1                                                                       *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -18,7 +18,7 @@ public class DatabaseInfo {
     public static final int DATABASE_VERSION = 2;
 
     public static final int TABLE_ID_COL = 0;
-    public static final int TABLE_VALUE_COL = 1;
+    //public static final int TABLE_VALUE_COL = 1;
 
     // ********************************************************************************************
     // *                                                                                          *

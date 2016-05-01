@@ -32,7 +32,6 @@ public class DetailsActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
     private String itemTitle;
-    private Item selectedItem;
 
 
     @Override
@@ -49,7 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        selectedItem = new Item(ctx);
+        Item selectedItem = new Item(ctx);
 
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         ImageView iView = (ImageView) findViewById(R.id.imageView);
@@ -78,22 +77,24 @@ public class DetailsActivity extends AppCompatActivity {
         final Intent lentIntent = new Intent(this, LentActivity.class);
         lentIntent.putExtra("debugMode", debugMode);
 
-        swLent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        if (swLent != null) {
+            swLent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // Changed status of lent switch to true (item is lent)
-                    if (debugMode) {
-                        String msg = "Item status was changed to lent.";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                        Log.d("USERACTION", msg);
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        // Changed status of lent switch to true (item is lent)
+                        if (debugMode) {
+                            String msg = "Item status was changed to lent.";
+                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", msg);
+                        }
+                        startActivity(lentIntent);
                     }
-                    startActivity(lentIntent);
                 }
-            }
-        });
+            });
+        }
 
-        // Getting data of choosed item from database and displaying these.
+        // Getting data of chosen item from database and displaying these.
         if (debugMode) {
             String msg = "Item ID: " + db.getItemID(db, itemTitle);
             Log.d("DATABASE", msg);
@@ -103,12 +104,15 @@ public class DetailsActivity extends AppCompatActivity {
         int id = db.getItemID(db, itemTitle);
         switch (id) {
             case 1:
+                assert iView != null;
                 iView.setBackgroundResource(R.drawable.p1);
                 break;
             case 2:
+                assert iView != null;
                 iView.setBackgroundResource(R.drawable.p2);
                 break;
             case 3:
+                assert iView != null;
                 iView.setBackgroundResource(R.drawable.p3);
                 break;
         }
@@ -127,7 +131,8 @@ public class DetailsActivity extends AppCompatActivity {
         selectedItem.putItem(crs);
 
         String value = String.valueOf(selectedItem.getEAN());
-        eanTXT.setText("EAN: " + value);
+        assert eanTXT != null;
+        eanTXT.setText(String.format("EAN: %s", value));
         titleTXT.setText("Title: " + selectedItem.getTitle());
         genreTXT.setText("Genre: " + selectedItem.getGenre());
         yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));

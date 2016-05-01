@@ -1,3 +1,14 @@
+// ********************************************************************************************
+// *                                                                                          *
+// *                                        SEMESTERARBEIT                                    *
+// *                                             ZHAW                                         *
+// *                                                                                          *
+// * Programmed by: Mathias Weigert                                                           *
+// *       Version: 0.1                                                                       *
+// *          Year: 2016                                                                      *
+// *                                                                                          *
+// ********************************************************************************************/
+
 package ch.riverworld.collector;
 
 import android.content.Context;
@@ -10,7 +21,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -58,9 +68,7 @@ public class CollectionActivity extends AppCompatActivity {
         anz = titleCrs.getCount();
 
         if (debugMode) {
-            String msg = "DATABASE: " + anz.toString() + " items in table.";
-            Log.d("DATABASE", msg);
-            //Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+            Log.d("COLAC", "DATABASE: " + anz.toString() + " items in table.");
         }
 
         if (anz > 0) {
@@ -70,19 +78,16 @@ public class CollectionActivity extends AppCompatActivity {
             do {
                 title = titleCrs.getString(indexTitle);
                 if (debugMode) {
-                    String msg = "DATABASE: Get " + title;
-                    Log.d("DATABASE", msg);
+                    Log.d("COLAC", "DATABASE: Get " + title);
                 }
                 titles.add(title);
                 if (debugMode) {
-                    String msg = "Size of titles = " + titles.size();
-                    Log.d("CODE", msg);
+                    Log.d("COLAC", "Size of titles = " + titles.size());
                 }
             } while (titleCrs.moveToNext());
 
             if (debugMode) {
-                String msg = "Putting data in Adapter";
-                Log.d("ACTIVITY", msg);
+                Log.d("COLAC", "Putting data in Adapter");
             }
             final ArrayAdapter adapter = new ArrayAdapter(this,
                     android.R.layout.simple_list_item_1, titles);

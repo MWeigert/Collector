@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 0.09                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -295,9 +295,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         SQLiteDatabase db;
         db = dop.getReadableDatabase();
         String[] friends = {DatabaseInfo.FRIENDS_FIRSTNAME_COL, DatabaseInfo.FRIENDS_LASTNAME_COL};
-        Cursor cur = db.query(DatabaseInfo.FRIENDS_TABLE, friends, null, null, null, null, null);
 
-        return cur;
+        return db.query(DatabaseInfo.FRIENDS_TABLE, friends, null, null, null, null, null);
     }
 
     // Method to return cursor with one row from friends table.
@@ -480,9 +479,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         SQLiteDatabase db = dop.getReadableDatabase();
         String[] titles = {DatabaseInfo.ITEMS_TITLE_COL};
-        Cursor cur = db.query(DatabaseInfo.ITEMS_TABLE, titles, null, null, null, null, null);
 
-        return cur;
+        return db.query(DatabaseInfo.ITEMS_TABLE, titles, null, null, null, null, null);
     }
 
     // Method to return all data to one single item. Returns cursor.
@@ -526,8 +524,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             String msg = "Title: " + title + " ID: " + crs.getInt(index);
             Log.d("DATABASE", msg);
         }
-
-        return crs.getInt(index);
+        int id =crs.getInt(index);
+        crs.close();
+        return id;
     }
 
     // ********************************************************************************************

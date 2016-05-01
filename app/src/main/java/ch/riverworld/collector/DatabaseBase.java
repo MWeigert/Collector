@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.01                                                                      *
+// *       Version: 0.1                                                                       *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -53,15 +53,6 @@ public class DatabaseBase {
 
     public static final String[] languageData = new String[]{"LANGUAGE", "Arabic", "English", "French", "German",
             "Hindi", "Italian", "Japanese", "Mandarin", "Portuguese", "Russian", "Spanish"};
-
-    // ********************************************************************************************
-    // *                                                                                          *
-    // *                                    BASE TO FILL THE                                      *
-    // *                                     PARENTAL TABLE                                       *
-    // *                                                                                          *
-    // ********************************************************************************************/
-
-    public static final String[] parentalData = new String[]{"0", "6", "12", "16", "18"};
 
     // ********************************************************************************************
     // *                                                                                          *
