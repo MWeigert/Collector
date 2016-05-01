@@ -31,11 +31,10 @@ public class CollectionActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 selectedItem = list.getItemAtPosition(position);
-                if (debugMode) {
-                    String msg = selectedItem.toString() + " ausgewählt.";
-                    Log.d("USERACTION", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
+                Intent detailsIntent = new Intent(CollectionActivity.this, DetailsActivity.class);
+                detailsIntent.putExtra("debugMode", debugMode);
+                detailsIntent.putExtra("itemTitle", selectedItem.toString());
+                startActivity(detailsIntent);
             }
         });
 
@@ -89,19 +88,6 @@ public class CollectionActivity extends AppCompatActivity {
                     android.R.layout.simple_list_item_1, titles);
 
             list.setAdapter(adapter);
-        }
-    }
-
-    // Button listener for the CollectionActivity
-    public void buttonOnClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_select:
-                //Pressed button do confirm selected item.
-                final Intent detailsIntent = new Intent(this, DetailsActivity.class);
-                detailsIntent.putExtra("debugMode", debugMode);
-                detailsIntent.putExtra("itemTitle",selectedItem.toString());
-                startActivity(detailsIntent);
-                break;
         }
     }
 }

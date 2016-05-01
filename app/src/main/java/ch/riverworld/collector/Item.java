@@ -14,9 +14,11 @@ package ch.riverworld.collector;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 
 public class Item {
+    private boolean debugMode = true;
 
     private int id;
     private long ean;
@@ -38,7 +40,7 @@ public class Item {
     private int system_id;
     private String system;
     private boolean dvd;
-    private boolean blueRay;
+    private boolean bluRay;
     private int studio_id;
     private String studio;
     private int director_id;
@@ -49,23 +51,26 @@ public class Item {
 
     // Empty Constructor
     public Item(Context ctx) {
-        this.ctx=ctx;
+        this.ctx = ctx;
     }
 
     // Put data from one single item in object.
     public void putItem(Cursor crs) {
         DatabaseOperations db = new DatabaseOperations(ctx, false);
-
+        Cursor crsID;
         int index;
 
         crs.moveToFirst();
-
+        // ID
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
         id = crs.getInt(index);
+        // EAN
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
         ean = crs.getLong(index);
+        // Title
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         title = crs.getString(index);
+        // MediaType
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
         mediaType = crs.getString(index);
         book = false;
@@ -82,19 +87,30 @@ public class Item {
                 game = true;
                 break;
         }
+        // Genre
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
         genre_id = crs.getInt(index);
-        // CHECK FOR GENRE
+        crsID = db.getGenreRow(db, null, genre_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
+            crsID.moveToFirst();
+            genre = crsID.getString(index);
+        }
+        // Language
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
         language_id = crs.getInt(index);
-        // CHECK FOR LANGUAGE
-        crs = db.getLanguage(db, language_id);
-        if (crs != null) {
-            index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
-            //NULLPOINTER IN NEXT LINE
-            language=crs.getString(index);
+        crsID = db.getLanguageRow(db, null, language_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.LANGUAGES_LANGUAGE_COL);
+            crsID.moveToFirst();
+            if (debugMode) {
+                Log.d("ITEM", "Count: " + crs.getCount());
+                Log.d("ITEM", "TYPE: " + crs.getType(index));
+            }
+            language = crsID.getString(index);
         }
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_COL);
+        // Year
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_YEAR_COL);
         year = Integer.valueOf(crs.getString(index));
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_RENTAL_COL);
         switch (crs.getInt(index)) {
@@ -105,15 +121,34 @@ public class Item {
                 lent = false;
                 break;
         }
+        // Publisher
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PUBLISHER_ID_COL);
         publisher_id = crs.getInt(index);
-        // CHECK FOR PUBLISHER
+        crsID = db.getPublisherRow(db, null, publisher_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
+            crsID.moveToFirst();
+            publisher = crsID.getString(index);
+        }
+        // Author
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_AUTHOR_ID_COL);
         author_id = crs.getInt(index);
-        // CHECK FOR AUTHOR
+        crsID = db.getAuthorRow(db, null, author_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
+            crsID.moveToFirst();
+            author = crsID.getString(index);
+        }
+        // Systems
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_SYSTEM_ID_COL);
         system_id = crs.getInt(index);
-        // CHECK FOR SYSTEM
+        crsID = db.getSystemRow(db, null, system_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
+            crsID.moveToFirst();
+            system = crsID.getString(index);
+        }
+        // DVD
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DVD_COL);
         switch (crs.getInt(index)) {
             case 1:
@@ -123,21 +158,35 @@ public class Item {
                 dvd = false;
                 break;
         }
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_BLUERAY_COL);
+        // BluRay
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_BLURAY_COL);
         switch (crs.getInt(index)) {
             case 1:
-                blueRay = true;
+                bluRay = true;
                 break;
             default:
-                blueRay = false;
+                bluRay = false;
                 break;
         }
+        // Studio
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_STUDIO_ID_COL);
         studio_id = crs.getInt(index);
-        // CHECK FOR STUDIO
+        crsID = db.getStudioRow(db, null, studio_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
+            crsID.moveToFirst();
+            studio = crsID.getString(index);
+        }
+        // Director
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DIRECTOR_ID_COL);
         director_id = crs.getInt(index);
-        // CHECK FOR DIRECTOR
+        crsID = db.getDirectorRow(db, null, director_id);
+        if (crsID != null) {
+            index = crsID.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
+            crsID.moveToFirst();
+            director = crsID.getString(index);
+        }
+        // Parental
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PARENTAL_ID_COL);
         fsk = crs.getInt(index);
     }
@@ -228,8 +277,8 @@ public class Item {
         return dvd;
     }
 
-    public boolean isBlueRay() {
-        return blueRay;
+    public boolean isBluRay() {
+        return bluRay;
     }
 
     public int getStudio_id() {
@@ -339,8 +388,8 @@ public class Item {
         this.dvd = dvd;
     }
 
-    public void setBlueRay(boolean blueRay) {
-        this.blueRay = blueRay;
+    public void setBluRay(boolean bluRay) {
+        this.bluRay = bluRay;
     }
 
     public void setStudio_id(int studio_id) {

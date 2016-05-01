@@ -21,7 +21,7 @@ public class DatabaseBase {
     // ********************************************************************************************/
 
     public static final String[] authorData = new String[]{"AUTHOR", "Blyton, Enid", "Farmer, Philip José",
-            "Lindgren, Astrid", "Pratchett, Terry", "Wallace, Edgar"};
+            "Lindgren, Astrid", "Pratchett, Terry", "Singh, Simon", "Volpi, Jorge", "Wallace, Edgar"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -30,8 +30,8 @@ public class DatabaseBase {
     // *                                                                                          *
     // ********************************************************************************************/
 
-    public static final String[] directorData = new String[]{"DIRECTOR", "Emmerich, Roland", "Jackson, Peter",
-            "Scott," + " Ridley"};
+    public static final String[] directorData = new String[]{"DIRECTOR", "Emmerich, Roland", "Gillard, Stuart",
+            "Jackson, Peter", "Scott, Ridley"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -42,7 +42,7 @@ public class DatabaseBase {
 
     public static final String[] genreData = new String[]{"GENRE", "Action", "Adventure", "Animated", "Arcade",
             "Comedies", "Drama", "Documentary", "Fantasy", "Family", "Film Noir", "First Person Shooter", "Horror",
-            "Romantic", "Science Fiction", "Simulation", "Strategy", "Thriller", "Western"};
+            "Jump 'n Run", "Romantic", "Science Fiction", "Simulation", "Strategy", "Thriller", "Western"};
 
     // ********************************************************************************************
     // *                                                                                          *
@@ -71,7 +71,7 @@ public class DatabaseBase {
     // ********************************************************************************************/
 
     public static final String[] publisherData = new String[]{"PUBLISHER", "Addison-Wesley", "Forth Estate", "Hanser",
-            "O'Reilley"};
+            "Klett-Cotta", "O'Reilley"};
 
     // ********************************************************************************************
     // *                                                                                          *

@@ -85,16 +85,6 @@
                 android:text="@string/btn_language"/>
 
             <Button
-                android:id="@+id/btn_mng_parental"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/btn_mng_system"
-                android:onClick="buttonOnClick"
-                android:text="@string/btn_mng_parental"/>
-
-            <Button
                 android:id="@+id/btn_mng_publisher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -188,17 +178,6 @@
                 android:layout_below="@+id/btn_reset_genre"
                 android:onClick="buttonOnClick"
                 android:text="@string/btn_reset_language"/>
-
-            <Button
-                android:id="@+id/btn_reset_parental"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/btn_reset_language"
-                android:onClick="buttonOnClick"
-                android:text="@string/btn_reset_parental"/>
 
             <Button
                 android:id="@+id/btn_reset_publisher"

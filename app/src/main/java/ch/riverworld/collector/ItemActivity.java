@@ -23,7 +23,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -146,7 +145,7 @@ public class ItemActivity extends AppCompatActivity {
         ArrayList<String> language = new ArrayList<String>();
 
         crs.moveToFirst();
-        index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
+        index = crs.getColumnIndex(DatabaseInfo.LANGUAGES_LANGUAGE_COL);
 
         do {
             language.add(crs.getString(index));
@@ -203,7 +202,7 @@ public class ItemActivity extends AppCompatActivity {
 
         //Filling year spinner with information
         ArrayAdapter<Integer> adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
-                .simple_spinner_dropdown_item, spInfo.yearData);
+                .simple_spinner_dropdown_item, DatabaseBase.yearData);
         spYear.setAdapter(adapterYear);
     }
 
@@ -213,16 +212,13 @@ public class ItemActivity extends AppCompatActivity {
             case R.id.btn_add:
                 //Pressed button to add new item to the collection.
                 if (debugMode) {
-                    String msg = "User pressed add button and entered add item.";
-                    Log.d("USER", msg);
+                    Log.d("USERACTION", "User pressed add button and entered add item.");
                 }
                 Item item = new Item(ctx);
 
                 if (debugMode) {
-                    String msg = "EAN Code: " + txtEAN.getText().toString();
-                    Log.d("CODE", msg);
-                    msg = "Title: " + txtTitle.getText().toString();
-                    Log.d("CODE", msg);
+                    Log.d("ITAC", "EAN Code: " + txtEAN.getText().toString());
+                    Log.d("ITAC", "Title: " + txtTitle.getText().toString());
                 }
 
                 // Check if either title or EAN is not null.
@@ -230,8 +226,8 @@ public class ItemActivity extends AppCompatActivity {
                 String title = txtTitle.getText().toString();
 
                 if (eanStr.isEmpty() && title.isEmpty()) {
-                    String msg = "Either title or EAN code should have an value.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Either title or EAN code should have an value.", Toast
+                            .LENGTH_SHORT).show();
                 } else {
 
                     // Input check: Set EAN to 0 or value
@@ -267,40 +263,33 @@ public class ItemActivity extends AppCompatActivity {
                         Log.d("DATABASE", msg);
                     }
 
-                    // Get ID of choosen genre
+                    // Get ID of chosen genre
                     String genre = spGenre.getSelectedItem().toString();
-                    Cursor crs = db.getGenreID(db, genre);
+                    Cursor crs = db.getGenreRow(db, genre, null);
                     crs.moveToFirst();
-                    Integer index = crs.getColumnIndex(DatabaseInfo.GENRES_ID_COL);
-                    Integer genreID = Integer.parseInt(crs.getString(index));
+                    Integer genreID = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Genre: " + genre + " ID: " + genreID;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC","Genre: " + genre + " ID: " + genreID);
                     }
-
                     item.setGenre_id(genreID);
 
-                    // Get ID of choosen language
+                    // Get ID of chosen language
                     String language = spLanguage.getSelectedItem().toString();
-                    crs = db.getLanguageID(db, language);
+                    crs = db.getLanguageRow(db, language,null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.LANGUAGE_ID_COL);
-                    Integer languageId = Integer.parseInt(crs.getString(index));
+                    Integer languageId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Language: " + language + "ID: " + languageId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Language: " + language + "ID: " + languageId);
                     }
-
                     item.setLanguage_id(languageId);
 
                     // Get year from spinner
                     Integer year = Integer.parseInt(spYear.getSelectedItem().toString());
 
                     if (debugMode) {
-                        String msg = "Year: " + year;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Year: " + year);
                     }
 
                     item.setYear(year);
@@ -312,47 +301,39 @@ public class ItemActivity extends AppCompatActivity {
                         item.setLent(false);
                     }
 
-                    // Get ID of choosen publisher
+                    // Get ID of chosen publisher
                     String publisher = spPublisher.getSelectedItem().toString();
-                    crs = db.getPublisherID(db, publisher);
+                    crs = db.getPublisherRow(db, publisher,null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.PUBLISHERS_ID_COL);
-                    Integer publisherId = Integer.parseInt(crs.getString(index));
+                    Integer publisherId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Publisher: " + publisher + "ID: " + publisherId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Publisher: " + publisher + "ID: " + publisherId);
                     }
-
                     item.setPublisher_id(publisherId);
 
-                    // Get ID of choosen author
+                    // Get ID of chosen author
                     String author = spAuthor.getSelectedItem().toString();
-                    crs = db.getAuthorID(db, author);
+                    crs = db.getAuthorRow(db, author, null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.AUTHORS_ID_COL);
-                    Integer authorId = Integer.parseInt(crs.getString(index));
+                    Integer authorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Author: " + author + "ID: " + authorId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Author: " + author + "ID: " + authorId);
                     }
-
                     item.setAuthor_id(authorId);
 
-                    // Get ID of choosen system
+                    // Get ID of chosen system
                     String system = spSystem.getSelectedItem().toString();
-                    crs = db.getSystemID(db, system);
+                    crs = db.getSystemRow(db, system, null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.SYSTEMS_ID_COL);
-                    Integer systemId = Integer.parseInt(crs.getString(index));
+                    Integer systemId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "System: " + system + "ID: " + systemId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC","System: " + system + "ID: " + systemId);
                     }
 
-                    item.setLanguage_id(systemId);
+                    item.setSystem_id(systemId);
 
                     // Get status of DVD checkbox
                     if (cbDVD.isChecked()) {
@@ -361,39 +342,33 @@ public class ItemActivity extends AppCompatActivity {
                         item.setDvd(false);
                     }
 
-                    // Get status of BlueRay checkbox
+                    // Get status of BluRay checkbox
                     if (cbBlueRay.isChecked()) {
-                        item.setBlueRay(true);
+                        item.setBluRay(true);
                     } else {
-                        item.setBlueRay(false);
+                        item.setBluRay(false);
                     }
 
-                    // Get ID of choosen studio
+                    // Get ID of chosen studio
                     String studio = spStudio.getSelectedItem().toString();
-                    crs = db.getStudioID(db, studio);
+                    crs = db.getStudioRow(db, studio,null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.STUDIOS_ID_COL);
-                    Integer studioId = Integer.parseInt(crs.getString(index));
+                    Integer studioId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Studio: " + studio + "ID: " + studioId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Studio: " + studio + "ID: " + studioId);
                     }
-
                     item.setStudio_id(studioId);
 
-                    // Get ID of choosen director
+                    // Get ID of chosen director
                     String director = spDirector.getSelectedItem().toString();
-                    crs = db.getDirectorID(db, director);
+                    crs = db.getDirectorRow(db, director,null);
                     crs.moveToFirst();
-                    index = crs.getColumnIndex(DatabaseInfo.DIRECTORS_ID_COL);
-                    Integer directorId = Integer.parseInt(crs.getString(index));
+                    Integer directorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        String msg = "Director: " + director + "ID: " + directorId;
-                        Log.d("DATABASE", msg);
+                        Log.d("ITAC", "Director: " + director + "ID: " + directorId);
                     }
-
                     item.setDirector_id(directorId);
 
                     // Get status of parental checkboxes and set maximum

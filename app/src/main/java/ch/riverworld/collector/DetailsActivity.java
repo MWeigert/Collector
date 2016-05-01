@@ -64,15 +64,15 @@ public class DetailsActivity extends AppCompatActivity {
         TextView publisherTXT = (TextView) findViewById(R.id.txt_publisher);
         TextView authorTXT = (TextView) findViewById(R.id.txt_author);
         CheckBox dvdCB = (CheckBox) findViewById(R.id.cb_details_dvd);
-        CheckBox bluerayCB = (CheckBox) findViewById(R.id.cb_details_blueray);
-        TextView directorTXT=(TextView)findViewById(R.id.txt_director);
-        TextView studioTXT=(TextView)findViewById(R.id.txt_studio);
-        TextView systemTXT=(TextView)findViewById(R.id.txt_system);
-        CheckBox fsk0CB=(CheckBox)findViewById(R.id.cb_details_0);
-        CheckBox fsk6CB=(CheckBox)findViewById(R.id.cb_details_6);
-        CheckBox fsk12CB=(CheckBox)findViewById(R.id.cb_details_12);
-        CheckBox fsk16CB=(CheckBox)findViewById(R.id.cb_details_16);
-        CheckBox fsk18CB=(CheckBox)findViewById(R.id.cb_details_18);
+        CheckBox blurayCB = (CheckBox) findViewById(R.id.cb_details_blueray);
+        TextView directorTXT = (TextView) findViewById(R.id.txt_director);
+        TextView studioTXT = (TextView) findViewById(R.id.txt_studio);
+        TextView systemTXT = (TextView) findViewById(R.id.txt_system);
+        CheckBox fsk0CB = (CheckBox) findViewById(R.id.cb_details_0);
+        CheckBox fsk6CB = (CheckBox) findViewById(R.id.cb_details_6);
+        CheckBox fsk12CB = (CheckBox) findViewById(R.id.cb_details_12);
+        CheckBox fsk16CB = (CheckBox) findViewById(R.id.cb_details_16);
+        CheckBox fsk18CB = (CheckBox) findViewById(R.id.cb_details_18);
 
         // Set functionality and listener to lent switch
         final Intent lentIntent = new Intent(this, LentActivity.class);
@@ -115,29 +115,23 @@ public class DetailsActivity extends AppCompatActivity {
 
         Cursor crs = db.getItem(db, itemTitle);
         crs.moveToFirst();
+
         if (debugMode) {
             String msg = "";
             String[] columns = crs.getColumnNames();
             for (String column : columns) {
                 msg = msg + column + ";";
             }
-            Log.d("DATABASE", msg);
+            Log.d("DETAC", msg);
         }
         selectedItem.putItem(crs);
-
-        crs = db.getGenre(db, selectedItem.getGenre_id());
-        if (crs != null) {
-            crs.moveToFirst();
-            int index = crs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
-            selectedItem.setGenre(crs.getString(index));
-        }
 
         String value = String.valueOf(selectedItem.getEAN());
         eanTXT.setText("EAN: " + value);
         titleTXT.setText("Title: " + selectedItem.getTitle());
         genreTXT.setText("Genre: " + selectedItem.getGenre());
         yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));
-        languageTXT.setText("Language: "+selectedItem.getLanguage());
+        languageTXT.setText("Language: " + selectedItem.getLanguage());
         if (debugMode) {
             String msg = "Book: " + selectedItem.isBook() + " Movie: " + selectedItem.isMovie() + " Game: " +
                     selectedItem.isGame() + " MediaType: " + selectedItem.getMediaType();
@@ -152,9 +146,45 @@ public class DetailsActivity extends AppCompatActivity {
         if (selectedItem.isGame()) {
             gameRB.setChecked(true);
         } else gameRB.setVisibility(View.INVISIBLE);
+        publisherTXT.setText("Publisher: " + selectedItem.getPublisher());
+        authorTXT.setText("Author: " + selectedItem.getAuthor());
+        if (selectedItem.isDvd()) {
+            dvdCB.setChecked(true);
+        } else dvdCB.setVisibility(View.INVISIBLE);
+        if (selectedItem.isBluRay()) {
+            blurayCB.setChecked(true);
+        } else blurayCB.setVisibility(View.INVISIBLE);
+        directorTXT.setText("Director: " + selectedItem.getDirector());
+        studioTXT.setText("Studio: " + selectedItem.getStudio());
+        systemTXT.setText("System: " + selectedItem.getSystem());
+        switch (selectedItem.getFsk()) {
+            case 0:
+                fsk0CB.setChecked(true);
+                break;
+            case 6:
+                fsk6CB.setChecked(true);
+                break;
+            case 12:
+                fsk12CB.setChecked(true);
+                break;
+            case 16:
+                fsk16CB.setChecked(true);
+                break;
+            case 18:
+                fsk18CB.setChecked(true);
+                break;
+            default:
+                fsk0CB.setVisibility(View.INVISIBLE);
+                fsk6CB.setVisibility(View.INVISIBLE);
+                fsk12CB.setVisibility(View.INVISIBLE);
+                fsk16CB.setVisibility(View.INVISIBLE);
+                fsk18CB.setVisibility(View.INVISIBLE);
+                break;
+        }
     }
 
     // Button listener for the DetailsActivity
+
     public void buttonOnClick(View v) {
         switch (v.getId()) {
             case R.id.btn_delete:

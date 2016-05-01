@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class FriendsActivity extends AppCompatActivity {
@@ -55,13 +56,10 @@ public class FriendsActivity extends AppCompatActivity {
 
                 selectedItem = FRIENDLIST.getItemAtPosition(position);
                 if (debugMode) {
-                    String msg = selectedItem.toString() + " ausgewählt.";
-                    Log.d("USERACTION", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("USERACTION", selectedItem.toString() + " chose.");
                 }
             }
         });
-
 
         // Fill friends from database to list item
         String friend;
@@ -75,16 +73,12 @@ public class FriendsActivity extends AppCompatActivity {
 
         Integer anz = crs.getCount();
         if (debugMode) {
-            String msg = "DATABASE: " + anz.toString() + " friends in table.";
-            Log.d("DATABASE", msg);
-            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+            Log.d("FRAC", "DATABASE: " + anz.toString() + " friends in table.");
         }
-
         if (anz > 0) {
             crs.moveToFirst();
             indexFirstName = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
             indexLastName = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
-
             do {
                 friend = crs.getString(indexFirstName) + " " + crs.getString(indexLastName);
                 friends.add(friend);
@@ -101,18 +95,15 @@ public class FriendsActivity extends AppCompatActivity {
     public void buttonOnClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add:
-                //Pressed button to add new friend to the database.
+                // Pressed button to add new friend to the database.
                 String firstName = FIRST_NAME.getText().toString();
                 String lastName = LAST_NAME.getText().toString();
                 if (lastName.compareTo("Last name") == 0) {
-                    String msg = "Please enter an last name.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Please enter an last name.", Toast.LENGTH_SHORT).show();
                 } else {
                     db.addFriend(db, firstName, lastName);
-
                     if (debugMode) {
-                        String msg = "Added: " + firstName + " " + lastName;
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        Log.d("FRAC", "Added: " + firstName + " " + lastName);
                     }
                 }
                 finish();
@@ -121,49 +112,46 @@ public class FriendsActivity extends AppCompatActivity {
                 //Pressed button to delete friend from database.
 
                 AlertDialog.Builder langBuilder = new AlertDialog.Builder(FriendsActivity.this);
-                String msg = "Do you really want to delete " + selectedItem.toString();
-                langBuilder.setMessage(msg);
-
+                langBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
                 langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User chose yes.");
                         }
                         String[] name = selectedItem.toString().split(" ");
-                        boolean sucess = db.deleteFriend(db, name[1]);
-                        if (sucess) {
-                            String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                        Cursor crs = db.getFriendsRow(db, name[0], null, null);
+                        int index = crs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
+                        crs.moveToFirst();
+                        if (debugMode){
+                            Log.d("FRAC", "Count: " + crs.getCount());
+                            Log.d("FRAC", "TYPE: "+crs.getType(index));
+                        }
+                        int id = crs.getInt(index);
+                        boolean success = db.deleteFriend(db, id);
+                        if (success) {
+                            Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully deleted from" +
+                                    " " + "database.", Toast.LENGTH_SHORT).show();
                         } else {
-                            String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Could not delete: " + selectedItem.toString() + " from " +
+                                    "database.", Toast.LENGTH_SHORT).show();
                         }
                         finish();
                     }
                 });
-
                 langBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed no.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION","User chose no.");
                         }
-                        String msg = "FALSE";
-                        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });
-
                 AlertDialog langAlert = langBuilder.create();
                 langAlert.show();
-
                 break;
         }
     }

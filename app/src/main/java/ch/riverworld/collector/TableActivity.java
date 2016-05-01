@@ -44,9 +44,8 @@ public class TableActivity extends AppCompatActivity {
 
                 selectedItem = LIST.getItemAtPosition(position);
                 if (debugMode) {
-                    String msg = selectedItem.toString() + " ausgewählt.";
+                    String msg = selectedItem.toString() + " chose.";
                     Log.d("USERACTION", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -61,9 +60,7 @@ public class TableActivity extends AppCompatActivity {
         switch (table.toUpperCase()) {
             case "AUTHOR":
                 if (debugMode) {
-                    String msg = "Table: Authors";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Authors");
                 }
 
                 // Fill authors from database to list item
@@ -76,373 +73,241 @@ public class TableActivity extends AppCompatActivity {
 
                 anz = authorCrs.getCount();
                 if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " authors in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " authors in table.");
                 }
-
                 if (anz > 0) {
                     authorCrs.moveToFirst();
-                    indexAuthor = authorCrs.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
-
                     do {
-                        author = authorCrs.getString(indexAuthor);
+                        int index = authorCrs.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + author;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "Index (AUTHORS_AUTHOR): " + index);
+                        }
+                        author = authorCrs.getString(index);
+                        if (debugMode) {
+                            Log.d("TABAC", "DATABASE: Get " + author);
                         }
                         authors.add(author);
                         if (debugMode) {
-                            String msg = "Size of authors = " + authors.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of authors = " + authors.size());
                         }
                     } while (authorCrs.moveToNext());
 
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, authors);
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, authors);
 
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "DIRECTOR":
                 if (debugMode) {
-                    String msg = "Table: Directors";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Directors");
                 }
 
                 // Fill directors from database to list item
                 String director;
-                Integer indexDirector;
-
                 final ArrayList<String> directors = new ArrayList<String>();
-
                 Cursor directorCrs = db.getDirectors(db);
-
                 anz = directorCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " directors in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
+                if (debugMode) {
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " directors in table.");
+                }
                 if (anz > 0) {
                     directorCrs.moveToFirst();
-                    indexDirector = directorCrs.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
-
                     do {
-                        director = directorCrs.getString(indexDirector);
+                        int index = directorCrs.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
+                        director = directorCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + director;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + director);
                         }
                         directors.add(director);
                         if (debugMode) {
-                            String msg = "Size of authors = " + directors.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of authors = " + directors.size());
                         }
                     } while (directorCrs.moveToNext());
-
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, directors);
 
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, directors);
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "GENRE":
                 if (debugMode) {
-                    String msg = "Table: Genre";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Genre");
                 }
                 // Fill genres from database to list item
                 String genre;
-                Integer indexGenre;
-
                 final ArrayList<String> genres = new ArrayList<String>();
-
                 Cursor genreCrs = db.getGenres(db);
-
                 anz = genreCrs.getCount();
+
                 if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " genres in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " genres in table.");
                 }
 
                 if (anz > 0) {
                     genreCrs.moveToFirst();
-                    indexGenre = genreCrs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
-                    //indexGenre=genreCrs.getColumnIndex(DatabaseInfo.GENRES_ID_COL);
-
                     do {
-                        genre = genreCrs.getString(indexGenre);
+                        int index = genreCrs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
+                        genre = genreCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + genre;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + genre);
                         }
                         genres.add(genre);
                         if (debugMode) {
-                            String msg = "Size of genres = " + genres.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of genres = " + genres.size());
                         }
                     } while (genreCrs.moveToNext());
-
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, genres);
 
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, genres);
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "LANGUAGE":
                 if (debugMode) {
-                    String msg = "Table: Language";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Language");
                 }
 
                 // Fill languages from database to list item
                 String language;
-                Integer indexLanguage;
-
                 final ArrayList<String> languages = new ArrayList<String>();
-
                 Cursor languageCrs = db.getLanguages(db);
-
                 anz = languageCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " languages in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
+                if (debugMode) {
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " languages in table.");
+                }
                 if (anz > 0) {
                     languageCrs.moveToFirst();
-                    indexLanguage = languageCrs.getColumnIndex(DatabaseInfo.LANGUAGE_LANGUAGE_COL);
-
                     do {
-                        language = languageCrs.getString(indexLanguage);
+                        int index = languageCrs.getColumnIndex(DatabaseInfo.LANGUAGES_LANGUAGE_COL);
+                        language = languageCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + language;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + language);
                         }
                         languages.add(language);
                         if (debugMode) {
-                            String msg = "Size of languages = " + languages.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of languages = " + languages.size());
                         }
                     } while (languageCrs.moveToNext());
 
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, languages);
 
-                    LIST.setAdapter(adapter);
-                }
-                break;
-            case "PARENTAL":
-                if (debugMode) {
-                    String msg = "Table: Parental";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
-                }
-                // Fill parental items from database to list item
-                String parental;
-                Integer indexParental;
-
-                final ArrayList<String> parentals = new ArrayList<String>();
-
-                Cursor parentalCrs = db.getParental(db);
-
-                anz = parentalCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " parental informations in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
-                if (anz > 0) {
-                    parentalCrs.moveToFirst();
-                    indexParental = parentalCrs.getColumnIndex(DatabaseInfo.PARENTAL_PARENTAL_COL);
-
-                    do {
-                        parental = parentalCrs.getString(indexParental);
-                        if (debugMode) {
-                            String msg = "DATABASE: Get " + parental;
-                            Log.d("DATABASE", msg);
-                        }
-                        parentals.add(parental);
-                        if (debugMode) {
-                            String msg = "Size of parental = " + parentals.size();
-                            Log.d("CODE", msg);
-                        }
-                    } while (parentalCrs.moveToNext());
-
-                    if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
-                    }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, parentals);
-
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, languages);
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "PUBLISHER":
                 if (debugMode) {
-                    String msg = "Table: Publisher";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Publisher");
                 }
+
                 // Fill publishers from database to list item
                 String publisher;
-                Integer indexPublisher;
-
                 final ArrayList<String> publishers = new ArrayList<String>();
-
                 Cursor publisherCrs = db.getPublishers(db);
-
                 anz = publisherCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " publishers in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
+                if (debugMode) {
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " publishers in table.");
+                }
                 if (anz > 0) {
                     publisherCrs.moveToFirst();
-                    indexPublisher = publisherCrs.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
-
                     do {
-                        publisher = publisherCrs.getString(indexPublisher);
+                        int index = publisherCrs.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
+                        publisher = publisherCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + publisher;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + publisher);
                         }
                         publishers.add(publisher);
                         if (debugMode) {
-                            String msg = "Size of systems = " + publishers.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of systems = " + publishers.size());
                         }
                     } while (publisherCrs.moveToNext());
 
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, publishers);
-
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
+                            publishers);
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "STUDIO":
                 if (debugMode) {
-                    String msg = "Table: Studio";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: Studio");
                 }
+
                 // Fill studios from database to list item
                 String studio;
-                Integer indexStudio;
-
                 final ArrayList<String> studios = new ArrayList<String>();
-
                 Cursor studioCrs = db.getStudios(db);
-
                 anz = studioCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " studios in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
+                if (debugMode) {
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " studios in table.");
+                }
                 if (anz > 0) {
                     studioCrs.moveToFirst();
-                    indexStudio = studioCrs.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
-
                     do {
-                        studio = studioCrs.getString(indexStudio);
+                        int index = studioCrs.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
+                        studio = studioCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + studio;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + studio);
                         }
                         studios.add(studio);
                         if (debugMode) {
-                            String msg = "Size of studios = " + studios.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of studios = " + studios.size());
                         }
                     } while (studioCrs.moveToNext());
-
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, studios);
 
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studios);
                     LIST.setAdapter(adapter);
                 }
                 break;
             case "SYSTEM":
                 if (debugMode) {
-                    String msg = "Table: System";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
+                    Log.d("USERACTION", "Table: System");
                 }
                 // Fill systems from database to list item
                 String system;
-                Integer indexSystem;
-
                 final ArrayList<String> systems = new ArrayList<String>();
-
                 Cursor systemCrs = db.getSystems(db);
-
                 anz = systemCrs.getCount();
-                if (debugMode) {
-                    String msg = "DATABASE: " + anz.toString() + " systems in table.";
-                    Log.d("DATABASE", msg);
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                }
 
+                if (debugMode) {
+                    Log.d("TABAC", "DATABASE: " + anz.toString() + " systems in table.");
+                }
                 if (anz > 0) {
                     systemCrs.moveToFirst();
-                    indexSystem = systemCrs.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
-
                     do {
-                        system = systemCrs.getString(indexSystem);
+                        int index = systemCrs.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
+                        system = systemCrs.getString(index);
                         if (debugMode) {
-                            String msg = "DATABASE: Get " + system;
-                            Log.d("DATABASE", msg);
+                            Log.d("TABAC", "DATABASE: Get " + system);
                         }
                         systems.add(system);
                         if (debugMode) {
-                            String msg = "Size of systems = " + systems.size();
-                            Log.d("CODE", msg);
+                            Log.d("TABAC", "Size of systems = " + systems.size());
                         }
                     } while (systemCrs.moveToNext());
-
                     if (debugMode) {
-                        String msg = "Putting data in Adapter";
-                        Log.d("ACTIVITY", msg);
+                        Log.d("TABAC", "Putting data in Adapter");
                     }
-                    final ArrayAdapter adapter = new ArrayAdapter(this,
-                            android.R.layout.simple_list_item_1, systems);
 
+                    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, systems);
                     LIST.setAdapter(adapter);
                 }
                 break;
@@ -451,191 +316,130 @@ public class TableActivity extends AppCompatActivity {
 
     // Button Listener for the table activity
     public void buttonOnClick(View v) {
-        String msg;
 
         if (debugMode) {
-            msg = "Entered button listener.";
-            Log.d("CODE", msg);
-            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+            Log.d("TABAC", "Entered button listener.");
         }
 
         String item;
-
         switch (v.getId()) {
             case R.id.btn_add_item:
                 switch (table.toUpperCase()) {
                     case "AUTHOR":
+                        //Pressed button to add new author to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to authors table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to authors table.");
                         }
 
-                        //Pressed button to add new author to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter author.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter author.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addAuthor(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "DIRECTOR":
+                        //Pressed button to add new director to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to directors table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to directors table.");
                         }
 
-                        //Pressed button to add new director to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter director.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter director.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addDirector(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "GENRE":
+                        //Pressed button to add new genre to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to genre table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to genre table.");
                         }
 
-                        //Pressed button to add new genre to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter genre.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter genre.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addGenre(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "LANGUAGE":
+                        //Pressed button to add new language to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to languages table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to languages table.");
                         }
 
-                        //Pressed button to add new language to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter a language.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter a language.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addLanguage(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            }
-                        }
-                        finish();
-                        break;
-                    case "PARENTAL":
-                        if (debugMode) {
-                            msg = "User choosed add item to parental table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                        }
-
-                        //Pressed button to add new parental information to the database.
-                        item = INPUT.getText().toString();
-                        if (item.length() <= 0) {
-                            msg = "Please enter a parental information.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                        } else {
-                            db.addParental(db, item);
-
-                            if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "PUBLISHER":
+                        //Pressed button to add new publisher to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to publishers table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to publishers table.");
                         }
 
-                        //Pressed button to add new publisher to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter a publisher.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter a publisher.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addPublisher(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "STUDIO":
+                        //Pressed button to add new studio to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to studios table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to studios table.");
                         }
 
-                        //Pressed button to add new studio to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter a studio.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter a studio.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addStudio(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
                         break;
                     case "SYSTEM":
+                        //Pressed button to add new system to the database.
                         if (debugMode) {
-                            msg = "User choosed add item to systems table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose add item to systems table.");
                         }
 
-                        //Pressed button to add new system to the database.
                         item = INPUT.getText().toString();
                         if (item.length() <= 0) {
-                            msg = "Please enter a system.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getBaseContext(), "Please enter a system.", Toast.LENGTH_SHORT).show();
                         } else {
                             db.addSystem(db, item);
-
                             if (debugMode) {
-                                msg = "Added: " + item;
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Log.d("TABAC", "Added: " + item);
                             }
                         }
                         finish();
@@ -645,51 +449,46 @@ public class TableActivity extends AppCompatActivity {
             case R.id.btn_remove_item:
                 switch (table.toUpperCase()) {
                     case "AUTHOR":
+                        //Pressed button to delete author from database
                         if (debugMode) {
-                            msg = "User choosed remove item from authors table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from authors table.");
                         }
 
-                        //Pressed button to delete author from database
                         AlertDialog.Builder authorBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        authorBuilder.setMessage(msg);
-
+                        authorBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
                         authorBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String author = selectedItem.toString();
-                                boolean sucess = db.deleteAuthor(db, author);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getAuthorRow(db, author, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+
+                                boolean success = db.deleteAuthor(db, id);
+                                if (success) {
+                                    String msg = id + selectedItem.toString() + " is successfully deleted from " +
+                                            "database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    String msg = "Could not delete: " + id + selectedItem.toString() + " from " +
+                                            "database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         authorBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -697,16 +496,13 @@ public class TableActivity extends AppCompatActivity {
                         authorAlert.show();
                         break;
                     case "DIRECTOR":
+                        //Pressed button to delete genre from database
                         if (debugMode) {
-                            msg = "User choosed remove item from directors table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from directors table.");
                         }
 
-                        //Pressed button to delete genre from database
                         AlertDialog.Builder directorBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        directorBuilder.setMessage(msg);
+                        directorBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
 
                         directorBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -714,240 +510,162 @@ public class TableActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String director = selectedItem.toString();
-                                boolean sucess = db.deleteDirector(db, director);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getDirectorRow(db, director, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+                                boolean success = db.deleteDirector(db, id);
+                                if (success) {
+                                    Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully " +
+                                            "deleted from database.", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), "Could not delete: " + selectedItem.toString() +
+                                            " from database.", Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         directorBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
-
                         AlertDialog directorAlert = directorBuilder.create();
                         directorAlert.show();
                         break;
                     case "GENRE":
+                        //Pressed button to delete genre from database
                         if (debugMode) {
-                            msg = "User choosed remove item from genres table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from genres table.");
                         }
 
-                        //Pressed button to delete genre from database
                         AlertDialog.Builder genreBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        genreBuilder.setMessage(msg);
-
+                        genreBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
                         genreBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String genre = selectedItem.toString();
-                                boolean sucess = db.deleteGenre(db, genre);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getGenreRow(db, genre, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+                                boolean success = db.deleteGenre(db, id);
+                                if (success) {
+                                    Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully " +
+                                            "deleted from database.", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), "Could not delete: " + selectedItem.toString() +
+                                            " from database.", Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         genreBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
-
                         AlertDialog genreAlert = genreBuilder.create();
                         genreAlert.show();
                         break;
                     case "LANGUAGE":
+                        //Pressed button to delete language from database.
                         if (debugMode) {
-                            msg = "User choosed remove item from languages table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from languages table.");
                         }
 
-                        //Pressed button to delete language from database.
                         AlertDialog.Builder langBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        langBuilder.setMessage(msg);
-
-
+                        langBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
                         langBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String language = selectedItem.toString();
-                                boolean sucess = db.deleteLanguage(db, language);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getLanguageRow(db, language, null);
+                                int index = crs.getColumnIndex(DatabaseInfo.LANGUAGES_ID_COL);
+                                crs.moveToFirst();
+                                if (debugMode) {
+                                    Log.d("TABAC", "Count: " + crs.getCount());
+                                    Log.d("TABAC", "TYPE: " + crs.getType(index));
+                                }
+                                int id = crs.getInt(index);
+                                boolean success = db.deleteLanguage(db, id);
+                                if (success) {
+                                    Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully " +
+                                            "deleted from database.", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), "Could not delete: " + selectedItem.toString() +
+                                            " from database.", Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         langBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
-
                         AlertDialog langAlert = langBuilder.create();
                         langAlert.show();
-
-                        break;
-                    case "PARENTAL":
-                        if (debugMode) {
-                            msg = "User choosed remove item from parental table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                        }
-
-                        //Pressed button to delete language from database.
-                        AlertDialog.Builder parentalBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        parentalBuilder.setMessage(msg);
-
-
-                        parentalBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //dialog.cancel();
-                                if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
-                                }
-                                String parental = selectedItem.toString();
-                                boolean sucess = db.deleteParental(db, parental);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                }
-                                finish();
-                            }
-                        });
-
-                        parentalBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //dialog.cancel();
-                                if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
-                                }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                        AlertDialog parentalAlert = parentalBuilder.create();
-                        parentalAlert.show();
                         break;
                     case "PUBLISHER":
+                        //Pressed button to delete publisher from database.
                         if (debugMode) {
-                            msg = "User choosed remove item from publishers table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from publishers table.");
                         }
 
-                        //Pressed button to delete publisher from database.
                         AlertDialog.Builder publisherBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        publisherBuilder.setMessage(msg);
-
+                        publisherBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
                         publisherBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String publisher = selectedItem.toString();
-                                boolean sucess = db.deletePublisher(db, publisher);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getPublisherRow(db, publisher, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+                                boolean success = db.deletePublisher(db, id);
+                                if (success) {
+                                    String msg = selectedItem.toString() + " is successfully deleted from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 } else {
                                     String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         publisherBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
                                 String msg = "FALSE";
                                 Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
@@ -958,105 +676,87 @@ public class TableActivity extends AppCompatActivity {
                         publisherAlert.show();
                         break;
                     case "STUDIO":
+                        //Pressed button to delete studio from database.
                         if (debugMode) {
-                            msg = "User choosed remove item from studios table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from studios table.");
                         }
 
-                        //Pressed button to delete studio from database.
                         AlertDialog.Builder studioBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        studioBuilder.setMessage(msg);
+                        studioBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
                         studioBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String studio = selectedItem.toString();
-                                boolean sucess = db.deleteStudio(db, studio);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getStudioRow(db, studio, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+                                boolean success = db.deleteStudio(db, id);
+                                if (success) {
+                                    Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully " +
+                                            "deleted from database.", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), "Could not delete: " + selectedItem.toString() +
+                                            " from database.", Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         studioBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
-
                         AlertDialog studioAlert = studioBuilder.create();
                         studioAlert.show();
                         break;
                     case "SYSTEM":
+                        //Pressed button to delete system from database.
                         if (debugMode) {
-                            msg = "User choosed remove item from systems table.";
-                            Log.d("USER", msg);
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                            Log.d("USERACTION", "User chose remove item from systems table.");
                         }
 
-                        //Pressed button to delete system from database.
                         AlertDialog.Builder sysBuilder = new AlertDialog.Builder(TableActivity.this);
-                        msg = "Do you really want to delete " + selectedItem.toString();
-                        sysBuilder.setMessage(msg);
-
-
+                        sysBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
                         sysBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed yes.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose yes.");
                                 }
                                 String system = selectedItem.toString();
-                                boolean sucess = db.deleteSystem(db, system);
-                                if (sucess) {
-                                    String msg = selectedItem.toString() + " is sucessfully deleted from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                Cursor crs = db.getSystemRow(db, system, null);
+                                crs.moveToFirst();
+                                int id = crs.getInt(DatabaseInfo.TABLE_ID_COL);
+                                boolean success = db.deleteSystem(db, id);
+                                if (success) {
+                                    String msg = selectedItem.toString() + " is successfully deleted from database.";
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 } else {
                                     String msg = "Could not delete: " + selectedItem.toString() + " from database.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
                                 }
                                 finish();
                             }
                         });
-
                         sysBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dialog.cancel();
                                 if (debugMode) {
-                                    String msg = "User choosed no.";
-                                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                                    Log.d("USERACTION", msg);
+                                    Log.d("USERACTION", "User chose no.");
                                 }
-                                String msg = "FALSE";
-                                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
-
                         AlertDialog sysAlert = sysBuilder.create();
                         sysAlert.show();
                         break;
