@@ -85,8 +85,8 @@
     <string name="cb_blueray">BlueRay</string>
     <string name="btn_search">Search</string>
 
-    <!--- activity_language_db -->
-    <string name="btn_load_std">Load base data</string>
+    <!-- activity_lent -->
+    <string name="btn_set">Choose Date</string>
 
     <!--- activity_main -->
     <string name="btn_newItem">New Item</string>

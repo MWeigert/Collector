@@ -49,6 +49,9 @@ public class DetailsActivity extends AppCompatActivity {
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
         Item selectedItem = new Item(ctx);
+        Cursor crs = db.getItem(db, itemTitle);
+        crs.moveToFirst();
+        selectedItem.putItem(crs);
 
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         ImageView iView = (ImageView) findViewById(R.id.imageView);
@@ -76,6 +79,8 @@ public class DetailsActivity extends AppCompatActivity {
         // Set functionality and listener to lent switch
         final Intent lentIntent = new Intent(this, LentActivity.class);
         lentIntent.putExtra("debugMode", debugMode);
+        lentIntent.putExtra("isLent", selectedItem.isLent());
+        lentIntent.putExtra("itemID",selectedItem.getId());
 
         if (swLent != null) {
             swLent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -84,9 +89,7 @@ public class DetailsActivity extends AppCompatActivity {
                     if (isChecked) {
                         // Changed status of lent switch to true (item is lent)
                         if (debugMode) {
-                            String msg = "Item status was changed to lent.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "Item status was changed to lent.");
                         }
                         startActivity(lentIntent);
                     }
@@ -117,8 +120,8 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
         }
 
-        Cursor crs = db.getItem(db, itemTitle);
-        crs.moveToFirst();
+        //Cursor crs = db.getItem(db, itemTitle);
+        //crs.moveToFirst();
 
         if (debugMode) {
             String msg = "";
@@ -128,7 +131,7 @@ public class DetailsActivity extends AppCompatActivity {
             }
             Log.d("DETAC", msg);
         }
-        selectedItem.putItem(crs);
+        //selectedItem.putItem(crs);
 
         String value = String.valueOf(selectedItem.getEAN());
         assert eanTXT != null;

@@ -65,13 +65,10 @@ public class TableActivity extends AppCompatActivity {
 
                 // Fill authors from database to list item
                 String author;
-                Integer indexAuthor;
-
                 final ArrayList<String> authors = new ArrayList<String>();
-
                 Cursor authorCrs = db.getAuthors(db);
-
                 anz = authorCrs.getCount();
+
                 if (debugMode) {
                     Log.d("TABAC", "DATABASE: " + anz.toString() + " authors in table.");
                 }

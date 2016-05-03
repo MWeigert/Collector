@@ -90,7 +90,6 @@ public class ItemActivity extends AppCompatActivity {
         cbFSK18 = (CheckBox) findViewById(R.id.cb_fsk18);
 
         ctx = this;
-        DatabaseBase spInfo = new DatabaseBase();
         db = new DatabaseOperations(ctx, debugMode);
         Cursor crs;
         int index;
