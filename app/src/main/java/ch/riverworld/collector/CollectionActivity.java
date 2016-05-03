@@ -35,6 +35,12 @@ public class CollectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
 
+        //Getting information regarding debug mode
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            debugMode = extras.getBoolean("debugMode");
+        }
+
         list = (ListView) findViewById(R.id.lst_collection);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -47,12 +53,6 @@ public class CollectionActivity extends AppCompatActivity {
                 startActivity(detailsIntent);
             }
         });
-
-        //Getting information regarding debug mode
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            debugMode = extras.getBoolean("debugMode");
-        }
 
         // Fill items from database to list item
         String title;

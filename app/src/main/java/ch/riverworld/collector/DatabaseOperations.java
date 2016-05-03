@@ -16,6 +16,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
@@ -285,6 +286,23 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method which return string with firstname + lastname of given id.
+    public String getFriendName(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String whereClause = DatabaseInfo.FRIENDS_ID_COL + " = ?";
+        String[] whereArgs = new String[]{Integer.toString(id)};
+
+        Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, null, whereClause, whereArgs, null, null, null);
+        crs.moveToFirst();
+
+        int firstIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
+        int lastIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
+
+        String name = crs.getString(firstIndex) + " " + crs.getString(lastIndex);
+        crs.close();
+        return name;
+    }
+
     // Method to return all entries in friends table. Returns a Cursor with all friends.
     public Cursor getFriends(DatabaseOperations dop) {
 
@@ -467,11 +485,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getOpenHistory(DatabaseOperations dop, int itemId) {
+    public Cursor getHistory(DatabaseOperations dop) {
 
         SQLiteDatabase db = getReadableDatabase();
-        // String[] columns = new String[]{DatabaseInfo.HISTORY_ID_COL, DatabaseInfo.HISTORY_ITEM_ID_COL, DatabaseInfo
-        //         .HISTORY_FRIEND_ID_COL, DatabaseInfo.HISTORY_START_COL, DatabaseInfo.HISTORY_RETURN_COL};
+
+        return db.rawQuery("select * from " + DatabaseInfo.HISTORY_TABLE, null);
+    }
+
+    public Cursor getOpenHistory(DatabaseOperations dop, int itemId) {
+
+        SQLiteDatabase db = dop.getReadableDatabase();
         String whereClause = DatabaseInfo.HISTORY_ITEM_ID_COL + " = ? OR " + DatabaseInfo.HISTORY_RETURN_COL + " = ?";
         String[] whereArgs = new String[]{Integer.toString(itemId), "NULL"};
 
@@ -536,6 +559,22 @@ public class DatabaseOperations extends SQLiteOpenHelper {
                     .getStudio_id() + ", Director: " + item.getDirector_id() + ", Parental: " + item.getFsk();
             Log.d("DATABASE", msg);
         }
+    }
+
+    // Method to return a string with item title of given id.
+    public String getItemTitle(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+
+        String whereClause = DatabaseInfo.ITEMS_ID_COL + " = ?";
+        String[] whereArgs = new String[]{Integer.toString(id)};
+
+        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, null, whereClause, whereArgs, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
+        String title = crs.getString(index);
+        crs.close();
+
+        return title;
     }
 
     // Method to return all entries in items table. Returns a Cursor with all items.

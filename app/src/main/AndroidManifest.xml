@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".TableActivity">
         </activity>
+        <activity android:name=".RentalActivity">
+        </activity>
     </application>
 
 </manifest>

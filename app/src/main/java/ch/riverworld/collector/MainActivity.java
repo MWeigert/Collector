@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_rental:
                 //Pressed button to enter lend administration.
+                final Intent rentalIntent=new Intent(this, RentalActivity.class);
+                rentalIntent.putExtra("debugMode",debugMode);
+                startActivity(rentalIntent);
                 break;
             case R.id.btn_info:
                 //Pressed button to display informations regarding this app.
