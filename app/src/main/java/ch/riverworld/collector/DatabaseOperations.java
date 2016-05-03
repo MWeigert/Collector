@@ -20,7 +20,7 @@ import android.util.Log;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
-    private boolean debugMode = false;
+    private boolean debugMode = true;
 
     // Main constructor
     public DatabaseOperations(Context context, boolean debugMode) {
@@ -299,6 +299,24 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return db.query(DatabaseInfo.FRIENDS_TABLE, friends, null, null, null, null, null);
     }
 
+    // Method to return ID of friend.
+    public int getFriendId(DatabaseOperations dop, String firstName, String lastName) {
+
+        SQLiteDatabase db;
+        db = dop.getReadableDatabase();
+        String whereClause = DatabaseInfo.FRIENDS_FIRSTNAME_COL + " = ? AND " +
+                DatabaseInfo.FRIENDS_LASTNAME_COL + " = ?";
+        String[] whereArgs = new String[]{firstName, lastName};
+        String[] columns = new String[]{DatabaseInfo.FRIENDS_ID_COL};
+
+        Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, columns, whereClause, whereArgs, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
+        int id = crs.getInt(index);
+        crs.close();
+        return id;
+    }
+
     // Method to return cursor with one row from friends table.
     public Cursor getFriendsRow(DatabaseOperations dop, String firstName, String lastName, Integer id) {
 
@@ -428,6 +446,56 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                                                                          *
     // *                           ALL DATABASE OPERATIONS REGARDING                              *
     // *                                          THE                                             *
+    // *                                    HISTORY TABLE                                         *
+    // *                                                                                          *
+    // ********************************************************************************************/
+
+    // Method to add a new entry in history table.
+    public void addHistory(DatabaseOperations dop, int itemId, int friendId, String start) {
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.HISTORY_ITEM_ID_COL, itemId);
+        values.put(DatabaseInfo.HISTORY_FRIEND_ID_COL, friendId);
+        values.put(DatabaseInfo.HISTORY_START_COL, start);
+        values.put(DatabaseInfo.HISTORY_RETURN_COL, "NULL");
+
+        db.insert(DatabaseInfo.HISTORY_TABLE, null, values);
+        if (debugMode) {
+            Log.d("DOP", "Added ITEM: " + itemId + " FRIEND: " + friendId + " START: " + start);
+        }
+    }
+
+    public Cursor getOpenHistory(DatabaseOperations dop, int itemId) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        // String[] columns = new String[]{DatabaseInfo.HISTORY_ID_COL, DatabaseInfo.HISTORY_ITEM_ID_COL, DatabaseInfo
+        //         .HISTORY_FRIEND_ID_COL, DatabaseInfo.HISTORY_START_COL, DatabaseInfo.HISTORY_RETURN_COL};
+        String whereClause = DatabaseInfo.HISTORY_ITEM_ID_COL + " = ? OR " + DatabaseInfo.HISTORY_RETURN_COL + " = ?";
+        String[] whereArgs = new String[]{Integer.toString(itemId), "NULL"};
+
+        return db.query(DatabaseInfo.HISTORY_TABLE, null, whereClause, whereArgs, null, null, null);
+    }
+
+    public void resetHistory(DatabaseOperations dop) {
+
+        SQLiteDatabase db;
+        db = dop.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + DatabaseInfo.HISTORY_TABLE);
+        db.execSQL(DatabaseInfo.CREATE_HISTORY);
+
+        // Set lent status of all items to false
+        ContentValues values = new ContentValues();
+        values.put(DatabaseInfo.ITEMS_RENTAL_COL, 0);
+        db.update(DatabaseInfo.ITEMS_TABLE, values, null, null);
+    }
+
+    // ********************************************************************************************
+    // *                                                                                          *
+    // *                           ALL DATABASE OPERATIONS REGARDING                              *
+    // *                                          THE                                             *
     // *                                      ITEM TABLE                                          *
     // *                                                                                          *
     // ********************************************************************************************/
@@ -484,10 +552,10 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Method to return all data to one single item. Returns cursor.
-    public Cursor getItem(DatabaseOperations dop, String title) {
+    public Cursor getItemRow(DatabaseOperations dop, Integer id) {
 
         if (debugMode) {
-            Log.d("DATABASE", "Starting --> getItem.");
+            Log.d("DOP", "Starting --> getItem.");
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
@@ -498,14 +566,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
                 DatabaseInfo.ITEMS_DVD_COL, DatabaseInfo.ITEMS_BLURAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL,
                 DatabaseInfo.ITEMS_DIRECTOR_ID_COL, DatabaseInfo.ITEMS_PARENTAL_ID_COL};
 
-        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_TITLE_COL +
-                " like ?", new String[]{title + "%"}, null, null, null);
+        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
 
         if (debugMode) {
             crs.moveToFirst();
             int index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
-            String msg = "Finished --> getItem. With ID: " + String.valueOf(crs.getInt(index));
-            Log.d("DATABASE", msg);
+            Log.d("DOP", "Finished --> getItem.");
+            Log.d("DOP", "ID: " + String.valueOf(crs.getInt(index)));
+            index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
+            Log.d("DOP", "Name: " + crs.getString(index));
         }
         return crs;
     }
@@ -524,9 +594,23 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             String msg = "Title: " + title + " ID: " + crs.getInt(index);
             Log.d("DATABASE", msg);
         }
-        int id =crs.getInt(index);
+        int id = crs.getInt(index);
         crs.close();
         return id;
+    }
+
+    public boolean updateItemRentalStatus(DatabaseOperations dop, int id, boolean status) {
+
+        if (debugMode) {
+            Log.d("DOP", "Starting update rental status.");
+            Log.d("DOP", "Item ID: " + id + " Status: " + status);
+        }
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DatabaseInfo.ITEMS_RENTAL_COL, status);
+
+        return db.update(DatabaseInfo.ITEMS_TABLE, values, DatabaseInfo.ITEMS_ID_COL + "=" + id, null) > 0;
     }
 
     // ********************************************************************************************

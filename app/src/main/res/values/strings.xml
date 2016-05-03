@@ -30,6 +30,7 @@
     <string name="btn_reset_author">Reset table Author</string>
     <string name="btn_reset_studio">Reset table Studio</string>
     <string name="btn_reset_director">Reset table Director</string>
+    <string name="btn_reset_history">Reset table History</string>
 
     <!--- activity_delete -->
     <string name="txt_choosed">Do you want remove</string>
@@ -86,7 +87,7 @@
     <string name="btn_search">Search</string>
 
     <!-- activity_lent -->
-    <string name="btn_set">Choose Date</string>
+    <string name="btn_set">Ok</string>
 
     <!--- activity_main -->
     <string name="btn_newItem">New Item</string>

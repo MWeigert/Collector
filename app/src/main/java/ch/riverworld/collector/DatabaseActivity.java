@@ -213,6 +213,38 @@ public class DatabaseActivity extends AppCompatActivity {
                 genreAlert.show();
 
                 break;
+            case R.id.btn_reset_history:
+                // Button reset history pressed by user.
+                AlertDialog.Builder historyBuilder = new AlertDialog.Builder(DatabaseActivity.this);
+                historyBuilder.setMessage("Do you really want to reset the complete history table?");
+
+                historyBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            Log.d("USERACTION", "User has chosen: yes");
+                        }
+                        DatabaseOperations db = new DatabaseOperations(DatabaseActivity.this, debugMode);
+                        db.resetHistory(db);
+                        Toast.makeText(getBaseContext(), "Reset was performed on table history.", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                });
+
+                historyBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.cancel();
+                        if (debugMode) {
+                            Log.d("USERACTION", "User has chosen: no");
+                        }
+                    }
+                });
+
+                AlertDialog historyAlert = historyBuilder.create();
+                historyAlert.show();
+                break;
             case R.id.btn_language:
                 //Button language pressed by user.
                 if (debugMode) {

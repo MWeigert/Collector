@@ -48,8 +48,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
+        int id = db.getItemID(db, itemTitle);
         Item selectedItem = new Item(ctx);
-        Cursor crs = db.getItem(db, itemTitle);
+        Cursor crs = db.getItemRow(db, id);
         crs.moveToFirst();
         selectedItem.putItem(crs);
 
@@ -77,12 +78,15 @@ public class DetailsActivity extends AppCompatActivity {
         CheckBox fsk18CB = (CheckBox) findViewById(R.id.cb_details_18);
 
         // Set functionality and listener to lent switch
-        final Intent lentIntent = new Intent(this, LentActivity.class);
-        lentIntent.putExtra("debugMode", debugMode);
-        lentIntent.putExtra("isLent", selectedItem.isLent());
-        lentIntent.putExtra("itemID",selectedItem.getId());
-
         if (swLent != null) {
+            if (selectedItem.isLent()) {
+                swLent.setChecked(true);
+            } else swLent.setChecked(false);
+            final Intent lentIntent = new Intent(this, LentActivity.class);
+            lentIntent.putExtra("debugMode", debugMode);
+            lentIntent.putExtra("isLent", selectedItem.isLent());
+            lentIntent.putExtra("itemID", selectedItem.getId());
+
             swLent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -91,8 +95,13 @@ public class DetailsActivity extends AppCompatActivity {
                         if (debugMode) {
                             Log.d("USERACTION", "Item status was changed to lent.");
                         }
-                        startActivity(lentIntent);
+                    } else {
+                        // Changed status of lent switch to false (item is back)
+                        if (debugMode) {
+                            Log.d("USERACTION", "Item status was changed to lent.");
+                        }
                     }
+                    startActivity(lentIntent);
                 }
             });
         }
@@ -104,7 +113,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         // Need to save picture ID in database table items and refactor this switch
-        int id = db.getItemID(db, itemTitle);
+        id = db.getItemID(db, itemTitle);
         switch (id) {
             case 1:
                 assert iView != null;

@@ -15,21 +15,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="LOREM IPSUM DOLOR"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/lineSpace1"/>
-
             <Spinner
                 android:id="@+id/spn_friends_rental"
                 android:layout_width="wrap_content"
@@ -41,10 +26,24 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text=""
+                android:id="@+id/lineSpace1"/>
+
+            <TextView
+                android:id="@+id/txt_lent_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOREM IPSUM DOLOR"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
                 android:id="@+id/lineSpace2"/>
 
             <DatePicker
-                android:id="@+id/dpLent"
+                android:id="@+id/dp_lent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:datePickerMode="spinner"
@@ -59,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:text="@string/btn_set"
+        android:onClick="buttonOnClick"
         android:theme="@android:style/Theme.Material"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"/>
