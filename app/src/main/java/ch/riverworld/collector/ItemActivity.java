@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -30,6 +31,12 @@ import java.util.ArrayList;
 public class ItemActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
+    private String mode;
+    private DatabaseOperations db;
+    private Context ctx;
+    private Button btnAdd;
+    private Button btnUpdate;
+    private int id = 0;
 
     private EditText txtEAN;
     private EditText txtTitle;
@@ -44,7 +51,7 @@ public class ItemActivity extends AppCompatActivity {
     private Spinner spAuthor;
     private Spinner spSystem;
     private CheckBox cbDVD;
-    private CheckBox cbBlueRay;
+    private CheckBox cbBluRay;
     private Spinner spStudio;
     private Spinner spDirector;
     private CheckBox cbFSK0;
@@ -52,9 +59,6 @@ public class ItemActivity extends AppCompatActivity {
     private CheckBox cbFSK12;
     private CheckBox cbFSK16;
     private CheckBox cbFSK18;
-
-    private DatabaseOperations db;
-    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,12 @@ public class ItemActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
+            mode = extras.getString("Mode");
         }
+
+        btnAdd=(Button)findViewById(R.id.btn_add);
+        btnUpdate=(Button)findViewById(R.id.btn_update);
+        btnUpdate.setVisibility(View.INVISIBLE);
 
         txtEAN = (EditText) findViewById(R.id.tf_ean);
         txtTitle = (EditText) findViewById(R.id.tf_title);
@@ -80,7 +89,7 @@ public class ItemActivity extends AppCompatActivity {
         spAuthor = (Spinner) findViewById(R.id.spn_author);
         spSystem = (Spinner) findViewById(R.id.spn_system);
         cbDVD = (CheckBox) findViewById(R.id.cb_dvd);
-        cbBlueRay = (CheckBox) findViewById(R.id.cb_blueray);
+        cbBluRay = (CheckBox) findViewById(R.id.cb_blueray);
         spStudio = (Spinner) findViewById(R.id.spn_studio);
         spDirector = (Spinner) findViewById(R.id.spn_director);
         cbFSK0 = (CheckBox) findViewById(R.id.cb_fsk0);
@@ -203,26 +212,76 @@ public class ItemActivity extends AppCompatActivity {
         ArrayAdapter<Integer> adapterYear = new ArrayAdapter<Integer>(this, android.R.layout
                 .simple_spinner_dropdown_item, DatabaseBase.yearData);
         spYear.setAdapter(adapterYear);
+
+        if (mode.equals("EditItem")) {
+            btnAdd.setVisibility(View.INVISIBLE);
+            btnUpdate.setVisibility(View.VISIBLE);
+            if (extras != null) {
+                id = extras.getInt("ID");
+            }
+            Item item = new Item(ctx, id);
+            txtEAN.setText(Long.toString(item.getEAN()));
+            txtTitle.setText(item.getTitle());
+            rbBook.setChecked(item.isBook());
+            rbMovie.setChecked(item.isMovie());
+            rbGame.setChecked(item.isGame());
+            index=this.getIndex(spGenre, item.getGenre());
+            spGenre.setSelection(index);
+            index = this.getIndex(spLanguage, item.getLanguage());
+            spLanguage.setSelection(index);
+            index=this.getIndex(spYear,Integer.toString(item.getYear()));
+            spYear.setSelection(index);
+            cbLent.setVisibility(View.INVISIBLE);
+            index=this.getIndex(spPublisher,item.getPublisher());
+            spPublisher.setSelection(index);
+            index=this.getIndex(spAuthor,item.getAuthor());
+            spAuthor.setSelection(index);
+            index=this.getIndex(spSystem,item.getSystem());
+            spSystem.setSelection(index);
+            cbDVD.setChecked(item.isDvd());
+            cbBluRay.setChecked(item.isBluRay());
+            index=this.getIndex(spStudio,item.getStudio());
+            spStudio.setSelection(index);
+            index=this.getIndex(spDirector,item.getDirector());
+            spDirector.setSelection(index);
+            switch (item.getFsk()){
+                case 0:
+                    cbFSK0.setChecked(true);
+                    break;
+                case 6:
+                    cbFSK6.setChecked(true);
+                    break;
+                case 12:
+                    cbFSK12.setChecked(true);
+                    break;
+                case 16:
+                    cbFSK16.setChecked(true);
+                    break;
+                case 18:
+                    cbLent.setChecked(true);
+                    break;
+            }
+        }
     }
 
     // Button listener for the ItemActivity
     public void buttonOnClick(View v) {
+        String eanStr;
+        String title;
+        Item item = new Item(ctx);
+
         switch (v.getId()) {
             case R.id.btn_add:
                 //Pressed button to add new item to the collection.
                 if (debugMode) {
                     Log.d("USERACTION", "User pressed add button and entered add item.");
-                }
-                Item item = new Item(ctx);
-
-                if (debugMode) {
                     Log.d("ITAC", "EAN Code: " + txtEAN.getText().toString());
                     Log.d("ITAC", "Title: " + txtTitle.getText().toString());
                 }
 
                 // Check if either title or EAN is not null.
-                String eanStr = txtEAN.getText().toString();
-                String title = txtTitle.getText().toString();
+                eanStr = txtEAN.getText().toString();
+                title = txtTitle.getText().toString();
 
                 if (eanStr.isEmpty() && title.isEmpty()) {
                     Toast.makeText(getBaseContext(), "Either title or EAN code should have an value.", Toast
@@ -269,13 +328,13 @@ public class ItemActivity extends AppCompatActivity {
                     Integer genreID = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        Log.d("ITAC","Genre: " + genre + " ID: " + genreID);
+                        Log.d("ITAC", "Genre: " + genre + " ID: " + genreID);
                     }
                     item.setGenre_id(genreID);
 
                     // Get ID of chosen language
                     String language = spLanguage.getSelectedItem().toString();
-                    crs = db.getLanguageRow(db, language,null);
+                    crs = db.getLanguageRow(db, language, null);
                     crs.moveToFirst();
                     Integer languageId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
@@ -302,7 +361,7 @@ public class ItemActivity extends AppCompatActivity {
 
                     // Get ID of chosen publisher
                     String publisher = spPublisher.getSelectedItem().toString();
-                    crs = db.getPublisherRow(db, publisher,null);
+                    crs = db.getPublisherRow(db, publisher, null);
                     crs.moveToFirst();
                     Integer publisherId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
@@ -329,7 +388,7 @@ public class ItemActivity extends AppCompatActivity {
                     Integer systemId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
                     if (debugMode) {
-                        Log.d("ITAC","System: " + system + "ID: " + systemId);
+                        Log.d("ITAC", "System: " + system + "ID: " + systemId);
                     }
 
                     item.setSystem_id(systemId);
@@ -342,7 +401,7 @@ public class ItemActivity extends AppCompatActivity {
                     }
 
                     // Get status of BluRay checkbox
-                    if (cbBlueRay.isChecked()) {
+                    if (cbBluRay.isChecked()) {
                         item.setBluRay(true);
                     } else {
                         item.setBluRay(false);
@@ -350,7 +409,7 @@ public class ItemActivity extends AppCompatActivity {
 
                     // Get ID of chosen studio
                     String studio = spStudio.getSelectedItem().toString();
-                    crs = db.getStudioRow(db, studio,null);
+                    crs = db.getStudioRow(db, studio, null);
                     crs.moveToFirst();
                     Integer studioId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
@@ -361,7 +420,7 @@ public class ItemActivity extends AppCompatActivity {
 
                     // Get ID of chosen director
                     String director = spDirector.getSelectedItem().toString();
-                    crs = db.getDirectorRow(db, director,null);
+                    crs = db.getDirectorRow(db, director, null);
                     crs.moveToFirst();
                     Integer directorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
 
@@ -391,6 +450,181 @@ public class ItemActivity extends AppCompatActivity {
                     finish();
                 }
                 break;
+            case R.id.btn_update:
+                // Check if either title or EAN is not null.
+                eanStr = txtEAN.getText().toString();
+                title = txtTitle.getText().toString();
+
+                if (eanStr.isEmpty() && title.isEmpty()) {
+                    Toast.makeText(getBaseContext(), "Either title or EAN code should have an value.", Toast
+                            .LENGTH_SHORT).show();
+                } else {
+
+                    // Input check: Set EAN to 0 or value
+                    if (eanStr.isEmpty()) {
+                        item.setEAN(0);
+                    } else {
+                        item.setEAN(Long.parseLong(eanStr));
+                    }
+
+                    item.setTitle(txtTitle.getText().toString());
+                    item.setMediaType("NULL");
+                    if (rbBook.isChecked()) {
+                        item.setBook(true);
+                        item.setMediaType("Book");
+                    } else {
+                        item.setBook(false);
+                    }
+                    if (rbMovie.isChecked()) {
+                        item.setMovie(true);
+                        item.setMediaType("Movie");
+                    } else {
+                        item.setMovie(false);
+                    }
+                    if (rbGame.isChecked()) {
+                        item.setGame(true);
+                        item.setMediaType("Game");
+                    } else {
+                        item.setGame(false);
+                    }
+
+                    if (debugMode) {
+                        String msg = "MediaType: " + item.getMediaType();
+                        Log.d("DATABASE", msg);
+                    }
+
+                    // Get ID of chosen genre
+                    String genre = spGenre.getSelectedItem().toString();
+                    Cursor crs = db.getGenreRow(db, genre, null);
+                    crs.moveToFirst();
+                    Integer genreID = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Genre: " + genre + " ID: " + genreID);
+                    }
+                    item.setGenre_id(genreID);
+
+                    // Get ID of chosen language
+                    String language = spLanguage.getSelectedItem().toString();
+                    crs = db.getLanguageRow(db, language, null);
+                    crs.moveToFirst();
+                    Integer languageId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Language: " + language + "ID: " + languageId);
+                    }
+                    item.setLanguage_id(languageId);
+
+                    // Get year from spinner
+                    Integer year = Integer.parseInt(spYear.getSelectedItem().toString());
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Year: " + year);
+                    }
+
+                    item.setYear(year);
+
+                    // Get lent status
+                    if (cbLent.isChecked()) {
+                        item.setLent(true);
+                    } else {
+                        item.setLent(false);
+                    }
+
+                    // Get ID of chosen publisher
+                    String publisher = spPublisher.getSelectedItem().toString();
+                    crs = db.getPublisherRow(db, publisher, null);
+                    crs.moveToFirst();
+                    Integer publisherId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Publisher: " + publisher + "ID: " + publisherId);
+                    }
+                    item.setPublisher_id(publisherId);
+
+                    // Get ID of chosen author
+                    String author = spAuthor.getSelectedItem().toString();
+                    crs = db.getAuthorRow(db, author, null);
+                    crs.moveToFirst();
+                    Integer authorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Author: " + author + "ID: " + authorId);
+                    }
+                    item.setAuthor_id(authorId);
+
+                    // Get ID of chosen system
+                    String system = spSystem.getSelectedItem().toString();
+                    crs = db.getSystemRow(db, system, null);
+                    crs.moveToFirst();
+                    Integer systemId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "System: " + system + "ID: " + systemId);
+                    }
+
+                    item.setSystem_id(systemId);
+
+                    // Get status of DVD checkbox
+                    if (cbDVD.isChecked()) {
+                        item.setDvd(true);
+                    } else {
+                        item.setDvd(false);
+                    }
+
+                    // Get status of BluRay checkbox
+                    if (cbBluRay.isChecked()) {
+                        item.setBluRay(true);
+                    } else {
+                        item.setBluRay(false);
+                    }
+
+                    // Get ID of chosen studio
+                    String studio = spStudio.getSelectedItem().toString();
+                    crs = db.getStudioRow(db, studio, null);
+                    crs.moveToFirst();
+                    Integer studioId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Studio: " + studio + "ID: " + studioId);
+                    }
+                    item.setStudio_id(studioId);
+
+                    // Get ID of chosen director
+                    String director = spDirector.getSelectedItem().toString();
+                    crs = db.getDirectorRow(db, director, null);
+                    crs.moveToFirst();
+                    Integer directorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+
+                    if (debugMode) {
+                        Log.d("ITAC", "Director: " + director + "ID: " + directorId);
+                    }
+                    item.setDirector_id(directorId);
+
+                    // Get status of parental checkboxes and set maximum
+                    if (cbFSK0.isChecked()) {
+                        item.setFsk(0);
+                    }
+                    if (cbFSK6.isChecked()) {
+                        item.setFsk(6);
+                    }
+                    if (cbFSK12.isChecked()) {
+                        item.setFsk(12);
+                    }
+                    if (cbFSK16.isChecked()) {
+                        item.setFsk(16);
+                    }
+                    if (cbFSK18.isChecked()) {
+                        item.setFsk(18);
+                    }
+
+                    if (debugMode) {
+                        Log.d("ITAC", "BEFORE UPDATE - Item: "+item+" ID: "+id);
+                    }
+                    db.updateItem(db, item, id);
+                    finish();
+                }
+                break;
             case R.id.btn_search:
                 //Pressed button do show total or filtered collection.
                 final Intent searchIntent = new Intent(this, FilterResult.class);
@@ -398,5 +632,18 @@ public class ItemActivity extends AppCompatActivity {
                 startActivity(searchIntent);
                 break;
         }
+    }
+
+    // Method which returns index of spinner item by value
+    private int getIndex(Spinner spinner, String myString) {
+
+        int index = 0;
+
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).equals(myString)) {
+                index = i;
+            }
+        }
+        return index;
     }
 }

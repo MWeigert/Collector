@@ -14,7 +14,6 @@ package ch.riverworld.collector;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 
 public class Item {
@@ -60,7 +59,7 @@ public class Item {
         this.id = id;
 
         int index;
-        Cursor crs = db.getItemRow(db, id);
+        Cursor crs = db.getItem(db, id);
         crs.moveToFirst();
         // EAN
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);

@@ -32,6 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
     private boolean debugMode = false;
     private int itemId;
     private Item selectedItem;
+    private Context ctx;
 
 
     @Override
@@ -46,13 +47,10 @@ public class DetailsActivity extends AppCompatActivity {
             this.itemId = extras.getInt("itemID");
         }
 
-        Context ctx = this;
+        ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-       // int id = db.getItemID(db, itemTitle);
-        this.selectedItem = new Item(ctx,itemId);
-        //Cursor crs = db.getItemRow(db, id);
-        //crs.moveToFirst();
-        //selectedItem.putItem(crs);
+
+        this.selectedItem = new Item(ctx, itemId);
 
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         ImageView iView = (ImageView) findViewById(R.id.imageView);
@@ -198,12 +196,18 @@ public class DetailsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            String msg = "User choosed yes.";
-                            Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                            Log.d("USERACTION", msg);
+                            Log.d("USERACTION", "User choosed yes.");
                         }
                         // Put code to delete item here
-                        finish();
+                        DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
+                        boolean success = db.deleteItem(db, itemId);
+                        if (success) {
+                            Toast.makeText(getBaseContext(), selectedItem.toString() + " was successfully deleted.",
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else
+                            Toast.makeText(getBaseContext(), "Troubles while deleting " + selectedItem.toString(), Toast
+                                    .LENGTH_SHORT).show();
                     }
                 });
 
@@ -222,7 +226,11 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
             case R.id.btn_edit:
                 //Button to edit item pressed.
-
+                final Intent editIntent = new Intent(this, ItemActivity.class);
+                editIntent.putExtra("debugMode", debugMode);
+                editIntent.putExtra("Mode", "EditItem");
+                editIntent.putExtra("ID", itemId);
+                startActivity(editIntent);
                 break;
         }
     }

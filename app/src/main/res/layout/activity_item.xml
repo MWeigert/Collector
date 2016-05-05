@@ -191,6 +191,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/btn_update"
+                android:id="@+id/btn_update"
+                android:onClick="buttonOnClick"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/btn_search"
                 android:id="@+id/btn_search"
                 android:onClick="buttonOnClick"/>

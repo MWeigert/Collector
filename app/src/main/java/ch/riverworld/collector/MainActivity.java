@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 //Pressed button to add new item to the collection.
                 final Intent addIntent = new Intent(this, ItemActivity.class);
                 addIntent.putExtra("debugMode", debugMode);
+                addIntent.putExtra("Mode","NewItem");
                 startActivity(addIntent);
                 break;
             case R.id.btn_collection:

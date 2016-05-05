@@ -54,7 +54,7 @@ public class LentActivity extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.txt_lent_title);
 
         // Setting title of activity
-        Cursor crs = db.getItemRow(db, itemId);
+        Cursor crs = db.getItem(db, itemId);
         crs.moveToFirst();
         int index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         String msg;

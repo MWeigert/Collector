@@ -571,9 +571,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // *                                      ITEM TABLE                                          *
     // *                                                                                          *
     // ********************************************************************************************/
-    // ********************************************************************************************/
-    // *                                   NOT REFACTORED YET                                     *
-    // ********************************************************************************************/
+
 
     // Method to add a new entry in item table
     public void addItem(DatabaseOperations dop, Item item) {
@@ -640,47 +638,51 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Method to return all data to one single item. Returns cursor.
-    public Cursor getItemRow(DatabaseOperations dop, Integer id) {
-
-        if (debugMode) {
-            Log.d("DOP", "Starting --> getItem.");
-        }
+    public Cursor getItem(DatabaseOperations dop, Integer id) {
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        //String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL, DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo
-        //        .ITEMS_TITLE_COL, DatabaseInfo.ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo
-        //       .ITEMS_LANGUAGE_ID_COL, DatabaseInfo.ITEMS_LAUNCH_YEAR_COL, DatabaseInfo.ITEMS_RENTAL_COL,
-        // DatabaseInfo
-        //       .ITEMS_PUBLISHER_ID_COL, DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL,
-        //       DatabaseInfo.ITEMS_DVD_COL, DatabaseInfo.ITEMS_BLURAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL,
-        //       DatabaseInfo.ITEMS_DIRECTOR_ID_COL, DatabaseInfo.ITEMS_PARENTAL_ID_COL};
-
-        // Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_ID_COL +
-        //        " like ?", new String[]{id + "%"}, null, null, null);
 
         return db.query(DatabaseInfo.ITEMS_TABLE, null, DatabaseInfo.ITEMS_ID_COL +
                 " like ?", new String[]{id + "%"}, null, null, null);
     }
 
-    public int getItemID(DatabaseOperations dop, String title) {
+    // Method which updates data of an existing item with given item and id.
+    public boolean updateItem(DatabaseOperations dop, Item item, int id) {
 
-        SQLiteDatabase db = dop.getReadableDatabase();
-        String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL};
-        String selection = DatabaseInfo.ITEMS_TITLE_COL + " LIKE ?";
-        String args[] = {title};
-        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, selection, args, null, null, null);
-        int index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
-        crs.moveToFirst();
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
+        values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
+        values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
+        values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
+        values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
+        values.put(DatabaseInfo.ITEMS_LAUNCH_YEAR_COL, item.getYear());
+        values.put(DatabaseInfo.ITEMS_RENTAL_COL, item.isLent());
+        values.put(DatabaseInfo.ITEMS_PUBLISHER_ID_COL, item.getPublisher_id());
+        values.put(DatabaseInfo.ITEMS_AUTHOR_ID_COL, item.getAuthor_id());
+        values.put(DatabaseInfo.ITEMS_SYSTEM_ID_COL, item.getSystem_id());
+        values.put(DatabaseInfo.ITEMS_DVD_COL, item.isDvd());
+        values.put(DatabaseInfo.ITEMS_BLURAY_COL, item.isBluRay());
+        values.put(DatabaseInfo.ITEMS_STUDIO_ID_COL, item.getStudio_id());
+        values.put(DatabaseInfo.ITEMS_DIRECTOR_ID_COL, item.getDirector_id());
+        values.put(DatabaseInfo.ITEMS_PARENTAL_ID_COL, item.getFsk());
 
         if (debugMode) {
-            String msg = "Title: " + title + " ID: " + crs.getInt(index);
+            Log.d("DATABASE", "Table items --> added one line.");
+            String msg = "ID:" + id + "EAN: " + item.getEAN() + ", Title: " + item.getTitle() + ", MediaType: " + item
+                    .getMediaType() + ", " + "Genre: " + item.getGenre_id() + ", Language: " + item.getLanguage_id()
+                    + ", Year: " + item.getYear() + "," + " lent: " + item.isLent() + ", Publisher: " + item
+                    .getPublisher_id() + ", Author: " + item.getAuthor_id() + ", System: " + item.getSystem_id() + "," +
+                    " DVD: " + item.isDvd() + ", BlueRay: " + item.isBluRay() + ", " + "Studio: " + item
+                    .getStudio_id() + ", Director: " + item.getDirector_id() + ", Parental: " + item.getFsk();
             Log.d("DATABASE", msg);
         }
-        int id = crs.getInt(index);
-        crs.close();
-        return id;
+
+        return db.update(DatabaseInfo.ITEMS_TABLE, values, DatabaseInfo.ITEMS_ID_COL + "=" + id, null) > 0;
     }
 
+    // Method which updates the rental status of item with given id and new status.
     public boolean updateItemRentalStatus(DatabaseOperations dop, int id, boolean status) {
 
         if (debugMode) {
@@ -694,6 +696,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         return db.update(DatabaseInfo.ITEMS_TABLE, values, DatabaseInfo.ITEMS_ID_COL + "=" + id, null) > 0;
     }
+
+    // Method to delete item with given id. Returns boolean with information regarding success of delete.
+    public boolean deleteItem(DatabaseOperations dop, int id) {
+
+        SQLiteDatabase db;
+        db = dop.getWritableDatabase();
+        String selection = DatabaseInfo.ITEMS_ID_COL + " LIKE ?";
+        String args[] = {Integer.toString(id)};
+
+        return db.delete(DatabaseInfo.ITEMS_TABLE, selection, args) > 0;
+    }
+
 
     // ********************************************************************************************
     // *                                                                                          *
