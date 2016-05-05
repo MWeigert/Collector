@@ -14,34 +14,33 @@
 package ch.riverworld.collector;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class RentalActivity extends AppCompatActivity {
+
+    private boolean debugMode = false;
+    private String mode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rental);
 
-        boolean debugMode = false;
-
         //Getting information regarding debug mode
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
+            mode = extras.getString("Mode");
         }
 
         final ListView rentalLIST = (ListView) findViewById(R.id.lst_rental);
@@ -64,7 +63,18 @@ public class RentalActivity extends AppCompatActivity {
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
         Integer anz;
 
-        Cursor historyCrs = db.getHistory(db);
+        Cursor historyCrs = null;
+        switch (mode) {
+            case "Open":
+                // Get only items which not back yet.
+                historyCrs = db.getOpenHistories(db);
+
+                break;
+            case "All":
+                // Get all entries in history table. Doesn't matter if item is back or not
+                historyCrs = db.getHistories(db);
+                break;
+        }
         anz = historyCrs.getCount();
 
         if (debugMode) {
@@ -82,15 +92,20 @@ public class RentalActivity extends AppCompatActivity {
             do {
                 int id = historyCrs.getInt(idIndex);
                 String itemName = db.getItemTitle(db, historyCrs.getInt(itemIndex));
-                String friend = db.getFriendName(db, historyCrs.getInt(friendIndex));
+                Friend friend = db.getFriend(db, historyCrs.getInt(friendIndex));
                 String start = historyCrs.getString(startIndex);
                 String back = historyCrs.getString(backIndex);
 
-                if (back.equals(new String("NULL"))) {
-                    Rental rental = new Rental(id, itemName, friend, start, null);
+                if (debugMode) {
+                    Log.d("RENAC", "ID: " + id + " ITEM: " + itemName + " FRIEND: " + friend + " START " + start + " " +
+                            "RETURN: " + back);
+                }
+
+                if (back.equals("NULL")) {
+                    Rental rental = new Rental(id, itemName, friend.toString(), start, null);
                     rentals.add(rental);
                 } else {
-                    Rental rental = new Rental(id, itemName, friend, start, back);
+                    Rental rental = new Rental(id, itemName, friend.toString(), start, back);
                     rentals.add(rental);
                 }
             } while (historyCrs.moveToNext());

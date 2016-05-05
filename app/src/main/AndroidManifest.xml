@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="ch.riverworld.collector"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="ch.riverworld.collector"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -11,7 +16,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -22,12 +26,9 @@
         <activity android:name=".FriendsActivity"/>
         <activity android:name=".DatabaseActivity"/>
         <activity android:name=".ItemActivity"/>
-        <activity android:name=".CollectionActivity">
-        </activity>
-        <activity android:name=".TableActivity">
-        </activity>
-        <activity android:name=".RentalActivity">
-        </activity>
+        <activity android:name=".CollectionActivity"/>
+        <activity android:name=".TableActivity"/>
+        <activity android:name=".RentalActivity"/>
     </application>
 
 </manifest>

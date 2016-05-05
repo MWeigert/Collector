@@ -38,9 +38,9 @@ public class Rental {
     }
 
     public String getInformation() {
-        if (back.length() < 0) {
-            return itemName + " was lent from " + friend + " between " + start + " and " + back;
-        } else return itemName + " is lend from " + friend + " since " + start;
+        if (back.length() <= 0) {
+            return itemName + " was lent from " + friend + " since " + start;
+        } else return itemName + " is lend from " + friend + " between " + start + " and " + back;
     }
 
     public int getID() {

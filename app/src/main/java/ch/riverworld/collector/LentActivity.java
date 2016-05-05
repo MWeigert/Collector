@@ -53,23 +53,6 @@ public class LentActivity extends AppCompatActivity {
         date = (DatePicker) findViewById(R.id.dp_lent);
         TextView title = (TextView) findViewById(R.id.txt_lent_title);
 
-        // Setting title of activity
-        Cursor crs = db.getItem(db, itemId);
-        crs.moveToFirst();
-        int index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
-        String msg;
-        ;
-        if (isLent) {
-            msg = "give '" + crs.getString(index) + "' back on";
-            isLent = (false);
-            // get history id here to update entry.
-        } else {
-            msg = "take '" + crs.getString(index) + "' on";
-            isLent = (true);
-        }
-        crs.close();
-        title.setText(msg);
-
         // Fill friends from database to spinner item
         friendsSPINNER = (Spinner) findViewById(R.id.spn_friends_rental);
 
@@ -83,24 +66,19 @@ public class LentActivity extends AppCompatActivity {
         }
 
         if (friendsCrs.getCount() > 0) {
-            int indexFriendId=friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
-            int indexFirstName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
-            int indexLastName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
+            int indexFriendId = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
+            //int indexFirstName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
+            // int indexLastName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
             do {
                 int id = friendsCrs.getInt(indexFriendId);
-                String first = friendsCrs.getString(indexFirstName);
-                String last = friendsCrs.getString(indexLastName);
-                Friend friend = new Friend(id,first,last);
-                if (debugMode) {
-                    Log.d("LENAC", "DATABASE: Get " + friend);
-                }
+                //String first = friendsCrs.getString(indexFirstName);
+                //String last = friendsCrs.getString(indexLastName);
+                // Friend friend = new Friend(id, first, last);
+                Friend friend = db.getFriend(db, id);
                 friends.add(friend);
-                if (debugMode) {
-                    Log.d("LENAC", "Size of friends = " + friends.size());
-                }
             } while (friendsCrs.moveToNext());
             friendsCrs.close();
-            
+
             if (debugMode) {
                 Log.d("LENAC", "Putting data in Adapter");
             }
@@ -108,19 +86,41 @@ public class LentActivity extends AppCompatActivity {
             final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friends);
             friendsSPINNER.setAdapter(adapter);
         }
+
+        // Setting title of activity
+        Cursor crs = db.getItem(db, itemId);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
+        String msg = crs.getString(index);
+        ;
+        if (isLent) {
+            msg = "give '" + msg + "' back on";
+            isLent = (false);
+            crs = db.getOpenHistory(db, itemId);
+            crs.moveToFirst();
+            index = crs.getColumnIndex(DatabaseInfo.HISTORY_FRIEND_ID_COL);
+            int id = crs.getInt(index);
+            Friend friend = db.getFriend(db, id);
+            int pos = this.getIndex(friendsSPINNER, friend);
+            friendsSPINNER.setSelection(pos);
+        } else {
+            msg = "take '" + msg + "' on";
+            isLent = (true);
+        }
+        crs.close();
+        title.setText(msg);
     }
 
     // Button listener for the LentActivity
     public void buttonOnClick(View v) {
         //Button pressed to update rental history.
         if (debugMode) {
-            String msg = "User chose: " + date.getDayOfMonth() + "." + date.getMonth() + "." + date.getYear();
-            Log.d("USERACTION", msg);
-            msg = "Friend: " + friendsSPINNER.getSelectedItem().toString();
-            Log.d("USERACTION", msg);
+            Log.d("USERACTION", "User chose: " + date.getDayOfMonth() + "." + date.getMonth() + "." + date.getYear());
+            Log.d("USERACTION", "Friend: " + friendsSPINNER.getSelectedItem().toString());
+            Log.d("LENAC", "Lent status is: "+isLent);
         }
 
-        String dateStr ="";
+        String dateStr = "";
         if (date.getDayOfMonth() < 10) {
             dateStr += "0" + Integer.toString(date.getDayOfMonth());
         } else dateStr += Integer.toString(date.getDayOfMonth());
@@ -134,7 +134,7 @@ public class LentActivity extends AppCompatActivity {
         if (success) {
             Log.d("LENAC", "Rental status of " + itemId + " successfully updated.");
             if (isLent) {
-                Friend friend =(Friend) friendsSPINNER.getSelectedItem();
+                Friend friend = (Friend) friendsSPINNER.getSelectedItem();
                 if (debugMode) {
                     Log.d("LENAC", " Adding: ITEM: " + itemId + " FRIEND: " + friend.getId() + " START: " + dateStr);
                 }
@@ -145,19 +145,32 @@ public class LentActivity extends AppCompatActivity {
                 crs.moveToFirst();
                 int id = crs.getInt(index);
                 crs.close();
-                
-                if (debugMode){
-                    Log.d("LENAC", "ITEM: "+itemId+" Back: "+ dateStr);
+
+                if (debugMode) {
+                    Log.d("LENAC", "ITEM: " + itemId + " Back: " + dateStr);
                 }
 
                 boolean updateStatus = db.updateHistory(db, id, dateStr);
                 if (updateStatus) {
-                    Toast.makeText(getBaseContext(),"Lent item is back.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Lent item is back.", Toast.LENGTH_SHORT).show();
                     finish();
-                } else Toast.makeText(getBaseContext(),"Ups something went wrong. Please try it again.",Toast
+                } else Toast.makeText(getBaseContext(), "Ups something went wrong. Please try it again.", Toast
                         .LENGTH_SHORT).show();
             }
             finish();
         } else Log.d("LENAC", "Unable to update rental status of " + itemId + ".");
+    }
+
+    // Method which returns index of spinner item by value
+    private int getIndex(Spinner spinner, Friend friend) {
+
+        int index = 0;
+
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).equals(friend)) {
+                index = i;
+            }
+        }
+        return index;
     }
 }

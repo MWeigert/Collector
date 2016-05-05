@@ -58,6 +58,13 @@
                 android:text="@string/btn_mng_genre"/>
 
             <Button
+                android:id="@+id/btn_mng_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buttonOnClick"
+                android:text="@string/btn_mng_history"/>
+
+            <Button
                 android:id="@+id/btn_language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

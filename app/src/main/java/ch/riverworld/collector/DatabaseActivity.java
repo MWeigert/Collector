@@ -211,7 +211,16 @@ public class DatabaseActivity extends AppCompatActivity {
 
                 AlertDialog genreAlert = genreBuilder.create();
                 genreAlert.show();
-
+                break;
+            case R.id.btn_mng_history:
+                //Button history pressed by user.
+                if (debugMode) {
+                    Log.d("USERACTION", "Entering history.");
+                }
+                final Intent historyIntent = new Intent(this, RentalActivity.class);
+                historyIntent.putExtra("debugMode", debugMode);
+                historyIntent.putExtra("Mode", "All");
+                startActivity(historyIntent);
                 break;
             case R.id.btn_reset_history:
                 // Button reset history pressed by user.

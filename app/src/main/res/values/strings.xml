@@ -16,6 +16,7 @@
     <string name="btn_friends">Friends</string>
     <string name="btn_language">Language</string>
     <string name="btn_mng_genre">Genre</string>
+    <string name="btn_mng_history">History</string>
     <string name="btn_mng_system">System</string>
     <string name="btn_mng_parental">Parental</string>
     <string name="btn_mng_publisher">Publisher</string>
@@ -93,6 +94,7 @@
     <string name="btn_newItem">New Item</string>
     <string name="btn_collection">Collection</string>
     <string name="btn_rental">Lent Items</string>
+    <string name="btn_export">Export Database</string>
     <string name="btn_info">Information</string>
 
     <!--- activity_rental -->

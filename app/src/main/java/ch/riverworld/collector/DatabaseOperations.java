@@ -312,7 +312,24 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Method which return string with firstname + lastname of given id.
-    public String getFriendName(DatabaseOperations dop, int id) {
+//    public String getFriendName(DatabaseOperations dop, int id) {
+//        SQLiteDatabase db = dop.getReadableDatabase();
+//        String whereClause = DatabaseInfo.FRIENDS_ID_COL + " = ?";
+//        String[] whereArgs = new String[]{Integer.toString(id)};
+
+//        Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, null, whereClause, whereArgs, null, null, null);
+//        crs.moveToFirst();
+
+//        int firstIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
+//        int lastIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
+
+//        String name = crs.getString(firstIndex) + " " + crs.getString(lastIndex);
+//        crs.close();
+//        return name;
+//    }
+
+    // Method which returns a friend object regarding given id.
+    public Friend getFriend(DatabaseOperations dop, int id) {
         SQLiteDatabase db = dop.getReadableDatabase();
         String whereClause = DatabaseInfo.FRIENDS_ID_COL + " = ?";
         String[] whereArgs = new String[]{Integer.toString(id)};
@@ -320,12 +337,13 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, null, whereClause, whereArgs, null, null, null);
         crs.moveToFirst();
 
-        int firstIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
-        int lastIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
-
-        String name = crs.getString(firstIndex) + " " + crs.getString(lastIndex);
+        int index = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
+        String first = crs.getString(index);
+        index = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
+        String last = crs.getString(index);
         crs.close();
-        return name;
+
+        return new Friend(id, first, last);
     }
 
     // Method to return all entries in friends table. Returns a Cursor with all friends.
@@ -339,46 +357,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         db = dop.getReadableDatabase();
 
         return db.query(DatabaseInfo.FRIENDS_TABLE, null, null, null, null, null, null);
-    }
-
-    // Method to return ID of friend.
-    public int getFriendId(DatabaseOperations dop, String firstName, String lastName) {
-
-        SQLiteDatabase db;
-        db = dop.getReadableDatabase();
-        String whereClause = DatabaseInfo.FRIENDS_FIRSTNAME_COL + " = ? AND " +
-                DatabaseInfo.FRIENDS_LASTNAME_COL + " = ?";
-        String[] whereArgs = new String[]{firstName, lastName};
-        String[] columns = new String[]{DatabaseInfo.FRIENDS_ID_COL};
-
-        Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, columns, whereClause, whereArgs, null, null, null);
-        crs.moveToFirst();
-        int index = crs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
-        int id = crs.getInt(index);
-        crs.close();
-        return id;
-    }
-
-    // Method to return cursor with one row from friends table.
-    public Cursor getFriendsRow(DatabaseOperations dop, String firstName, String lastName, Integer id) {
-
-        SQLiteDatabase db;
-        db = dop.getReadableDatabase();
-        String[] columns = new String[]{DatabaseInfo.FRIENDS_ID_COL, DatabaseInfo.FRIENDS_FIRSTNAME_COL, DatabaseInfo
-                .FRIENDS_LASTNAME_COL};
-
-        if (firstName != null) {
-            return db.query(DatabaseInfo.FRIENDS_TABLE, columns, DatabaseInfo.FRIENDS_FIRSTNAME_COL +
-                    " like ?", new String[]{firstName + "%"}, null, null, null);
-        } else {
-            if (lastName != null) {
-                return db.query(DatabaseInfo.FRIENDS_TABLE, columns, DatabaseInfo.FRIENDS_LASTNAME_COL +
-                        " like ?", new String[]{lastName + "%"}, null, null, null);
-            } else {
-                return db.query(DatabaseInfo.FRIENDS_TABLE, columns, DatabaseInfo.FRIENDS_ID_COL +
-                        " like ?", new String[]{id + "%"}, null, null, null);
-            }
-        }
     }
 
     // Method to delete one entry in friends table. Returns boolean with information regarding success of delete.
@@ -521,20 +499,31 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getHistory(DatabaseOperations dop) {
+    // Method which returns a cursor with all entries in history table.
+    public Cursor getHistories(DatabaseOperations dop) {
 
         SQLiteDatabase db = getReadableDatabase();
 
         return db.rawQuery("select * from " + DatabaseInfo.HISTORY_TABLE, null);
     }
 
+    // Method which returns open history entry of given item id.
     public Cursor getOpenHistory(DatabaseOperations dop, int itemId) {
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String whereClause = DatabaseInfo.HISTORY_ITEM_ID_COL + " = ? OR " + DatabaseInfo.HISTORY_RETURN_COL + " = ?";
+        String whereClause = DatabaseInfo.HISTORY_ITEM_ID_COL + " = ? AND " + DatabaseInfo.HISTORY_RETURN_COL + " = ?";
         String[] whereArgs = new String[]{Integer.toString(itemId), "NULL"};
 
         return db.query(DatabaseInfo.HISTORY_TABLE, null, whereClause, whereArgs, null, null, null);
+    }
+
+    // Method wich returns a cursor with all open history entries.
+    public Cursor getOpenHistories(DatabaseOperations dop) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        String whereClause = DatabaseInfo.HISTORY_RETURN_COL + " = ?";
+        String[] args = new String[]{"NULL"};
+
+        return db.query(DatabaseInfo.HISTORY_TABLE, null, whereClause, args, null, null, null);
     }
 
     public boolean updateHistory(DatabaseOperations dop, int id, String back) {
@@ -550,6 +539,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return db.update(DatabaseInfo.HISTORY_TABLE, values, DatabaseInfo.HISTORY_ID_COL + "=" + id, null) > 0;
     }
 
+    // Clears the complete history table.
     public void resetHistory(DatabaseOperations dop) {
 
         SQLiteDatabase db;
