@@ -105,6 +105,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method which returns string with name of given author id.
+    public String getAuthor(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.AUTHORS_TABLE, null, DatabaseInfo.AUTHORS_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
+        String author = crs.getString(index);
+        crs.close();
+        return author;
+    }
+
     // Method to return all entries in authors table. Returns a Cursor with all authors.
     public Cursor getAuthors(DatabaseOperations dop) {
 
@@ -195,6 +207,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DOP", "Table directors --> added " + director + ".");
         }
+    }
+
+    // Method which returns string with director name from given director id.
+    public String getDirector(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.DIRECTORS_TABLE, null, DatabaseInfo.DIRECTORS_ID_COL + " like ?", new
+                String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
+        String director = crs.getString(index);
+        crs.close();
+
+        return director;
     }
 
     // Method to return all entries in directors table. Returns a Cursor with all authors.
@@ -312,9 +337,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         SQLiteDatabase db;
         db = dop.getReadableDatabase();
-        String[] friends = {DatabaseInfo.FRIENDS_FIRSTNAME_COL, DatabaseInfo.FRIENDS_LASTNAME_COL};
 
-        return db.query(DatabaseInfo.FRIENDS_TABLE, friends, null, null, null, null, null);
+        return db.query(DatabaseInfo.FRIENDS_TABLE, null, null, null, null, null, null);
     }
 
     // Method to return ID of friend.
@@ -397,6 +421,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DOP", "Table genre --> added " + genre + ".");
         }
+    }
+
+    // Method which return genre name of given genre id.
+    public String getGenreName(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.GENRES_TABLE, null, DatabaseInfo.GENRES_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
+        String name = crs.getString(index);
+        crs.close();
+        return name;
     }
 
     // Method to return all entries in genres table. Returns a Cursor with all genres.
@@ -501,6 +537,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return db.query(DatabaseInfo.HISTORY_TABLE, null, whereClause, whereArgs, null, null, null);
     }
 
+    public boolean updateHistory(DatabaseOperations dop, int id, String back) {
+        if (debugMode) {
+            Log.d("DOP", "Starting update return of item date.");
+            Log.d("DOP", "Item ID: " + id + " Date: " + back);
+        }
+
+        SQLiteDatabase db = dop.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DatabaseInfo.HISTORY_RETURN_COL, back);
+
+        return db.update(DatabaseInfo.HISTORY_TABLE, values, DatabaseInfo.HISTORY_ID_COL + "=" + id, null) > 0;
+    }
+
     public void resetHistory(DatabaseOperations dop) {
 
         SQLiteDatabase db;
@@ -578,7 +627,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Method to return all entries in items table. Returns a Cursor with all items.
-    public Cursor getItemTitles(DatabaseOperations dop) {
+    public Cursor getItems(DatabaseOperations dop) {
 
         if (debugMode) {
             Log.d("DATABASE", "Starting --> getItems.");
@@ -587,7 +636,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         SQLiteDatabase db = dop.getReadableDatabase();
         String[] titles = {DatabaseInfo.ITEMS_TITLE_COL};
 
-        return db.query(DatabaseInfo.ITEMS_TABLE, titles, null, null, null, null, null);
+        return db.query(DatabaseInfo.ITEMS_TABLE, null, null, null, null, null, null);
     }
 
     // Method to return all data to one single item. Returns cursor.
@@ -598,25 +647,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL, DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo
-                .ITEMS_TITLE_COL, DatabaseInfo.ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo
-                .ITEMS_LANGUAGE_ID_COL, DatabaseInfo.ITEMS_LAUNCH_YEAR_COL, DatabaseInfo.ITEMS_RENTAL_COL, DatabaseInfo
-                .ITEMS_PUBLISHER_ID_COL, DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL,
-                DatabaseInfo.ITEMS_DVD_COL, DatabaseInfo.ITEMS_BLURAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL,
-                DatabaseInfo.ITEMS_DIRECTOR_ID_COL, DatabaseInfo.ITEMS_PARENTAL_ID_COL};
+        //String[] columns = new String[]{DatabaseInfo.ITEMS_ID_COL, DatabaseInfo.ITEMS_EAN_COL, DatabaseInfo
+        //        .ITEMS_TITLE_COL, DatabaseInfo.ITEMS_MEDIA_TYPE_COL, DatabaseInfo.ITEMS_GENRE_ID_COL, DatabaseInfo
+        //       .ITEMS_LANGUAGE_ID_COL, DatabaseInfo.ITEMS_LAUNCH_YEAR_COL, DatabaseInfo.ITEMS_RENTAL_COL,
+        // DatabaseInfo
+        //       .ITEMS_PUBLISHER_ID_COL, DatabaseInfo.ITEMS_AUTHOR_ID_COL, DatabaseInfo.ITEMS_SYSTEM_ID_COL,
+        //       DatabaseInfo.ITEMS_DVD_COL, DatabaseInfo.ITEMS_BLURAY_COL, DatabaseInfo.ITEMS_STUDIO_ID_COL,
+        //       DatabaseInfo.ITEMS_DIRECTOR_ID_COL, DatabaseInfo.ITEMS_PARENTAL_ID_COL};
 
-        Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_ID_COL +
+        // Cursor crs = db.query(DatabaseInfo.ITEMS_TABLE, columns, DatabaseInfo.ITEMS_ID_COL +
+        //        " like ?", new String[]{id + "%"}, null, null, null);
+
+        return db.query(DatabaseInfo.ITEMS_TABLE, null, DatabaseInfo.ITEMS_ID_COL +
                 " like ?", new String[]{id + "%"}, null, null, null);
-
-        if (debugMode) {
-            crs.moveToFirst();
-            int index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
-            Log.d("DOP", "Finished --> getItem.");
-            Log.d("DOP", "ID: " + String.valueOf(crs.getInt(index)));
-            index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
-            Log.d("DOP", "Name: " + crs.getString(index));
-        }
-        return crs;
     }
 
     public int getItemID(DatabaseOperations dop, String title) {
@@ -673,6 +716,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DOP", "Table language --> added " + language + ".");
         }
+    }
+
+    // Method to return string with name of given language id.
+    public String getLanguageName(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.LANGUAGES_TABLE, null, DatabaseInfo.LANGUAGES_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.LANGUAGES_LANGUAGE_COL);
+        String language = crs.getString(index);
+        crs.close();
+
+        return language;
     }
 
     // Method to return all entries in language table. Returns a Cursor with all languages.
@@ -762,6 +818,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
+    // Method which returns string of publisher name from given id.
+    public String getPublisher(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.PUBLISHERS_TABLE, null, DatabaseInfo.PUBLISHERS_ID_COL +
+                " like ?", new String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
+        String publisher = crs.getString(index);
+        crs.close();
+        return publisher;
+    }
+
     // Method to return all entries in publishers table. Returns a Cursor with all publishers.
     public Cursor getPublishers(DatabaseOperations dop) {
 
@@ -801,7 +869,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return db.delete(DatabaseInfo.PUBLISHERS_TABLE, selection, args) > 0;
     }
 
-    // Method to reset complete authors table.
+    // Method to reset complete publishers table.
     public void resetPublishers(DatabaseOperations dop) {
 
         SQLiteDatabase db;
@@ -843,6 +911,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DOP", "Table studios --> added " + studio + ".");
         }
+    }
+
+    // Method which returns a string with name of given studio id.
+    public String getStudio(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.STUDIOS_TABLE, null, DatabaseInfo.STUDIOS_ID_COL + " like ?", new
+                String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
+        String studio = crs.getString(index);
+        crs.close();
+
+        return studio;
     }
 
     // Method to return all entries in studios table. Returns a Cursor with all studios.
@@ -928,6 +1009,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (debugMode) {
             Log.d("DOP", "Table systems --> added " + system + ".");
         }
+    }
+
+    public String getSystem(DatabaseOperations dop, int id) {
+        SQLiteDatabase db = dop.getReadableDatabase();
+        Cursor crs = db.query(DatabaseInfo.SYSTEMS_TABLE, null, DatabaseInfo.SYSTEMS_ID_COL + " like ?", new
+                String[]{id + "%"}, null, null, null);
+        crs.moveToFirst();
+        int index = crs.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
+        String system = crs.getString(index);
+        crs.close();
+
+        return system;
     }
 
     // Method to return all entries in systems table. Returns a Cursor with all systems.

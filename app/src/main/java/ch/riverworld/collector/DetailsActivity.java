@@ -15,7 +15,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +30,8 @@ import android.widget.Toast;
 public class DetailsActivity extends AppCompatActivity {
 
     private boolean debugMode = false;
-    private String itemTitle;
+    private int itemId;
+    private Item selectedItem;
 
 
     @Override
@@ -43,16 +43,16 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
-            this.itemTitle = extras.getString("itemTitle");
+            this.itemId = extras.getInt("itemID");
         }
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        int id = db.getItemID(db, itemTitle);
-        Item selectedItem = new Item(ctx);
-        Cursor crs = db.getItemRow(db, id);
-        crs.moveToFirst();
-        selectedItem.putItem(crs);
+       // int id = db.getItemID(db, itemTitle);
+        this.selectedItem = new Item(ctx,itemId);
+        //Cursor crs = db.getItemRow(db, id);
+        //crs.moveToFirst();
+        //selectedItem.putItem(crs);
 
         Switch swLent = (Switch) findViewById(R.id.sw_lent);
         ImageView iView = (ImageView) findViewById(R.id.imageView);
@@ -107,14 +107,8 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         // Getting data of chosen item from database and displaying these.
-        if (debugMode) {
-            String msg = "Item ID: " + db.getItemID(db, itemTitle);
-            Log.d("DATABASE", msg);
-        }
-
         // Need to save picture ID in database table items and refactor this switch
-        id = db.getItemID(db, itemTitle);
-        switch (id) {
+        switch (itemId) {
             case 1:
                 assert iView != null;
                 iView.setBackgroundResource(R.drawable.p1);
@@ -128,19 +122,6 @@ public class DetailsActivity extends AppCompatActivity {
                 iView.setBackgroundResource(R.drawable.p3);
                 break;
         }
-
-        //Cursor crs = db.getItem(db, itemTitle);
-        //crs.moveToFirst();
-
-        if (debugMode) {
-            String msg = "";
-            String[] columns = crs.getColumnNames();
-            for (String column : columns) {
-                msg = msg + column + ";";
-            }
-            Log.d("DETAC", msg);
-        }
-        //selectedItem.putItem(crs);
 
         String value = String.valueOf(selectedItem.getEAN());
         assert eanTXT != null;
@@ -208,7 +189,7 @@ public class DetailsActivity extends AppCompatActivity {
                 //Button to delete item pressed.
 
                 final AlertDialog.Builder itemBuilder = new AlertDialog.Builder(DetailsActivity.this);
-                String msg = "Do you really want to delete " + itemTitle.toString();
+                String msg = "Do you really want to delete " + selectedItem.toString();
                 itemBuilder.setMessage(msg);
 
 
@@ -241,13 +222,6 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
             case R.id.btn_edit:
                 //Button to edit item pressed.
-                if (debugMode)
-
-                {
-                    msg = "User want to edit the information of this item.";
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
-                    Log.d("USERACTION", msg);
-                }
 
                 break;
         }

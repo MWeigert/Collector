@@ -20,9 +20,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,9 +50,10 @@ public class RentalActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Object selectedItem;
-                selectedItem = rentalLIST.getItemAtPosition(position);
-                // Show details of selection
+                Object selectedItem = rentalLIST.getItemAtPosition(position);
+                Rental rental = (Rental) selectedItem;
+                String msg = rental.getInformation();
+                Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
             }
         });
 

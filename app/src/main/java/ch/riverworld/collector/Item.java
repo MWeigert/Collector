@@ -49,146 +49,118 @@ public class Item {
 
     private Context ctx;
 
-    // Empty Constructor
+    // Empty constructor
     public Item(Context ctx) {
         this.ctx = ctx;
     }
 
-    // Put data from one single item in object.
-    public void putItem(Cursor crs) {
+    // Standard constructor
+    public Item(Context ctx, int id) {
         DatabaseOperations db = new DatabaseOperations(ctx, false);
-        Cursor crsID;
-        int index;
+        this.id = id;
 
+        int index;
+        Cursor crs = db.getItemRow(db, id);
         crs.moveToFirst();
-        // ID
-        index = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
-        id = crs.getInt(index);
         // EAN
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_EAN_COL);
-        ean = crs.getLong(index);
+        this.ean = crs.getLong(index);
         // Title
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
-        title = crs.getString(index);
+        this.title = crs.getString(index);
         // MediaType
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
-        mediaType = crs.getString(index);
-        book = false;
-        movie = false;
-        game = false;
+        this.mediaType = crs.getString(index);
+        this.book = false;
+        this.movie = false;
+        this.game = false;
         switch (mediaType) {
             case "Book":
-                book = true;
+                this.book = true;
                 break;
             case "Movie":
-                movie = true;
+                this.movie = true;
                 break;
             case "Game":
-                game = true;
+                this.game = true;
                 break;
         }
         // Genre
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_GENRE_ID_COL);
-        genre_id = crs.getInt(index);
-        crsID = db.getGenreRow(db, null, genre_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.GENRES_GENRE_COL);
-            crsID.moveToFirst();
-            genre = crsID.getString(index);
-        }
+        this.genre_id = crs.getInt(index);
+        this.genre = db.getGenreName(db, genre_id);
+
         // Language
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_LANGUAGE_ID_COL);
-        language_id = crs.getInt(index);
-        crsID = db.getLanguageRow(db, null, language_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.LANGUAGES_LANGUAGE_COL);
-            crsID.moveToFirst();
-            if (debugMode) {
-                Log.d("ITEM", "Count: " + crs.getCount());
-                Log.d("ITEM", "TYPE: " + crs.getType(index));
-            }
-            language = crsID.getString(index);
-        }
+        this.language_id = crs.getInt(index);
+        this.language = db.getLanguageName(db, language_id);
+
         // Year
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_LAUNCH_YEAR_COL);
-        year = Integer.valueOf(crs.getString(index));
+        this.year = Integer.valueOf(crs.getString(index));
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_RENTAL_COL);
         switch (crs.getInt(index)) {
             case 1:
-                lent = true;
+                this.lent = true;
                 break;
             default:
-                lent = false;
+                this.lent = false;
                 break;
         }
         // Publisher
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PUBLISHER_ID_COL);
-        publisher_id = crs.getInt(index);
-        crsID = db.getPublisherRow(db, null, publisher_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.PUBLISHERS_PUBLISHER_COL);
-            crsID.moveToFirst();
-            publisher = crsID.getString(index);
-        }
+        this.publisher_id = crs.getInt(index);
+        this.publisher = db.getPublisher(db, publisher_id);
+
         // Author
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_AUTHOR_ID_COL);
-        author_id = crs.getInt(index);
-        crsID = db.getAuthorRow(db, null, author_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.AUTHORS_AUTHOR_COL);
-            crsID.moveToFirst();
-            author = crsID.getString(index);
-        }
+        this.author_id = crs.getInt(index);
+        this.author = db.getAuthor(db, author_id);
+
         // Systems
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_SYSTEM_ID_COL);
-        system_id = crs.getInt(index);
-        crsID = db.getSystemRow(db, null, system_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.SYSTEMS_SYSTEM_COL);
-            crsID.moveToFirst();
-            system = crsID.getString(index);
-        }
+        this.system_id = crs.getInt(index);
+        this.system=db.getSystem(db,system_id);
+
         // DVD
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DVD_COL);
         switch (crs.getInt(index)) {
             case 1:
-                dvd = true;
+                this.dvd = true;
                 break;
             default:
-                dvd = false;
+                this.dvd = false;
                 break;
         }
         // BluRay
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_BLURAY_COL);
         switch (crs.getInt(index)) {
             case 1:
-                bluRay = true;
+                this.bluRay = true;
                 break;
             default:
-                bluRay = false;
+                this.bluRay = false;
                 break;
         }
         // Studio
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_STUDIO_ID_COL);
-        studio_id = crs.getInt(index);
-        crsID = db.getStudioRow(db, null, studio_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.STUDIOS_STUDIO_COL);
-            crsID.moveToFirst();
-            studio = crsID.getString(index);
-        }
+        this.studio_id = crs.getInt(index);
+        this.studio=db.getStudio(db, studio_id);
+
         // Director
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DIRECTOR_ID_COL);
-        director_id = crs.getInt(index);
-        crsID = db.getDirectorRow(db, null, director_id);
-        if (crsID != null) {
-            index = crsID.getColumnIndex(DatabaseInfo.DIRECTORS_DIRECTOR_COL);
-            crsID.moveToFirst();
-            director = crsID.getString(index);
-        }
+        this.director_id = crs.getInt(index);
+        director=db.getDirector(db, director_id);
+
         // Parental
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PARENTAL_ID_COL);
-        fsk = crs.getInt(index);
+        this.fsk = crs.getInt(index);
+        crs.close();
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 
     // ********************************************************************************************

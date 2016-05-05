@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -52,10 +53,6 @@ public class LentActivity extends AppCompatActivity {
         date = (DatePicker) findViewById(R.id.dp_lent);
         TextView title = (TextView) findViewById(R.id.txt_lent_title);
 
-        if (debugMode) {
-            Log.d("LENAC", "Starting rental administration.");
-        }
-
         // Setting title of activity
         Cursor crs = db.getItemRow(db, itemId);
         crs.moveToFirst();
@@ -70,12 +67,13 @@ public class LentActivity extends AppCompatActivity {
             msg = "take '" + crs.getString(index) + "' on";
             isLent = (true);
         }
+        crs.close();
         title.setText(msg);
 
         // Fill friends from database to spinner item
         friendsSPINNER = (Spinner) findViewById(R.id.spn_friends_rental);
-        String friend;
-        final ArrayList<String> friends = new ArrayList<String>();
+
+        final ArrayList<Friend> friends = new ArrayList<Friend>();
         Cursor friendsCrs = db.getFriends(db);
         friendsCrs.moveToFirst();
 
@@ -85,11 +83,14 @@ public class LentActivity extends AppCompatActivity {
         }
 
         if (friendsCrs.getCount() > 0) {
-            friendsCrs.moveToFirst();
+            int indexFriendId=friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
             int indexFirstName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
             int indexLastName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
             do {
-                friend = friendsCrs.getString(indexFirstName) + " " + friendsCrs.getString(indexLastName);
+                int id = friendsCrs.getInt(indexFriendId);
+                String first = friendsCrs.getString(indexFirstName);
+                String last = friendsCrs.getString(indexLastName);
+                Friend friend = new Friend(id,first,last);
                 if (debugMode) {
                     Log.d("LENAC", "DATABASE: Get " + friend);
                 }
@@ -98,7 +99,8 @@ public class LentActivity extends AppCompatActivity {
                     Log.d("LENAC", "Size of friends = " + friends.size());
                 }
             } while (friendsCrs.moveToNext());
-
+            friendsCrs.close();
+            
             if (debugMode) {
                 Log.d("LENAC", "Putting data in Adapter");
             }
@@ -110,8 +112,6 @@ public class LentActivity extends AppCompatActivity {
 
     // Button listener for the LentActivity
     public void buttonOnClick(View v) {
-        //   switch (v.getId()) {
-        // case R.id.btn_set:
         //Button pressed to update rental history.
         if (debugMode) {
             String msg = "User chose: " + date.getDayOfMonth() + "." + date.getMonth() + "." + date.getYear();
@@ -120,36 +120,44 @@ public class LentActivity extends AppCompatActivity {
             Log.d("USERACTION", msg);
         }
 
+        String dateStr ="";
+        if (date.getDayOfMonth() < 10) {
+            dateStr += "0" + Integer.toString(date.getDayOfMonth());
+        } else dateStr += Integer.toString(date.getDayOfMonth());
+        if (date.getMonth() < 9) {
+            dateStr += "0" + Integer.toString(date.getMonth() + 1);
+        } else Integer.toString(date.getMonth() + 1);
+        dateStr += Integer.toString(date.getYear());
+
         boolean success = db.updateItemRentalStatus(db, itemId, isLent);
 
         if (success) {
             Log.d("LENAC", "Rental status of " + itemId + " successfully updated.");
             if (isLent) {
-                String start = "";
-                if (date.getDayOfMonth() < 10) {
-                    start += "0" + Integer.toString(date.getDayOfMonth());
-                } else start += Integer.toString(date.getDayOfMonth());
-                if (date.getMonth() < 9) {
-                    start += "0" + Integer.toString(date.getMonth() + 1);
-                } else Integer.toString(date.getMonth() + 1);
-                start += Integer.toString(date.getYear());
-                String[] name = friendsSPINNER.getSelectedItem().toString().split(" ");
+                Friend friend =(Friend) friendsSPINNER.getSelectedItem();
                 if (debugMode) {
-                    Log.d("LENAC", "0: " + name[0] + " 1:" + name[1]);
+                    Log.d("LENAC", " Adding: ITEM: " + itemId + " FRIEND: " + friend.getId() + " START: " + dateStr);
                 }
-                String firstName = name[0];
-                String lastName = name[1];
-                int friendId = db.getFriendId(db, firstName, lastName);
-                if (debugMode) {
-                    Log.d("LENAC", " Adding: ITEM: " + itemId + " FRIEND: " + friendId + " START: " + start);
-                }
-                db.addHistory(db, itemId, friendId, start);
+                db.addHistory(db, itemId, friend.getId(), dateStr);
             } else {
-                // UPDATE HISTORY TABLE HERE
+                Cursor crs = db.getOpenHistory(db, itemId);
+                int index = crs.getColumnIndex(DatabaseInfo.HISTORY_ID_COL);
+                crs.moveToFirst();
+                int id = crs.getInt(index);
+                crs.close();
+                
+                if (debugMode){
+                    Log.d("LENAC", "ITEM: "+itemId+" Back: "+ dateStr);
+                }
+
+                boolean updateStatus = db.updateHistory(db, id, dateStr);
+                if (updateStatus) {
+                    Toast.makeText(getBaseContext(),"Lent item is back.",Toast.LENGTH_SHORT).show();
+                    finish();
+                } else Toast.makeText(getBaseContext(),"Ups something went wrong. Please try it again.",Toast
+                        .LENGTH_SHORT).show();
             }
             finish();
         } else Log.d("LENAC", "Unable to update rental status of " + itemId + ".");
-        //    break;
-        //  }
     }
 }

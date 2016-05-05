@@ -62,31 +62,35 @@ public class FriendsActivity extends AppCompatActivity {
         });
 
         // Fill friends from database to list item
-        String friend;
-        final ArrayList<String> friends = new ArrayList<String>();
+        final ArrayList<Friend> friends = new ArrayList<Friend>();
+        final int indexId;
         final int indexFirstName;
         final int indexLastName;
 
         Context ctx = this;
         db = new DatabaseOperations(ctx, debugMode);
         Cursor crs = db.getFriends(db);
+        crs.moveToFirst();
 
         Integer anz = crs.getCount();
         if (debugMode) {
             Log.d("FRAC", "DATABASE: " + anz.toString() + " friends in table.");
         }
         if (anz > 0) {
-            crs.moveToFirst();
+            indexId = crs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
             indexFirstName = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
             indexLastName = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
             do {
-                friend = crs.getString(indexFirstName) + " " + crs.getString(indexLastName);
+                final int id = crs.getInt(indexId);
+                final String first = crs.getString(indexFirstName);
+                final String last = crs.getString(indexLastName);
+                final Friend friend = new Friend(id, first, last);
                 friends.add(friend);
             } while (crs.moveToNext());
+            crs.close();
 
             final ArrayAdapter adapter = new ArrayAdapter(this,
                     android.R.layout.simple_list_item_1, friends);
-
             FRIENDLIST.setAdapter(adapter);
         }
     }
@@ -110,7 +114,6 @@ public class FriendsActivity extends AppCompatActivity {
                 break;
             case R.id.btn_remove:
                 //Pressed button to delete friend from database.
-
                 AlertDialog.Builder langBuilder = new AlertDialog.Builder(FriendsActivity.this);
                 langBuilder.setMessage("Do you really want to delete " + selectedItem.toString());
 
@@ -121,16 +124,10 @@ public class FriendsActivity extends AppCompatActivity {
                         if (debugMode) {
                             Log.d("USERACTION", "User chose yes.");
                         }
-                        String[] name = selectedItem.toString().split(" ");
-                        Cursor crs = db.getFriendsRow(db, name[0], null, null);
-                        int index = crs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
-                        crs.moveToFirst();
-                        if (debugMode){
-                            Log.d("FRAC", "Count: " + crs.getCount());
-                            Log.d("FRAC", "TYPE: "+crs.getType(index));
-                        }
-                        int id = crs.getInt(index);
-                        boolean success = db.deleteFriend(db, id);
+
+                        final Friend friend = (Friend) selectedItem;
+
+                        boolean success = db.deleteFriend(db, friend.getId());
                         if (success) {
                             Toast.makeText(getBaseContext(), selectedItem.toString() + " is successfully deleted from" +
                                     " " + "database.", Toast.LENGTH_SHORT).show();
@@ -146,7 +143,7 @@ public class FriendsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            Log.d("USERACTION","User chose no.");
+                            Log.d("USERACTION", "User chose no.");
                         }
                     }
                 });

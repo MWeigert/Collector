@@ -28,7 +28,7 @@ public class CollectionActivity extends AppCompatActivity {
 
     private Boolean debugMode;
     private ListView list;
-    private Object selectedItem;
+    private Item selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,51 +46,45 @@ public class CollectionActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                selectedItem = list.getItemAtPosition(position);
+                selectedItem = (Item) list.getItemAtPosition(position);
                 Intent detailsIntent = new Intent(CollectionActivity.this, DetailsActivity.class);
                 detailsIntent.putExtra("debugMode", debugMode);
-                detailsIntent.putExtra("itemTitle", selectedItem.toString());
+                detailsIntent.putExtra("itemID", selectedItem.getId());
                 startActivity(detailsIntent);
             }
         });
 
         // Fill items from database to list item
-        String title;
-        Integer indexTitle;
-
-        final ArrayList<String> titles = new ArrayList<String>();
+        final ArrayList<Item> items = new ArrayList<Item>();
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
         Integer anz;
 
-        Cursor titleCrs = db.getItemTitles(db);
-        anz = titleCrs.getCount();
+        Cursor crs = db.getItems(db);
+        crs.moveToFirst();
+        anz = crs.getCount();
 
         if (debugMode) {
             Log.d("COLAC", "DATABASE: " + anz.toString() + " items in table.");
         }
 
         if (anz > 0) {
-            titleCrs.moveToFirst();
-            indexTitle = titleCrs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
-
+            int indexItemId = crs.getColumnIndex(DatabaseInfo.ITEMS_ID_COL);
             do {
-                title = titleCrs.getString(indexTitle);
+                int id = crs.getInt(indexItemId);
                 if (debugMode) {
-                    Log.d("COLAC", "DATABASE: Get " + title);
+                    Log.d("COLAC", "Adding item (ID: " + id + ") to ArrayList.");
                 }
-                titles.add(title);
-                if (debugMode) {
-                    Log.d("COLAC", "Size of titles = " + titles.size());
-                }
-            } while (titleCrs.moveToNext());
+                Item item = new Item(ctx, id);
+                items.add(item);
+            } while (crs.moveToNext());
 
             if (debugMode) {
                 Log.d("COLAC", "Putting data in Adapter");
             }
             final ArrayAdapter adapter = new ArrayAdapter(this,
-                    android.R.layout.simple_list_item_1, titles);
+                    android.R.layout.simple_list_item_1, items);
 
             list.setAdapter(adapter);
         }
