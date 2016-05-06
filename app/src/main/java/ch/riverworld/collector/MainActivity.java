@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -71,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
                 String[] TO = {""};
                 String[] CC = {""};
                 File exportDir = new File(Environment.getExternalStorageDirectory(), "");
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                String path = exportDir.getPath() + "collector.csv";
-                Log.d("MAIN", "Attached file: " + path);
+                File file = new File(exportDir.getPath()+"/collector.csv");
+                Uri uri = Uri.parse("file://" + file);
 
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
                 emailIntent.putExtra(Intent.EXTRA_CC, CC);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Export Collector Database");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
-                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(path));
+                emailIntent .putExtra(Intent.EXTRA_STREAM, uri);
 
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
