@@ -13,10 +13,15 @@ package ch.riverworld.collector;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,9 +61,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_export:
                 // Pressed button to enter database export.
+                DatabaseOperations db = new DatabaseOperations(this, debugMode);
+                try {
+                    db.exportDatabaseCSV(db);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // Starting file export via mail
                 String[] TO = {""};
                 String[] CC = {""};
+                File exportDir = new File(Environment.getExternalStorageDirectory(), "");
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                String path = exportDir.getPath() + "collector.csv";
+                Log.d("MAIN", "Attached file: " + path);
 
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
@@ -66,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 emailIntent.putExtra(Intent.EXTRA_CC, CC);
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Export Collector Database");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+                emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(path));
 
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
                     finish();
-                }
-                catch (android.content.ActivityNotFoundException ex) {
+                } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
                 }
 

@@ -64,7 +64,7 @@
 
     <!--- activity_info -->
     <string name="txt_versionTitel">App Version:</string>
-    <string name="txt_version">0.01</string>
+    <string name="txt_version">0.1</string>
     <string name="txt_programmerTitel">Programmed by:</string>
     <string name="txt_programmer">Mathias Weigert</string>
     <string name="btn_settings">Database</string>
