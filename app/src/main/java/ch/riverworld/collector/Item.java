@@ -22,6 +22,7 @@ public class Item {
     private int id;
     private long ean;
     private String title;
+    private Float rating;
     private boolean book;
     private boolean movie;
     private boolean game;
@@ -67,6 +68,9 @@ public class Item {
         // Title
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         this.title = crs.getString(index);
+        // Rating
+        index=crs.getColumnIndex(DatabaseInfo.ITEMS_RATING_COL);
+        this.rating=crs.getFloat(index);
         // MediaType
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
         this.mediaType = crs.getString(index);
@@ -119,7 +123,7 @@ public class Item {
         // Systems
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_SYSTEM_ID_COL);
         this.system_id = crs.getInt(index);
-        this.system=db.getSystem(db,system_id);
+        this.system = db.getSystem(db, system_id);
 
         // DVD
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DVD_COL);
@@ -144,12 +148,12 @@ public class Item {
         // Studio
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_STUDIO_ID_COL);
         this.studio_id = crs.getInt(index);
-        this.studio=db.getStudio(db, studio_id);
+        this.studio = db.getStudio(db, studio_id);
 
         // Director
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_DIRECTOR_ID_COL);
         this.director_id = crs.getInt(index);
-        director=db.getDirector(db, director_id);
+        director = db.getDirector(db, director_id);
 
         // Parental
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PARENTAL_ID_COL);
@@ -178,6 +182,10 @@ public class Item {
 
     public String getTitle() {
         return title;
+    }
+
+    public Float getRating() {
+        return rating;
     }
 
     public boolean isBook() {
@@ -289,6 +297,10 @@ public class Item {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public void setBook(boolean book) {

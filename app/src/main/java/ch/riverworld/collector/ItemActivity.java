@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 0.1                                                                       *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ItemActivity extends AppCompatActivity {
 
     private EditText txtEAN;
     private EditText txtTitle;
+    private RatingBar rb;
     private RadioButton rbBook;
     private RadioButton rbMovie;
     private RadioButton rbGame;
@@ -72,12 +74,13 @@ public class ItemActivity extends AppCompatActivity {
             mode = extras.getString("Mode");
         }
 
-        btnAdd=(Button)findViewById(R.id.btn_add);
-        btnUpdate=(Button)findViewById(R.id.btn_update);
+        btnAdd = (Button) findViewById(R.id.btn_add);
+        btnUpdate = (Button) findViewById(R.id.btn_update);
         btnUpdate.setVisibility(View.INVISIBLE);
 
         txtEAN = (EditText) findViewById(R.id.tf_ean);
         txtTitle = (EditText) findViewById(R.id.tf_title);
+        rb = (RatingBar) findViewById(R.id.mng_rating);
         rbBook = (RadioButton) findViewById(R.id.rb_book);
         rbMovie = (RadioButton) findViewById(R.id.rb_movie);
         rbGame = (RadioButton) findViewById(R.id.rb_game);
@@ -225,26 +228,26 @@ public class ItemActivity extends AppCompatActivity {
             rbBook.setChecked(item.isBook());
             rbMovie.setChecked(item.isMovie());
             rbGame.setChecked(item.isGame());
-            index=this.getIndex(spGenre, item.getGenre());
+            index = this.getIndex(spGenre, item.getGenre());
             spGenre.setSelection(index);
             index = this.getIndex(spLanguage, item.getLanguage());
             spLanguage.setSelection(index);
-            index=this.getIndex(spYear,Integer.toString(item.getYear()));
+            index = this.getIndex(spYear, Integer.toString(item.getYear()));
             spYear.setSelection(index);
             cbLent.setVisibility(View.INVISIBLE);
-            index=this.getIndex(spPublisher,item.getPublisher());
+            index = this.getIndex(spPublisher, item.getPublisher());
             spPublisher.setSelection(index);
-            index=this.getIndex(spAuthor,item.getAuthor());
+            index = this.getIndex(spAuthor, item.getAuthor());
             spAuthor.setSelection(index);
-            index=this.getIndex(spSystem,item.getSystem());
+            index = this.getIndex(spSystem, item.getSystem());
             spSystem.setSelection(index);
             cbDVD.setChecked(item.isDvd());
             cbBluRay.setChecked(item.isBluRay());
-            index=this.getIndex(spStudio,item.getStudio());
+            index = this.getIndex(spStudio, item.getStudio());
             spStudio.setSelection(index);
-            index=this.getIndex(spDirector,item.getDirector());
+            index = this.getIndex(spDirector, item.getDirector());
             spDirector.setSelection(index);
-            switch (item.getFsk()){
+            switch (item.getFsk()) {
                 case 0:
                     cbFSK0.setChecked(true);
                     break;
@@ -294,8 +297,8 @@ public class ItemActivity extends AppCompatActivity {
                     } else {
                         item.setEAN(Long.parseLong(eanStr));
                     }
-
                     item.setTitle(txtTitle.getText().toString());
+                    item.setRating(rb.getRating());
                     item.setMediaType("NULL");
                     if (rbBook.isChecked()) {
                         item.setBook(true);
@@ -468,6 +471,7 @@ public class ItemActivity extends AppCompatActivity {
                     }
 
                     item.setTitle(txtTitle.getText().toString());
+                    item.setRating(rb.getRating());
                     item.setMediaType("NULL");
                     if (rbBook.isChecked()) {
                         item.setBook(true);
@@ -619,7 +623,7 @@ public class ItemActivity extends AppCompatActivity {
                     }
 
                     if (debugMode) {
-                        Log.d("ITAC", "BEFORE UPDATE - Item: "+item+" ID: "+id);
+                        Log.d("ITAC", "BEFORE UPDATE - Item: " + item + " ID: " + id);
                     }
                     db.updateItem(db, item, id);
                     finish();

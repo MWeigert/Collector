@@ -23,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class DetailsActivity extends AppCompatActivity {
         ImageView iView = (ImageView) findViewById(R.id.imageView);
         TextView eanTXT = (TextView) findViewById(R.id.txt_ean);
         TextView titleTXT = (TextView) findViewById(R.id.txt_title);
+        RatingBar ratingBar =(RatingBar) findViewById(R.id.ratingBar);
         TextView genreTXT = (TextView) findViewById(R.id.txt_genre);
         TextView yearTXT = (TextView) findViewById(R.id.txt_year);
         TextView languageTXT = (TextView) findViewById(R.id.txt_language);
@@ -125,6 +127,7 @@ public class DetailsActivity extends AppCompatActivity {
         assert eanTXT != null;
         eanTXT.setText(String.format("EAN: %s", value));
         titleTXT.setText("Title: " + selectedItem.getTitle());
+        ratingBar.setRating(selectedItem.getRating());
         genreTXT.setText("Genre: " + selectedItem.getGenre());
         yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));
         languageTXT.setText("Language: " + selectedItem.getLanguage());

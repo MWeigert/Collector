@@ -352,23 +352,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
     }
 
-    // Method which return string with firstname + lastname of given id.
-//    public String getFriendName(DatabaseOperations dop, int id) {
-//        SQLiteDatabase db = dop.getReadableDatabase();
-//        String whereClause = DatabaseInfo.FRIENDS_ID_COL + " = ?";
-//        String[] whereArgs = new String[]{Integer.toString(id)};
-
-//        Cursor crs = db.query(DatabaseInfo.FRIENDS_TABLE, null, whereClause, whereArgs, null, null, null);
-//        crs.moveToFirst();
-
-//        int firstIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
-//        int lastIndex = crs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
-
-//        String name = crs.getString(firstIndex) + " " + crs.getString(lastIndex);
-//        crs.close();
-//        return name;
-//    }
-
     // Method which returns a friend object regarding given id.
     public Friend getFriend(DatabaseOperations dop, int id) {
         SQLiteDatabase db = dop.getReadableDatabase();
@@ -612,6 +595,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
         values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
+        values.put(DatabaseInfo.ITEMS_RATING_COL,item.getRating());
         values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
         values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
         values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
@@ -685,6 +669,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
         values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
+        values.put(DatabaseInfo.ITEMS_RATING_COL,item.getRating());
         values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
         values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
         values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
