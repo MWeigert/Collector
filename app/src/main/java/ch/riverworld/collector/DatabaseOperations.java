@@ -595,7 +595,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
         values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
-        values.put(DatabaseInfo.ITEMS_RATING_COL,item.getRating());
+        values.put(DatabaseInfo.ITEMS_RATING_COL, item.getRating());
         values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
         values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
         values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
@@ -669,7 +669,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         values.put(DatabaseInfo.ITEMS_EAN_COL, item.getEAN());
         values.put(DatabaseInfo.ITEMS_TITLE_COL, item.getTitle());
-        values.put(DatabaseInfo.ITEMS_RATING_COL,item.getRating());
+        values.put(DatabaseInfo.ITEMS_RATING_COL, item.getRating());
         values.put(DatabaseInfo.ITEMS_MEDIA_TYPE_COL, item.getMediaType());
         values.put(DatabaseInfo.ITEMS_GENRE_ID_COL, item.getGenre_id());
         values.put(DatabaseInfo.ITEMS_LANGUAGE_ID_COL, item.getLanguage_id());
@@ -722,6 +722,24 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         String args[] = {Integer.toString(id)};
 
         return db.delete(DatabaseInfo.ITEMS_TABLE, selection, args) > 0;
+    }
+
+    // Method which returns a string with an SQL select statement from given item data
+    // SELECT CustomerName FROM Customers WHERE Country='Mexico' AND PostalCode='05033' AND CustomerID=80;
+    public String getSelectStatement(Item item) {
+
+        String whereClause = "SELECT " + DatabaseInfo.ITEMS_ID_COL + " FROM " + DatabaseInfo.ITEMS_TABLE + " WHERE ";
+
+        if (item.getEAN() > 0) whereClause += DatabaseInfo.ITEMS_EAN_COL + "=" + Long.toString(item.getEAN()) + " AND ";
+        if (item.getTitle().length() > 1)
+            whereClause += DatabaseInfo.ITEMS_TITLE_COL + "=" + item.getTitle() + " AND ";
+        if (item.isBook()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Book AND ";
+        if (item.isMovie()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Movie AND ";
+        if (item.isGame()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Game AND ";
+        if (!item.getGenre().equals("GENRE")) whereClause += DatabaseInfo.ITEMS_GENRE_ID_COL + "=" + Integer.toString
+                (item.getGenre_id()) + " AND ";
+
+        return whereClause;
     }
 
 

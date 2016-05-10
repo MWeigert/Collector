@@ -29,6 +29,7 @@ public class CollectionActivity extends AppCompatActivity {
     private Boolean debugMode;
     private ListView list;
     private Item selectedItem;
+    private String mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class CollectionActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
+            mode=extras.getString("Mode");
         }
 
         list = (ListView) findViewById(R.id.lst_collection);

@@ -4,48 +4,46 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 0.1                                                                       *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
 
 package ch.riverworld.collector;
 
-
 import android.content.Context;
 import android.database.Cursor;
 
-
 public class Item {
-    private boolean debugMode = true;
+    //private boolean debugMode = true;
 
-    private int id;
-    private long ean;
-    private String title;
+    private int id = 0;
+    private long ean = 0;
+    private String title = "";
     private Float rating;
-    private boolean book;
-    private boolean movie;
-    private boolean game;
-    private String mediaType;
-    private int genre_id;
-    private String genre;
-    private int language_id;
-    private String language;
-    private int year;
-    private boolean lent;
-    private int publisher_id;
-    private String publisher;
-    private int author_id;
-    private String author;
-    private int system_id;
-    private String system;
-    private boolean dvd;
-    private boolean bluRay;
-    private int studio_id;
-    private String studio;
-    private int director_id;
-    private String director;
-    private int fsk;
+    private boolean book = false;
+    private boolean movie = false;
+    private boolean game = false;
+    private String mediaType = "";
+    private int genre_id = 0;
+    private String genre = "";
+    private int language_id = 0;
+    private String language = "";
+    private int year = 0;
+    private boolean lent = false;
+    private int publisher_id = 0;
+    private String publisher = "";
+    private int author_id = 0;
+    private String author = "";
+    private int system_id = 0;
+    private String system = "";
+    private boolean dvd = false;
+    private boolean bluRay = false;
+    private int studio_id = 0;
+    private String studio = "";
+    private int director_id = 0;
+    private String director = "";
+    private int fsk = 0;
 
     private Context ctx;
 
@@ -56,6 +54,7 @@ public class Item {
 
     // Standard constructor
     public Item(Context ctx, int id) {
+        this.ctx = ctx;
         DatabaseOperations db = new DatabaseOperations(ctx, false);
         this.id = id;
 
@@ -69,8 +68,8 @@ public class Item {
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         this.title = crs.getString(index);
         // Rating
-        index=crs.getColumnIndex(DatabaseInfo.ITEMS_RATING_COL);
-        this.rating=crs.getFloat(index);
+        index = crs.getColumnIndex(DatabaseInfo.ITEMS_RATING_COL);
+        this.rating = crs.getFloat(index);
         // MediaType
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_MEDIA_TYPE_COL);
         this.mediaType = crs.getString(index);
@@ -159,6 +158,37 @@ public class Item {
         index = crs.getColumnIndex(DatabaseInfo.ITEMS_PARENTAL_ID_COL);
         this.fsk = crs.getInt(index);
         crs.close();
+    }
+
+    public void resetItem() {
+
+        id = 0;
+        ean = 0;
+        title = "";
+        rating=0f;
+        book = false;
+        movie = false;
+        game = false;
+        mediaType = "";
+        genre_id = 0;
+        genre = "";
+        language_id = 0;
+        language = "";
+        year = 0;
+        lent = false;
+        publisher_id = 0;
+        publisher = "";
+        author_id = 0;
+        author = "";
+        system_id = 0;
+        system = "";
+        dvd = false;
+        bluRay = false;
+        studio_id = 0;
+        studio = "";
+        director_id = 0;
+        director = "";
+        fsk = 0;
     }
 
     @Override

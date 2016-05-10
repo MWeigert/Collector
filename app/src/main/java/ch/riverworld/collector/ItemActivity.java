@@ -631,8 +631,133 @@ public class ItemActivity extends AppCompatActivity {
                 break;
             case R.id.btn_search:
                 //Pressed button do show total or filtered collection.
-                final Intent searchIntent = new Intent(this, FilterResult.class);
+
+                item.resetItem();
+                eanStr = txtEAN.getText().toString();
+                // Input check: Set EAN to 0 or value
+                if (eanStr.isEmpty()) {
+                    item.setEAN(0);
+                } else {
+                    item.setEAN(Long.parseLong(eanStr));
+                }
+                item.setTitle(txtTitle.getText().toString());
+                item.setRating(rb.getRating());
+                item.setMediaType("NULL");
+                if (rbBook.isChecked()) {
+                    item.setBook(true);
+                    item.setMediaType("Book");
+                } else {
+                    item.setBook(false);
+                }
+                if (rbMovie.isChecked()) {
+                    item.setMovie(true);
+                    item.setMediaType("Movie");
+                } else {
+                    item.setMovie(false);
+                }
+                if (rbGame.isChecked()) {
+                    item.setGame(true);
+                    item.setMediaType("Game");
+                } else {
+                    item.setGame(false);
+                }
+                // Get ID of chosen genre
+                String genre = spGenre.getSelectedItem().toString();
+                Cursor crs = db.getGenreRow(db, genre, null);
+                crs.moveToFirst();
+                Integer genreID = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setGenre_id(genreID);
+                item.setGenre(genre);
+                // Get ID of chosen language
+                String language = spLanguage.getSelectedItem().toString();
+                crs = db.getLanguageRow(db, language, null);
+                crs.moveToFirst();
+                Integer languageId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setLanguage_id(languageId);
+                item.setLanguage(language);
+                // Get year from spinner
+                Integer year = Integer.parseInt(spYear.getSelectedItem().toString());
+                item.setYear(year);
+                // Get lent status
+                if (cbLent.isChecked()) {
+                    item.setLent(true);
+                } else {
+                    item.setLent(false);
+                }
+                // Get ID of chosen publisher
+                String publisher = spPublisher.getSelectedItem().toString();
+                crs = db.getPublisherRow(db, publisher, null);
+                crs.moveToFirst();
+                Integer publisherId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setPublisher_id(publisherId);
+                item.setPublisher(publisher);
+                // Get ID of chosen author
+                String author = spAuthor.getSelectedItem().toString();
+                crs = db.getAuthorRow(db, author, null);
+                crs.moveToFirst();
+                Integer authorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setAuthor_id(authorId);
+                item.setAuthor(author);
+                // Get ID of chosen system
+                String system = spSystem.getSelectedItem().toString();
+                crs = db.getSystemRow(db, system, null);
+                crs.moveToFirst();
+                Integer systemId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setSystem_id(systemId);
+                item.setSystem(system);
+                // Get status of DVD checkbox
+                if (cbDVD.isChecked()) {
+                    item.setDvd(true);
+                } else {
+                    item.setDvd(false);
+                }
+                // Get status of BluRay checkbox
+                if (cbBluRay.isChecked()) {
+                    item.setBluRay(true);
+                } else {
+                    item.setBluRay(false);
+                }
+                // Get ID of chosen studio
+                String studio = spStudio.getSelectedItem().toString();
+                crs = db.getStudioRow(db, studio, null);
+                crs.moveToFirst();
+                Integer studioId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setStudio_id(studioId);
+                item.setStudio(studio);
+                // Get ID of chosen director
+                String director = spDirector.getSelectedItem().toString();
+                crs = db.getDirectorRow(db, director, null);
+                crs.moveToFirst();
+                Integer directorId = Integer.parseInt(crs.getString(DatabaseInfo.TABLE_ID_COL));
+                item.setDirector(director);
+                item.setDirector_id(directorId);
+                // Get status of parental checkboxes and set maximum
+                if (cbFSK0.isChecked()) {
+                    item.setFsk(0);
+                }
+                if (cbFSK6.isChecked()) {
+                    item.setFsk(6);
+                }
+                if (cbFSK12.isChecked()) {
+                    item.setFsk(12);
+                }
+                if (cbFSK16.isChecked()) {
+                    item.setFsk(16);
+                }
+                if (cbFSK18.isChecked()) {
+                    item.setFsk(18);
+                }
+
+                String whereClause = db.getSelectStatement(item);
+
+                if (debugMode) {
+                    Log.d("ITAC", "Where Clause: " + whereClause);
+                }
+
+                final Intent searchIntent = new Intent(this, CollectionActivity.class);
                 searchIntent.putExtra("debugMode", debugMode);
+                searchIntent.putExtra("Mode", "FILTER");
+                searchIntent.putExtra("whereClause", whereClause);
                 startActivity(searchIntent);
                 break;
         }

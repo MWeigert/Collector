@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 // Pressed button do show total or filtered collection.
                 final Intent codeIntent = new Intent(this, CollectionActivity.class);
                 codeIntent.putExtra("debugMode", debugMode);
+                codeIntent.putExtra("Mode","FULL");
                 startActivity(codeIntent);
                 break;
             case R.id.btn_rental:
