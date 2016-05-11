@@ -63,7 +63,17 @@ public class CollectionActivity extends AppCompatActivity {
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
         Integer anz;
 
-        Cursor crs = db.getItems(db);
+        Cursor crs = null;
+        switch (mode){
+            case "FULL":
+                crs = db.getItems(db);
+                break;
+            case "FILTER":
+                String whereClause = extras.getString("whereClause");
+                crs = db.getFilteredItems(db,whereClause);
+                break;
+        }
+
         crs.moveToFirst();
         anz = crs.getCount();
 

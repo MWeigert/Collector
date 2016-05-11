@@ -652,6 +652,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         return db.query(DatabaseInfo.ITEMS_TABLE, null, null, null, null, null, null);
     }
 
+    // Method to return all entries in items table. Returns a Cursor with all items.
+    public Cursor getFilteredItems(DatabaseOperations dop, String select) {
+
+        if (debugMode) {
+            Log.d("DATABASE", "Starting --> getFilteredItems.");
+        }
+
+        SQLiteDatabase db = dop.getReadableDatabase();
+
+        return db.rawQuery(select,null);
+    }
+
     // Method to return all data to one single item. Returns cursor.
     public Cursor getItem(DatabaseOperations dop, Integer id) {
 
@@ -738,7 +750,31 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (item.isGame()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Game AND ";
         if (!item.getGenre().equals("GENRE")) whereClause += DatabaseInfo.ITEMS_GENRE_ID_COL + "=" + Integer.toString
                 (item.getGenre_id()) + " AND ";
-
+        if (!item.getLanguage().equals("LANGUAGE")) whereClause += DatabaseInfo.ITEMS_LANGUAGE_ID_COL + "=" + Integer
+                .toString(item.getLanguage_id()) + " AND ";
+        if (item.getYear() < 2020)
+            whereClause += DatabaseInfo.ITEMS_LAUNCH_YEAR_COL + "=" + Integer.toString(item.getYear())
+                    + " AND ";
+        if (!item.getPublisher().equals("PUBLISHER")) whereClause += DatabaseInfo.ITEMS_PUBLISHER_ID_COL + "=" + Integer
+                .toString(item.getPublisher_id()) + " AND ";
+        if (!item.getAuthor().equals("AUTHOR")) whereClause += DatabaseInfo.ITEMS_AUTHOR_ID_COL + "=" + Integer
+                .toString(item.getAuthor_id()) + " AND ";
+        if (!item.getSystem().equals("SYSTEM")) whereClause += DatabaseInfo.ITEMS_SYSTEM_ID_COL + "=" + Integer
+                .toString(item.getSystem_id()) + " AND ";
+        if (item.isDvd()) {
+            whereClause += DatabaseInfo.ITEMS_DVD_COL + "=1 AND ";
+        } else whereClause += DatabaseInfo.ITEMS_DVD_COL + "=0 AND ";
+        if (item.isBluRay()) {
+            whereClause += DatabaseInfo.ITEMS_BLURAY_COL + "=1 AND ";
+        } else whereClause += DatabaseInfo.ITEMS_BLURAY_COL + "=0 AND ";
+        if (!item.getStudio().equals("STUDIO")) whereClause += DatabaseInfo.ITEMS_STUDIO_ID_COL + "=" + Integer
+                .toString(item.getStudio_id()) + " AND ";
+        if (!item.getDirector().equals("DIRECTOR")) whereClause += DatabaseInfo.ITEMS_DIRECTOR_ID_COL + "=" + Integer
+                .toString(item.getDirector_id()) + " AND ";
+        if (item.getFsk() != 42)
+            whereClause += DatabaseInfo.ITEMS_PARENTAL_ID_COL + "=" + Integer.toString(item.getFsk()) + " " +
+                    "AND ";
+        whereClause = whereClause.substring(0, whereClause.length() - 4)+";";
         return whereClause;
     }
 

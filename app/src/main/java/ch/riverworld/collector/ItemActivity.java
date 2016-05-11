@@ -732,6 +732,7 @@ public class ItemActivity extends AppCompatActivity {
                 item.setDirector(director);
                 item.setDirector_id(directorId);
                 // Get status of parental checkboxes and set maximum
+                item.setFsk(42);
                 if (cbFSK0.isChecked()) {
                     item.setFsk(0);
                 }
