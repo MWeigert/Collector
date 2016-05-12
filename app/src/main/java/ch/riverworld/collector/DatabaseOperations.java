@@ -745,9 +745,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (item.getEAN() > 0) whereClause += DatabaseInfo.ITEMS_EAN_COL + "=" + Long.toString(item.getEAN()) + " AND ";
         if (item.getTitle().length() > 1)
             whereClause += DatabaseInfo.ITEMS_TITLE_COL + "=" + item.getTitle() + " AND ";
-        if (item.isBook()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Book AND ";
-        if (item.isMovie()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Movie AND ";
-        if (item.isGame()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "=Game AND ";
+        if (item.isBook()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Book' AND ";
+        if (item.isMovie()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Movie' AND ";
+        if (item.isGame()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Game' AND ";
         if (!item.getGenre().equals("GENRE")) whereClause += DatabaseInfo.ITEMS_GENRE_ID_COL + "=" + Integer.toString
                 (item.getGenre_id()) + " AND ";
         if (!item.getLanguage().equals("LANGUAGE")) whereClause += DatabaseInfo.ITEMS_LANGUAGE_ID_COL + "=" + Integer
