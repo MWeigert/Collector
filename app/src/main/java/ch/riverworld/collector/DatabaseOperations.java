@@ -661,7 +661,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         SQLiteDatabase db = dop.getReadableDatabase();
 
-        return db.rawQuery(select,null);
+        return db.rawQuery(select, null);
     }
 
     // Method to return all data to one single item. Returns cursor.
@@ -744,7 +744,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         if (item.getEAN() > 0) whereClause += DatabaseInfo.ITEMS_EAN_COL + "=" + Long.toString(item.getEAN()) + " AND ";
         if (item.getTitle().length() > 1)
-            whereClause += DatabaseInfo.ITEMS_TITLE_COL + "=" + item.getTitle() + " AND ";
+            whereClause += DatabaseInfo.ITEMS_TITLE_COL + " LIKE'%" + item.getTitle() + "%' AND ";
         if (item.isBook()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Book' AND ";
         if (item.isMovie()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Movie' AND ";
         if (item.isGame()) whereClause += DatabaseInfo.ITEMS_MEDIA_TYPE_COL + "='Game' AND ";
@@ -753,20 +753,16 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (!item.getLanguage().equals("LANGUAGE")) whereClause += DatabaseInfo.ITEMS_LANGUAGE_ID_COL + "=" + Integer
                 .toString(item.getLanguage_id()) + " AND ";
         if (item.getYear() < 2020)
-            whereClause += DatabaseInfo.ITEMS_LAUNCH_YEAR_COL + "=" + Integer.toString(item.getYear())
-                    + " AND ";
+            whereClause += DatabaseInfo.ITEMS_LAUNCH_YEAR_COL + "='" + Integer.toString(item.getYear())
+                    + "' AND ";
         if (!item.getPublisher().equals("PUBLISHER")) whereClause += DatabaseInfo.ITEMS_PUBLISHER_ID_COL + "=" + Integer
                 .toString(item.getPublisher_id()) + " AND ";
         if (!item.getAuthor().equals("AUTHOR")) whereClause += DatabaseInfo.ITEMS_AUTHOR_ID_COL + "=" + Integer
                 .toString(item.getAuthor_id()) + " AND ";
         if (!item.getSystem().equals("SYSTEM")) whereClause += DatabaseInfo.ITEMS_SYSTEM_ID_COL + "=" + Integer
                 .toString(item.getSystem_id()) + " AND ";
-        if (item.isDvd()) {
-            whereClause += DatabaseInfo.ITEMS_DVD_COL + "=1 AND ";
-        } else whereClause += DatabaseInfo.ITEMS_DVD_COL + "=0 AND ";
-        if (item.isBluRay()) {
-            whereClause += DatabaseInfo.ITEMS_BLURAY_COL + "=1 AND ";
-        } else whereClause += DatabaseInfo.ITEMS_BLURAY_COL + "=0 AND ";
+        if (item.isDvd()) whereClause += DatabaseInfo.ITEMS_DVD_COL + "=1 AND ";
+        if (item.isBluRay()) whereClause += DatabaseInfo.ITEMS_BLURAY_COL + "=1 AND ";
         if (!item.getStudio().equals("STUDIO")) whereClause += DatabaseInfo.ITEMS_STUDIO_ID_COL + "=" + Integer
                 .toString(item.getStudio_id()) + " AND ";
         if (!item.getDirector().equals("DIRECTOR")) whereClause += DatabaseInfo.ITEMS_DIRECTOR_ID_COL + "=" + Integer
@@ -774,7 +770,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         if (item.getFsk() != 42)
             whereClause += DatabaseInfo.ITEMS_PARENTAL_ID_COL + "=" + Integer.toString(item.getFsk()) + " " +
                     "AND ";
-        whereClause = whereClause.substring(0, whereClause.length() - 4)+";";
+        whereClause = whereClause.substring(0, whereClause.length() - 4) + ";";
         return whereClause;
     }
 
