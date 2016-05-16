@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.1                                                                       *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -75,7 +75,9 @@ public class RentalActivity extends AppCompatActivity {
                 historyCrs = db.getHistories(db);
                 break;
         }
-        anz = historyCrs.getCount();
+        if (historyCrs != null) {
+            anz = historyCrs.getCount();
+        } else anz = 0;
 
         if (debugMode) {
             Log.d("RENAC", "DATABASE: " + anz.toString() + " items in table.");
@@ -102,10 +104,10 @@ public class RentalActivity extends AppCompatActivity {
                 }
 
                 if (back.equals("NULL")) {
-                    Rental rental = new Rental(id, itemName, friend.toString(), start, null);
+                    Rental rental = new Rental(itemName, friend.toString(), start, null);
                     rentals.add(rental);
                 } else {
-                    Rental rental = new Rental(id, itemName, friend.toString(), start, back);
+                    Rental rental = new Rental(itemName, friend.toString(), start, back);
                     rentals.add(rental);
                 }
             } while (historyCrs.moveToNext());

@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.02                                                                      *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        //Getting information regarding debug mode
+        // Getting information regarding debug mode
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
@@ -49,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         ctx = this;
-        DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
+        // DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
 
         this.selectedItem = new Item(ctx, itemId);
 
@@ -57,7 +57,7 @@ public class DetailsActivity extends AppCompatActivity {
         ImageView iView = (ImageView) findViewById(R.id.imageView);
         TextView eanTXT = (TextView) findViewById(R.id.txt_ean);
         TextView titleTXT = (TextView) findViewById(R.id.txt_title);
-        RatingBar ratingBar =(RatingBar) findViewById(R.id.ratingBar);
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         TextView genreTXT = (TextView) findViewById(R.id.txt_genre);
         TextView yearTXT = (TextView) findViewById(R.id.txt_year);
         TextView languageTXT = (TextView) findViewById(R.id.txt_language);
@@ -126,58 +126,118 @@ public class DetailsActivity extends AppCompatActivity {
         String value = String.valueOf(selectedItem.getEAN());
         assert eanTXT != null;
         eanTXT.setText(String.format("EAN: %s", value));
-        titleTXT.setText("Title: " + selectedItem.getTitle());
-        ratingBar.setRating(selectedItem.getRating());
-        genreTXT.setText("Genre: " + selectedItem.getGenre());
-        yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));
-        languageTXT.setText("Language: " + selectedItem.getLanguage());
+        if (titleTXT != null) {
+            titleTXT.setText("Title: " + selectedItem.getTitle());
+        }
+        if (ratingBar != null) {
+            ratingBar.setRating(selectedItem.getRating());
+        }
+        if (genreTXT != null) {
+            genreTXT.setText("Genre: " + selectedItem.getGenre());
+        }
+        if (yearTXT != null) {
+            yearTXT.setText("Year: " + String.valueOf(selectedItem.getYear()));
+        }
+        if (languageTXT != null) {
+            languageTXT.setText("Language: " + selectedItem.getLanguage());
+        }
         if (debugMode) {
             String msg = "Book: " + selectedItem.isBook() + " Movie: " + selectedItem.isMovie() + " Game: " +
                     selectedItem.isGame() + " MediaType: " + selectedItem.getMediaType();
             Log.d("DATABASE", msg);
         }
         if (selectedItem.isBook()) {
-            bookRB.setChecked(true);
-        } else bookRB.setVisibility(View.INVISIBLE);
+            if (bookRB != null) {
+                bookRB.setChecked(true);
+            }
+        } else if (bookRB != null) {
+            bookRB.setVisibility(View.INVISIBLE);
+        }
         if (selectedItem.isMovie()) {
-            movieRB.setChecked(true);
-        } else movieRB.setVisibility(View.INVISIBLE);
+            if (movieRB != null) {
+                movieRB.setChecked(true);
+            }
+        } else if (movieRB != null) {
+            movieRB.setVisibility(View.INVISIBLE);
+        }
         if (selectedItem.isGame()) {
-            gameRB.setChecked(true);
-        } else gameRB.setVisibility(View.INVISIBLE);
-        publisherTXT.setText("Publisher: " + selectedItem.getPublisher());
-        authorTXT.setText("Author: " + selectedItem.getAuthor());
+            if (gameRB != null) {
+                gameRB.setChecked(true);
+            }
+        } else if (gameRB != null) {
+            gameRB.setVisibility(View.INVISIBLE);
+        }
+        if (publisherTXT != null) {
+            publisherTXT.setText("Publisher: " + selectedItem.getPublisher());
+        }
+        if (authorTXT != null) {
+            authorTXT.setText("Author: " + selectedItem.getAuthor());
+        }
         if (selectedItem.isDvd()) {
-            dvdCB.setChecked(true);
-        } else dvdCB.setVisibility(View.INVISIBLE);
+            if (dvdCB != null) {
+                dvdCB.setChecked(true);
+            }
+        } else if (dvdCB != null) {
+            dvdCB.setVisibility(View.INVISIBLE);
+        }
         if (selectedItem.isBluRay()) {
-            blurayCB.setChecked(true);
-        } else blurayCB.setVisibility(View.INVISIBLE);
-        directorTXT.setText("Director: " + selectedItem.getDirector());
-        studioTXT.setText("Studio: " + selectedItem.getStudio());
-        systemTXT.setText("System: " + selectedItem.getSystem());
+            if (blurayCB != null) {
+                blurayCB.setChecked(true);
+            }
+        } else if (blurayCB != null) {
+            blurayCB.setVisibility(View.INVISIBLE);
+        }
+        if (directorTXT != null) {
+            directorTXT.setText("Director: " + selectedItem.getDirector());
+        }
+        if (studioTXT != null) {
+            studioTXT.setText("Studio: " + selectedItem.getStudio());
+        }
+        if (systemTXT != null) {
+            systemTXT.setText("System: " + selectedItem.getSystem());
+        }
         switch (selectedItem.getFsk()) {
             case 0:
-                fsk0CB.setChecked(true);
+                if (fsk0CB != null) {
+                    fsk0CB.setChecked(true);
+                }
                 break;
             case 6:
-                fsk6CB.setChecked(true);
+                if (fsk6CB != null) {
+                    fsk6CB.setChecked(true);
+                }
                 break;
             case 12:
-                fsk12CB.setChecked(true);
+                if (fsk12CB != null) {
+                    fsk12CB.setChecked(true);
+                }
                 break;
             case 16:
-                fsk16CB.setChecked(true);
+                if (fsk16CB != null) {
+                    fsk16CB.setChecked(true);
+                }
                 break;
             case 18:
-                fsk18CB.setChecked(true);
+                if (fsk18CB != null) {
+                    fsk18CB.setChecked(true);
+                }
                 break;
             default:
-                fsk0CB.setVisibility(View.INVISIBLE);
-                fsk6CB.setVisibility(View.INVISIBLE);
-                fsk12CB.setVisibility(View.INVISIBLE);
-                fsk16CB.setVisibility(View.INVISIBLE);
-                fsk18CB.setVisibility(View.INVISIBLE);
+                if (fsk0CB != null) {
+                    fsk0CB.setVisibility(View.INVISIBLE);
+                }
+                if (fsk6CB != null) {
+                    fsk6CB.setVisibility(View.INVISIBLE);
+                }
+                if (fsk12CB != null) {
+                    fsk12CB.setVisibility(View.INVISIBLE);
+                }
+                if (fsk16CB != null) {
+                    fsk16CB.setVisibility(View.INVISIBLE);
+                }
+                if (fsk18CB != null) {
+                    fsk18CB.setVisibility(View.INVISIBLE);
+                }
                 break;
         }
     }
@@ -199,7 +259,7 @@ public class DetailsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
                         if (debugMode) {
-                            Log.d("USERACTION", "User choosed yes.");
+                            Log.d("USERACTION", "User chooses yes.");
                         }
                         // Put code to delete item here
                         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
@@ -218,9 +278,7 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.cancel();
-                        if (debugMode) {
-                            // Nothing happens here
-                        }
+                        // Nothing happens here
                     }
                 });
 

@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.09                                                                      *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -17,7 +17,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.opencsv.CSVWriter;
@@ -25,8 +24,6 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
 
@@ -223,7 +220,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         if (debugMode) {
-            Log.d("DOP", "Table authors successfully reseted.");
+            Log.d("DOP", "Table authors successfully reset.");
         }
     }
 
@@ -324,7 +321,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         if (debugMode) {
-            String msg = "Table directors succesfull reseted.";
+            String msg = "Table directors successfully reset.";
             Log.d("DOP", msg);
         }
     }
@@ -526,7 +523,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     // Method which returns a cursor with all entries in history table.
     public Cursor getHistories(DatabaseOperations dop) {
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = dop.getReadableDatabase();
 
         return db.rawQuery("select * from " + DatabaseInfo.HISTORY_TABLE, null);
     }
@@ -647,7 +644,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = dop.getReadableDatabase();
-        String[] titles = {DatabaseInfo.ITEMS_TITLE_COL};
 
         return db.query(DatabaseInfo.ITEMS_TABLE, null, null, null, null, null, null);
     }
@@ -737,7 +733,6 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Method which returns a string with an SQL select statement from given item data
-    // SELECT CustomerName FROM Customers WHERE Country='Mexico' AND PostalCode='05033' AND CustomerID=80;
     public String getSelectStatement(Item item) {
 
         String whereClause = "SELECT " + DatabaseInfo.ITEMS_ID_COL + " FROM " + DatabaseInfo.ITEMS_TABLE + " WHERE ";
@@ -966,7 +961,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         }
 
         if (debugMode) {
-            Log.d("DOP", "Table publishers sucessfull reseted.");
+            Log.d("DOP", "Table publishers successfully reset.");
         }
     }
 
@@ -1010,7 +1005,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     public Cursor getStudios(DatabaseOperations dop) {
 
         if (debugMode) {
-            Log.d("DOP", "Starting to rceive all entries from studios table.");
+            Log.d("DOP", "Starting to receive all entries from studios table.");
         }
 
         SQLiteDatabase db;

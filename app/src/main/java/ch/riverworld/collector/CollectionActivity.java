@@ -40,7 +40,7 @@ public class CollectionActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             debugMode = extras.getBoolean("debugMode");
-            mode=extras.getString("Mode");
+            mode = extras.getString("Mode");
         }
 
         list = (ListView) findViewById(R.id.lst_collection);
@@ -61,21 +61,26 @@ public class CollectionActivity extends AppCompatActivity {
 
         Context ctx = this;
         DatabaseOperations db = new DatabaseOperations(ctx, debugMode);
-        Integer anz;
+        Integer anz = 0;
 
         Cursor crs = null;
-        switch (mode){
+        switch (mode) {
             case "FULL":
                 crs = db.getItems(db);
                 break;
             case "FILTER":
-                String whereClause = extras.getString("whereClause");
-                crs = db.getFilteredItems(db,whereClause);
+                String whereClause = null;
+                if (extras != null) {
+                    whereClause = extras.getString("whereClause");
+                }
+                crs = db.getFilteredItems(db, whereClause);
                 break;
         }
 
-        crs.moveToFirst();
-        anz = crs.getCount();
+        if (crs != null) {
+            crs.moveToFirst();
+            anz = crs.getCount();
+        }
 
         if (debugMode) {
             Log.d("COLAC", "DATABASE: " + anz.toString() + " items in table.");

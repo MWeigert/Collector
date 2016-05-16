@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  25 MAR 2016 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  16 MAY 2016 08:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1792,18 +1792,9 @@ Package xcolor Warning: Incompatible color definition on input line 19.
 
 Package xcolor Warning: Incompatible color definition on input line 19.
 
-
-Package xcolor Warning: Incompatible color definition on input line 21.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21.
-
 ) (./doc/Anforderung/Funktionen.tex
 
-Package xcolor Warning: Incompatible color definition on input line 10.
+Package xcolor Warning: Incompatible color definition on input line 11.
 
 [20]
 
@@ -1831,7 +1822,7 @@ Package xcolor Warning: Incompatible color definition on input line 28.
 Package xcolor Warning: Incompatible color definition on input line 42.
 
 
-Package xcolor Warning: Incompatible color definition on input line 47.
+Package xcolor Warning: Incompatible color definition on input line 51.
 
 [21]
 
@@ -2201,7 +2192,7 @@ fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2015/texmf-dist/fonts/type
 m-super/sfsx1440.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
 ti1095.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb
 ><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on Collector.pdf (35 pages, 751617 bytes).
+Output written on Collector.pdf (35 pages, 751620 bytes).
 PDF statistics:
  670 PDF objects out of 1000 (max. 8388607)
  600 compressed objects within 6 object streams

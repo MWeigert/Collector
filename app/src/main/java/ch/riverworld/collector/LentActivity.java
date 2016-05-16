@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.1                                                                       *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -33,7 +33,6 @@ public class LentActivity extends AppCompatActivity {
     private Spinner friendsSPINNER;
     private DatePicker date;
     private DatabaseOperations db;
-    private int historyId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +66,8 @@ public class LentActivity extends AppCompatActivity {
 
         if (friendsCrs.getCount() > 0) {
             int indexFriendId = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_ID_COL);
-            //int indexFirstName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_FIRSTNAME_COL);
-            // int indexLastName = friendsCrs.getColumnIndex(DatabaseInfo.FRIENDS_LASTNAME_COL);
             do {
                 int id = friendsCrs.getInt(indexFriendId);
-                //String first = friendsCrs.getString(indexFirstName);
-                //String last = friendsCrs.getString(indexLastName);
-                // Friend friend = new Friend(id, first, last);
                 Friend friend = db.getFriend(db, id);
                 friends.add(friend);
             } while (friendsCrs.moveToNext());
@@ -92,7 +86,6 @@ public class LentActivity extends AppCompatActivity {
         crs.moveToFirst();
         int index = crs.getColumnIndex(DatabaseInfo.ITEMS_TITLE_COL);
         String msg = crs.getString(index);
-        ;
         if (isLent) {
             msg = "give '" + msg + "' back on";
             isLent = (false);
@@ -108,7 +101,9 @@ public class LentActivity extends AppCompatActivity {
             isLent = (true);
         }
         crs.close();
-        title.setText(msg);
+        if (title != null) {
+            title.setText(msg);
+        }
     }
 
     // Button listener for the LentActivity
@@ -117,7 +112,7 @@ public class LentActivity extends AppCompatActivity {
         if (debugMode) {
             Log.d("USERACTION", "User chose: " + date.getDayOfMonth() + "." + date.getMonth() + "." + date.getYear());
             Log.d("USERACTION", "Friend: " + friendsSPINNER.getSelectedItem().toString());
-            Log.d("LENAC", "Lent status is: "+isLent);
+            Log.d("LENAC", "Lent status is: " + isLent);
         }
 
         String dateStr = "";

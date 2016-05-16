@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.1                                                                       *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -45,16 +45,13 @@ public class Item {
     private String director = "";
     private int fsk = 0;
 
-    private Context ctx;
-
     // Empty constructor
-    public Item(Context ctx) {
-        this.ctx = ctx;
+    public Item() {
+
     }
 
     // Standard constructor
     public Item(Context ctx, int id) {
-        this.ctx = ctx;
         DatabaseOperations db = new DatabaseOperations(ctx, false);
         this.id = id;
 
@@ -165,7 +162,7 @@ public class Item {
         id = 0;
         ean = 0;
         title = "";
-        rating=0f;
+        rating = 0f;
         book = false;
         movie = false;
         game = false;

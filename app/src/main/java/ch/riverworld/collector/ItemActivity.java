@@ -4,7 +4,7 @@
 // *                                             ZHAW                                         *
 // *                                                                                          *
 // * Programmed by: Mathias Weigert                                                           *
-// *       Version: 0.1                                                                       *
+// *       Version: 1.00                                                                      *
 // *          Year: 2016                                                                      *
 // *                                                                                          *
 // ********************************************************************************************/
@@ -34,9 +34,6 @@ public class ItemActivity extends AppCompatActivity {
     private boolean debugMode = false;
     private String mode;
     private DatabaseOperations db;
-    private Context ctx;
-    private Button btnAdd;
-    private Button btnUpdate;
     private int id = 0;
 
     private EditText txtEAN;
@@ -74,9 +71,11 @@ public class ItemActivity extends AppCompatActivity {
             mode = extras.getString("Mode");
         }
 
-        btnAdd = (Button) findViewById(R.id.btn_add);
-        btnUpdate = (Button) findViewById(R.id.btn_update);
-        btnUpdate.setVisibility(View.INVISIBLE);
+        Button btnAdd = (Button) findViewById(R.id.btn_add);
+        Button btnUpdate = (Button) findViewById(R.id.btn_update);
+        if (btnUpdate != null) {
+            btnUpdate.setVisibility(View.INVISIBLE);
+        }
 
         txtEAN = (EditText) findViewById(R.id.tf_ean);
         txtTitle = (EditText) findViewById(R.id.tf_title);
@@ -101,7 +100,7 @@ public class ItemActivity extends AppCompatActivity {
         cbFSK16 = (CheckBox) findViewById(R.id.cb_fsk16);
         cbFSK18 = (CheckBox) findViewById(R.id.cb_fsk18);
 
-        ctx = this;
+        Context ctx = this;
         db = new DatabaseOperations(ctx, debugMode);
         Cursor crs;
         int index;
@@ -217,8 +216,12 @@ public class ItemActivity extends AppCompatActivity {
         spYear.setAdapter(adapterYear);
 
         if (mode.equals("EditItem")) {
-            btnAdd.setVisibility(View.INVISIBLE);
-            btnUpdate.setVisibility(View.VISIBLE);
+            if (btnAdd != null) {
+                btnAdd.setVisibility(View.INVISIBLE);
+            }
+            if (btnUpdate != null) {
+                btnUpdate.setVisibility(View.VISIBLE);
+            }
             if (extras != null) {
                 id = extras.getInt("ID");
             }
@@ -271,7 +274,7 @@ public class ItemActivity extends AppCompatActivity {
     public void buttonOnClick(View v) {
         String eanStr;
         String title;
-        Item item = new Item(ctx);
+        Item item = new Item();
 
         switch (v.getId()) {
             case R.id.btn_add:
