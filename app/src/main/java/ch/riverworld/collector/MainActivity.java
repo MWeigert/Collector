@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 // Pressed button to enter database export.
                 DatabaseOperations db = new DatabaseOperations(this, debugMode);
                 try {
-                    db.exportDatabaseCSV(db);
+                    db.exportDatabaseCSV(db, null);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

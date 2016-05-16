@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  16 MAY 2016 08:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.14)  16 MAY 2016 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1083,7 +1083,11 @@ Package: paralist 2013/06/09 v2.4 Extended list environments
 (c:/texlive/2015/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-(./conf/Seitenstil.tex) (./Collector.aux (./conf/Deckblatt.aux))
+(./conf/Seitenstil.tex) (./Collector.aux (./conf/Deckblatt.aux)
+
+LaTeX Warning: Label `tab:Datenbankfelder' multiply defined.
+
+)
 \openout1 = `Collector.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
@@ -1100,8 +1104,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 56.
-
-(c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+ (c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 56.
@@ -1206,7 +1209,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 \openout2 = `conf/Deckblatt.aux'.
 
  (./conf/Deckblatt.tex
-<pic/ZHAW_Titel.png, id=237, 1412.27625pt x 738.76pt>
+<pic/ZHAW_Titel.png, id=245, 1412.27625pt x 738.76pt>
 File: pic/ZHAW_Titel.png Graphic file (type png)
  <use pic/ZHAW_Titel.png>
 Package pdftex.def Info: pic/ZHAW_Titel.png used on input line 36.
@@ -1312,115 +1315,13 @@ Package xcolor Warning: Incompatible color definition on input line 16.
 
 Package xcolor Warning: Incompatible color definition on input line 16.
 
-
-Overfull \hbox (7.574pt too wide) in paragraph at lines 5--19
-[][] 
- []
-
-
-Package xcolor Warning: Incompatible color definition on input line 20.
-
-[4
-
-
-]
-
-Package xcolor Warning: Incompatible color definition on input line 25.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25.
-
-
-Package xcolor Warning: Incompatible color definition on input line 27.
-
-
-Package xcolor Warning: Incompatible color definition on input line 27.
-
-
-Package xcolor Warning: Incompatible color definition on input line 27.
-
-
-Package xcolor Warning: Incompatible color definition on input line 27.
-
-
-Package xcolor Warning: Incompatible color definition on input line 27.
-
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-
-Package xcolor Warning: Incompatible color definition on input line 31.
-
-
-Package xcolor Warning: Incompatible color definition on input line 31.
-
-
-Package xcolor Warning: Incompatible color definition on input line 31.
-
-
-Package xcolor Warning: Incompatible color definition on input line 31.
-
-
-Package xcolor Warning: Incompatible color definition on input line 31.
-
-
-Package xcolor Warning: Incompatible color definition on input line 33.
-
-
-Package xcolor Warning: Incompatible color definition on input line 33.
-
-
-Package xcolor Warning: Incompatible color definition on input line 33.
-
-
-Package xcolor Warning: Incompatible color definition on input line 33.
-
-
-Package xcolor Warning: Incompatible color definition on input line 33.
-
-
-Package xcolor Warning: Incompatible color definition on input line 35.
-
-
-Package xcolor Warning: Incompatible color definition on input line 35.
-
-
-Package xcolor Warning: Incompatible color definition on input line 35.
-
-
-Package xcolor Warning: Incompatible color definition on input line 35.
-
-
-Package xcolor Warning: Incompatible color definition on input line 35.
-
 )
-Overfull \hbox (17.40454pt too wide) in paragraph at lines 22--71
-[]
+Overfull \hbox (7.574pt too wide) in paragraph at lines 5--71
+[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--71
+Underfull \hbox (badness 10000) in paragraph at lines 5--71
 
  []
 
@@ -1428,7 +1329,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--71
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[5
+[4
 
 
 ]
@@ -1486,22 +1387,22 @@ Overfull \hbox (3.5735pt too wide) in alignment at lines 3--57
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[6
+[5
 
 
 ]
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[7]
+[6]
 
 Package xcolor Warning: Incompatible color definition on input line 57.
 
-[8]) (./doc/Recherche.tex
+[7]) (./doc/Recherche.tex
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[9]
+[8]
 chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
@@ -1516,7 +1417,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
 Package xcolor Warning: Incompatible color definition on input line 35.
 
-[10
+[9
 
 
 ]
@@ -1527,7 +1428,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--48
 
 Package xcolor Warning: Incompatible color definition on input line 55.
 
-[11]
+[10]
 Overfull \hbox (27.06635pt too wide) in paragraph at lines 67--68
 \T1/cmr/m/n/10.95 ir-gend-wel-che An-re-gun-gen ha-ben, kon-tak-tie-ren Sie bit
 -te das Entwickler-Team über co-dex.android@gmail.com.
@@ -1546,15 +1447,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--75
 
 Package xcolor Warning: Incompatible color definition on input line 75.
 
-[12]
+[11]
 
 Package xcolor Warning: Incompatible color definition on input line 97.
 
-[13]
+[12]
 
 Package xcolor Warning: Incompatible color definition on input line 123.
 
-[14]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
@@ -1592,7 +1493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
 Package xcolor Warning: Incompatible color definition on input line 153.
 
-[15]
+[14]
 
 Package xcolor Warning: Incompatible color definition on input line 162.
 
@@ -1677,7 +1578,7 @@ Package xcolor Warning: Incompatible color definition on input line 166.
 
 Package xcolor Warning: Incompatible color definition on input line 169.
 
-[16
+[15
 
 ]) (./doc/Ist.tex
 chapter 3.
@@ -1690,24 +1591,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[17
+[16
 
 
 
 ]
 chapter 4.
 (./doc/Anforderung/Allgemeines.tex
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
 
 
 Package xcolor Warning: Incompatible color definition on input line 28.
 
-[18
+[17
 
 
 ]
+
+Package xcolor Warning: Incompatible color definition on input line 54.
+
 
 Package xcolor Warning: Incompatible color definition on input line 55.
 
@@ -1718,17 +1622,14 @@ Package xcolor Warning: Incompatible color definition on input line 56.
 Package xcolor Warning: Incompatible color definition on input line 57.
 
 
-Package xcolor Warning: Incompatible color definition on input line 58.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 87.
+Package xcolor Warning: Incompatible color definition on input line 86.
 
-[19]) (./doc/Anforderung/Uebersicht.tex
+[18]) (./doc/Anforderung/Uebersicht.tex
 
 Package xcolor Warning: Incompatible color definition on input line 7.
 
@@ -1794,127 +1695,215 @@ Package xcolor Warning: Incompatible color definition on input line 19.
 
 ) (./doc/Anforderung/Funktionen.tex
 
-Package xcolor Warning: Incompatible color definition on input line 11.
+Package xcolor Warning: Incompatible color definition on input line 5.
 
-[20]
+[19] <pic/SystemUseCase.jpg, id=470, 867.99281pt x 525.46312pt>
+File: pic/SystemUseCase.jpg Graphic file (type jpg)
 
-Package xcolor Warning: Incompatible color definition on input line 14.
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 14.
-(c:/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-
-Package xcolor Warning: Incompatible color definition on input line 18.
+<use pic/SystemUseCase.jpg>
+Package pdftex.def Info: pic/SystemUseCase.jpg used on input line 12.
+(pdftex.def)             Requested size: 564.18864pt x 341.54698pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Package xcolor Warning: Incompatible color definition on input line 15.
+
+[20
+
+ <./pic/SystemUseCase.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 24.
-
-
 Package xcolor Warning: Incompatible color definition on input line 28.
 
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 28.
+(c:/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 
-Package xcolor Warning: Incompatible color definition on input line 42.
-
-
-Package xcolor Warning: Incompatible color definition on input line 51.
-
-[21]
-
-Package xcolor Warning: Incompatible color definition on input line 61.
+Package xcolor Warning: Incompatible color definition on input line 32.
 
 
-Package xcolor Warning: Incompatible color definition on input line 77.
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+<pic/101001m.jpg, id=479, 328.97906pt x 358.33875pt>
+File: pic/101001m.jpg Graphic file (type jpg)
+ <use pic/101001m.jpg>
+Package pdftex.def Info: pic/101001m.jpg used on input line 38.
+(pdftex.def)             Requested size: 197.38895pt x 215.0049pt.
 
 
-Package xcolor Warning: Incompatible color definition on input line 85.
+Package xcolor Warning: Incompatible color definition on input line 44.
 
-[22]
 
-Package xcolor Warning: Incompatible color definition on input line 89.
+Package xcolor Warning: Incompatible color definition on input line 45.
+
+[21
+
+ <./pic/101001m.jpg>] <pic/101001a.jpg, id=489, 328.22626pt x 396.7322pt>
+File: pic/101001a.jpg Graphic file (type jpg)
+
+<use pic/101001a.jpg>
+Package pdftex.def Info: pic/101001a.jpg used on input line 48.
+(pdftex.def)             Requested size: 196.93727pt x 238.04114pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 56.
+
+<pic/101002.jpg, id=490, 328.97906pt x 374.14781pt>
+File: pic/101002.jpg Graphic file (type jpg)
+ <use pic/101002.jpg>
+Package pdftex.def Info: pic/101002.jpg used on input line 60.
+(pdftex.def)             Requested size: 197.38895pt x 224.4904pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+<pic/101003.jpg, id=491, 328.97906pt x 373.395pt>
+File: pic/101003.jpg Graphic file (type jpg)
+ <use pic/101003.jpg>
+Package pdftex.def Info: pic/101003.jpg used on input line 72.
+(pdftex.def)             Requested size: 197.38895pt x 224.03873pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 80.
+
+[22 <./pic/101001a.jpg>]
+
+Package xcolor Warning: Incompatible color definition on input line 80.
+
+[23 <./pic/101002.jpg> <./pic/101003.jpg>]
+<pic/102001.jpg, id=505, 331.2375pt x 284.56313pt>
+File: pic/102001.jpg Graphic file (type jpg)
+ <use pic/102001.jpg>
+Package pdftex.def Info: pic/102001.jpg used on input line 84.
+(pdftex.def)             Requested size: 198.74402pt x 170.73918pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+<pic/102002.jpg, id=506, 328.22626pt x 404.26031pt>
+File: pic/102002.jpg Graphic file (type jpg)
+ <use pic/102002.jpg>
+Package pdftex.def Info: pic/102002.jpg used on input line 97.
+(pdftex.def)             Requested size: 196.93727pt x 242.55806pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+<pic/102003.jpg, id=507, 329.73187pt x 316.18124pt>
+File: pic/102003.jpg Graphic file (type jpg)
+ <use pic/102003.jpg>
+Package pdftex.def Info: pic/102003.jpg used on input line 109.
+(pdftex.def)             Requested size: 197.84064pt x 189.7102pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 117.
+
+[24 <./pic/102001.jpg>]
+
+Package xcolor Warning: Incompatible color definition on input line 117.
+
+[25 <./pic/102002.jpg> <./pic/102003.jpg>]
+<pic/102004.jpg, id=522, 328.97906pt x 344.03531pt>
+File: pic/102004.jpg Graphic file (type jpg)
+ <use pic/102004.jpg>
+Package pdftex.def Info: pic/102004.jpg used on input line 127.
+(pdftex.def)             Requested size: 197.38895pt x 206.42278pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
 
 ) (./doc/Anforderung/Datenbank.tex
 
-Package xcolor Warning: Incompatible color definition on input line 15.
+Package xcolor Warning: Incompatible color definition on input line 5.
+
+[26 <./pic/102004.jpg>]
+
+Package xcolor Warning: Incompatible color definition on input line 17.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15.
+Package xcolor Warning: Incompatible color definition on input line 17.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15.
+Package xcolor Warning: Incompatible color definition on input line 17.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15.
+Package xcolor Warning: Incompatible color definition on input line 17.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16.
+Package xcolor Warning: Incompatible color definition on input line 19.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16.
+Package xcolor Warning: Incompatible color definition on input line 19.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16.
+Package xcolor Warning: Incompatible color definition on input line 19.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16.
+Package xcolor Warning: Incompatible color definition on input line 19.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18.
+Package xcolor Warning: Incompatible color definition on input line 21.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18.
+Package xcolor Warning: Incompatible color definition on input line 21.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18.
+Package xcolor Warning: Incompatible color definition on input line 21.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18.
+Package xcolor Warning: Incompatible color definition on input line 21.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20.
+Package xcolor Warning: Incompatible color definition on input line 23.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20.
+Package xcolor Warning: Incompatible color definition on input line 23.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20.
+Package xcolor Warning: Incompatible color definition on input line 23.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20.
+Package xcolor Warning: Incompatible color definition on input line 23.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22.
+Package xcolor Warning: Incompatible color definition on input line 25.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22.
+Package xcolor Warning: Incompatible color definition on input line 25.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22.
+Package xcolor Warning: Incompatible color definition on input line 25.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22.
+Package xcolor Warning: Incompatible color definition on input line 25.
 
-
-Package xcolor Warning: Incompatible color definition on input line 29.
-
-[23] <pic/DbDesign.jpg, id=488, 807.7678pt x 388.45125pt>
-File: pic/DbDesign.jpg Graphic file (type jpg)
-
-<use pic/DbDesign.jpg>
-Package pdftex.def Info: pic/DbDesign.jpg used on input line 36.
-(pdftex.def)             Requested size: 605.82436pt x 291.3377pt.
-
-
-Package xcolor Warning: Incompatible color definition on input line 39.
-
-[24
-
- <./pic/DbDesign.jpg>]) (./doc/Anforderung/GUI.tex
+) (./doc/Anforderung/GUI.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
@@ -1931,13 +1920,13 @@ Package xcolor Warning: Incompatible color definition on input line 10.
 
 Package xcolor Warning: Incompatible color definition on input line 10.
 
-<pic/GUI/Main.jpg, id=495, 263.48438pt x 422.32782pt>
+<pic/GUI/Main.jpg, id=534, 263.48438pt x 422.32782pt>
 File: pic/GUI/Main.jpg Graphic file (type jpg)
  <use pic/GUI/Main.jpg>
 Package pdftex.def Info: pic/GUI/Main.jpg used on input line 14.
 (pdftex.def)             Requested size: 131.74185pt x 211.16339pt.
 
-<pic/GUI/ScanBarcode.jpg, id=497, 260.47313pt x 422.32782pt>
+<pic/GUI/ScanBarcode.jpg, id=536, 260.47313pt x 422.32782pt>
 File: pic/GUI/ScanBarcode.jpg Graphic file (type jpg)
 
 <use pic/GUI/ScanBarcode.jpg>
@@ -1948,38 +1937,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
-<pic/GUI/Manuell.jpg, id=498, 263.48438pt x 425.33907pt>
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+[27]
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+[28 <./pic/GUI/Main.jpg> <./pic/GUI/ScanBarcode.jpg>]
+<pic/GUI/Manuell.jpg, id=551, 263.48438pt x 425.33907pt>
 File: pic/GUI/Manuell.jpg Graphic file (type jpg)
 
 <use pic/GUI/Manuell.jpg>
 Package pdftex.def Info: pic/GUI/Manuell.jpg used on input line 36.
 (pdftex.def)             Requested size: 131.74185pt x 212.669pt.
 
-
-Package xcolor Warning: Incompatible color definition on input line 38.
-
-[25
-
- <./pic/GUI/Main.jpg>]
-<pic/GUI/ItemAnsicht.jpg, id=506, 261.22594pt x 420.82219pt>
+<pic/GUI/ItemAnsicht.jpg, id=552, 261.22594pt x 420.82219pt>
 File: pic/GUI/ItemAnsicht.jpg Graphic file (type jpg)
 
 <use pic/GUI/ItemAnsicht.jpg>
 Package pdftex.def Info: pic/GUI/ItemAnsicht.jpg used on input line 46.
 (pdftex.def)             Requested size: 130.61264pt x 210.41057pt.
 
-<pic/GUI/DeleteItem.jpg, id=507, 264.23718pt x 422.32782pt>
+<pic/GUI/DeleteItem.jpg, id=553, 264.23718pt x 422.32782pt>
 File: pic/GUI/DeleteItem.jpg Graphic file (type jpg)
 
 <use pic/GUI/DeleteItem.jpg>
 Package pdftex.def Info: pic/GUI/DeleteItem.jpg used on input line 56.
 (pdftex.def)             Requested size: 132.11826pt x 211.16339pt.
 
-
-Package xcolor Warning: Incompatible color definition on input line 58.
-
-[26 <./pic/GUI/ScanBarcode.jpg> <./pic/GUI/Manuell.jpg>]
-<pic/GUI/VerliehenAn.jpg, id=515, 259.7203pt x 423.08063pt>
+<pic/GUI/VerliehenAn.jpg, id=554, 259.7203pt x 423.08063pt>
 File: pic/GUI/VerliehenAn.jpg Graphic file (type jpg)
 
 <use pic/GUI/VerliehenAn.jpg>
@@ -1987,10 +1974,6 @@ Package pdftex.def Info: pic/GUI/VerliehenAn.jpg used on input line 66.
 (pdftex.def)             Requested size: 129.85983pt x 211.5398pt.
 
 
-Package xcolor Warning: Incompatible color definition on input line 68.
-
-[27 <./pic/GUI/ItemAnsicht.jpg> <./pic/GUI/DeleteItem.jpg>]
-
 Package xcolor Warning: Incompatible color definition on input line 72.
 
 
@@ -1999,6 +1982,14 @@ Package xcolor Warning: Incompatible color definition on input line 72.
 
 Package xcolor Warning: Incompatible color definition on input line 72.
 
+
+Package xcolor Warning: Incompatible color definition on input line 74.
+
+[29 <./pic/GUI/Manuell.jpg>]
+
+Package xcolor Warning: Incompatible color definition on input line 74.
+
+[30 <./pic/GUI/ItemAnsicht.jpg> <./pic/GUI/DeleteItem.jpg>]
 
 Package xcolor Warning: Incompatible color definition on input line 76.
 
@@ -2007,7 +1998,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-<pic/GUI/FilterAllgemein.jpg, id=524, 263.48438pt x 424.58624pt>
+<pic/GUI/FilterAllgemein.jpg, id=570, 263.48438pt x 424.58624pt>
 File: pic/GUI/FilterAllgemein.jpg Graphic file (type jpg)
 
 <use pic/GUI/FilterAllgemein.jpg>
@@ -2022,7 +2013,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
-<pic/GUI/FilterBS.jpg, id=526, 258.21469pt x 418.56375pt>
+
+Package xcolor Warning: Incompatible color definition on input line 91.
+
+[31 <./pic/GUI/VerliehenAn.jpg> <./pic/GUI/FilterAllgemein.jpg>]
+<pic/GUI/FilterBS.jpg, id=580, 258.21469pt x 418.56375pt>
 File: pic/GUI/FilterBS.jpg Graphic file (type jpg)
 
 <use pic/GUI/FilterBS.jpg>
@@ -2037,7 +2032,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
-<pic/GUI/FilterFilm.jpg, id=528, 261.97874pt x 421.575pt>
+<pic/GUI/FilterFilm.jpg, id=582, 261.97874pt x 421.575pt>
 File: pic/GUI/FilterFilm.jpg Graphic file (type jpg)
 
 <use pic/GUI/FilterFilm.jpg>
@@ -2047,39 +2042,183 @@ Package pdftex.def Info: pic/GUI/FilterFilm.jpg used on input line 109.
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[28 <./pic/GUI/VerliehenAn.jpg>]
+[32 <./pic/GUI/FilterBS.jpg>]
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[29 <./pic/GUI/FilterAllgemein.jpg> <./pic/GUI/FilterBS.jpg>]
-
-Package xcolor Warning: Incompatible color definition on input line 1.
-
-[30 <./pic/GUI/FilterFilm.jpg>]
+[33 <./pic/GUI/FilterFilm.jpg>]
 chapter 5.
-) (./doc/Umsetzung.tex
+(./doc/Konzept/Datenbank.tex
 
-Package xcolor Warning: Incompatible color definition on input line 1.
-
-[31
+Package xcolor Warning: Incompatible color definition on input line 12.
 
 
-]
+Package xcolor Warning: Incompatible color definition on input line 12.
+
+
+Package xcolor Warning: Incompatible color definition on input line 12.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24.
+
+
+Package xcolor Warning: Incompatible color definition on input line 26.
+
+
+Package xcolor Warning: Incompatible color definition on input line 26.
+
+
+Package xcolor Warning: Incompatible color definition on input line 26.
+
+
+Package xcolor Warning: Incompatible color definition on input line 28.
+
+
+Package xcolor Warning: Incompatible color definition on input line 28.
+
+
+Package xcolor Warning: Incompatible color definition on input line 28.
+
+
+Package xcolor Warning: Incompatible color definition on input line 30.
+
+
+Package xcolor Warning: Incompatible color definition on input line 30.
+
+
+Package xcolor Warning: Incompatible color definition on input line 30.
+
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+
+Package xcolor Warning: Incompatible color definition on input line 34.
+
+
+Package xcolor Warning: Incompatible color definition on input line 34.
+
+
+Package xcolor Warning: Incompatible color definition on input line 34.
+
+
+Package xcolor Warning: Incompatible color definition on input line 36.
+
+
+Package xcolor Warning: Incompatible color definition on input line 36.
+
+
+Package xcolor Warning: Incompatible color definition on input line 36.
+
+
+Package xcolor Warning: Incompatible color definition on input line 38.
+
+
+Package xcolor Warning: Incompatible color definition on input line 38.
+
+
+Package xcolor Warning: Incompatible color definition on input line 38.
+
+
+Package xcolor Warning: Incompatible color definition on input line 40.
+
+
+Package xcolor Warning: Incompatible color definition on input line 40.
+
+
+Package xcolor Warning: Incompatible color definition on input line 40.
+
+
+Package xcolor Warning: Incompatible color definition on input line 42.
+
+
+Package xcolor Warning: Incompatible color definition on input line 42.
+
+
+Package xcolor Warning: Incompatible color definition on input line 42.
+
+
+Package xcolor Warning: Incompatible color definition on input line 49.
+
+[34
+
+
+] <pic/DbDesign.jpg, id=600, 677.53125pt x 466.74374pt>
+File: pic/DbDesign.jpg Graphic file (type jpg)
+
+<use pic/DbDesign.jpg>
+Package pdftex.def Info: pic/DbDesign.jpg used on input line 56.
+(pdftex.def)             Requested size: 406.52188pt x 280.0484pt.
+
+
+Package xcolor Warning: Incompatible color definition on input line 59.
+
+[35
+
+ <./pic/DbDesign.jpg>])) (./doc/Umsetzung.tex
 chapter 6.
-) (./doc/Testing.tex
-
-Package xcolor Warning: Incompatible color definition on input line 1.
-
-[32
-
-
-]
-chapter 7.
 ) (./doc/Anhang.tex
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[33
+[36
+
 
 
 ]
@@ -2116,7 +2255,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--1
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[34
+[37
 
 
 ]
@@ -2154,7 +2293,7 @@ AED: lastpage setting LastPage
 
 Package xcolor Warning: Incompatible color definition on input line 105.
 
-[35
+[38
 
 
 ]
@@ -2164,16 +2303,20 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
 Package rerunfilecheck Info: File `Collector.out' has not changed.
-(rerunfilecheck)             Checksum: 69CB5CDAEF9F10B243457FDDDB9FAFC8;3771.
+(rerunfilecheck)             Checksum: 08BC25CD23ECE9C22A817EB8DE3C2D04;4026.
 Package rerunfilecheck Info: File `Collector.brf' has not changed.
-(rerunfilecheck)             Checksum: 0B89458E8A428146C318B4B7BEDE915B;287.
+(rerunfilecheck)             Checksum: A81EB8AB46C445EDEA59731BB105C9DE;285.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 105.
  ) 
 Here is how much of TeX's memory you used:
- 14090 strings out of 493054
- 209776 string characters out of 6138326
- 397418 words of memory out of 5000000
- 17113 multiletter control sequences out of 15000+600000
+ 14155 strings out of 493054
+ 210857 string characters out of 6138326
+ 397506 words of memory out of 5000000
+ 17152 multiletter control sequences out of 15000+600000
  21924 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,12n,66p,1052b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2192,10 +2335,10 @@ fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2015/texmf-dist/fonts/type
 m-super/sfsx1440.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
 ti1095.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb
 ><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on Collector.pdf (35 pages, 751620 bytes).
+Output written on Collector.pdf (38 pages, 1093427 bytes).
 PDF statistics:
- 670 PDF objects out of 1000 (max. 8388607)
- 600 compressed objects within 6 object streams
- 142 named destinations out of 1000 (max. 500000)
- 520 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 725 PDF objects out of 1000 (max. 8388607)
+ 642 compressed objects within 7 object streams
+ 159 named destinations out of 1000 (max. 500000)
+ 581 words of extra memory for PDF output out of 10000 (max. 10000000)
 

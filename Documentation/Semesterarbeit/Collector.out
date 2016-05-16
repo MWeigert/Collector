@@ -1,58 +1,60 @@
-\BOOKMARK [0][]{chapter.4}{Aufgabe}{}% 1
-\BOOKMARK [0][]{chapter.18}{Recherche}{}% 2
-\BOOKMARK [1][]{section.19}{My books}{chapter.18}% 3
-\BOOKMARK [1][]{section.20}{Meine B\374cher Pro}{chapter.18}% 4
-\BOOKMARK [1][]{section.21}{Codex}{chapter.18}% 5
-\BOOKMARK [1][]{section.22}{Movie Collection}{chapter.18}% 6
-\BOOKMARK [1][]{section.23}{Movielicious}{chapter.18}% 7
-\BOOKMARK [1][]{section.24}{Nintendo Collection}{chapter.18}% 8
-\BOOKMARK [1][]{section.25}{Video Games Manager Collector}{chapter.18}% 9
-\BOOKMARK [1][]{section.26}{\334berblick}{chapter.18}% 10
-\BOOKMARK [0][]{chapter.27}{Ist-Analyse}{}% 11
-\BOOKMARK [0][]{chapter.28}{Anforderungsanalyse}{}% 12
-\BOOKMARK [1][]{section.33}{Allgemeines}{chapter.28}% 13
-\BOOKMARK [2][]{subsection.34}{Dokumentation der Anforderungen}{section.33}% 14
-\BOOKMARK [3][]{subsubsection.35}{Nat\374rliche Sprache}{subsection.34}% 15
-\BOOKMARK [3][]{subsubsection.36}{Use Case }{subsection.34}% 16
-\BOOKMARK [2][]{subsection.37}{Systematik der Anforderungen}{section.33}% 17
-\BOOKMARK [3][]{subsubsection.41}{Art der Anforderung}{subsection.37}% 18
-\BOOKMARK [3][]{subsubsection.42}{Priorit\344t der Anforderung}{subsection.37}% 19
-\BOOKMARK [3][]{subsubsection.47}{Beispiel: Nummerierung und Bezeichnung der Anforderung}{subsection.37}% 20
-\BOOKMARK [2][]{subsection.48}{Systemanforderungen}{section.33}% 21
-\BOOKMARK [1][]{section.49}{\334bersicht}{chapter.28}% 22
-\BOOKMARK [1][]{section.50}{Funktionen}{chapter.28}% 23
-\BOOKMARK [2][]{subsection.51}{Anlegen eines Items}{section.50}% 24
+\BOOKMARK [0][]{chapter.3}{Aufgabe}{}% 1
+\BOOKMARK [0][]{chapter.17}{Recherche}{}% 2
+\BOOKMARK [1][]{section.18}{My books}{chapter.17}% 3
+\BOOKMARK [1][]{section.19}{Meine B\374cher Pro}{chapter.17}% 4
+\BOOKMARK [1][]{section.20}{Codex}{chapter.17}% 5
+\BOOKMARK [1][]{section.21}{Movie Collection}{chapter.17}% 6
+\BOOKMARK [1][]{section.22}{Movielicious}{chapter.17}% 7
+\BOOKMARK [1][]{section.23}{Nintendo Collection}{chapter.17}% 8
+\BOOKMARK [1][]{section.24}{Video Games Manager Collector}{chapter.17}% 9
+\BOOKMARK [1][]{section.25}{\334berblick}{chapter.17}% 10
+\BOOKMARK [0][]{chapter.26}{Ist-Analyse}{}% 11
+\BOOKMARK [0][]{chapter.27}{Anforderungsanalyse}{}% 12
+\BOOKMARK [1][]{section.32}{Allgemeines}{chapter.27}% 13
+\BOOKMARK [2][]{subsection.33}{Dokumentation der Anforderungen}{section.32}% 14
+\BOOKMARK [3][]{subsubsection.34}{Nat\374rliche Sprache}{subsection.33}% 15
+\BOOKMARK [2][]{subsection.35}{Systematik der Anforderungen}{section.32}% 16
+\BOOKMARK [3][]{subsubsection.39}{Art der Anforderung}{subsection.35}% 17
+\BOOKMARK [3][]{subsubsection.40}{Priorit\344t der Anforderung}{subsection.35}% 18
+\BOOKMARK [3][]{subsubsection.45}{Beispiel: Nummerierung und Bezeichnung der Anforderung}{subsection.35}% 19
+\BOOKMARK [2][]{subsection.46}{Systemanforderungen}{section.32}% 20
+\BOOKMARK [1][]{section.47}{\334bersicht}{chapter.27}% 21
+\BOOKMARK [1][]{section.48}{Funktionen}{chapter.27}% 22
+\BOOKMARK [1][]{section.49}{\334bersicht Funktionen}{chapter.27}% 23
+\BOOKMARK [2][]{subsection.51}{Anlegen eines Items}{section.49}% 24
 \BOOKMARK [3][]{subsubsection.54}{Manuelles Anlegen eines Items}{subsection.51}% 25
-\BOOKMARK [3][]{subsubsection.55}{Automatisches Anlegen eines Items}{subsection.51}% 26
-\BOOKMARK [2][]{subsection.56}{Ausgabe aller Items}{section.50}% 27
-\BOOKMARK [3][]{subsubsection.57}{Filterfunktion}{subsection.56}% 28
-\BOOKMARK [2][]{subsection.58}{Bearbeiten eines Items}{section.50}% 29
-\BOOKMARK [2][]{subsection.59}{L\366schen eines Items}{section.50}% 30
-\BOOKMARK [2][]{subsection.60}{Exportieren aller Items}{section.50}% 31
-\BOOKMARK [2][]{subsection.61}{Verwalten verliehener Items}{section.50}% 32
-\BOOKMARK [2][]{subsection.62}{Speichern der Items}{section.50}% 33
-\BOOKMARK [1][]{section.63}{Datenbank}{chapter.28}% 34
-\BOOKMARK [2][]{subsection.64}{\334bersicht Datenbankfelder der Items}{section.63}% 35
-\BOOKMARK [1][]{section.66}{\334bersicht Datenbank}{chapter.28}% 36
-\BOOKMARK [1][]{section.68}{GUI}{chapter.28}% 37
-\BOOKMARK [2][]{subsection.69}{Startseite}{section.68}% 38
-\BOOKMARK [2][]{subsection.71}{Barcode Scannen}{section.68}% 39
-\BOOKMARK [2][]{subsection.73}{Manuell Anlegen / Item Bearbeiten}{section.68}% 40
-\BOOKMARK [2][]{subsection.75}{Detail Ansicht}{section.68}% 41
-\BOOKMARK [2][]{subsection.77}{Sicherheitsfrage Item L\366schen}{section.68}% 42
-\BOOKMARK [2][]{subsection.79}{Item verleihen}{section.68}% 43
-\BOOKMARK [2][]{subsection.81}{Filter}{section.68}% 44
-\BOOKMARK [3][]{subsubsection.82}{Allgemein}{subsection.81}% 45
-\BOOKMARK [3][]{subsubsection.84}{Buch \046 Spiel}{subsection.81}% 46
-\BOOKMARK [3][]{subsubsection.86}{Film}{subsection.81}% 47
-\BOOKMARK [0][]{chapter.88}{Konzept}{}% 48
-\BOOKMARK [0][]{chapter.89}{Umsetzung}{}% 49
-\BOOKMARK [0][]{chapter.90}{Testing}{}% 50
-\BOOKMARK [0][]{appendix.91}{Anhang}{}% 51
-\BOOKMARK [1][]{section.92}{Konventionen}{appendix.91}% 52
-\BOOKMARK [1][]{section.93}{Verwendete Tools \046 Software}{appendix.91}% 53
-\BOOKMARK [2][]{subsection.94}{Dokumentation \046 Pr\344sentation}{section.93}% 54
-\BOOKMARK [2][]{subsection.95}{Code und Versionsverwaltung}{section.93}% 55
-\BOOKMARK [2][]{subsection.96}{Datenbank}{section.93}% 56
-\BOOKMARK [2][]{subsection.97}{GUI}{section.93}% 57
-\BOOKMARK [1][]{section.98}{Design Entscheidungen}{appendix.91}% 58
+\BOOKMARK [3][]{subsubsection.56}{Automatisches Anlegen eines Items}{subsection.51}% 26
+\BOOKMARK [2][]{subsection.58}{Bearbeiten eines Items}{section.49}% 27
+\BOOKMARK [2][]{subsection.60}{L\366schen eines Items}{section.49}% 28
+\BOOKMARK [2][]{subsection.62}{Ausgabe der Items}{section.49}% 29
+\BOOKMARK [2][]{subsection.64}{Verwalten verliehener Items}{section.49}% 30
+\BOOKMARK [2][]{subsection.66}{Exportieren aller ausgew\344hlter Items}{section.49}% 31
+\BOOKMARK [2][]{subsection.68}{Datenbank Administration}{section.49}% 32
+\BOOKMARK [2][]{subsection.73}{REST Schnittstelle zur Abfrage von Metadaten diverser Online Datenbanken}{section.49}% 33
+\BOOKMARK [2][]{subsection.74}{Kamera als Barcodescanner}{section.49}% 34
+\BOOKMARK [1][]{section.75}{Datenbank}{chapter.27}% 35
+\BOOKMARK [2][]{subsection.76}{\334bersicht der Tables und Felder}{section.75}% 36
+\BOOKMARK [1][]{section.78}{GUI}{chapter.27}% 37
+\BOOKMARK [2][]{subsection.79}{Startseite}{section.78}% 38
+\BOOKMARK [2][]{subsection.81}{Barcode Scannen}{section.78}% 39
+\BOOKMARK [2][]{subsection.83}{Manuell Anlegen / Item Bearbeiten}{section.78}% 40
+\BOOKMARK [2][]{subsection.85}{Detail Ansicht}{section.78}% 41
+\BOOKMARK [2][]{subsection.87}{Sicherheitsfrage Item L\366schen}{section.78}% 42
+\BOOKMARK [2][]{subsection.89}{Item verleihen}{section.78}% 43
+\BOOKMARK [2][]{subsection.91}{Filter}{section.78}% 44
+\BOOKMARK [3][]{subsubsection.92}{Allgemein}{subsection.91}% 45
+\BOOKMARK [3][]{subsubsection.94}{Buch \046 Spiel}{subsection.91}% 46
+\BOOKMARK [3][]{subsubsection.96}{Film}{subsection.91}% 47
+\BOOKMARK [0][]{chapter.98}{Konzept}{}% 48
+\BOOKMARK [1][]{section.99}{Datenbank}{chapter.98}% 49
+\BOOKMARK [2][]{subsection.100}{Aufbau der SQLITE Datenbank}{section.99}% 50
+\BOOKMARK [2][]{subsection.102}{\334bersicht Datenbank}{section.99}% 51
+\BOOKMARK [0][]{chapter.104}{Umsetzung}{}% 52
+\BOOKMARK [0][]{appendix.105}{Anhang}{}% 53
+\BOOKMARK [1][]{section.106}{Konventionen}{appendix.105}% 54
+\BOOKMARK [1][]{section.107}{Verwendete Tools \046 Software}{appendix.105}% 55
+\BOOKMARK [2][]{subsection.108}{Dokumentation \046 Pr\344sentation}{section.107}% 56
+\BOOKMARK [2][]{subsection.109}{Code und Versionsverwaltung}{section.107}% 57
+\BOOKMARK [2][]{subsection.110}{Datenbank}{section.107}% 58
+\BOOKMARK [2][]{subsection.111}{GUI}{section.107}% 59
+\BOOKMARK [1][]{section.112}{Design Entscheidungen}{appendix.105}% 60

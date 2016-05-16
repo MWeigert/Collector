@@ -2,7 +2,21 @@
 
 Die App Collector soll den folgenden Beschriebenen Funktionsumfang besitzen. Dieser wurde anhand der Recherche, der Ist-Analyse und dem Bedarf von M. Weigert ermittelt. Probleme bei der Umsetzung der Funktionen und deshalb nötige Anpassungen werden im Kapitel \ref{ch:Umsetzung} ab Seite \pageref{ch:Umsetzung} dokumentiert.
 
+\newpage
+
+\begin{landscape}
+	\section{Übersicht Funktionen}
+	\label{sec:UebersichtFunktion}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.65]{pic/SystemUseCase}
+		\caption{Überblick Funktionen}
+	\end{figure}
+\end{landscape}
+
 \subsection{Anlegen eines Items}
+
+[101001] Funktion: Item Anlegen\\
 
 Das Anlegen eines neuen Items soll auf zweierlei Arten Möglich sein.
 
@@ -17,73 +31,111 @@ Nach der Auswahl {\color{IndianRed}\texttt{Neues Item}} wird standardmässig der
 
 Sobald der User {\color{IndianRed}\texttt{manuell}} ausgewählt hat öffnet sich der Screen für Bearbeiten und Manuelles anlegen eines Items. Da es sich hierbei um die neu Anlage eines Items handelt ist der Screen noch komplett ohne angezeigte Daten.\\
 
-Nun kann der User alle Daten, welche ein Item ausmachen manuell eingeben und speichern. Um welche Daten es sich hierbei handelt ist in diesem Kapitel im Absatz \ref{sec:Felder} ab Seite \pageref{sec:Felder} dokumentiert.
+Nun kann der User alle Daten, welche ein Item ausmachen manuell eingeben und speichern.  Alle Daten, welche in einem Item gespeichert werden können manuell eingegeben werdem. Um welche Daten es sich hierbei handelt ist in diesem Kapitel im Absatz \ref{sec:Felder} ab Seite \pageref{sec:Felder} dokumentiert.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/101001m}
+	\caption{Aktivitätsdiagramm: Manuell Item anlegen}
+\end{figure}
 
 \subsubsection{Automatisches Anlegen eines Items}
 
 Das automatische Anlegen eines Items ist in der App als Standard, für das Anlegen eines Items definiert. Sobald der User {\color{IndianRed}\texttt{Neues Item}} ausgewählt hat öffnet sich die Kamera. Der User muss nun nur noch den Barcode scannen (photographieren) und eine automatische Suche, im Internet, nach Daten zu diesem Barcode wird gestartet. Die gefundenen Daten werden dem User angezeigt und er kann diese nun bestätigen oder noch anpassen.
 
-\subsection{Ausgabe aller Items}
-
-Wählt der User {\color{IndianRed}\texttt{Sammlung}} aus wird der Filterscreen angezeigt. Je nach Eingabe einzelner Filterkriterien wird die Sammlung nach Ergebnissen durchsucht und diese anschliessend als Liste dem User angezeigt. Werden keine Filterkriterien ausgewählt, so wird die komplette Sammlung als Liste angezeigt.
-
-\subsubsection{Filterfunktion}
-
-Der Screen für den Filter ist in drei verschiedene Reiter unterteilt. Sobald der User den Button Anzeige drückt, werden die Informationen aus allen drei Reitern als Vorlage für den Filter genutzt.
-
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{ccc}
-			Allgemein & Buch \& Spiel & Film
-		\end{tabular}
-	\end{center}
-\end{table}
-
-Der Reiter {\color{IndianRed}\texttt{Allgemein}} lässt folgende Dateneingabe zu.
-
-\begin{itemize}
-	\item Barcode (Textbox) \\
-		Hier kann nach einem Barcode gesucht werden.
-	\item Titel (Textbox) \\
-		Eingabe eines Strings, welcher in allen Titeln der Sammlung gesucht wird.
-	\item Medientyp (RadioButton)\\
-		Definition nach einem oder mehreren Medientypen gesucht werden soll.
-	\item Genre (Dropdown)\\
-		Auswahl eines oder mehreren Genre welche gesucht werden sollen.
-	\item Sprache (Dropddown)\\
-		Auswahl einer oder mehreren Sprachen welche gesucht werden sollen.
-	\item Jahr (Dropdown) \\
-		Auswahl eines Erscheinungsjahr.
-	\item Verliehen (Checkbox) \\
-		Auswahl ob nach Verliehenen Items gesucht werden soll.
-\end{itemize} 
-
-Der Reiter {\color{IndianRed}\texttt{Buch \& Spiel}} lässt folgende Dateneingabe zu.
-
-\begin{itemize}
-	\item Verlag oder Entwickler (Textbox) \\
-	Eingabe eines Strings, welcher unter Verlag oder Entwickler gesucht wird.
-	\item Autor (Dropdown) \\
-	Auswahl oder Eingabe des Autors, welcher gefiltert werden soll.
-	\item Auflage (Dropdown) \\
-	Auswahl oder Eingabe der Auflage, welche gefiltert werden soll.
-	\item System (Dropdown) \\
-	Auswahl oder Eingabe des System, welches gefiltert werden soll.
-	\item FSK (Checkbox) \\
-	Auswahl welche FSK Angaben gefiltert werden sollen.
-\end{itemize}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/101001a}
+	\caption{Aktivitätsdiagramm: Automatisch Item anlegen}
+\end{figure}
 
 \subsection{Bearbeiten eines Items}
-Ein vom User ausgewähltes Item, kann durch die Funktion {\color{IndianRed}\texttt{Bearbeiten}} manuell bearbeitet werden. Es gibt für den User keine Einschränkungen, jedes Datenelement kann angepasst werden. 
+
+[101002] Funktion: Item Bearbeiten\\
+
+Ein vom User ausgewähltes Item, kann durch die Funktion {\color{IndianRed}\texttt{Bearbeiten}} manuell bearbeitet werden. Es gibt für den User keine Einschränkungen, jedes Datenelement kann angepasst werden.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/101002}
+	\caption{Aktivitätsdiagramm: Item bearbeiten}
+\end{figure}
 
 \subsection{Löschen eines Items}
+
+[101003] Funktion: Item löschen\\
+
 Ein vom User ausgewähltes Item, wird komplett (mit all seinen Datenelementen) und unwiderruflich aus der Datenbank gelöscht. Zum Schutz vor unfreiwilligem Löschen, wird vor dem durchführen der Löschung der User nochmals aufgefordert den Löschvorgang zu bestätigen.
 
-\subsection{Exportieren aller Items}
-Eine vollständige oder gefilterte Übersicht der Items einer Sammlung kann entweder als CSV oder XML File exportiert werden.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/101003}
+	\caption{Aktivitätsdiagramm: Item löschen}
+\end{figure}
+
+\subsection{Ausgabe der Items}
+
+[102001] Funktion: Items anzeigen\\
+
+Der User kann sich entweder die komplette Sammlung anzeigen lassen oder durch Eingabe eines oder mehreren Filterkriterien die angezeigt Auswahl einschränken. Jedes Kriterium, welches von einem Item gespeichert wird kann als Filter verwendet werden. Werden vom User mehrere Kriterien angegeben, werden diese mittels einer \emph{UND Verknüpfung} im Filter verwendet. 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/102001}
+	\caption{Aktivitätsdiagramm: Sammlung anzeigen}
+\end{figure}
 
 \subsection{Verwalten verliehener Items}
-Der User kann ein Item als verliehen markieren. Wird ein Item so markiert, wird der User aufgefordert die leihende Person einzugeben. Bei der Rückgabe des Items wird der Status von verliehen auf nicht verliehen geändert und das Item erscheint nun nicht mehr auf der Liste der verliehenen Gegenständen.
 
-\subsection{Speichern der Items} 
-Nach jeder neu Anlage oder Änderung eines Items, erscheint ein {\color{IndianRed}\texttt{DB aktualisieren}} Button, welcher die durchgeführten Änderungen in der Datenbank speichert.
+[102002] Funktion: Items anzeigen\\
+
+Der User kann ein Item als verliehen markieren. Wird ein Item so markiert, wird der User aufgefordert die leihende Person und das Datum einzugeben. Bei der Rückgabe des Items wird der Status von verliehen auf nicht verliehen geändert und das Item erscheint nun nicht mehr auf der Liste der verliehenen Gegenständen.\\
+Eine History zeigt alle jemals verliehenen Gegenstände an.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/102002}
+	\caption{Aktivitätsdiagramm: Verwalten verliehener Items}
+\end{figure}
+
+\subsection{Exportieren aller ausgewählter Items}
+
+[102003] Funktion: Items anzeigen\\
+
+Eine vollständige oder gefilterte Übersicht der Items einer Sammlung kann als CSV File exportiert werden. Das Export File wird auf der Speicherkarte des Smartphones gespeichert. Zusätzlich wird ein Mailprogramm geöffnet mittels welchem man das Export File versenden kann.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/102003}
+	\caption{Aktivitätsdiagramm: Export der Sammlung}
+\end{figure}
+
+\subsection{Datenbank Administration}
+
+[102004] Funktion: Datenbank Administration\\
+
+Die Datenbank Administration unterstützt folgende drei Aktionen für alle vorhanden Tables.
+
+\begin{enumerate}
+	\item Hinzufügen eines Eintrages
+	\item Entfernen eines Eintrages
+	\item Löschen des Tables
+\end{enumerate}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{pic/102004}
+	\caption{Aktivitätsdiagramm: Datenbank Administration}
+\end{figure}
+
+\subsection{REST Schnittstelle zur Abfrage von Metadaten diverser Online Datenbanken}
+
+[103001] Funktion: REST Schnittstelle zur Abfrage von Metadaten\\
+
+Über eine REST Schnittstelle soll die App verschiedene Online Datenbanken abfragen. Anhand des gesendeten EAN Codes sollen eventuell vorhandene Metadaten zu den Items erfragt werden, so damit der User nicht alle Daten von Hand eingeben muss.
+
+\subsection{Kamera als Barcodescanner}
+
+[104001] Funktion: Kamera als Barcodescanner\\
+
+Als weitere Eingabehilfe für den User soll die Kamera des Smartphones als EAN Scanner genutzt werden. Sollte diese den Barcode nicht erkennen können, kann der Barcode vom User manuell eingegeben werden.

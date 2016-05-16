@@ -89,7 +89,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
     // Export method of the database
-    public void exportDatabaseCSV(DatabaseOperations dop) throws IOException {
+    public void exportDatabaseCSV(DatabaseOperations dop, String whereClause) throws IOException {
 
         SQLiteDatabase db = dop.getReadableDatabase();
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
@@ -102,7 +102,12 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             file.createNewFile();
             Log.d("DOP", "File: " + file);
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + DatabaseInfo.ITEMS_TABLE, null);
+            Cursor curCSV = null;
+            if (whereClause != null) {
+                curCSV = db.rawQuery(whereClause, null);
+            } else {
+                curCSV = db.rawQuery("SELECT * FROM " + DatabaseInfo.ITEMS_TABLE, null);
+            }
             csvWrite.writeNext(curCSV.getColumnNames());
             while (curCSV.moveToNext()) {
                 //Which column you want to export

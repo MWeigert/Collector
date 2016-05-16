@@ -1,9 +1,11 @@
 \section{Datenbank}
 
-Die Anforderungen der App an die Datenbank sind einfach und leicht überschaubar.
+Die Anforderungen der App an die Datenbank sind einfach und leicht überschaubar. Eine vollständige Übersicht ist im Abschnitt \ref{subsec:UebersichtDB} zu finden. Um eine einfach zu erweiternde und leicht zu wartende Datenbank zu schaffen, werden für immer wiederkehrende Daten einzelne Tabellen verwendet.
 
-\subsection{Übersicht Datenbankfelder der Items}
+\subsection{Übersicht der Tables und Felder}
 \label{sec:Felder}
+
+Die SQLITE Datenbank soll 
 
 In der Tabelle \ref{tab:Datenbankfelder}  sind die Datenbankfelder für jedes Medium, Bücher, Filme und Spiele aufgeführt.
 
@@ -12,7 +14,8 @@ In der Tabelle \ref{tab:Datenbankfelder}  sind die Datenbankfelder für jedes Me
 		\begin{tabular}{|l|l|l|l|}
 			\rowcolor{black} {\color{white}\textbf{Allgemein}} & {\color{white}\textbf{Bücher}} & {\color{white}\textbf{Filme}} & {\color{white}\textbf{Spiele}} \\
 			Barcode & Verlag & Studio & Entwickler\\ \hline
-			\rowcolor{DarkSeaGreen} Titel & Auflage & Speichermedium & System \\ \hline			Medientyp & Autor& Regisseur & FSK \\ \hline
+			\rowcolor{DarkSeaGreen} Titel & Auflage & Speichermedium & System \\ \hline		
+			Medientyp & Autor& Regisseur & FSK \\ \hline
 			\rowcolor{DarkSeaGreen} Genre & & FSK & \\ \hline
 			Sprache & & Länge & \\ \hline
 			\rowcolor{DarkSeaGreen} Erscheinungsjahr & & & \\ \hline
@@ -25,15 +28,3 @@ In der Tabelle \ref{tab:Datenbankfelder}  sind die Datenbankfelder für jedes Me
 	\label{tab:Datenbankfelder}
 	\end{center}
 \end{table}
-
-\newpage
-
-\begin{landscape}
-	\section{Übersicht Datenbank}
-	\label{sec:UebersichtDB}
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[scale=0.75]{pic/DbDesign}
-		\caption{Überblick Datenbank}
-	\end{figure}
-\end{landscape}
