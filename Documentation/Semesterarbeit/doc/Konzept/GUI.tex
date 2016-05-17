@@ -23,6 +23,101 @@ Von oben nach unten handelt es sich um Knöpfe mit den folgenden Funktionen.
 	\item Info
 \end{itemize} 
 
-\subsection{Information}
+\subsection{Neues Item}
+\label{subsec:Item}
+
+In der App Version in welcher alle Anforderungen umgesetzt sind, wird sich hier die Kamera des Gerätes öffnen und als Barcode Scanner den EAN Code des Items einscannen. Anschliessend wird dieser EAN Code genutzt um über die REST Schnittstelle mit diversen Online Datenbanken eventuell vorhandene Metadaten zu erhalten. Diese werden dann im Layout für die manuelle Eingabe oder das manuelle Bearbeiten eines Items angezeigt und können vom User bearbeitet oder in der Datenbank gespeichert werden.\\
+
+Dieses Layout für die manuelle Eingabe (bzw. für das Bearbeiten eines Items) ist wie folgt von oben nach unten aufgebaut.
+
+\begin{itemize}
+	\item EAN Code: Text Eingabezeile, welche nur Nummern anbietet und akzeptiert.
+	\item Titel: Text Eingabezeile welche eine alphanumerische Eingabe akzeptiert.
+	\item Rating Sterne: 5 Sterne, welche das persönliche Rating des Users wiedergeben. Es können nur ganze Sterne ausgewählt werden.
+	\item Typ Auswahl: Hier kann der User auswählen ob es sich um ein Buch, Film oder Spiel handelt. Es ist immer nur ein Typ möglich.
+	\item Genre DropDown: Liste mit allen Genres aus der entsprechenden Untertabelle.
+	\item Sprache DropDown: Liste mit allen Sprachen aus der entsprechenden Untertabelle.
+	\item Jahr DropDown: Liste mit den Jahren 1899 bis 2020
+	\item Verliehen CheckBox: Hier kann ein Item bereits als Verliehen markiert werden.
+	\item Verlag DropDown: Liste mit den Verlagen aus der entsprechenden Untertabelle.
+	\item Autor DropDown: Liste mit den Autoren aus der entsprechenden Untertabelle.
+	\item System DropDown: Liste mit den Systemen aus der entsprechenden Untertabelle.
+	\item DVD und BluRay CheckBox: Hier kann das Item als DVD und/oder BluRay ausgewählt werden.
+	\item Studio DropDown: Liste mit den Film- und Entwickler Studios aus der entsprechenden Untertabelle.
+	\item Regisseur DropDown: Liste mit den Regisseuren aus der entsprechenden Untertabelle.
+	\item Altersfreigabe CheckBox: Zeile mit CheckBoxen der möglichen Altersfreigabe.
+	\item Hinzufügen Knopf: Erscheint nur bei einem neuen Item und speichert die oben gegebenen Informationen in der Datenbank.
+	\item Update Knopf: Erscheint nur wenn ein bereits bestehendes Item bearbeitet wurde und speichert die Änderungen in der Datenbank.
+	\item Export Database Knopf: Exportiert die Items der Datenbank und nutzt die oben eingegeben Informationen als Filter für den Export.
+	\item Search Knopf: Führt mit den oben eingegeben Informationen eine Suche über alle Items der Sammlung durch und gibt das Ergebnis der Suche als Liste aus. 
+\end{itemize} 
+
+Um die Vielzahl der Elemente übersichtlich Darzustellen, wird hier der ScrollView (vertikal) verwendet.
+
+\subsection{Sammlung}
+
+Diese Layout besteht aus einer einfachen vertikalen Liste, welche die Komplette Sammlung anzeigt. Sobald der User ein Item auswählt öffnet sich das Layout mit den Detailinformationen.\\
+
+Dieses Layout wird auch genutzt um das Ergebnis einer Datenbanksuche darzustellen.
+
+\subsection{Detail Ansicht}
+
+Damit der User alle Informationen auf einem Bildschirm sieht, wird hier der Android ScrollView (vertikal) verwendet. Es handelt sich hier um ein reines Ansicht Layout, welches nur folgende drei Aktionen des Users zulässt.
+
+\begin{enumerate}
+	\item Verliehen: Ein Schalter, welcher die Verleih Verwaltung anzeigt.
+	\item Bearbeiten Knopf: Öffnet das Layout \ref{subsec:Item} mit den Informationen des Items um diese zu bearbeiten.
+	\item Remove Knopf: Öffnet ein Dialog Fenster, welches die Bestätigung für das Löschen des Items aus der Datenbank anfordert.
+\end{enumerate}
+
+Ansonsten werden Analog der Item Anlage oder Bearbeitung alle verfügbaren Informationen angezeigt, welche hier aber nicht vom User geändert werden können.
+
+\subsection{Leihwesen}
+
+Dieses Layout besteht aus einer einfachen vertikalen Liste, welche alle noch nicht abgeschlossenen Verleih Vorgänge anzeigt. Wählt der User einen Eintrag der Liste aus, öffnet sich am unteren Bildschirmrand ein kleines Dialogfenster, welches dem User anzeigt, wer das Item seit wann ausgeliehen hat.
+
+\subsection{Verleih Verwaltung}
+
+Hierbei handelt es sich um ein Layout, dass auf einer Bildschirmseite von oben nach unten dem User dem User folgende Auswahlmöglichkeiten beziehungsweise Informationen bietet.
+
+\begin{itemize}
+	\item Freund DropDown: Liste welche alle Freunde der Untertabelle darstellt.
+	\item Textfeld mit Item Name und der Information ob das Item gerade verliehen zurück gegeben wird.
+	\item Kalender Auswahlfeld, welches das aktuelle Datum anzeigt.
+	\item Ok Knopf
+\end{itemize}
+
+Dabei ist zu beachten, das je nachdem, ob das Item verliehen wird oder wieder zurück gegeben das Layout entweder die bestehenden Daten des aktuellen Leihvorgangs anzeigt oder einfach nur das Item vorgibt und der User noch den Freund auswählen muss, welchem er das Item verleiht.\\
+
+Die Funktion des Ok Knopfes variiert, je nachdem ob das Item verliehen wird oder zurück gegeben wird, schreibt er das Datum in die entsprechende Spalte der History Tabelle.
+
+\subsection{Export Database}
+
+Die App öffnet eine Auswahl an verfügbaren Mailprogrammen auf dem Gerät. Sobald der User eines ausgewählt hat wird eine Standard Mail mit einem CSV File als Attachment erstellt. Der User muss nun nur noch den Adressaten eingeben und kann die komplette Items Tabelle als CSV Export File versenden.
+
+\subsection{Info}
+
+Dieses Layout zeigt am oberen Bildschirmrand die installierte Version der App und den Programmierer an. Am unteren Bildschirmrand, ist ein Knopf welcher den User die Einstellungen (Datenbank Administration) anzeigen lässt. 
 
 \subsection{Settings}
+
+Um bei möglichst guter Übersicht dem User eine Vielzahl von Möglichkeiten zu bieten, wird in diesem Layout die ScrollView (vertikal) angewendet. Das Layout ist grob in zwei Bereiche unterteilt. In der oberen Hälfte kann der User die Daten der einzelnen Untertabellen anzeigen lassen und einzelne Informationen zu den Tabellen hinzufügen oder löschen.\\
+
+Wählt man die Verwaltung einer dieser Untertabellen so bekommt der User das Datenbankverwaltung Layout (s.h. \ref{subsec:DBGUI} Datenbankverwaltung) angezeigt. Zwei Ausnahmen bestehen, welche die Untertabellen \texttt{Friends} und \texttt{History} betreffen.
+
+In der unteren Hälfte können alle Untertabellen gelöscht, beziehungsweise in den Urzustand versetzt werden. Wählt der User einen dieser Knöpfe öffnet sich aus Sicherheitsgründen ein Dialogfenster, in welchem der User den Vorgang nochmals bestätigen muss. 
+
+\subsection{Datenbankverwaltung}
+\label{subsec:DBGUI}
+Der Grossteil des Bildschirms wird von einer Liste eingenommen, welche die aktuell in der Untertabelle gespeicherten Daten anzeigt. Am unteren Bildschirmrand gibt es von oben nach unten den Knopf \texttt{Remove}, eine Eingabezeile und einen \texttt{Add} Knopf.\\
+
+Will der User einen Eintrag der Untertabelle löschen, wählt er diesen in der Liste aus und drückt den \texttt{Remove} Knopf. Das Layout wird über ein Dialogfenster den User auffordern das löschen des Eintrages zu bestätigen.\\
+
+Um einen neuen Eintrag in die Untertabelle vorzunehmen, kann der User die entsprechende Information in die Eingabezeile eingeben und den Knopf \texttt{Add} drücken. Eine Abfrage prüft nach ob der User überhaupt etwas eingegeben hat und speichert diese Eingabe in die entsprechende Untertabelle. 
+
+\subsubsection{Freunde Verwalten}
+An sich ist das Layout, welches die Eintrage der Friends Tabelle verwaltet, identisch mit den Layouts der anderen Untertabellen Verwaltungen. Da der User aber seine Freunde mit Vor- und Nachnamen eingeben kann existieren anstelle der einen Eingabezeile in diesem Layout zwei Eingabezeilen. Alle anderen Funktionen sind analog zur allgemeinen Datenbank Verwaltung. 
+
+\subsubsection{History}
+Da die Tabelle der Verleih Verwaltung grösser ist als die der anderen Untertabellen und ausserdem die Verleih Verwaltung über das Layout der Item Details und des Leihwesens erfolgt. Zeigt der Knopf für die Verwaltung der Tabelle nur eine Liste mit allen abgeschlossenen und noch laufenden Leihaktionen an.\\
+Wählt man einen Eintrag aus, öffnet sich ein kleines Dialogfenster mit Detailinformationen. 
