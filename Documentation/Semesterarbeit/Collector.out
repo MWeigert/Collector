@@ -33,7 +33,7 @@
 \BOOKMARK [2][]{subsection.73}{REST Schnittstelle zur Abfrage von Metadaten diverser Online Datenbanken}{section.49}% 33
 \BOOKMARK [2][]{subsection.74}{Kamera als Barcodescanner}{section.49}% 34
 \BOOKMARK [1][]{section.75}{Datenbank}{chapter.27}% 35
-\BOOKMARK [2][]{subsection.76}{\334bersicht der Tables und Felder}{section.75}% 36
+\BOOKMARK [2][]{subsection.76}{\334bersicht der Tabellen und Felder}{section.75}% 36
 \BOOKMARK [1][]{section.78}{GUI}{chapter.27}% 37
 \BOOKMARK [2][]{subsection.79}{Startseite}{section.78}% 38
 \BOOKMARK [2][]{subsection.81}{Barcode Scannen}{section.78}% 39
@@ -47,14 +47,20 @@
 \BOOKMARK [3][]{subsubsection.96}{Film}{subsection.91}% 47
 \BOOKMARK [0][]{chapter.98}{Konzept}{}% 48
 \BOOKMARK [1][]{section.99}{Datenbank}{chapter.98}% 49
-\BOOKMARK [2][]{subsection.100}{Aufbau der SQLITE Datenbank}{section.99}% 50
-\BOOKMARK [2][]{subsection.102}{\334bersicht Datenbank}{section.99}% 51
-\BOOKMARK [0][]{chapter.104}{Umsetzung}{}% 52
-\BOOKMARK [0][]{appendix.105}{Anhang}{}% 53
-\BOOKMARK [1][]{section.106}{Konventionen}{appendix.105}% 54
-\BOOKMARK [1][]{section.107}{Verwendete Tools \046 Software}{appendix.105}% 55
-\BOOKMARK [2][]{subsection.108}{Dokumentation \046 Pr\344sentation}{section.107}% 56
-\BOOKMARK [2][]{subsection.109}{Code und Versionsverwaltung}{section.107}% 57
-\BOOKMARK [2][]{subsection.110}{Datenbank}{section.107}% 58
-\BOOKMARK [2][]{subsection.111}{GUI}{section.107}% 59
-\BOOKMARK [1][]{section.112}{Design Entscheidungen}{appendix.105}% 60
+\BOOKMARK [2][]{subsection.100}{Allgemeines}{section.99}% 50
+\BOOKMARK [2][]{subsection.101}{Aufbau der SQLITE Datenbank}{section.99}% 51
+\BOOKMARK [2][]{subsection.103}{\334bersicht Datenbank}{section.99}% 52
+\BOOKMARK [1][]{section.105}{GUI}{chapter.98}% 53
+\BOOKMARK [2][]{subsection.106}{Allgemeines}{section.105}% 54
+\BOOKMARK [2][]{subsection.107}{Hauptmenu / Startscreen}{section.105}% 55
+\BOOKMARK [2][]{subsection.108}{Information}{section.105}% 56
+\BOOKMARK [2][]{subsection.109}{Settings}{section.105}% 57
+\BOOKMARK [0][]{chapter.110}{Umsetzung}{}% 58
+\BOOKMARK [0][]{appendix.111}{Anhang}{}% 59
+\BOOKMARK [1][]{section.112}{Konventionen}{appendix.111}% 60
+\BOOKMARK [1][]{section.113}{Verwendete Tools \046 Software}{appendix.111}% 61
+\BOOKMARK [2][]{subsection.114}{Dokumentation \046 Pr\344sentation}{section.113}% 62
+\BOOKMARK [2][]{subsection.115}{Code und Versionsverwaltung}{section.113}% 63
+\BOOKMARK [2][]{subsection.116}{Datenbank}{section.113}% 64
+\BOOKMARK [2][]{subsection.117}{GUI}{section.113}% 65
+\BOOKMARK [1][]{section.118}{Design Entscheidungen}{appendix.111}% 66

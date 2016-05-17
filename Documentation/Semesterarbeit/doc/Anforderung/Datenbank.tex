@@ -1,30 +1,60 @@
 \section{Datenbank}
 
-Die Anforderungen der App an die Datenbank sind einfach und leicht überschaubar. Eine vollständige Übersicht ist im Abschnitt \ref{subsec:UebersichtDB} zu finden. Um eine einfach zu erweiternde und leicht zu wartende Datenbank zu schaffen, werden für immer wiederkehrende Daten einzelne Tabellen verwendet.
+[201001] Datenbank: Grunddesign
 
-\subsection{Übersicht der Tables und Felder}
+Die Anforderungen der App an die Datenbank sind einfach und leicht überschaubar. Eine vollständige Übersicht der Tabellen und Felder ist im Abschnitt \ref{subsec:UebersichtDB} zu finden. Um eine einfach zu erweiternde und leicht zu wartende Datenbank zu schaffen, werden für immer wiederkehrende Daten einzelne Tabellen verwendet.
+
+\subsection{Übersicht der Tabellen und Felder}
 \label{sec:Felder}
 
-Die SQLITE Datenbank soll 
-
-In der Tabelle \ref{tab:Datenbankfelder}  sind die Datenbankfelder für jedes Medium, Bücher, Filme und Spiele aufgeführt.
+Die SQLITE Datenbank soll folgende Daten zu den einzelnen Items speichern.
 
 \begin{table} [htbp]
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|}
 			\rowcolor{black} {\color{white}\textbf{Allgemein}} & {\color{white}\textbf{Bücher}} & {\color{white}\textbf{Filme}} & {\color{white}\textbf{Spiele}} \\
 			Barcode & Verlag & Studio & Entwickler\\ \hline
-			\rowcolor{DarkSeaGreen} Titel & Auflage & Speichermedium & System \\ \hline		
-			Medientyp & Autor& Regisseur & FSK \\ \hline
+			\rowcolor{DarkSeaGreen} Titel & Autor & Speichermedium & System \\ \hline		
+			Medientyp & & Regisseur & FSK \\ \hline
 			\rowcolor{DarkSeaGreen} Genre & & FSK & \\ \hline
-			Sprache & & Länge & \\ \hline
+			Sprache & & & \\ \hline
 			\rowcolor{DarkSeaGreen} Erscheinungsjahr & & & \\ \hline
 			Bewertung & & & \\ \hline
-			\rowcolor{DarkSeaGreen} Lagerplatz & & & \\ \hline
-			Verleihstatus & & & \\ \hline
-			\rowcolor{DarkSeaGreen} Bemerkung & & & \\ \hline		
+			\rowcolor{DarkSeaGreen} Verleihstatus & & & \\ \hline
 		\end{tabular}
 	\caption{Datenbankfelder}
 	\label{tab:Datenbankfelder}
 	\end{center}
 \end{table}
+
+Die Verleih Verwaltung soll folgende Felder beinhalten.
+
+\begin{itemize}
+	\item ID des Freundes
+	\item ID des Items
+	\item Start des Leihvorgangs
+	\item Rückgabe des Items
+\end{itemize} 
+
+Um die Datenbank möglichst schlank und übersichtlich zu halten werden folgende Tabellen und Felder angelegt.
+
+\begin{itemize}
+	\item Freunde \\
+		ID (Key), Vorname, Nachname   
+	\item Autoren \\
+		ID (Key), Autor
+	\item Regisseure \\
+		ID (Key), Regisseur
+	\item Genres \\
+		ID (Key), Genre
+	\item Sprachen \\
+		ID (Key), Sprache
+	\item Verlage \\
+		ID (Key), Verlag
+	\item Studios \\
+		ID (Key), Studio
+	\item Systeme \\
+		ID (Key), System
+\end{itemize}
+
+Die beiden grösseren Tabellen Items und die der Verleih Verwaltung sollen um Speicherplatz zu sparen nur die ID's der einzelnen Daten enthalten.
