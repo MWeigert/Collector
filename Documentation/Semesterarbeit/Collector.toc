@@ -65,13 +65,16 @@
 \contentsline {subsubsection}{\numberline {5.2.11.1}Freunde Verwalten}{42}{subsubsection.120}
 \contentsline {subsubsection}{\numberline {5.2.11.2}History}{42}{subsubsection.121}
 \contentsline {chapter}{\numberline {6}Umsetzung}{43}{chapter.122}
-\contentsline {chapter}{\numberline {A}Anhang}{44}{appendix.123}
-\contentsline {section}{\numberline {A.1}Konventionen}{44}{section.124}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{44}{section.125}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{44}{subsection.126}
-\contentsline {subsection}{\numberline {A.2.2}Programmierung}{44}{subsection.127}
-\contentsline {subsection}{\numberline {A.2.3}Code und Versionsverwaltung}{44}{subsection.128}
-\contentsline {subsection}{\numberline {A.2.4}Datenbank}{44}{subsection.129}
-\contentsline {subsection}{\numberline {A.2.5}GUI}{44}{subsection.130}
-\contentsline {subsection}{\numberline {A.2.6}UML}{44}{subsection.131}
-\contentsline {section}{\numberline {A.3}Design Entscheidungen}{44}{section.132}
+\contentsline {section}{\numberline {6.1}Funktionen}{43}{section.124}
+\contentsline {section}{\numberline {6.2}Datenbank}{43}{section.125}
+\contentsline {section}{\numberline {6.3}GUI}{44}{section.144}
+\contentsline {chapter}{\numberline {A}Anhang}{47}{appendix.201}
+\contentsline {section}{\numberline {A.1}Konventionen}{47}{section.202}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{47}{section.203}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{47}{subsection.204}
+\contentsline {subsection}{\numberline {A.2.2}Programmierung}{47}{subsection.205}
+\contentsline {subsection}{\numberline {A.2.3}Code und Versionsverwaltung}{47}{subsection.206}
+\contentsline {subsection}{\numberline {A.2.4}Datenbank}{47}{subsection.207}
+\contentsline {subsection}{\numberline {A.2.5}GUI}{47}{subsection.208}
+\contentsline {subsection}{\numberline {A.2.6}UML}{47}{subsection.209}
+\contentsline {section}{\numberline {A.3}Design Entscheidungen}{47}{section.210}

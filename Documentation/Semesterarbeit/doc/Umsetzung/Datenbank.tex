@@ -1,0 +1,25 @@
+\section{Datenbank}
+
+Das Handling der Daten in der App ist wie folgt strukturiert. Wie im Abschnitt \ref{sec:GUIumsetzung} dargestellt folgt die App dem MVC Pattern. Damit die Kommunikation und Verwaltung der Daten im Modell möglichst Übersichtlich und leicht zu Warten, beziehungsweise zu erweitern ist wurden folgende drei Java Klassen programmiert.
+
+\begin{itemize}
+	\item DatabaseInfo
+	\item DatabaseBase
+	\item DatabaseOperations
+\end{itemize}
+
+Diese Teilen sich die Aufgaben in der Verwaltung der Daten auf. \\
+
+Die Klasse DatabaseInfo enthält alle Informationen zur Datenbank, den Tabellen und Feldern. Die Klasse besteht einzig und allein aus Variablen Deklarationen, welche die Namen der Tabellen und Felder enthalten. Zusätzlich gibt es für jede Tabelle eine Variable \texttt{CREATE\_XYZ}\footnote{XYZ ist ein Platzhalter für den Tabellen Namen} welche das komplette CREATE TABLE Kommando der SQLite Datenbank enthält.\\
+
+Die Klasse DatabaseBase ist ebenfalls eine Klasse welche nur Variablen deklariert. Hierbei handelt es sich um String Arrays, welche für die Untertabellen einen Basis Datensatz zur Verfügung stellen. In der App erfüllt diese Klasse zwei Funktionen.
+
+\begin{enumerate}
+	\item Sie stellt dem User bereits eine Grundlage von Daten der Untertabellen zur Verfügung, so dass dieser nicht alles selbst erfassen muss.
+	\item Sie hat das Testing der Funktionen im Bereich Datenbank der App erleichtert, da bei einer kompletten Neuinstallation so schnell Daten verfügbar waren.
+\end{enumerate}
+
+Die Dritte Verwendete Klasse DatabaseOperations ist der Controller, welcher zwischen dem Controller der App und dem Modell sitzt. Hier werden sämtliche SQL Befehle auf die Datenbank angewendet. Der Befehlsumfang geht vom erstellen der Datenbank und den Tabellen über hinzufügen und entfernen von Daten, bis hin zu SELECT Abfragen, welche die benötigten Informationen aus der Datenbank an den Controller und somit an die View zurück liefern.\\
+
+\lstinputlisting[frame=single,language=java,label=addEntry,caption=Hinzufügen von Daten zur Tabelle]{code/addEntry.java}
+
