@@ -1,0 +1,27 @@
+\section{Funktionen}
+
+Da nach dem Design Review es allen Anschein hat, dass die beiden Funktionen 
+
+\begin{enumerate}
+	\item REST Schnittstelle zur Abfrage von Internet Datenbanken
+	\item Kamera als Barcodescanner
+\end{enumerate}
+
+nicht mehr rechtzeitig implementiert werden können. Werde ich an dieser Stelle erst einmal auf die Verleih Verwaltung, das Filtern der Sammlung und den CSV Export der Items eingehen. Sollte am Ende doch noch die fehlenden Funktionen implementiert werden können, werden diese noch nachgetragen.
+
+\subsection{Verleih Verwaltung}
+
+Damit eine schnellen Verwaltung verliehener Gegenstände der Sammlung möglich ist, sollte der User in der Lage sein jedes Item seiner Sammlung schnell als Verliehen markieren. Dazu bedarf es keinen speziellen Librarys. Bei den Abschnitten zur Datenbank und zur GUI kann man erkennen, dass für die Verwaltung eine extra Tabelle in der Datenbank angelegt werden muss und ein Layout, welches dem User die Möglichkeit gibt zu definieren was, wann von wem geliehen oder zurück gegeben wurde. 
+
+\subsection{Filtern der Sammlung}
+
+Der Filter soll sich über alle Felder der Tabelle Items erstrecken. Damit es dem User möglichst einfach gemacht wird schnell die gewünschten Items seiner Sammlung zu filtern, wird bei der Titel Eingabe vor und nach dem Text automatisch eine Wildcard gesetzt und im dem Filter entsprechenden SELECT Statement ein LIKE anstelle von \glqq=\grqq \ verwendet.\\
+
+Alle vom User im Filter definierten Parameter werden mit einer UND-Verknüpfung an die Datenbank weiter gegeben.\\
+
+Um den Aufwand an die Programmierung der App möglichst gering zu halten, wird das Layout für die Anzeige der Sammlung auch für die Ausgabe der vom User gefilterten Sammlung und die Ausgabe der von der Verleih Verwaltung gefilterten Übersicht der verliehenen Items genutzt. Der User kann die Parameter für den Filter im selben Layout wie zur manuellen Eingabe oder Bearbeitung der Items nutzen.   
+
+\subsection{CSV Export der Items}
+
+Für den CSV Export der Daten wird eine externe Library (Opencsv) verwendet. Da nicht jedes Android Gerät über eine externe Speicherkarte oder USB Zugriff auf alle App Daten verfügt, wird sich beim Export der Items (mit oder ohne Filter) sich das interne E-Mail Programm melden, mittels welchem die CSV Datei schnell und einfach an eine Mail Adresse gesendet werden kann.
+

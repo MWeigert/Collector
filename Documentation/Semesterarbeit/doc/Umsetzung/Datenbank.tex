@@ -23,3 +23,9 @@ Die Dritte Verwendete Klasse DatabaseOperations ist der Controller, welcher zwis
 
 \lstinputlisting[frame=single,language=java,label=addEntry,caption=Hinzufügen von Daten zur Tabelle]{code/addEntry.java}
 
+Im Listing \ref{addEntry} ist zu sehen wie die Klasse DatabaseOperations ein Datenbank Objekt (Zeile 5) erstellt und die Übergebenen Daten in die entsprechende Tabelle schreibt (Zeile 9).
+
+ \lstinputlisting[frame=single,language=java,label=returnAll,caption=Hinzufügen von Daten zur Tabelle]{code/returnAll.java}
+ 
+ Eine häufig genutzte Methode liefert alle Einträge einer Tabelle, Listing \ref{returnAll} zeigt dies anhand der Untertabelle Authors. In den Zeilen 14 \& 15 wird ein \texttt{SELECT * FROM authors} ausgeführt und die komplette Tabelle in einen Cursor geschrieben und an den Controller zurück gegeben, damit dieser die Daten darstellen oder weiter verarbeiten kann.
+

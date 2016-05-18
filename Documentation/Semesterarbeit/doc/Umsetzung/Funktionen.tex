@@ -1,1 +1,37 @@
 \section{Funktionen}
+
+An dieser Stelle hätte ich gerne mehr gezeigt. Dieser Abschnitt sollte zwei für die Useability der App entscheidende Funktionen beinhalten. 
+
+\begin{itemize}
+	\item Die Kamera als Barcodescanner.
+	\item Eine REST Schnittstelle zur Metadaten Abfrage im Internet.
+\end{itemize}
+
+Wie es sich bei unserem Design Review abgezeichnet hatte, konnte ich diese beiden in der Anforderung und im Konzept beschrieben Funktionalitäten leider nicht mehr realisieren.
+
+\subsection{Filtern der Sammlung}
+
+Technisch habe ich zwei bereits eingesetzte Klassen verwendet um eine einfache und leicht zu erweiternde Filterfunktion in der App zu realisieren. Ich habe die Klasse \texttt{DatabaseOperations} um eine Methode erweitert, welche mir auf ein übergebenes Objekt der Klasse Item ein SELECT Statement liefert zum finden der Parameter des Items.
+
+\lstinputlisting[frame=single,language=java,label=selectStatement,caption=Methode: getSelectStatement]{code/selectStatement.java}
+
+Dazu habe ich wie im Listing \ref{selectStatement} ersichtlich ist, die Klasse Item als Container für die vom User eingegeben Parameter genutzt und aus diesen wird ein SELECT Statement zusammengesetzt. Pro Parameter wird ein Substring mit einer AND Verknüpfung angehängt. Zum Schluss entferne ich noch das letzte AND und schliesse das SELECT Statement mit \glqq;\grqq.\\
+
+Der String des zurück gegeben SELECT Statement kann nun einfach von einem Intent zum anderen weiter gegeben werden. Im Anzeige Layout der Sammlung können nun entweder alle oder nur die Items der Sammlung in der Liste dargestellt werden, welche dem SELECT Statement entsprechen.
+
+\subsection{Export der Daten}
+
+Um die Daten der SQLite Datenbank zu exportieren habe ich die frei Verfügbare Library Opencsv (Version 3.7) eingebunden. Der Export erfolgt auf zwei verschiedene Arten
+
+\begin{itemize}
+	\item die vollständige Tabelle Items
+	\item die gefilterte Tabelle Items
+\end{itemize}
+
+und wird von der Methode \texttt{exportDatabaseCSV} aus Listing \ref{exportCSV} ausgeführt.
+
+\lstinputlisting[frame=single,language=java,label=exportCSV,caption=Methode: exportDatabaseCSV]{code/exportCSV.java}
+
+Dieser Methode kann neben dem Datenbank Object ein String mit einem SELECT Statement übergeben werden und je nachdem ob ein String übergeben wird oder nicht schreibt die Methode die gefilterte oder ungefilterte Sammlung an Items in den externen Gerätespeicher. Nach erfolgreichem Export startet die Klasse welche den Export aufgerufen hat eine Intent, welcher das lokale E-Mail Programm ausführt und diesem die gespeicherte CSV Datei als Attachment übergibt.\\
+
+Aufgerufen wird die Methode entweder über das Hauptmenu (Export aller Items) oder über die Filteransicht (Export der Items, welche den Filterkriterien genügen).

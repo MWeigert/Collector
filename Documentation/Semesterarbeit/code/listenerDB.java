@@ -6,7 +6,8 @@
                 if (debugMode) {
                     Log.d("USERACTION", "Entering author administration.");
                 }
-                final Intent authorIntent = new Intent(this, TableActivity.class);
+                final Intent authorIntent = new Intent(this, 
+					TableActivity.class);
                 authorIntent.putExtra("debugMode", debugMode);
                 authorIntent.putExtra("tableName", "AUTHOR");
                 startActivity(authorIntent);

@@ -1,80 +1,86 @@
-\contentsline {chapter}{\numberline {1}Aufgabe}{6}{chapter.3}
-\contentsline {chapter}{\numberline {2}Recherche}{10}{chapter.17}
-\contentsline {section}{\numberline {2.1}My books}{10}{section.18}
-\contentsline {section}{\numberline {2.2}Meine B\IeC {\"u}cher Pro}{10}{section.19}
-\contentsline {section}{\numberline {2.3}Codex}{11}{section.20}
-\contentsline {section}{\numberline {2.4}Movie Collection}{12}{section.21}
-\contentsline {section}{\numberline {2.5}Movielicious}{14}{section.22}
-\contentsline {section}{\numberline {2.6}Nintendo Collection}{15}{section.23}
-\contentsline {section}{\numberline {2.7}Video Games Manager Collector}{15}{section.24}
-\contentsline {section}{\numberline {2.8}\IeC {\"U}berblick}{16}{section.25}
-\contentsline {chapter}{\numberline {3}Ist-Analyse}{17}{chapter.26}
-\contentsline {chapter}{\numberline {4}Anforderungsanalyse}{18}{chapter.27}
-\contentsline {section}{\numberline {4.1}Allgemeines}{18}{section.32}
-\contentsline {subsection}{\numberline {4.1.1}Dokumentation der Anforderungen}{18}{subsection.33}
-\contentsline {subsubsection}{\numberline {4.1.1.1}Nat\IeC {\"u}rliche Sprache}{18}{subsubsection.34}
-\contentsline {subsection}{\numberline {4.1.2}Systematik der Anforderungen}{19}{subsection.35}
-\contentsline {subsubsection}{\numberline {4.1.2.1}Art der Anforderung}{19}{subsubsection.39}
-\contentsline {subsubsection}{\numberline {4.1.2.2}Priorit\IeC {\"a}t der Anforderung}{19}{subsubsection.40}
-\contentsline {subsubsection}{\numberline {4.1.2.3}Beispiel: Nummerierung und Bezeichnung der Anforderung}{20}{subsubsection.45}
-\contentsline {subsection}{\numberline {4.1.3}Systemanforderungen}{20}{subsection.46}
-\contentsline {section}{\numberline {4.2}\IeC {\"U}bersicht}{20}{section.47}
-\contentsline {section}{\numberline {4.3}Funktionen}{20}{section.48}
-\contentsline {section}{\numberline {4.4}\IeC {\"U}bersicht Funktionen}{21}{section.49}
-\contentsline {subsection}{\numberline {4.4.1}Anlegen eines Items}{22}{subsection.51}
-\contentsline {subsubsection}{\numberline {4.4.1.1}Manuelles Anlegen eines Items}{22}{subsubsection.54}
-\contentsline {subsubsection}{\numberline {4.4.1.2}Automatisches Anlegen eines Items}{23}{subsubsection.56}
-\contentsline {subsection}{\numberline {4.4.2}Bearbeiten eines Items}{23}{subsection.58}
-\contentsline {subsection}{\numberline {4.4.3}L\IeC {\"o}schen eines Items}{23}{subsection.60}
-\contentsline {subsection}{\numberline {4.4.4}Ausgabe der Items}{25}{subsection.62}
-\contentsline {subsection}{\numberline {4.4.5}Verwalten verliehener Items}{25}{subsection.64}
-\contentsline {subsection}{\numberline {4.4.6}Exportieren aller ausgew\IeC {\"a}hlter Items}{25}{subsection.66}
-\contentsline {subsection}{\numberline {4.4.7}Datenbank Administration}{27}{subsection.68}
-\contentsline {subsection}{\numberline {4.4.8}REST Schnittstelle zur Abfrage von Metadaten diverser Online Datenbanken}{27}{subsection.73}
-\contentsline {subsection}{\numberline {4.4.9}Kamera als Barcodescanner}{27}{subsection.74}
-\contentsline {section}{\numberline {4.5}Datenbank}{28}{section.75}
-\contentsline {subsection}{\numberline {4.5.1}\IeC {\"U}bersicht der Tabellen und Felder}{28}{subsection.76}
-\contentsline {section}{\numberline {4.6}GUI}{29}{section.78}
-\contentsline {subsection}{\numberline {4.6.1}Startseite}{29}{subsection.79}
-\contentsline {subsection}{\numberline {4.6.2}Barcode Scannen}{29}{subsection.81}
-\contentsline {subsection}{\numberline {4.6.3}Manuell Anlegen / Item Bearbeiten}{29}{subsection.83}
-\contentsline {subsection}{\numberline {4.6.4}Detail Ansicht}{31}{subsection.85}
-\contentsline {subsection}{\numberline {4.6.5}Sicherheitsfrage Item L\IeC {\"o}schen}{32}{subsection.87}
-\contentsline {subsection}{\numberline {4.6.6}Item verleihen}{32}{subsection.89}
-\contentsline {subsection}{\numberline {4.6.7}Filter}{32}{subsection.91}
-\contentsline {subsubsection}{\numberline {4.6.7.1}Allgemein}{32}{subsubsection.92}
-\contentsline {subsubsection}{\numberline {4.6.7.2}Buch \& Spiel}{32}{subsubsection.94}
-\contentsline {subsubsection}{\numberline {4.6.7.3}Film}{34}{subsubsection.96}
-\contentsline {chapter}{\numberline {5}Konzept}{35}{chapter.98}
-\contentsline {section}{\numberline {5.1}Datenbank}{35}{section.99}
-\contentsline {subsection}{\numberline {5.1.1}Allgemeines}{35}{subsection.100}
-\contentsline {subsection}{\numberline {5.1.2}Aufbau der SQLITE Datenbank}{35}{subsection.101}
-\contentsline {subsection}{\numberline {5.1.3}\IeC {\"U}bersicht Datenbank}{37}{subsection.103}
-\contentsline {section}{\numberline {5.2}GUI}{38}{section.105}
-\contentsline {subsection}{\numberline {5.2.1}Allgemeines}{38}{subsection.106}
-\contentsline {subsection}{\numberline {5.2.2}Hauptmenu / Startscreen}{38}{subsection.107}
-\contentsline {subsection}{\numberline {5.2.3}Neues Item}{38}{subsection.108}
-\contentsline {subsection}{\numberline {5.2.4}Sammlung}{40}{subsection.109}
-\contentsline {subsection}{\numberline {5.2.5}Detail Ansicht}{40}{subsection.110}
-\contentsline {subsection}{\numberline {5.2.6}Leihwesen}{40}{subsection.114}
-\contentsline {subsection}{\numberline {5.2.7}Verleih Verwaltung}{40}{subsection.115}
-\contentsline {subsection}{\numberline {5.2.8}Export Database}{41}{subsection.116}
-\contentsline {subsection}{\numberline {5.2.9}Info}{41}{subsection.117}
-\contentsline {subsection}{\numberline {5.2.10}Settings}{41}{subsection.118}
-\contentsline {subsection}{\numberline {5.2.11}Datenbankverwaltung}{41}{subsection.119}
-\contentsline {subsubsection}{\numberline {5.2.11.1}Freunde Verwalten}{42}{subsubsection.120}
-\contentsline {subsubsection}{\numberline {5.2.11.2}History}{42}{subsubsection.121}
-\contentsline {chapter}{\numberline {6}Umsetzung}{43}{chapter.122}
-\contentsline {section}{\numberline {6.1}Funktionen}{43}{section.124}
-\contentsline {section}{\numberline {6.2}Datenbank}{43}{section.125}
-\contentsline {section}{\numberline {6.3}GUI}{44}{section.144}
-\contentsline {chapter}{\numberline {A}Anhang}{47}{appendix.201}
-\contentsline {section}{\numberline {A.1}Konventionen}{47}{section.202}
-\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{47}{section.203}
-\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{47}{subsection.204}
-\contentsline {subsection}{\numberline {A.2.2}Programmierung}{47}{subsection.205}
-\contentsline {subsection}{\numberline {A.2.3}Code und Versionsverwaltung}{47}{subsection.206}
-\contentsline {subsection}{\numberline {A.2.4}Datenbank}{47}{subsection.207}
-\contentsline {subsection}{\numberline {A.2.5}GUI}{47}{subsection.208}
-\contentsline {subsection}{\numberline {A.2.6}UML}{47}{subsection.209}
-\contentsline {section}{\numberline {A.3}Design Entscheidungen}{47}{section.210}
+\contentsline {chapter}{\numberline {1}Recherche}{6}{chapter.3}
+\contentsline {section}{\numberline {1.1}My books}{6}{section.4}
+\contentsline {section}{\numberline {1.2}Meine B\IeC {\"u}cher Pro}{6}{section.5}
+\contentsline {section}{\numberline {1.3}Codex}{7}{section.6}
+\contentsline {section}{\numberline {1.4}Movie Collection}{8}{section.7}
+\contentsline {section}{\numberline {1.5}Movielicious}{10}{section.8}
+\contentsline {section}{\numberline {1.6}Nintendo Collection}{11}{section.9}
+\contentsline {section}{\numberline {1.7}Video Games Manager Collector}{11}{section.10}
+\contentsline {section}{\numberline {1.8}\IeC {\"U}berblick}{12}{section.11}
+\contentsline {chapter}{\numberline {2}Ist-Analyse}{13}{chapter.12}
+\contentsline {chapter}{\numberline {3}Anforderungsanalyse}{14}{chapter.13}
+\contentsline {section}{\numberline {3.1}Allgemeines}{14}{section.18}
+\contentsline {subsection}{\numberline {3.1.1}Dokumentation der Anforderungen}{14}{subsection.19}
+\contentsline {subsubsection}{\numberline {3.1.1.1}Nat\IeC {\"u}rliche Sprache}{14}{subsubsection.20}
+\contentsline {subsection}{\numberline {3.1.2}Systematik der Anforderungen}{15}{subsection.21}
+\contentsline {subsubsection}{\numberline {3.1.2.1}Art der Anforderung}{15}{subsubsection.25}
+\contentsline {subsubsection}{\numberline {3.1.2.2}Priorit\IeC {\"a}t der Anforderung}{15}{subsubsection.26}
+\contentsline {subsubsection}{\numberline {3.1.2.3}Beispiel: Nummerierung und Bezeichnung der Anforderung}{16}{subsubsection.31}
+\contentsline {subsection}{\numberline {3.1.3}Systemanforderungen}{16}{subsection.32}
+\contentsline {section}{\numberline {3.2}\IeC {\"U}bersicht}{16}{section.33}
+\contentsline {section}{\numberline {3.3}Funktionen}{16}{section.34}
+\contentsline {section}{\numberline {3.4}\IeC {\"U}bersicht Funktionen}{17}{section.35}
+\contentsline {subsection}{\numberline {3.4.1}Anlegen eines Items}{18}{subsection.37}
+\contentsline {subsubsection}{\numberline {3.4.1.1}Manuelles Anlegen eines Items}{18}{subsubsection.40}
+\contentsline {subsubsection}{\numberline {3.4.1.2}Automatisches Anlegen eines Items}{18}{subsubsection.42}
+\contentsline {subsection}{\numberline {3.4.2}Bearbeiten eines Items}{19}{subsection.44}
+\contentsline {subsection}{\numberline {3.4.3}L\IeC {\"o}schen eines Items}{19}{subsection.46}
+\contentsline {subsection}{\numberline {3.4.4}Ausgabe der Items}{19}{subsection.48}
+\contentsline {subsection}{\numberline {3.4.5}Verwalten verliehener Items}{21}{subsection.50}
+\contentsline {subsection}{\numberline {3.4.6}Exportieren aller ausgew\IeC {\"a}hlter Items}{21}{subsection.52}
+\contentsline {subsection}{\numberline {3.4.7}Datenbank Administration}{21}{subsection.54}
+\contentsline {subsection}{\numberline {3.4.8}REST Schnittstelle zur Abfrage von Metadaten diverser Online Datenbanken}{23}{subsection.59}
+\contentsline {subsection}{\numberline {3.4.9}Kamera als Barcodescanner}{23}{subsection.60}
+\contentsline {section}{\numberline {3.5}Datenbank}{23}{section.61}
+\contentsline {subsection}{\numberline {3.5.1}\IeC {\"U}bersicht der Tabellen und Felder}{24}{subsection.62}
+\contentsline {section}{\numberline {3.6}GUI}{25}{section.64}
+\contentsline {subsection}{\numberline {3.6.1}Startseite}{25}{subsection.65}
+\contentsline {subsection}{\numberline {3.6.2}Barcode Scannen}{25}{subsection.67}
+\contentsline {subsection}{\numberline {3.6.3}Manuell Anlegen / Item Bearbeiten}{25}{subsection.69}
+\contentsline {subsection}{\numberline {3.6.4}Detail Ansicht}{27}{subsection.71}
+\contentsline {subsection}{\numberline {3.6.5}Sicherheitsfrage Item L\IeC {\"o}schen}{27}{subsection.73}
+\contentsline {subsection}{\numberline {3.6.6}Item verleihen}{28}{subsection.75}
+\contentsline {subsection}{\numberline {3.6.7}Filter}{28}{subsection.77}
+\contentsline {subsubsection}{\numberline {3.6.7.1}Allgemein}{29}{subsubsection.78}
+\contentsline {subsubsection}{\numberline {3.6.7.2}Buch \& Spiel}{29}{subsubsection.80}
+\contentsline {subsubsection}{\numberline {3.6.7.3}Film}{29}{subsubsection.82}
+\contentsline {chapter}{\numberline {4}Konzept}{31}{chapter.84}
+\contentsline {section}{\numberline {4.1}Funktionen}{31}{section.85}
+\contentsline {subsection}{\numberline {4.1.1}Verleih Verwaltung}{31}{subsection.88}
+\contentsline {subsection}{\numberline {4.1.2}Filtern der Sammlung}{31}{subsection.89}
+\contentsline {subsection}{\numberline {4.1.3}CSV Export der Items}{31}{subsection.90}
+\contentsline {section}{\numberline {4.2}Datenbank}{32}{section.91}
+\contentsline {subsection}{\numberline {4.2.1}Allgemeines}{32}{subsection.92}
+\contentsline {subsection}{\numberline {4.2.2}Aufbau der SQLITE Datenbank}{32}{subsection.93}
+\contentsline {subsection}{\numberline {4.2.3}\IeC {\"U}bersicht Datenbank}{34}{subsection.95}
+\contentsline {section}{\numberline {4.3}GUI}{35}{section.97}
+\contentsline {subsection}{\numberline {4.3.1}Allgemeines}{35}{subsection.98}
+\contentsline {subsection}{\numberline {4.3.2}Hauptmenu / Startscreen}{35}{subsection.99}
+\contentsline {subsection}{\numberline {4.3.3}Neues Item}{35}{subsection.100}
+\contentsline {subsection}{\numberline {4.3.4}Sammlung}{37}{subsection.101}
+\contentsline {subsection}{\numberline {4.3.5}Detail Ansicht}{37}{subsection.102}
+\contentsline {subsection}{\numberline {4.3.6}Leihwesen}{37}{subsection.106}
+\contentsline {subsection}{\numberline {4.3.7}Verleih Verwaltung}{37}{subsection.107}
+\contentsline {subsection}{\numberline {4.3.8}Export Database}{38}{subsection.108}
+\contentsline {subsection}{\numberline {4.3.9}Info}{38}{subsection.109}
+\contentsline {subsection}{\numberline {4.3.10}Settings}{38}{subsection.110}
+\contentsline {subsection}{\numberline {4.3.11}Datenbankverwaltung}{38}{subsection.111}
+\contentsline {subsubsection}{\numberline {4.3.11.1}Freunde Verwalten}{39}{subsubsection.112}
+\contentsline {subsubsection}{\numberline {4.3.11.2}History}{39}{subsubsection.113}
+\contentsline {chapter}{\numberline {5}Umsetzung}{40}{chapter.114}
+\contentsline {section}{\numberline {5.1}Funktionen}{40}{section.116}
+\contentsline {subsection}{\numberline {5.1.1}Filtern der Sammlung}{40}{subsection.117}
+\contentsline {subsection}{\numberline {5.1.2}Export der Daten}{41}{subsection.150}
+\contentsline {section}{\numberline {5.2}Datenbank}{43}{section.196}
+\contentsline {section}{\numberline {5.3}GUI}{45}{section.232}
+\contentsline {section}{\numberline {5.4}Fazit}{48}{section.295}
+\contentsline {chapter}{\numberline {A}Anhang}{49}{appendix.296}
+\contentsline {section}{\numberline {A.1}Konventionen}{49}{section.297}
+\contentsline {section}{\numberline {A.2}Verwendete Tools \& Software}{49}{section.298}
+\contentsline {subsection}{\numberline {A.2.1}Dokumentation \& Pr\IeC {\"a}sentation}{49}{subsection.299}
+\contentsline {subsection}{\numberline {A.2.2}Programmierung}{49}{subsection.300}
+\contentsline {subsection}{\numberline {A.2.3}Code und Versionsverwaltung}{49}{subsection.301}
+\contentsline {subsection}{\numberline {A.2.4}Datenbank}{49}{subsection.302}
+\contentsline {subsection}{\numberline {A.2.5}GUI}{49}{subsection.303}
+\contentsline {subsection}{\numberline {A.2.6}UML}{49}{subsection.304}
+\contentsline {section}{\numberline {A.3}Design Entscheidungen}{49}{section.305}

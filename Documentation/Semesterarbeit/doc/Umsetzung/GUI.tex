@@ -5,7 +5,7 @@ Die GUI, der App wird gemäss dem MVC Pattern (Abb. \ref{fig:MVC}) umgesetzt. De
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.6]{pic/MVC}
+	\includegraphics[scale=0.8]{pic/MVC}
 	\caption{Modell, View \& Controller Pattern}
 	\label{fig:MVC}
 \end{figure}
@@ -27,3 +27,12 @@ Hier sieht man im Controller eine Switch Verzweigung, welche anhand der übergeb
 \lstinputlisting[frame=single,language=xml,label=button,caption=View: Button im XML Layout]{code/button.xml}
 
 \lstinputlisting[frame=single,language=java,label=listItem,caption=Controller: Daten aus Modell in View]{code/listItem.java}
+
+Im Kapitel Anforderung im Abschnitt \ref{sec:GUI} sind noch einige Design Anforderungen dokumentiert, bei welchen ich von einer App mit Bildschirmtabs ausgegangen bin. Dies wurde in einer ersten lauffähigen Alpha Version der App so realisiert. Durch meine dabei gewonnenen Erfahrungen, was die Programmierung und das User Handling der App angeht. Unterstützt von den Ergebnissen einer kleinen Internet Recherche, habe ich alle Design Entscheidungen zu Gunsten einer vertikal scrollenden ScrollView abgeändert. Die Vorteile bei der nun eingesetzten Layout Technik sind.
+
+\begin{itemize}
+	\item Modularer und Übersichtlicher Aufbau des Layout.
+	\item Skaliert automatisch auf jeden Bildschirm.
+	\item Leicht zu erweitern.
+	\item Geringerer Aufwand beim Controller der View und damit weniger Fehler anfällig.
+\end{itemize} 
