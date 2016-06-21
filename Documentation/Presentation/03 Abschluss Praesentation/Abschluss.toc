@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Ausgangssituation}{3}{0}{1}
+\beamer@sectionintoc {2}{Konzept}{6}{0}{2}
+\beamer@sectionintoc {3}{Anforderungen}{7}{0}{3}
